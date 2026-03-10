@@ -3,3 +3,9 @@
 !.gitignore
 !subdir/
 !scratch-simulator.cc
+!iroute-exp-baselines.cc
+!iroute-exp-results.hpp
+!exp_accuracy.cc
+!exp_load.cc
+!exp_scaling.cc
+!exp_failure.cc

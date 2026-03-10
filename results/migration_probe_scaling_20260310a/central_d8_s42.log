@@ -1,0 +1,39 @@
+/Users/jiyuan/Desktop/ndnSIM/ns-3/bindings/python/wscript:333: SyntaxWarning: "\d" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\d"? A raw string is also an option.
+  m = re.match( "^castxml version (\d\.\d)(-)?(\w+)?", castxml_version_line)
+Waf: Entering directory `/Users/jiyuan/Desktop/ndnSIM/ns-3/build'
+Waf: Leaving directory `/Users/jiyuan/Desktop/ndnSIM/ns-3/build'
+'build' finished successfully (0.315s)
+=== iroute-exp-baselines ===
+  scheme=central domains=8 K=5 tau=0.3 M=4 topo=rocketfuel simTime=3s
+  warmupSec=0 measureStartSec=0 failurePolicy=manual
+  topoFile=/Users/jiyuan/Desktop/ndnSIM/ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt ingressNode=0
+Loaded 8 domains centroids, 8 domains content, 500 queries
+
+=== Running scheme: central (Directory Service) ===
+  dirMode=oracle procDelay=2ms procJitterUs=0 topK=5 failTime=none
+[DirectoryServer] Loaded oracle index: 425 queries
+[DirectoryServer] Loaded 484 text→qid mappings
+  DirectoryServer processed=2 dropped=0 peakQueue=1 bytesServed=410
+Wrote /Users/jiyuan/Desktop/ndnSIM/results/migration_probe_scaling_20260310a/central_d8_s42/failure_sanity.csv
+Wrote /Users/jiyuan/Desktop/ndnSIM/results/migration_probe_scaling_20260310a/central_d8_s42/query_log.csv (2 rows)
+Wrote /Users/jiyuan/Desktop/ndnSIM/results/migration_probe_scaling_20260310a/central_d8_s42/summary.csv
+Wrote /Users/jiyuan/Desktop/ndnSIM/results/migration_probe_scaling_20260310a/central_d8_s42/latency_sanity.csv
+Wrote /Users/jiyuan/Desktop/ndnSIM/results/migration_probe_scaling_20260310a/central_d8_s42/manifest.json
+
+=== Summary ===
+  Scheme: central
+  Queries: 2 (measurable: 1)
+  DomainAcc: 1.0000
+  Recall@1:  1.0000
+  Recall@K(domain): 1.0000
+  DocHit@1(singleton): 0.0000 on 0 queries
+  Mean relevant set size: 9.0000
+  meanSSR:   0.5000
+  P50 RTT:   9.6840 ms
+  P95 RTT:   9.6840 ms
+  MeanHops:  0.0000
+  UniqueHops:0
+  Ctrl B/s:  232.0000
+  FIB size:  19
+  LSDB size: 1
+  partition_detected: 0 failure_effective: 0

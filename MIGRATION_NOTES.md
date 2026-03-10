@@ -9,6 +9,9 @@
 - Canonical result checks: `ns-3/experiments/checks/check_results.py`
 - Canonical plotting script: `ns-3/experiments/plot/plot_paper_figures.py`
 - Canonical dataset helper manifest: `dataset/manifests/calc_recovery.py`
+- Canonical dataset root: `dataset/`
+- Canonical results root: `results/`
+- Canonical shell path helper: `scripts/iroute-paths.sh`
 
 ## Paper Workflow
 
@@ -21,7 +24,7 @@ cd paper
 pdflatex -interaction=nonstopmode -halt-on-error -output-directory /tmp/iroute-paper-check main.tex
 ```
 
-`paper/figs/` is the intended canonical figure tree. `paper/figures/` exists only as a temporary compatibility mirror while legacy relative references are cleaned up.
+`paper/figs/` is the canonical paper figure tree. `paper/figures/` exists only as a temporary compatibility mirror while legacy relative references are cleaned up.
 
 ## Known Paper Compile Blockers
 
@@ -50,9 +53,11 @@ The original top-level experiment paths remain as wrappers so existing commands 
 
 ## Dataset And Results Lineage
 
-- Active stage-1 working set remains at `ns-3/dataset/sdm_smartcity_dataset/`
-- Active stage-1 evidence remains at `ns-3/results/sanr_baseline/`
-- Top-level `dataset/` and `results/` folders now define the future canonical homes for curated inputs and evidence
+- Top-level `dataset/` is now the canonical dataset root, with runners resolving `dataset/processed/` first
+- Until the physical move is completed, dataset resolution falls back to `ns-3/dataset/sdm_smartcity_dataset/` with an explicit warning
+- Top-level `results/` is now the canonical results root for new runner output defaults
+- Historical bundles under `ns-3/results/` remain readable legacy storage and promotion sources
+- Root `figures/` remains a legacy mirror; canonical generated figure bundles belong under `results/figures/`
 
 ## Moved Files Summary
 
@@ -65,7 +70,7 @@ The original top-level experiment paths remain as wrappers so existing commands 
 ## Deferred Refactor Debt
 
 - Split `ns-3/scratch/iroute-exp-baselines.cc` into shared libraries and thinner experiment binaries
-- Move curated dataset artifacts into `dataset/processed/`
-- Move curated evidence into `results/`
+- Physically move curated dataset artifacts into `dataset/processed/`
+- Continue curating historical raw outputs from `ns-3/results/` into canonical `results/`
 - Reconstruct or regenerate the missing paper figures
 - Add CI once the canonical runner and evidence manifests are stable

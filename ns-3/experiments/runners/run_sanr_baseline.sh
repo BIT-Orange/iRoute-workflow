@@ -4,6 +4,10 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 NS3_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
 ROOT_DIR="$(cd "$NS3_DIR/.." && pwd)"
+source "$ROOT_DIR/scripts/iroute-paths.sh"
+
+NS3_DIR="$IROUTE_NS3_ROOT"
+ROOT_DIR="$IROUTE_REPO_ROOT"
 cd "$NS3_DIR"
 
 mkdir -p "$NS3_DIR/.home"
@@ -63,21 +67,25 @@ validate_cache_settings() {
   esac
 }
 
-BASE_DIR="${1:-results/sanr_baseline}"
+BASE_DIR="$(iroute_resolve_results_path "${1:-sanr_baseline}")"
 ACC_DIR="$BASE_DIR/accuracy_comparison"
 FAIL_DIR="$BASE_DIR/failure_stub"
-FIG_DIR="$ROOT_DIR/figures/sanr_baseline"
+FIG_DIR="$(iroute_resolve_figures_path "sanr_baseline")"
 WORKLOAD_DIR="$BASE_DIR/workload"
 
 TOPO="${TOPO:-rocketfuel}"
-TOPO_FILE="${TOPO_FILE:-src/ndnSIM/examples/topologies/as1239-r0.txt}"
+TOPO_FILE="$(iroute_resolve_topology_file "${TOPO_FILE:-src/ndnSIM/examples/topologies/as1239-r0.txt}")"
 SEEDS="${SEEDS:-42 43 44}"
-TRACE_BASE="${TRACE_BASE:-dataset/sdm_smartcity_dataset/consumer_trace.csv}"
+TRACE_BASE="${TRACE_BASE:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/consumer_trace.csv")}"
 TRACE_REPEAT="${TRACE_REPEAT:-$WORKLOAD_DIR/consumer_trace_repeat.csv}"
 QUERY_REPEAT_FACTOR="${QUERY_REPEAT_FACTOR:-3}"
 TRACE_REPEAT_MODE="${TRACE_REPEAT_MODE:-row}"
 WORKLOAD_STATS_JSON="${WORKLOAD_STATS_JSON:-$WORKLOAD_DIR/workload_repeat_stats.json}"
 CS_SIZE="${CS_SIZE:-512}"
+CENTROIDS_M4="${CENTROIDS_M4:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/domain_centroids_m4.csv")}"
+CONTENT_FILE="${CONTENT_FILE:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/producer_content.csv")}"
+TAG_INDEX_FILE="${TAG_INDEX_FILE:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/tag_index.csv")}"
+QUERY_TO_TAG_FILE="${QUERY_TO_TAG_FILE:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/query_to_tag.csv")}"
 
 validate_cache_settings
 
@@ -102,12 +110,14 @@ echo "[sanr] building repeated workload: $TRACE_REPEAT"
   --input "$(resolve_path "$TRACE_BASE")" \
   --input "$(resolve_path "$TRACE_REPEAT")" \
   --input "$(resolve_path "$TOPO_FILE")" \
-  --input "$NS3_DIR/dataset/sdm_smartcity_dataset/domain_centroids_m4.csv" \
-  --input "$NS3_DIR/dataset/sdm_smartcity_dataset/producer_content.csv" \
-  --input "$NS3_DIR/dataset/sdm_smartcity_dataset/tag_index.csv" \
-  --input "$NS3_DIR/dataset/sdm_smartcity_dataset/query_to_tag.csv" \
+  --input "$CENTROIDS_M4" \
+  --input "$CONTENT_FILE" \
+  --input "$TAG_INDEX_FILE" \
+  --input "$QUERY_TO_TAG_FILE" \
   --field "cache_mode=\"$CACHE_MODE\"" \
   --field "cs_size=$CS_SIZE" \
+  --field "run_mode=\"sanr_baseline_bundle\"" \
+  --field "seed_provenance=\"native\"" \
   --field "paper_grade=false" \
   --field "query_repeat_factor=$QUERY_REPEAT_FACTOR" \
   --field "trace_repeat_mode=\"$TRACE_REPEAT_MODE\"" \
@@ -125,6 +135,10 @@ CACHE_MODE="$CACHE_MODE" \
 CS_SIZE="$CS_SIZE" \
 DATA_FRESHNESS_MS="${DATA_FRESHNESS_MS:-60000}" \
 TRACE="$TRACE_REPEAT" \
+CENTROIDS="$CENTROIDS_M4" \
+CONTENT="$CONTENT_FILE" \
+TAG_INDEX="$TAG_INDEX_FILE" \
+QUERY_TO_TAG="$QUERY_TO_TAG_FILE" \
 SHUFFLE_TRACE="${SHUFFLE_TRACE:-0}" \
 "$SCRIPT_DIR/run_accuracy_experiment.sh" "$ACC_DIR"
 
@@ -136,6 +150,8 @@ MPLCONFIGDIR=.mplcache "$PYTHON_BIN" experiments/plot/plot_paper_figures.py \
   --acc-dir "$ACC_DIR" \
   --fail-dir "$FAIL_DIR" \
   --output "$FIG_DIR"
+
+iroute_mirror_legacy_figures "$FIG_DIR" "sanr_baseline"
 
 echo "[sanr] done"
 echo "  accuracy: $ACC_DIR"

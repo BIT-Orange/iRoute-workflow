@@ -1,0 +1,17 @@
+{
+  "files": {
+    "evidence_index": "results/aggregates/evidence_index.csv",
+    "paper_grade_summary_rows": "results/aggregates/paper_grade_summary_rows.csv",
+    "run_index": "results/aggregates/run_index.csv",
+    "summary_rows": "results/aggregates/summary_rows.csv"
+  },
+  "generated_at_utc": "2026-03-10T07:58:38.777234+00:00",
+  "run_class_counts": {
+    "exploratory": 1,
+    "smoke": 1
+  },
+  "total_runs": 2,
+  "warnings": [
+    "paper_grade aggregates exclude non-paper-grade runs: legacy-sanr-baseline-exp4-scaling-iroute-d8-s42, smoke-iroute-star-s42-20260310a"
+  ]
+}

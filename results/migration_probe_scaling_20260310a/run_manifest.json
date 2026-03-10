@@ -1,0 +1,62 @@
+{
+  "fields": {
+    "allow_fake_seed_clone": 0,
+    "cache_mode": "disabled",
+    "clone_high_domain": 0,
+    "clone_high_domain_from_seed": 42,
+    "clone_high_domain_min": 64,
+    "cs_size": 0,
+    "paper_grade": 0,
+    "run_mode": "scaling_aggregate",
+    "seed_provenance": "aggregate"
+  },
+  "generated_at_utc": "2026-03-10T08:44:46.085350+00:00",
+  "git_commit": "6e44208441b85287f221ad19b91b87d519f2c5b7",
+  "inputs": [
+    {
+      "exists": true,
+      "path": "ns-3/dataset/sdm_smartcity_dataset/consumer_trace.csv",
+      "sha256": "23e244aa882a79ed96663c341e1bd6c4b298cb0f94fb4835232d30367a6267bd",
+      "size_bytes": 765525
+    },
+    {
+      "exists": true,
+      "path": "ns-3/dataset/sdm_smartcity_dataset/domain_centroids_m4.csv",
+      "sha256": "b3bda3a0d9250b7f4171475dab08a626951e867e26f158b5d845c6f36960b563",
+      "size_bytes": 39733
+    },
+    {
+      "exists": true,
+      "path": "ns-3/dataset/sdm_smartcity_dataset/producer_content.csv",
+      "sha256": "b3e1220be2dc676770511eb9748cd794c6aa753fdcfe4063f894087488563a2b",
+      "size_bytes": 3475215
+    },
+    {
+      "exists": true,
+      "path": "ns-3/dataset/sdm_smartcity_dataset/qrels.tsv",
+      "sha256": "9f127cf217d1c79168840b6a24740c085d742646a2995fc5c41906c77eebad75",
+      "size_bytes": 209883
+    },
+    {
+      "exists": true,
+      "path": "ns-3/dataset/sdm_smartcity_dataset/tag_index.csv",
+      "sha256": "bcfa96d78d01e4dae03ac481dd821425985a982873fcb03690bb5c35f8783503",
+      "size_bytes": 3679
+    },
+    {
+      "exists": true,
+      "path": "ns-3/dataset/sdm_smartcity_dataset/query_to_tag.csv",
+      "sha256": "61632ec33f138d22c7de754b47991e7906607e2525f6ad3e0fb30d20e3af096f",
+      "size_bytes": 4427
+    },
+    {
+      "exists": true,
+      "path": "ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt",
+      "sha256": "2e69434a020c4255417db9140d20835cc6042e5dc3309dbf89ad4f2f32de906a",
+      "size_bytes": 92171
+    }
+  ],
+  "output_dir": "/Users/jiyuan/Desktop/ndnSIM/results/migration_probe_scaling_20260310a",
+  "runner": "ns-3/experiments/runners/run_scaling_experiment.sh",
+  "workflow": "scaling_experiment"
+}

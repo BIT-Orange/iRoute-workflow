@@ -1,0 +1,276 @@
+{
+  "schema_version": 1,
+  "paper": "paper/main.tex",
+  "claims": [
+    {
+      "id": "CLM-EVAL-001",
+      "title": "Paper-grade routing evaluation disables caching by default",
+      "paper_anchor": "sec:eval_setup",
+      "paper_markers": [
+        "claim-id: eval-setup-cache-disabled-paper-grade"
+      ],
+      "statement": "Unless noted otherwise, the paper-grade routing workflow disables in-network caching and uses csSize=0 to isolate routing effects from cache hits.",
+      "claim_kind": "methodology",
+      "status": "supported",
+      "related_figures": [],
+      "related_aggregates": [
+        "results/aggregates/run_index.csv",
+        "results/aggregates/summary_rows.csv"
+      ],
+      "related_runs": {
+        "run_ids": [
+          "smoke-iroute-star-s42-20260310a"
+        ],
+        "run_classes": [
+          "smoke"
+        ]
+      },
+      "static_evidence": [
+        "ns-3/experiments/manifests/paper_suite.json",
+        "ns-3/experiments/runners/run_paper_suite.sh"
+      ],
+      "minimum_run_evidence": "none",
+      "notes": [
+        "This is a workflow-semantics claim, not a publishable quantitative result.",
+        "A smoke run is acceptable here because the claim is about default mode wiring rather than paper-grade performance."
+      ]
+    },
+    {
+      "id": "CLM-EVAL-002",
+      "title": "Archived Figs. 1 and 2 are cache-enabled SANR workflow evidence",
+      "paper_anchor": "sec:eval_setup",
+      "paper_markers": [
+        "claim-id: eval-setup-cache-enabled-sanr-bundle"
+      ],
+      "statement": "The archived repository bundle for Figs. 1 and 2 comes from the cache-enabled SANR workflow and should not be conflated with cache-disabled routing-only paper evidence.",
+      "claim_kind": "methodology",
+      "status": "supported",
+      "related_figures": [
+        "paper/figs/fig1_accuracy_overhead.pdf",
+        "paper/figs/fig2_retrieval_cdf.pdf"
+      ],
+      "related_aggregates": [],
+      "related_runs": {
+        "run_ids": [],
+        "run_classes": []
+      },
+      "static_evidence": [
+        "ns-3/experiments/manifests/sanr_baseline.json",
+        "ns-3/experiments/runners/run_sanr_baseline.sh"
+      ],
+      "minimum_run_evidence": "none",
+      "notes": [
+        "This claim is about figure provenance and workflow semantics.",
+        "It remains supported even though the corresponding quantitative conclusions stay provisional until rerun under the paper-grade suite."
+      ]
+    },
+    {
+      "id": "CLM-EVAL-003",
+      "title": "Centralized directory is plotted only as an oracle upper bound",
+      "paper_anchor": "sec:eval_setup",
+      "paper_markers": [
+        "claim-id: eval-positioning-centralized-oracle"
+      ],
+      "statement": "The centralized directory curve is an oracle upper bound on intent-to-name resolution quality rather than a decentralized routing baseline.",
+      "claim_kind": "positioning",
+      "status": "supported",
+      "related_figures": [
+        "paper/figs/fig1_accuracy_overhead.pdf"
+      ],
+      "related_aggregates": [],
+      "related_runs": {
+        "run_ids": [],
+        "run_classes": []
+      },
+      "static_evidence": [],
+      "minimum_run_evidence": "none",
+      "notes": [
+        "This is an interpretation guardrail for Fig. 1."
+      ]
+    },
+    {
+      "id": "CLM-EVAL-004",
+      "title": "Exact-NDN is a syntactic reference rather than an apples-to-apples intent-discovery comparator",
+      "paper_anchor": "sec:eval_setup",
+      "paper_markers": [
+        "claim-id: eval-positioning-exact-ndn-reference"
+      ],
+      "statement": "When Exact-NDN is provisioned with stronger naming knowledge, it should be read as a syntactic reference point rather than a directly like-for-like latency or state comparator for intent-driven discovery.",
+      "claim_kind": "positioning",
+      "status": "supported",
+      "related_figures": [
+        "paper/figs/fig1_accuracy_overhead.pdf",
+        "paper/figs/fig2_retrieval_cdf.pdf"
+      ],
+      "related_aggregates": [],
+      "related_runs": {
+        "run_ids": [],
+        "run_classes": []
+      },
+      "static_evidence": [],
+      "minimum_run_evidence": "none",
+      "notes": [
+        "This is a constraint on how latency and correctness plots should be read."
+      ]
+    },
+    {
+      "id": "CLM-EVAL-005",
+      "title": "Bounded advertisements trade correctness against control overhead",
+      "paper_anchor": "sec:eval_correctness",
+      "paper_markers": [
+        "claim-id: eval-correctness-bounded-advertisements"
+      ],
+      "statement": "Increasing the advertisement budget M generally improves domain coverage, while increasing K raises the chance that a relevant domain is probed at the cost of more discovery traffic.",
+      "claim_kind": "quantitative",
+      "status": "provisional",
+      "related_figures": [
+        "paper/figs/fig1_accuracy_overhead.pdf"
+      ],
+      "related_aggregates": [
+        "results/aggregates/run_index.csv",
+        "results/aggregates/summary_rows.csv"
+      ],
+      "related_runs": {
+        "run_ids": [],
+        "run_classes": [
+          "paper_grade"
+        ]
+      },
+      "static_evidence": [
+        "ns-3/experiments/manifests/paper_suite.json",
+        "ns-3/experiments/manifests/sanr_baseline.json"
+      ],
+      "minimum_run_evidence": "paper_grade",
+      "notes": [
+        "The current archived figure exists, but the paper itself already limits it to the cache-enabled SANR workflow.",
+        "No canonical paper-grade accuracy runs are promoted under results/runs yet."
+      ]
+    },
+    {
+      "id": "CLM-EVAL-006",
+      "title": "Selective probing improves retrieval efficiency relative to high-overhead search",
+      "paper_anchor": "sec:eval_latency",
+      "paper_markers": [
+        "claim-id: eval-latency-selective-probing"
+      ],
+      "statement": "Selective probing reduces unnecessary traversal compared to flooding, but current archived latency evidence remains cache-enabled and should not be read as a routing-only latency result.",
+      "claim_kind": "quantitative",
+      "status": "provisional",
+      "related_figures": [
+        "paper/figs/fig2_retrieval_cdf.pdf"
+      ],
+      "related_aggregates": [
+        "results/aggregates/run_index.csv",
+        "results/aggregates/summary_rows.csv"
+      ],
+      "related_runs": {
+        "run_ids": [],
+        "run_classes": [
+          "paper_grade"
+        ]
+      },
+      "static_evidence": [
+        "ns-3/experiments/manifests/paper_suite.json",
+        "ns-3/experiments/manifests/sanr_baseline.json"
+      ],
+      "minimum_run_evidence": "paper_grade",
+      "notes": [
+        "The figure file exists, but the repository does not yet contain promoted paper-grade latency runs or a regenerated routing-only latency plot."
+      ]
+    },
+    {
+      "id": "CLM-EVAL-007",
+      "title": "Hop count remains localized as offered load increases",
+      "paper_anchor": "sec:eval_latency",
+      "paper_markers": [
+        "claim-id: eval-latency-selective-probing"
+      ],
+      "statement": "Average hop count under offered load cannot currently be defended because the canonical Fig. 3 artifact is missing and no paper-grade load aggregate is promoted.",
+      "claim_kind": "quantitative",
+      "status": "blocked",
+      "related_figures": [
+        "paper/figs/fig3_hop_load.pdf"
+      ],
+      "related_aggregates": [],
+      "related_runs": {
+        "run_ids": [],
+        "run_classes": [
+          "paper_grade"
+        ]
+      },
+      "static_evidence": [
+        "ns-3/experiments/manifests/paper_suite.json"
+      ],
+      "minimum_run_evidence": "paper_grade",
+      "notes": [
+        "Missing figure file is a hard blocker.",
+        "A paper-grade load rerun and promoted aggregate are still required."
+      ]
+    },
+    {
+      "id": "CLM-EVAL-008",
+      "title": "Routing state scales with bounded per-domain advertisements",
+      "paper_anchor": "sec:eval_scalability",
+      "paper_markers": [
+        "claim-id: eval-scalability-bounded-state"
+      ],
+      "statement": "The bounded-state scaling claim remains blocked because the canonical Fig. 4 file is missing and the only promoted scaling run is exploratory rather than paper-grade.",
+      "claim_kind": "quantitative",
+      "status": "blocked",
+      "related_figures": [
+        "paper/figs/fig4_state_scaling.pdf"
+      ],
+      "related_aggregates": [
+        "results/aggregates/run_index.csv",
+        "results/aggregates/summary_rows.csv"
+      ],
+      "related_runs": {
+        "run_ids": [
+          "legacy-sanr-baseline-exp4-scaling-iroute-d8-s42"
+        ],
+        "run_classes": [
+          "paper_grade"
+        ]
+      },
+      "static_evidence": [
+        "ns-3/experiments/manifests/paper_suite.json"
+      ],
+      "minimum_run_evidence": "paper_grade",
+      "notes": [
+        "The promoted legacy scaling run helps trace historical evidence, but it remains exploratory and cache-enabled.",
+        "The figure file referenced by the paper is still missing."
+      ]
+    },
+    {
+      "id": "CLM-EVAL-009",
+      "title": "Recovery under churn and failures is currently unverified in the canonical paper tree",
+      "paper_anchor": "sec:eval_robustness",
+      "paper_markers": [
+        "claim-id: eval-robustness-recovery"
+      ],
+      "statement": "The churn, link-failure, and domain-failure recovery claims remain blocked until the canonical Fig. 5 panels and paper-grade failure runs are regenerated and promoted.",
+      "claim_kind": "quantitative",
+      "status": "blocked",
+      "related_figures": [
+        "paper/figs/fig5_recovery_churn.pdf",
+        "paper/figs/fig5_recovery_link-fail.pdf",
+        "paper/figs/fig5_recovery_domain-fail.pdf"
+      ],
+      "related_aggregates": [],
+      "related_runs": {
+        "run_ids": [],
+        "run_classes": [
+          "paper_grade"
+        ]
+      },
+      "static_evidence": [
+        "ns-3/experiments/manifests/paper_suite.json"
+      ],
+      "minimum_run_evidence": "paper_grade",
+      "notes": [
+        "All three referenced figure panels are missing from paper/figs.",
+        "No canonical paper-grade failure runs are promoted under results/runs yet."
+      ]
+    }
+  ]
+}

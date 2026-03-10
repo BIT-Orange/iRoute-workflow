@@ -9,22 +9,38 @@
     "cache_mode_default": "disabled",
     "cache_mode_note": "Paper-grade workflow isolates routing behavior from cache hits.",
     "scaling_seed_policy": "native-only",
-    "scaling_seed_policy_note": "Seed cloning is forbidden in paper-grade scaling runs."
+    "scaling_seed_policy_note": "Seed cloning is forbidden in paper-grade scaling runs.",
+    "canonical_dataset_root": "dataset/processed",
+    "canonical_results_root": "results",
+    "legacy_dataset_fallback": "ns-3/dataset",
+    "legacy_results_mirror": "ns-3/results",
+    "legacy_figures_mirror": "figures"
   },
   "inputs": [
-    "dataset/sdm_smartcity_dataset/consumer_trace.csv",
-    "dataset/sdm_smartcity_dataset/domain_centroids_m4.csv",
-    "dataset/sdm_smartcity_dataset/producer_content.csv",
-    "dataset/sdm_smartcity_dataset/tag_index.csv",
-    "dataset/sdm_smartcity_dataset/query_to_tag.csv",
-    "dataset/sdm_smartcity_dataset/index_exact.csv",
-    "dataset/sdm_smartcity_dataset/qrels.tsv",
-    "src/ndnSIM/examples/topologies/as1239-r0.txt"
+    "dataset/processed/sdm_smartcity_dataset/consumer_trace.csv",
+    "dataset/processed/sdm_smartcity_dataset/domain_centroids_m4.csv",
+    "dataset/processed/sdm_smartcity_dataset/producer_content.csv",
+    "dataset/processed/sdm_smartcity_dataset/tag_index.csv",
+    "dataset/processed/sdm_smartcity_dataset/query_to_tag.csv",
+    "dataset/processed/sdm_smartcity_dataset/index_exact.csv",
+    "dataset/processed/sdm_smartcity_dataset/qrels.tsv",
+    "ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt"
+  ],
+  "legacy_compat_inputs": [
+    "ns-3/dataset/sdm_smartcity_dataset/consumer_trace.csv",
+    "ns-3/dataset/sdm_smartcity_dataset/domain_centroids_m4.csv",
+    "ns-3/dataset/sdm_smartcity_dataset/producer_content.csv",
+    "ns-3/dataset/sdm_smartcity_dataset/tag_index.csv",
+    "ns-3/dataset/sdm_smartcity_dataset/query_to_tag.csv",
+    "ns-3/dataset/sdm_smartcity_dataset/index_exact.csv",
+    "ns-3/dataset/sdm_smartcity_dataset/qrels.tsv"
   ],
   "outputs": [
     "results/paper_<timestamp>",
     "results/paper_<timestamp>/run_manifest.json",
-    "../figures"
+    "results/figures/paper_<timestamp>",
+    "paper/figs",
+    "figures"
   ],
   "default_environment": {
     "TOPO": "rocketfuel",

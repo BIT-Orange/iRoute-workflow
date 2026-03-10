@@ -4,6 +4,10 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 NS3_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
 ROOT_DIR="$(cd "$NS3_DIR/.." && pwd)"
+source "$ROOT_DIR/scripts/iroute-paths.sh"
+
+NS3_DIR="$IROUTE_NS3_ROOT"
+ROOT_DIR="$IROUTE_REPO_ROOT"
 cd "$NS3_DIR"
 
 mkdir -p "$NS3_DIR/.home"
@@ -43,9 +47,9 @@ validate_cache_settings() {
   esac
 }
 
-RESULT_DIR="${1:-results/exp3-failure}"
+RESULT_DIR="$(iroute_resolve_results_path "${1:-exp3-failure}")"
 TOPO="${TOPO:-redundant}"
-TOPO_FILE="${TOPO_FILE:-src/ndnSIM/examples/topologies/as1239-r0.txt}"
+TOPO_FILE="$(iroute_resolve_topology_file "${TOPO_FILE:-src/ndnSIM/examples/topologies/as1239-r0.txt}")"
 INGRESS_NODE="${INGRESS_NODE:-0}"
 LINK_DELAY_MS="${LINK_DELAY_MS:-2.0}"
 LINK_DELAY_JITTER_US="${LINK_DELAY_JITTER_US:-0}"
@@ -80,16 +84,16 @@ SANR_CCN_K="${SANR_CCN_K:-1}"
 SANR_TOP_L="${SANR_TOP_L:-32}"
 DATA_FRESHNESS_MS="${DATA_FRESHNESS_MS:-60000}"
 
-TRACE="${TRACE:-dataset/sdm_smartcity_dataset/consumer_trace.csv}"
+TRACE="${TRACE:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/consumer_trace.csv")}"
 SHUFFLE_TRACE="${SHUFFLE_TRACE:-1}"
-CENTROIDS="${CENTROIDS:-dataset/sdm_smartcity_dataset/domain_centroids_m4.csv}"
+CENTROIDS="${CENTROIDS:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/domain_centroids_m4.csv")}"
 if [ ! -f "$CENTROIDS" ]; then
-  CENTROIDS="dataset/sdm_smartcity_dataset/domain_centroids.csv"
+  CENTROIDS="$(iroute_resolve_dataset_file "sdm_smartcity_dataset/domain_centroids.csv")"
 fi
-CONTENT="${CONTENT:-dataset/sdm_smartcity_dataset/producer_content.csv}"
-QRELS="${QRELS:-dataset/sdm_smartcity_dataset/qrels.tsv}"
-TAG_INDEX="${TAG_INDEX:-dataset/sdm_smartcity_dataset/tag_index.csv}"
-QUERY_TO_TAG="${QUERY_TO_TAG:-dataset/sdm_smartcity_dataset/query_to_tag.csv}"
+CONTENT="${CONTENT:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/producer_content.csv")}"
+QRELS="${QRELS:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/qrels.tsv")}"
+TAG_INDEX="${TAG_INDEX:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/tag_index.csv")}"
+QUERY_TO_TAG="${QUERY_TO_TAG:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/query_to_tag.csv")}"
 
 validate_cache_settings
 mkdir -p "$RESULT_DIR"

@@ -1,0 +1,27 @@
+name: Experiment Checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  experiment-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Run static experiment checks
+        run: bash scripts/workflow.sh checks
+
+      - name: Run paper-suite static preflight
+        run: bash scripts/workflow.sh paper-suite-preflight
+
+      - name: Run opportunistic ns-3 smoke validation
+        run: bash scripts/workflow.sh smoke-run
+
+      - name: Run opportunistic artifact regression
+        run: bash scripts/workflow.sh artifact-check

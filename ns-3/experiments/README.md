@@ -14,6 +14,32 @@ Important integrity checks:
 
 - `experiments/checks/repeat_workload.py`: validates repeated-workload coverage and diversity
 - `experiments/checks/check_lineage.py`: validates cache-mode metadata and scaling seed provenance
+- `experiments/checks/check_artifact_regression.py`: validates per-run `summary.csv`, `query_log.csv`, `latency_sanity.csv`, and `failure_sanity.csv`
+- `experiments/checks/check_paper_figures.py`: fails when `paper/main.tex` references missing figure files
+
+## Unified Automation Entrypoint
+
+From the repository root:
+
+```bash
+bash scripts/workflow.sh lint
+bash scripts/workflow.sh checks
+bash scripts/workflow.sh paper-preflight
+bash scripts/workflow.sh artifact-check
+bash scripts/workflow.sh smoke-run
+bash scripts/workflow.sh paper-suite-preflight
+bash scripts/workflow.sh ci-local
+```
+
+Command summary:
+
+- `lint`: shell syntax, Python bytecode, JSON, and workflow YAML sanity
+- `checks`: static experiment utility/help checks and static manifest checks
+- `paper-preflight`: canonical paper figure preflight, plus LaTeX compile only if a TeX tool is available
+- `artifact-check`: artifact regression on a supplied run directory or the latest smoke output
+- `smoke-run`: tiny ns-3 smoke validation, skipped explicitly if no compiled smoke binary is available
+- `paper-suite-preflight`: static validation that paper-suite defaults remain cache-disabled and native-seed oriented
+- `ci-local`: local bundle matching the fast CI gates
 
 ## Recommended Entrypoints
 
@@ -51,7 +77,8 @@ The following legacy paths still exist and delegate to the canonical scripts:
 
 - Scripts auto-set `HOME` to `ns-3/.home` to avoid host `~/.ndn` permission issues.
 - If present, `ns-3/.venv/bin` is added to `PATH` automatically.
-- Current working-set data still lives under `ns-3/dataset/sdm_smartcity_dataset/`.
-- Current evidence outputs still live under `ns-3/results/sanr_baseline/` and `../figures/`.
+- Canonical dataset root is `../dataset/`, with runners preferring `../dataset/processed/` and falling back to `ns-3/dataset/` if the physical migration is incomplete.
+- Canonical results root is `../results/`; active runner defaults now emit there.
+- Root `../figures/` is a legacy compatibility mirror. Canonical generated figure bundles belong under `../results/figures/`.
 - Reproducibility metadata now lands in `run_manifest.json` files under repaired workflow output directories.
 - Paper-grade scaling runs forbid seed cloning. Developer-only seed cloning must be explicitly enabled and is not valid for paper claims.

@@ -1,0 +1,33 @@
+{
+  "fields": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "run_mode": "smoke_validation",
+    "seed_provenance": "native"
+  },
+  "generated_at_utc": "2026-03-10T07:58:11.938511+00:00",
+  "git_commit": "6e44208441b85287f221ad19b91b87d519f2c5b7",
+  "inputs": [
+    {
+      "exists": true,
+      "path": "ns-3/dataset/sdm_smartcity_dataset/consumer_trace.csv",
+      "sha256": "23e244aa882a79ed96663c341e1bd6c4b298cb0f94fb4835232d30367a6267bd",
+      "size_bytes": 765525
+    },
+    {
+      "exists": true,
+      "path": "ns-3/dataset/sdm_smartcity_dataset/domain_centroids_m4.csv",
+      "sha256": "b3bda3a0d9250b7f4171475dab08a626951e867e26f158b5d845c6f36960b563",
+      "size_bytes": 39733
+    },
+    {
+      "exists": true,
+      "path": "ns-3/dataset/sdm_smartcity_dataset/producer_content.csv",
+      "sha256": "b3e1220be2dc676770511eb9748cd794c6aa753fdcfe4063f894087488563a2b",
+      "size_bytes": 3475215
+    }
+  ],
+  "output_dir": "/var/folders/bd/fmy5y57d5gb2_0940687snm00000gn/T/iroute-smoke-stage-7947gb1z/smoke-iroute-star-s42-20260310a",
+  "runner": "ns-3/scratch/iroute-exp-baselines.cc",
+  "workflow": "smoke_validation"
+}

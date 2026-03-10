@@ -9,21 +9,34 @@
     "cache_mode_default": "enabled",
     "cache_mode_note": "Default SANR workflow uses caching and should not be conflated with cache-disabled paper-grade runs.",
     "workload_repeat_mode_default": "row",
-    "workload_repeat_note": "Each source row is repeated consecutively; output length equals source_length * repeat_factor."
+    "workload_repeat_note": "Each source row is repeated consecutively; output length equals source_length * repeat_factor.",
+    "canonical_dataset_root": "dataset/processed",
+    "canonical_results_root": "results",
+    "legacy_dataset_fallback": "ns-3/dataset",
+    "legacy_results_mirror": "ns-3/results",
+    "legacy_figures_mirror": "figures"
   },
   "inputs": [
-    "dataset/sdm_smartcity_dataset/consumer_trace.csv",
-    "dataset/sdm_smartcity_dataset/domain_centroids_m4.csv",
-    "dataset/sdm_smartcity_dataset/producer_content.csv",
-    "dataset/sdm_smartcity_dataset/tag_index.csv",
-    "dataset/sdm_smartcity_dataset/query_to_tag.csv",
-    "src/ndnSIM/examples/topologies/as1239-r0.txt"
+    "dataset/processed/sdm_smartcity_dataset/consumer_trace.csv",
+    "dataset/processed/sdm_smartcity_dataset/domain_centroids_m4.csv",
+    "dataset/processed/sdm_smartcity_dataset/producer_content.csv",
+    "dataset/processed/sdm_smartcity_dataset/tag_index.csv",
+    "dataset/processed/sdm_smartcity_dataset/query_to_tag.csv",
+    "ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt"
+  ],
+  "legacy_compat_inputs": [
+    "ns-3/dataset/sdm_smartcity_dataset/consumer_trace.csv",
+    "ns-3/dataset/sdm_smartcity_dataset/domain_centroids_m4.csv",
+    "ns-3/dataset/sdm_smartcity_dataset/producer_content.csv",
+    "ns-3/dataset/sdm_smartcity_dataset/tag_index.csv",
+    "ns-3/dataset/sdm_smartcity_dataset/query_to_tag.csv"
   ],
   "outputs": [
     "results/sanr_baseline/accuracy_comparison",
     "results/sanr_baseline/run_manifest.json",
     "results/sanr_baseline/workload/workload_repeat_stats.json",
-    "../figures/sanr_baseline"
+    "results/figures/sanr_baseline",
+    "figures/sanr_baseline"
   ],
   "default_environment": {
     "TOPO": "rocketfuel",

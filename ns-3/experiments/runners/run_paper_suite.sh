@@ -4,6 +4,10 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 NS3_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
 ROOT_DIR="$(cd "$NS3_DIR/.." && pwd)"
+source "$ROOT_DIR/scripts/iroute-paths.sh"
+
+NS3_DIR="$IROUTE_NS3_ROOT"
+ROOT_DIR="$IROUTE_REPO_ROOT"
 EXPERIMENTS_DIR="$NS3_DIR/experiments"
 cd "$NS3_DIR"
 
@@ -39,10 +43,18 @@ resolve_path() {
 }
 
 TS="$(date +%Y%m%d_%H%M%S)"
-BASE_DIR="${1:-results/paper_${TS}}"
+BASE_DIR="$(iroute_resolve_results_path "${1:-paper_${TS}}")"
 CACHE_MODE="${CACHE_MODE:-disabled}"
 CS_SIZE="${CS_SIZE:-0}"
 PAPER_GRADE="${PAPER_GRADE:-1}"
+TOPOLOGY_FILE="$(iroute_resolve_topology_file "src/ndnSIM/examples/topologies/as1239-r0.txt")"
+TRACE_FILE="${TRACE_FILE:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/consumer_trace.csv")}"
+CENTROIDS_FILE="${CENTROIDS_FILE:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/domain_centroids_m4.csv")}"
+CONTENT_FILE="${CONTENT_FILE:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/producer_content.csv")}"
+TAG_INDEX_FILE="${TAG_INDEX_FILE:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/tag_index.csv")}"
+QUERY_TO_TAG_FILE="${QUERY_TO_TAG_FILE:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/query_to_tag.csv")}"
+INDEX_FILE="${INDEX_FILE:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/index_exact.csv")}"
+QRELS_FILE="${QRELS_FILE:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/qrels.tsv")}"
 
 if [ "$PAPER_GRADE" = "1" ] && { [ "$CACHE_MODE" != "disabled" ] || [ "$CS_SIZE" -ne 0 ]; }; then
   echo "[suite][ERROR] paper-grade runs require CACHE_MODE=disabled and CS_SIZE=0" >&2
@@ -53,7 +65,8 @@ ACC_DIR="$BASE_DIR/accuracy_comparison"
 LOAD_DIR="$BASE_DIR/exp4-load"
 SCALING_DIR="$BASE_DIR/exp4-scaling"
 FAIL_DIR="$BASE_DIR/exp3-failure"
-PLOT_DIR="$BASE_DIR/final_plots"
+PLOT_DIR="$(iroute_resolve_figures_path "$(basename "$BASE_DIR")")"
+PAPER_FIG_DIR="$IROUTE_PAPER_ROOT/figs"
 
 ensure_safe_output_dir "$BASE_DIR"
 
@@ -63,37 +76,40 @@ ensure_safe_output_dir "$BASE_DIR"
   --workflow paper_suite \
   --runner ns-3/experiments/runners/run_paper_suite.sh \
   --output-dir "$(resolve_path "$BASE_DIR")" \
-  --input "$NS3_DIR/dataset/sdm_smartcity_dataset/consumer_trace.csv" \
-  --input "$NS3_DIR/dataset/sdm_smartcity_dataset/domain_centroids_m4.csv" \
-  --input "$NS3_DIR/dataset/sdm_smartcity_dataset/producer_content.csv" \
-  --input "$NS3_DIR/dataset/sdm_smartcity_dataset/tag_index.csv" \
-  --input "$NS3_DIR/dataset/sdm_smartcity_dataset/query_to_tag.csv" \
-  --input "$NS3_DIR/dataset/sdm_smartcity_dataset/index_exact.csv" \
-  --input "$NS3_DIR/dataset/sdm_smartcity_dataset/qrels.tsv" \
-  --input "$NS3_DIR/src/ndnSIM/examples/topologies/as1239-r0.txt" \
+  --input "$TRACE_FILE" \
+  --input "$CENTROIDS_FILE" \
+  --input "$CONTENT_FILE" \
+  --input "$TAG_INDEX_FILE" \
+  --input "$QUERY_TO_TAG_FILE" \
+  --input "$INDEX_FILE" \
+  --input "$QRELS_FILE" \
+  --input "$TOPOLOGY_FILE" \
   --field "cache_mode=\"$CACHE_MODE\"" \
   --field "cs_size=$CS_SIZE" \
+  --field "run_mode=\"paper_suite\"" \
+  --field "seed_provenance=\"aggregate\"" \
   --field "paper_grade=$PAPER_GRADE"
 
 echo "[suite] building ..."
 ./waf
 
 echo "[suite] running accuracy experiment ..."
-TOPO=rocketfuel CACHE_MODE="$CACHE_MODE" CS_SIZE="$CS_SIZE" PAPER_GRADE="$PAPER_GRADE" "$SCRIPT_DIR/run_accuracy_experiment.sh" "$ACC_DIR"
+TOPO=rocketfuel TOPO_FILE="$TOPOLOGY_FILE" TRACE="$TRACE_FILE" CENTROIDS="$CENTROIDS_FILE" CONTENT="$CONTENT_FILE" INDEX="$INDEX_FILE" QRELS="$QRELS_FILE" TAG_INDEX="$TAG_INDEX_FILE" QUERY_TO_TAG="$QUERY_TO_TAG_FILE" CACHE_MODE="$CACHE_MODE" CS_SIZE="$CS_SIZE" PAPER_GRADE="$PAPER_GRADE" "$SCRIPT_DIR/run_accuracy_experiment.sh" "$ACC_DIR"
 
 echo "[suite] running load experiment ..."
-TOPO=rocketfuel SEEDS=42 CACHE_MODE="$CACHE_MODE" CS_SIZE="$CS_SIZE" PAPER_GRADE="$PAPER_GRADE" "$SCRIPT_DIR/run_load_experiment.sh" "$LOAD_DIR"
+TOPO=rocketfuel TOPO_FILE="$TOPOLOGY_FILE" TRACE="$TRACE_FILE" CENTROIDS="$CENTROIDS_FILE" CONTENT="$CONTENT_FILE" INDEX="$INDEX_FILE" QRELS="$QRELS_FILE" TAG_INDEX="$TAG_INDEX_FILE" QUERY_TO_TAG="$QUERY_TO_TAG_FILE" SEEDS=42 CACHE_MODE="$CACHE_MODE" CS_SIZE="$CS_SIZE" PAPER_GRADE="$PAPER_GRADE" "$SCRIPT_DIR/run_load_experiment.sh" "$LOAD_DIR"
 
 echo "[suite] running scaling experiment ..."
-TOPO=rocketfuel SEEDS=42 DOMAINS_LIST="8 16 32 64" CACHE_MODE="$CACHE_MODE" CS_SIZE="$CS_SIZE" PAPER_GRADE="$PAPER_GRADE" "$SCRIPT_DIR/run_scaling_experiment.sh" "$SCALING_DIR"
+TOPO=rocketfuel TOPO_FILE="$TOPOLOGY_FILE" TRACE="$TRACE_FILE" CENTROIDS="$CENTROIDS_FILE" CONTENT="$CONTENT_FILE" QRELS="$QRELS_FILE" TAG_INDEX="$TAG_INDEX_FILE" QUERY_TO_TAG="$QUERY_TO_TAG_FILE" SEEDS=42 DOMAINS_LIST="8 16 32 64" CACHE_MODE="$CACHE_MODE" CS_SIZE="$CS_SIZE" PAPER_GRADE="$PAPER_GRADE" "$SCRIPT_DIR/run_scaling_experiment.sh" "$SCALING_DIR"
 
 echo "[suite] running failure experiment ..."
-TOPO=redundant FAILURE_POLICY=auto-noncut SEEDS=42 CACHE_MODE="$CACHE_MODE" CS_SIZE="$CS_SIZE" PAPER_GRADE="$PAPER_GRADE" "$SCRIPT_DIR/run_failure_experiment.sh" "$FAIL_DIR"
+TOPO=redundant TOPO_FILE="$TOPOLOGY_FILE" TRACE="$TRACE_FILE" CENTROIDS="$CENTROIDS_FILE" CONTENT="$CONTENT_FILE" QRELS="$QRELS_FILE" TAG_INDEX="$TAG_INDEX_FILE" QUERY_TO_TAG="$QUERY_TO_TAG_FILE" FAILURE_POLICY=auto-noncut SEEDS=42 CACHE_MODE="$CACHE_MODE" CS_SIZE="$CS_SIZE" PAPER_GRADE="$PAPER_GRADE" "$SCRIPT_DIR/run_failure_experiment.sh" "$FAIL_DIR"
 
 echo "[suite] checking result sanity ..."
 "$PYTHON_BIN" "$EXPERIMENTS_DIR/checks/check_results.py" --base-dir "$BASE_DIR"
 
 echo "[suite] plotting paper figures ..."
+mkdir -p "$PLOT_DIR" "$PAPER_FIG_DIR"
 "$PYTHON_BIN" "$EXPERIMENTS_DIR/plot/plot_paper_figures.py" \
   --acc-dir "$ACC_DIR" \
   --fail-dir "$FAIL_DIR" \
@@ -101,14 +117,17 @@ echo "[suite] plotting paper figures ..."
   --scaling-csv "$SCALING_DIR/scaling.csv" \
   --output "$PLOT_DIR"
 
-PAPER_FIG_DIR="$ROOT_DIR/figures"
 mkdir -p "$PAPER_FIG_DIR"
-cp "$PLOT_DIR"/fig*.pdf "$PAPER_FIG_DIR"/
+if compgen -G "$PLOT_DIR/fig*.pdf" >/dev/null; then
+  cp "$PLOT_DIR"/fig*.pdf "$PAPER_FIG_DIR"/
+fi
 if [ -f "$PLOT_DIR/figure_index.md" ]; then
   cp "$PLOT_DIR/figure_index.md" "$PAPER_FIG_DIR/figure_index.md"
 fi
+iroute_mirror_legacy_figures "$PLOT_DIR"
 
 echo "[suite] done"
 echo "[suite] results: $BASE_DIR"
 echo "[suite] figures: $PLOT_DIR"
-echo "[suite] copied to: $PAPER_FIG_DIR"
+echo "[suite] canonical paper figs: $PAPER_FIG_DIR"
+echo "[suite] legacy mirror: $IROUTE_LEGACY_FIGURES_ROOT"

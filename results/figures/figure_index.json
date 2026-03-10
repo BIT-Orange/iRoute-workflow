@@ -1,0 +1,19 @@
+{
+  "count": 1,
+  "generated_at_utc": "2026-03-10T07:58:47.222987+00:00",
+  "items": [
+    {
+      "aggregate_inputs": [
+        "results/aggregates/summary_rows.csv",
+        "results/aggregates/run_index.csv"
+      ],
+      "figure_id": "promoted-run-summary-placeholder",
+      "figure_path": "",
+      "run_ids": [
+        "legacy-sanr-baseline-exp4-scaling-iroute-d8-s42",
+        "smoke-iroute-star-s42-20260310a"
+      ],
+      "status": "placeholder"
+    }
+  ]
+}

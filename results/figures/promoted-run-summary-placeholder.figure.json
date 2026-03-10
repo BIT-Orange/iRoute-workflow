@@ -1,0 +1,20 @@
+{
+  "aggregate_inputs": [
+    "results/aggregates/summary_rows.csv",
+    "results/aggregates/run_index.csv"
+  ],
+  "figure_exists": false,
+  "figure_id": "promoted-run-summary-placeholder",
+  "figure_path": "",
+  "generated_at_utc": "2026-03-10T07:58:47.222355+00:00",
+  "notes": [
+    "Placeholder manifest until canonical figures are regenerated from promoted aggregates.",
+    "This manifest demonstrates aggregate-to-run provenance without fabricating a figure binary."
+  ],
+  "run_ids": [
+    "legacy-sanr-baseline-exp4-scaling-iroute-d8-s42",
+    "smoke-iroute-star-s42-20260310a"
+  ],
+  "status": "placeholder",
+  "title": "Promoted Run Summary Placeholder"
+}

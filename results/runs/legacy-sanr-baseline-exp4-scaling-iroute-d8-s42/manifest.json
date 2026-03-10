@@ -1,0 +1,80 @@
+{
+  "artifacts": [
+    {
+      "artifact_type": "summary.csv",
+      "canonical_path": "results/runs/legacy-sanr-baseline-exp4-scaling-iroute-d8-s42/summary.csv",
+      "required": true,
+      "sha256": "b2493ffe7577e1959be7dee27ac7e9049d4c28cbdfeedeb397609b9ce836c728",
+      "size_bytes": 543,
+      "source_path": "ns-3/results/sanr_baseline/exp4-scaling/iroute_d8_s42/summary.csv"
+    },
+    {
+      "artifact_type": "query_log.csv",
+      "canonical_path": "results/runs/legacy-sanr-baseline-exp4-scaling-iroute-d8-s42/query_log.csv",
+      "required": true,
+      "sha256": "674dcc6f30b85eb3b259742b608ebc8239d9843eb5ad27a2b0f01f10dade6b6e",
+      "size_bytes": 281797,
+      "source_path": "ns-3/results/sanr_baseline/exp4-scaling/iroute_d8_s42/query_log.csv"
+    },
+    {
+      "artifact_type": "latency_sanity.csv",
+      "canonical_path": "results/runs/legacy-sanr-baseline-exp4-scaling-iroute-d8-s42/latency_sanity.csv",
+      "required": true,
+      "sha256": "30d86a8e287c0ddb56871b4a4dcfba91cb0cc00e922de8edeb05f10df9539337",
+      "size_bytes": 386,
+      "source_path": "ns-3/results/sanr_baseline/exp4-scaling/iroute_d8_s42/latency_sanity.csv"
+    },
+    {
+      "artifact_type": "failure_sanity.csv",
+      "canonical_path": "results/runs/legacy-sanr-baseline-exp4-scaling-iroute-d8-s42/failure_sanity.csv",
+      "required": false,
+      "sha256": "66a8dd6d79427086f5fa66227f55bdb4e196d5c26a302ccf18ee4c01e983e734",
+      "size_bytes": 246,
+      "source_path": "ns-3/results/sanr_baseline/exp4-scaling/iroute_d8_s42/failure_sanity.csv"
+    },
+    {
+      "artifact_type": "source_manifest.json",
+      "canonical_path": "results/runs/legacy-sanr-baseline-exp4-scaling-iroute-d8-s42/source_manifest.json",
+      "required": false,
+      "sha256": "a3bf1e35eddb06d5c4c62418a75cfdb9026f90eb98fd27338d3b598e9f49215c",
+      "size_bytes": 622,
+      "source_path": "ns-3/results/sanr_baseline/exp4-scaling/iroute_d8_s42/manifest.json"
+    }
+  ],
+  "cache_mode": "enabled",
+  "canonical_dir": "results/runs/legacy-sanr-baseline-exp4-scaling-iroute-d8-s42",
+  "compatibility": {
+    "legacy_results_path": "ns-3/results/sanr_baseline/exp4-scaling/iroute_d8_s42",
+    "legacy_status": "legacy_import"
+  },
+  "cs_size": 1000,
+  "git_commit": "6e44208441b85287f221ad19b91b87d519f2c5b7",
+  "major_options": {
+    "cs_size": 1000,
+    "data_freshness_ms": 120000,
+    "domains": 8,
+    "frequency": 5,
+    "measure_start_sec": 20,
+    "scheme": "iroute",
+    "seed": 42,
+    "sim_time": 120,
+    "topology": "rocketfuel",
+    "warmup_sec": 20
+  },
+  "notes": [
+    "source runner manifest missing; promotion used direct manifest and inferred metadata"
+  ],
+  "promoted_at_utc": "2026-03-10T07:58:32.144166+00:00",
+  "run_class": "exploratory",
+  "run_id": "legacy-sanr-baseline-exp4-scaling-iroute-d8-s42",
+  "runner": "ns-3/scratch/iroute-exp-baselines.cc",
+  "schema_version": 1,
+  "seed_provenance": "unknown",
+  "source_dir": "ns-3/results/sanr_baseline/exp4-scaling/iroute_d8_s42",
+  "source_kind": "legacy_ns3_results",
+  "source_manifests": {
+    "direct_manifest": "ns-3/results/sanr_baseline/exp4-scaling/iroute_d8_s42/manifest.json",
+    "runner_manifest": ""
+  },
+  "workflow": "legacy_import"
+}

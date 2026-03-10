@@ -1,0 +1,88 @@
+{
+  "artifacts": [
+    {
+      "artifact_type": "summary.csv",
+      "canonical_path": "results/runs/smoke-iroute-star-s42-20260310a/summary.csv",
+      "required": true,
+      "sha256": "bb9a6b51a1199da1ebd2e8fd846aa97e2409d6ff3f817b121ed99fb4f62156cb",
+      "size_bytes": 533,
+      "source_path": "/private/var/folders/bd/fmy5y57d5gb2_0940687snm00000gn/T/iroute-smoke-stage-7947gb1z/smoke-iroute-star-s42-20260310a/summary.csv"
+    },
+    {
+      "artifact_type": "query_log.csv",
+      "canonical_path": "results/runs/smoke-iroute-star-s42-20260310a/query_log.csv",
+      "required": true,
+      "sha256": "4ba6ff78cfbdbf279c95007feb3738ebacdcc8c2b207f9fb623fc1d650f5f15d",
+      "size_bytes": 1645,
+      "source_path": "/private/var/folders/bd/fmy5y57d5gb2_0940687snm00000gn/T/iroute-smoke-stage-7947gb1z/smoke-iroute-star-s42-20260310a/query_log.csv"
+    },
+    {
+      "artifact_type": "latency_sanity.csv",
+      "canonical_path": "results/runs/smoke-iroute-star-s42-20260310a/latency_sanity.csv",
+      "required": true,
+      "sha256": "5b5fbfe67c0d77f586726038fb0cf7a21772d74c55677e02cbadcdb0af8ad2e9",
+      "size_bytes": 283,
+      "source_path": "/private/var/folders/bd/fmy5y57d5gb2_0940687snm00000gn/T/iroute-smoke-stage-7947gb1z/smoke-iroute-star-s42-20260310a/latency_sanity.csv"
+    },
+    {
+      "artifact_type": "failure_sanity.csv",
+      "canonical_path": "results/runs/smoke-iroute-star-s42-20260310a/failure_sanity.csv",
+      "required": false,
+      "sha256": "66a8dd6d79427086f5fa66227f55bdb4e196d5c26a302ccf18ee4c01e983e734",
+      "size_bytes": 246,
+      "source_path": "/private/var/folders/bd/fmy5y57d5gb2_0940687snm00000gn/T/iroute-smoke-stage-7947gb1z/smoke-iroute-star-s42-20260310a/failure_sanity.csv"
+    },
+    {
+      "artifact_type": "source_manifest.json",
+      "canonical_path": "results/runs/smoke-iroute-star-s42-20260310a/source_manifest.json",
+      "required": false,
+      "sha256": "23316a8cc1a9483534271010f3a7dded7f1fbf1398b035fd2cd66ef1bb196f56",
+      "size_bytes": 743,
+      "source_path": "/private/var/folders/bd/fmy5y57d5gb2_0940687snm00000gn/T/iroute-smoke-stage-7947gb1z/smoke-iroute-star-s42-20260310a/manifest.json"
+    },
+    {
+      "artifact_type": "source_run_manifest.json",
+      "canonical_path": "results/runs/smoke-iroute-star-s42-20260310a/source_run_manifest.json",
+      "required": false,
+      "sha256": "a0a025fe1710ff606e6c688bf4691fa9a34ca025e81921b9b9ee90e79a87b007",
+      "size_bytes": 1146,
+      "source_path": "/private/var/folders/bd/fmy5y57d5gb2_0940687snm00000gn/T/iroute-smoke-stage-7947gb1z/smoke-iroute-star-s42-20260310a/run_manifest.json"
+    }
+  ],
+  "cache_mode": "disabled",
+  "canonical_dir": "results/runs/smoke-iroute-star-s42-20260310a",
+  "compatibility": {
+    "legacy_results_path": "",
+    "legacy_status": "canonical_staging"
+  },
+  "cs_size": 0,
+  "git_commit": "6e44208441b85287f221ad19b91b87d519f2c5b7",
+  "major_options": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "data_freshness_ms": 60000,
+    "domains": 8,
+    "frequency": 1,
+    "measure_start_sec": 0,
+    "run_mode": "smoke_validation",
+    "scheme": "iroute",
+    "seed": 42,
+    "sim_time": 3,
+    "topology": "star",
+    "warmup_sec": 0
+  },
+  "notes": [],
+  "promoted_at_utc": "2026-03-10T07:58:11.959559+00:00",
+  "run_class": "smoke",
+  "run_id": "smoke-iroute-star-s42-20260310a",
+  "runner": "ns-3/scratch/iroute-exp-baselines.cc",
+  "schema_version": 1,
+  "seed_provenance": "native",
+  "source_dir": "/private/var/folders/bd/fmy5y57d5gb2_0940687snm00000gn/T/iroute-smoke-stage-7947gb1z/smoke-iroute-star-s42-20260310a",
+  "source_kind": "smoke_staging",
+  "source_manifests": {
+    "direct_manifest": "/private/var/folders/bd/fmy5y57d5gb2_0940687snm00000gn/T/iroute-smoke-stage-7947gb1z/smoke-iroute-star-s42-20260310a/manifest.json",
+    "runner_manifest": "/private/var/folders/bd/fmy5y57d5gb2_0940687snm00000gn/T/iroute-smoke-stage-7947gb1z/smoke-iroute-star-s42-20260310a/run_manifest.json"
+  },
+  "workflow": "smoke_validation"
+}
