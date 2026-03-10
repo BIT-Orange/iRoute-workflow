@@ -16,6 +16,32 @@ if [ -x "$NS3_DIR/.venv/bin/python" ]; then
   PYTHON_BIN="$NS3_DIR/.venv/bin/python"
 fi
 
+validate_cache_settings() {
+  CACHE_MODE="${CACHE_MODE:-disabled}"
+  if ! [[ "$CS_SIZE" =~ ^-?[0-9]+$ ]]; then
+    echo "[load][ERROR] CS_SIZE must be an integer, got: $CS_SIZE" >&2
+    exit 2
+  fi
+  case "$CACHE_MODE" in
+    disabled)
+      if [ "$CS_SIZE" -ne 0 ]; then
+        echo "[load][ERROR] CACHE_MODE=disabled requires CS_SIZE=0, got $CS_SIZE" >&2
+        exit 2
+      fi
+      ;;
+    enabled)
+      if [ "$CS_SIZE" -le 0 ]; then
+        echo "[load][ERROR] CACHE_MODE=enabled requires CS_SIZE>0, got $CS_SIZE" >&2
+        exit 2
+      fi
+      ;;
+    *)
+      echo "[load][ERROR] unsupported CACHE_MODE=$CACHE_MODE (expected disabled|enabled)" >&2
+      exit 2
+      ;;
+  esac
+}
+
 RESULT_DIR="${1:-results/exp4-load}"
 TOPO="${TOPO:-rocketfuel}"
 TOPO_FILE="${TOPO_FILE:-src/ndnSIM/examples/topologies/as1239-r0.txt}"
@@ -34,6 +60,7 @@ WARMUP_SEC="${WARMUP_SEC:-20}"
 MEASURE_START_SEC="${MEASURE_START_SEC:-20}"
 SIM_TIME_MAX="${SIM_TIME_MAX:-180}"
 RESUME="${RESUME:-1}"
+CS_SIZE="${CS_SIZE:-0}"
 TAG_K="${TAG_K:-32}"
 TAG_LSA_PERIOD_MS="${TAG_LSA_PERIOD_MS:-20000}"
 FLOOD_BUDGET="${FLOOD_BUDGET:-4}"
@@ -57,6 +84,7 @@ TAG_INDEX="${TAG_INDEX:-dataset/sdm_smartcity_dataset/tag_index.csv}"
 QUERY_TO_TAG="${QUERY_TO_TAG:-dataset/sdm_smartcity_dataset/query_to_tag.csv}"
 INDEX="${INDEX:-dataset/sdm_smartcity_dataset/index_exact.csv}"
 
+validate_cache_settings
 mkdir -p "$RESULT_DIR"
 SWEEP_CSV="$RESULT_DIR/load_sweep.csv"
 LOAD_CSV="$RESULT_DIR/load.csv"
@@ -119,6 +147,7 @@ for scheme in $SCHEMES; do
 --linkDelayMs=$LINK_DELAY_MS --linkDelayJitterUs=$LINK_DELAY_JITTER_US \
 --serviceJitterUs=$SERVICE_JITTER_US \
 --dataFreshnessMs=$DATA_FRESHNESS_MS \
+--csSize=$CS_SIZE \
 --trace=$TRACE --centroids=$CENTROIDS --content=$CONTENT --resultDir=$run_dir \
 --shuffleTrace=$SHUFFLE_TRACE \
 --warmupSec=$WARMUP_SEC --measureStartSec=$MEASURE_START_SEC --cdfSuccessOnly=1 --failureTargetPolicy=manual $extra" \

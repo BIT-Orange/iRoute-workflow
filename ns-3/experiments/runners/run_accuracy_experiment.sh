@@ -3,6 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 NS3_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
+ROOT_DIR="$(cd "$NS3_DIR/.." && pwd)"
 cd "$NS3_DIR"
 
 mkdir -p "$NS3_DIR/.home"
@@ -15,6 +16,52 @@ PYTHON_BIN="python3"
 if [ -x "$NS3_DIR/.venv/bin/python" ]; then
   PYTHON_BIN="$NS3_DIR/.venv/bin/python"
 fi
+
+resolve_path() {
+  local path="$1"
+  if [[ "$path" = /* ]]; then
+    printf '%s\n' "$path"
+  else
+    printf '%s\n' "$NS3_DIR/$path"
+  fi
+}
+
+ensure_safe_output_dir() {
+  local dir="$1"
+  local base
+  base="$(basename "$dir")"
+  if [[ "$base" =~ [0-9]{8}_[0-9]{6}$ ]] && [ -d "$dir" ] && [ -n "$(find "$dir" -mindepth 1 -print -quit 2>/dev/null)" ] && [ "${ALLOW_OVERWRITE_TIMESTAMPED_OUTPUT:-0}" != "1" ]; then
+    echo "[accuracy][ERROR] refusing to overwrite non-empty timestamped output dir: $dir" >&2
+    exit 2
+  fi
+  mkdir -p "$dir"
+}
+
+validate_cache_settings() {
+  CACHE_MODE="${CACHE_MODE:-disabled}"
+  if ! [[ "$CS_SIZE" =~ ^-?[0-9]+$ ]]; then
+    echo "[accuracy][ERROR] CS_SIZE must be an integer, got: $CS_SIZE" >&2
+    exit 2
+  fi
+  case "$CACHE_MODE" in
+    disabled)
+      if [ "$CS_SIZE" -ne 0 ]; then
+        echo "[accuracy][ERROR] CACHE_MODE=disabled requires CS_SIZE=0, got $CS_SIZE" >&2
+        exit 2
+      fi
+      ;;
+    enabled)
+      if [ "$CS_SIZE" -le 0 ]; then
+        echo "[accuracy][ERROR] CACHE_MODE=enabled requires CS_SIZE>0, got $CS_SIZE" >&2
+        exit 2
+      fi
+      ;;
+    *)
+      echo "[accuracy][ERROR] unsupported CACHE_MODE=$CACHE_MODE (expected disabled|enabled)" >&2
+      exit 2
+      ;;
+  esac
+}
 
 RESULT_DIR="${1:-results/accuracy_comparison}"
 TOPO="${TOPO:-rocketfuel}"
@@ -64,7 +111,8 @@ QRELS="${QRELS:-dataset/sdm_smartcity_dataset/qrels.tsv}"
 TAG_INDEX="${TAG_INDEX:-dataset/sdm_smartcity_dataset/tag_index.csv}"
 QUERY_TO_TAG="${QUERY_TO_TAG:-dataset/sdm_smartcity_dataset/query_to_tag.csv}"
 
-mkdir -p "$RESULT_DIR"
+validate_cache_settings
+ensure_safe_output_dir "$RESULT_DIR"
 SWEEP_CSV="$RESULT_DIR/accuracy_sweep.csv"
 REF_CSV="$RESULT_DIR/reference_runs.csv"
 
@@ -107,6 +155,36 @@ run_one() {
     ./waf --run "iroute-exp-baselines --scheme=$scheme $common_args $extra" \
       > "$run_dir/console.log" 2>&1
   fi
+
+  "$PYTHON_BIN" experiments/manifests/write_run_manifest.py \
+    --repo-root "$ROOT_DIR" \
+    --output "$run_dir/run_manifest.json" \
+    --workflow accuracy_run \
+    --runner ns-3/experiments/runners/run_accuracy_experiment.sh \
+    --output-dir "$(resolve_path "$run_dir")" \
+    --input "$(resolve_path "$TRACE")" \
+    --input "$(resolve_path "$CENTROIDS")" \
+    --input "$(resolve_path "$CONTENT")" \
+    --input "$(resolve_path "$INDEX")" \
+    --input "$(resolve_path "$QRELS")" \
+    --input "$(resolve_path "$TAG_INDEX")" \
+    --input "$(resolve_path "$QUERY_TO_TAG")" \
+    --input "$(resolve_path "$TOPO_FILE")" \
+    --field "run_id=\"$run_id\"" \
+    --field "scheme=\"$scheme\"" \
+    --field "seed=$seed" \
+    --field "sweep_param=\"$sweep_param\"" \
+    --field "sweep_value=\"$sweep_value\"" \
+    --field "is_reference=$is_reference" \
+    --field "cache_mode=\"$CACHE_MODE\"" \
+    --field "cs_size=$CS_SIZE" \
+    --field "resume=$RESUME" \
+    --field "domains=$DOMAINS" \
+    --field "sim_time=$SIM_TIME" \
+    --field "frequency=$FREQUENCY" \
+    --field "topology=\"$TOPO\"" \
+    --field "topology_file=\"$(resolve_path "$TOPO_FILE")\"" \
+    --field "trace=\"$(resolve_path "$TRACE")\""
 
   "$PYTHON_BIN" - "$run_dir/summary.csv" "$run_dir/query_log.csv" "$run_dir/latency_sanity.csv" \
     "$run_id" "$scheme" "$seed" "$sweep_param" "$sweep_value" "$is_reference" "$run_dir" <<'PY' \

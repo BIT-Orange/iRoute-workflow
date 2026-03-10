@@ -1,9 +1,16 @@
 {
   "name": "sanr_baseline",
-  "description": "Stage-1 baseline workflow for accuracy comparison and figure generation used by the current review bundle.",
+  "description": "Cache-enabled SANR workflow for repeated-workload cache analysis and figure generation. This is not the paper-grade routing-only workflow.",
   "working_directory": "ns-3",
   "runner": "experiments/runners/run_sanr_baseline.sh",
   "legacy_entrypoint": "experiments/run_sanr_baseline.sh",
+  "workflow_semantics": {
+    "paper_grade": false,
+    "cache_mode_default": "enabled",
+    "cache_mode_note": "Default SANR workflow uses caching and should not be conflated with cache-disabled paper-grade runs.",
+    "workload_repeat_mode_default": "row",
+    "workload_repeat_note": "Each source row is repeated consecutively; output length equals source_length * repeat_factor."
+  },
   "inputs": [
     "dataset/sdm_smartcity_dataset/consumer_trace.csv",
     "dataset/sdm_smartcity_dataset/domain_centroids_m4.csv",
@@ -14,13 +21,22 @@
   ],
   "outputs": [
     "results/sanr_baseline/accuracy_comparison",
+    "results/sanr_baseline/run_manifest.json",
+    "results/sanr_baseline/workload/workload_repeat_stats.json",
     "../figures/sanr_baseline"
   ],
   "default_environment": {
     "TOPO": "rocketfuel",
     "SEEDS": "42 43 44",
     "QUERY_REPEAT_FACTOR": "3",
+    "TRACE_REPEAT_MODE": "row",
+    "CACHE_MODE": "enabled",
     "CS_SIZE": "512",
     "DATA_FRESHNESS_MS": "60000"
-  }
+  },
+  "lineage_requirements": [
+    "run_manifest.json with git commit and input hashes",
+    "workload_repeat_stats.json with coverage and diversity checks",
+    "per-run manifests under accuracy_comparison/*/run_manifest.json"
+  ]
 }

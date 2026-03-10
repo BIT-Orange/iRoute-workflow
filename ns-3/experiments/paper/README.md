@@ -17,4 +17,6 @@ From `ns-3/`, the old commands still work:
 ./experiments/paper/run_accuracy.sh
 ```
 
+Paper wrappers are intended for cache-disabled paper-grade runs. If you need the cache-enabled SANR cache study workflow, use `./experiments/run_sanr_baseline.sh` instead.
+
 Legacy pre-refactor scripts remain archived in `ns-3/experiments/archive_legacy_20260213/paper/`.

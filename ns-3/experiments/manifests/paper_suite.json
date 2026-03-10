@@ -1,9 +1,16 @@
 {
   "name": "paper_suite",
-  "description": "Stage-1 full paper workflow covering accuracy, load, scaling, failure checks, and final plot emission.",
+  "description": "Paper-grade routing workflow covering accuracy, load, scaling, failure checks, and final plot emission. Cache is disabled by default.",
   "working_directory": "ns-3",
   "runner": "experiments/runners/run_paper_suite.sh",
   "legacy_entrypoint": "experiments/run_paper_suite.sh",
+  "workflow_semantics": {
+    "paper_grade": true,
+    "cache_mode_default": "disabled",
+    "cache_mode_note": "Paper-grade workflow isolates routing behavior from cache hits.",
+    "scaling_seed_policy": "native-only",
+    "scaling_seed_policy_note": "Seed cloning is forbidden in paper-grade scaling runs."
+  },
   "inputs": [
     "dataset/sdm_smartcity_dataset/consumer_trace.csv",
     "dataset/sdm_smartcity_dataset/domain_centroids_m4.csv",
@@ -16,12 +23,21 @@
   ],
   "outputs": [
     "results/paper_<timestamp>",
+    "results/paper_<timestamp>/run_manifest.json",
     "../figures"
   ],
   "default_environment": {
     "TOPO": "rocketfuel",
     "FAILURE_POLICY": "auto-noncut",
     "SEEDS": "42",
-    "DOMAINS_LIST": "8 16 32 64"
-  }
+    "DOMAINS_LIST": "8 16 32 64",
+    "CACHE_MODE": "disabled",
+    "CS_SIZE": "0",
+    "PAPER_GRADE": "1"
+  },
+  "lineage_requirements": [
+    "run_manifest.json with git commit and input hashes",
+    "scaling run manifests must record native per-seed provenance",
+    "paper-grade runs must keep cache disabled"
+  ]
 }

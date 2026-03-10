@@ -17,6 +17,32 @@ if [ -x "$NS3_DIR/.venv/bin/python" ]; then
   PYTHON_BIN="$NS3_DIR/.venv/bin/python"
 fi
 
+validate_cache_settings() {
+  CACHE_MODE="${CACHE_MODE:-disabled}"
+  if ! [[ "$CS_SIZE" =~ ^-?[0-9]+$ ]]; then
+    echo "[failure][ERROR] CS_SIZE must be an integer, got: $CS_SIZE" >&2
+    exit 2
+  fi
+  case "$CACHE_MODE" in
+    disabled)
+      if [ "$CS_SIZE" -ne 0 ]; then
+        echo "[failure][ERROR] CACHE_MODE=disabled requires CS_SIZE=0, got $CS_SIZE" >&2
+        exit 2
+      fi
+      ;;
+    enabled)
+      if [ "$CS_SIZE" -le 0 ]; then
+        echo "[failure][ERROR] CACHE_MODE=enabled requires CS_SIZE>0, got $CS_SIZE" >&2
+        exit 2
+      fi
+      ;;
+    *)
+      echo "[failure][ERROR] unsupported CACHE_MODE=$CACHE_MODE (expected disabled|enabled)" >&2
+      exit 2
+      ;;
+  esac
+}
+
 RESULT_DIR="${1:-results/exp3-failure}"
 TOPO="${TOPO:-redundant}"
 TOPO_FILE="${TOPO_FILE:-src/ndnSIM/examples/topologies/as1239-r0.txt}"
@@ -65,6 +91,7 @@ QRELS="${QRELS:-dataset/sdm_smartcity_dataset/qrels.tsv}"
 TAG_INDEX="${TAG_INDEX:-dataset/sdm_smartcity_dataset/tag_index.csv}"
 QUERY_TO_TAG="${QUERY_TO_TAG:-dataset/sdm_smartcity_dataset/query_to_tag.csv}"
 
+validate_cache_settings
 mkdir -p "$RESULT_DIR"
 RECOVERY_CSV="$RESULT_DIR/recovery_summary.csv"
 echo "scenario,scheme,seed,run_id,topology,failure_policy,failure_effective,min_success,t95,baseline,n_success,timeout_rate,hash_success,hash_domain_hit,hash_rtt,result_dir" > "$RECOVERY_CSV"

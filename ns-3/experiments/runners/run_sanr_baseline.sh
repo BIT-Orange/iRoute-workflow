@@ -17,6 +17,52 @@ if [ -x "$NS3_DIR/.venv/bin/python" ]; then
   PYTHON_BIN="$NS3_DIR/.venv/bin/python"
 fi
 
+resolve_path() {
+  local path="$1"
+  if [[ "$path" = /* ]]; then
+    printf '%s\n' "$path"
+  else
+    printf '%s\n' "$NS3_DIR/$path"
+  fi
+}
+
+ensure_safe_output_dir() {
+  local dir="$1"
+  local base
+  base="$(basename "$dir")"
+  if [[ "$base" =~ [0-9]{8}_[0-9]{6}$ ]] && [ -d "$dir" ] && [ -n "$(find "$dir" -mindepth 1 -print -quit 2>/dev/null)" ] && [ "${ALLOW_OVERWRITE_TIMESTAMPED_OUTPUT:-0}" != "1" ]; then
+    echo "[sanr][ERROR] refusing to overwrite non-empty timestamped output dir: $dir" >&2
+    exit 2
+  fi
+  mkdir -p "$dir"
+}
+
+validate_cache_settings() {
+  CACHE_MODE="${CACHE_MODE:-enabled}"
+  if ! [[ "$CS_SIZE" =~ ^-?[0-9]+$ ]]; then
+    echo "[sanr][ERROR] CS_SIZE must be an integer, got: $CS_SIZE" >&2
+    exit 2
+  fi
+  case "$CACHE_MODE" in
+    disabled)
+      if [ "$CS_SIZE" -ne 0 ]; then
+        echo "[sanr][ERROR] CACHE_MODE=disabled requires CS_SIZE=0, got $CS_SIZE" >&2
+        exit 2
+      fi
+      ;;
+    enabled)
+      if [ "$CS_SIZE" -le 0 ]; then
+        echo "[sanr][ERROR] CACHE_MODE=enabled requires CS_SIZE>0, got $CS_SIZE" >&2
+        exit 2
+      fi
+      ;;
+    *)
+      echo "[sanr][ERROR] unsupported CACHE_MODE=$CACHE_MODE (expected disabled|enabled)" >&2
+      exit 2
+      ;;
+  esac
+}
+
 BASE_DIR="${1:-results/sanr_baseline}"
 ACC_DIR="$BASE_DIR/accuracy_comparison"
 FAIL_DIR="$BASE_DIR/failure_stub"
@@ -29,48 +75,44 @@ SEEDS="${SEEDS:-42 43 44}"
 TRACE_BASE="${TRACE_BASE:-dataset/sdm_smartcity_dataset/consumer_trace.csv}"
 TRACE_REPEAT="${TRACE_REPEAT:-$WORKLOAD_DIR/consumer_trace_repeat.csv}"
 QUERY_REPEAT_FACTOR="${QUERY_REPEAT_FACTOR:-3}"
+TRACE_REPEAT_MODE="${TRACE_REPEAT_MODE:-row}"
+WORKLOAD_STATS_JSON="${WORKLOAD_STATS_JSON:-$WORKLOAD_DIR/workload_repeat_stats.json}"
+CS_SIZE="${CS_SIZE:-512}"
 
+validate_cache_settings
+
+ensure_safe_output_dir "$BASE_DIR"
 mkdir -p "$WORKLOAD_DIR"
 
-if [ ! -f "$TRACE_REPEAT" ]; then
-  echo "[sanr] building repeat trace: $TRACE_REPEAT"
-  "$PYTHON_BIN" - "$TRACE_BASE" "$TRACE_REPEAT" "$QUERY_REPEAT_FACTOR" <<'PY'
-import csv
-import os
-import sys
+echo "[sanr] building repeated workload: $TRACE_REPEAT"
+"$PYTHON_BIN" experiments/checks/repeat_workload.py \
+  --source "$TRACE_BASE" \
+  --output "$TRACE_REPEAT" \
+  --repeat "$QUERY_REPEAT_FACTOR" \
+  --mode "$TRACE_REPEAT_MODE" \
+  --stats-out "$WORKLOAD_STATS_JSON" \
+  --assert-valid
 
-src = sys.argv[1]
-dst = sys.argv[2]
-repeat = max(1, int(float(sys.argv[3])))
-
-rows = []
-with open(src, newline="", encoding="utf-8") as f:
-    reader = csv.DictReader(f)
-    header = reader.fieldnames
-    rows = list(reader)
-
-if not rows:
-    raise SystemExit(f"empty trace: {src}")
-
-target_n = len(rows)
-out = []
-idx = 0
-while len(out) < target_n:
-    row = rows[idx % len(rows)]
-    for _ in range(repeat):
-        out.append(dict(row))
-        if len(out) >= target_n:
-            break
-    idx += 1
-
-os.makedirs(os.path.dirname(dst), exist_ok=True)
-with open(dst, "w", newline="", encoding="utf-8") as f:
-    w = csv.DictWriter(f, fieldnames=header)
-    w.writeheader()
-    w.writerows(out)
-print(f"wrote {dst} rows={len(out)} repeat={repeat}")
-PY
-fi
+"$PYTHON_BIN" experiments/manifests/write_run_manifest.py \
+  --repo-root "$ROOT_DIR" \
+  --output "$BASE_DIR/run_manifest.json" \
+  --workflow sanr_baseline \
+  --runner ns-3/experiments/runners/run_sanr_baseline.sh \
+  --output-dir "$(resolve_path "$BASE_DIR")" \
+  --input "$(resolve_path "$TRACE_BASE")" \
+  --input "$(resolve_path "$TRACE_REPEAT")" \
+  --input "$(resolve_path "$TOPO_FILE")" \
+  --input "$NS3_DIR/dataset/sdm_smartcity_dataset/domain_centroids_m4.csv" \
+  --input "$NS3_DIR/dataset/sdm_smartcity_dataset/producer_content.csv" \
+  --input "$NS3_DIR/dataset/sdm_smartcity_dataset/tag_index.csv" \
+  --input "$NS3_DIR/dataset/sdm_smartcity_dataset/query_to_tag.csv" \
+  --field "cache_mode=\"$CACHE_MODE\"" \
+  --field "cs_size=$CS_SIZE" \
+  --field "paper_grade=false" \
+  --field "query_repeat_factor=$QUERY_REPEAT_FACTOR" \
+  --field "trace_repeat_mode=\"$TRACE_REPEAT_MODE\"" \
+  --field "workload_stats_json=\"$(resolve_path "$WORKLOAD_STATS_JSON")\"" \
+  --field "seeds=\"$SEEDS\""
 
 echo "[sanr] running accuracy baseline (central/iroute/tag/sanr-tag/flood)"
 TOPO="$TOPO" \
@@ -79,7 +121,8 @@ SEEDS="$SEEDS" \
 SCHEMES="central iroute flood tag sanr-tag" \
 SANR_THRESH_VALUES="${SANR_THRESH_VALUES:-0.7 0.8 0.9 0.95}" \
 SANR_REF_THRESH="${SANR_REF_THRESH:-0.8}" \
-CS_SIZE="${CS_SIZE:-512}" \
+CACHE_MODE="$CACHE_MODE" \
+CS_SIZE="$CS_SIZE" \
 DATA_FRESHNESS_MS="${DATA_FRESHNESS_MS:-60000}" \
 TRACE="$TRACE_REPEAT" \
 SHUFFLE_TRACE="${SHUFFLE_TRACE:-0}" \
@@ -98,3 +141,4 @@ echo "[sanr] done"
 echo "  accuracy: $ACC_DIR"
 echo "  figures:  $FIG_DIR"
 echo "  index:    $FIG_DIR/figure_index.md"
+echo "  workload stats: $WORKLOAD_STATS_JSON"
