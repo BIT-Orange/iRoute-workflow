@@ -1,0 +1,2 @@
+scheme,totalQueries,measurableQueries,DomainAcc,Recall_at_1,Recall_at_k,DocHit_at_1_singleton,mean_relset_size,singleton_queries,meanSSR,P50_ms,P95_ms,mean_hops,ctrl_bytes_per_sec,ctrl_pkts_per_sec,avg_FIB_entries,avg_LSDB_entries,unique_hops_values,partition_detected,failure_effective,ssr_mean,ssr_p50,ssr_p95,cache_hit_exact_ratio,cache_hit_semantic_ratio,semantic_hit_ratio
+sanr-tag,399,399,0.6591,0.0877,0.6617,0.0938,10.3333,32,0.627893,23.3649,45.7015,5.10,483595.00,638.40,119,696,4,0,0,0.627893,0.630837,0.742656,0.000000,0.007519,0.007519

@@ -1,0 +1,11 @@
+run_id,scheme,domains,M,tagK,topology,lsdb_entries,fib_entries,lsdb_theory,result_dir
+central_d8_s42,central,8,4,16,rocketfuel,1,19,0,/Users/jiyuan/OrbStack/ndn-dev/home/jiyuan/ndnSIM/ns-3/results/sanr_baseline/scaling/central_d8_s42
+central_d16_s42,central,16,4,16,rocketfuel,1,35,0,/Users/jiyuan/OrbStack/ndn-dev/home/jiyuan/ndnSIM/ns-3/results/sanr_baseline/scaling/central_d16_s42
+iroute_d8_s42,iroute,8,4,16,rocketfuel,32,21,32,/Users/jiyuan/OrbStack/ndn-dev/home/jiyuan/ndnSIM/ns-3/results/sanr_baseline/scaling/iroute_d8_s42
+iroute_d16_s42,iroute,16,4,16,rocketfuel,64,37,64,/Users/jiyuan/OrbStack/ndn-dev/home/jiyuan/ndnSIM/ns-3/results/sanr_baseline/scaling/iroute_d16_s42
+tag_d8_s42,tag,8,4,16,rocketfuel,523,119,128,/Users/jiyuan/OrbStack/ndn-dev/home/jiyuan/ndnSIM/ns-3/results/sanr_baseline/scaling/tag_d8_s42
+tag_d16_s42,tag,16,4,16,rocketfuel,523,135,256,/Users/jiyuan/OrbStack/ndn-dev/home/jiyuan/ndnSIM/ns-3/results/sanr_baseline/scaling/tag_d16_s42
+sanr-tag_d8_s42,sanr-tag,8,4,16,rocketfuel,643,119,128,/Users/jiyuan/OrbStack/ndn-dev/home/jiyuan/ndnSIM/ns-3/results/sanr_baseline/scaling/sanr-tag_d8_s42
+sanr-tag_d16_s42,sanr-tag,16,4,16,rocketfuel,643,135,256,/Users/jiyuan/OrbStack/ndn-dev/home/jiyuan/ndnSIM/ns-3/results/sanr_baseline/scaling/sanr-tag_d16_s42
+flood_d8_s42,flood,8,4,16,rocketfuel,0,18,0,/Users/jiyuan/OrbStack/ndn-dev/home/jiyuan/ndnSIM/ns-3/results/sanr_baseline/scaling/flood_d8_s42
+flood_d16_s42,flood,16,4,16,rocketfuel,0,34,0,/Users/jiyuan/OrbStack/ndn-dev/home/jiyuan/ndnSIM/ns-3/results/sanr_baseline/scaling/flood_d16_s42

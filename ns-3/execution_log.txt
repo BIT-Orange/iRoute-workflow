@@ -1,0 +1,15 @@
+=== Running Semantic Accuracy Experiment ===
+[1/4] Running Exact Match Baseline...
+[2/4] Running Flood Baseline (Producer mode)...
+[3/4] Running Tag-based Routing Baseline...
+[4/4] Running iRoute (Proposed)...
+Experiment Complete. Summary:
+scheme,totalQueries,measurableQueries,DomainAcc,Recall_at_1,Recall_at_k,meanSSR,P50_ms,P95_ms,mean_hops,ctrl_bytes_per_sec,ctrl_pkts_per_sec,avg_FIB_entries,avg_LSDB_entries
+tag,0,0,0.0000,0.0000,0.0000,0.000000,0.0000,0.0000,0.00,0.00,0.00,119,8
+flood,189,189,0.8519,0.1481,0.1481,0.664115,16.0654,16.0660,0.00,11483.12,15.12,18,0
+tag,0,0,0.0000,0.0000,0.0000,0.000000,0.0000,0.0000,0.00,0.00,0.00,119,8
+iroute,189,189,0.8942,0.1534,0.1534,0.731493,8.0157,8.0158,0.00,1622.96,2.16,13,8
+iroute,189,189,0.8942,0.1534,0.1534,0.731493,8.0157,8.0158,0.00,1622.96,2.16,13,8
+flood,189,189,0.8519,0.1481,0.1481,0.664115,16.0654,16.0660,0.00,11483.12,15.12,18,0
+tag,0,0,0.0000,0.0000,0.0000,0.000000,0.0000,0.0000,0.00,0.00,0.00,119,8
+iroute,189,189,0.8942,0.1534,0.1534,0.731493,8.0157,8.0158,0.00,1622.96,2.16,13,8

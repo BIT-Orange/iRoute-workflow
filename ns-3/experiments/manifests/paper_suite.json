@@ -1,0 +1,27 @@
+{
+  "name": "paper_suite",
+  "description": "Stage-1 full paper workflow covering accuracy, load, scaling, failure checks, and final plot emission.",
+  "working_directory": "ns-3",
+  "runner": "experiments/runners/run_paper_suite.sh",
+  "legacy_entrypoint": "experiments/run_paper_suite.sh",
+  "inputs": [
+    "dataset/sdm_smartcity_dataset/consumer_trace.csv",
+    "dataset/sdm_smartcity_dataset/domain_centroids_m4.csv",
+    "dataset/sdm_smartcity_dataset/producer_content.csv",
+    "dataset/sdm_smartcity_dataset/tag_index.csv",
+    "dataset/sdm_smartcity_dataset/query_to_tag.csv",
+    "dataset/sdm_smartcity_dataset/index_exact.csv",
+    "dataset/sdm_smartcity_dataset/qrels.tsv",
+    "src/ndnSIM/examples/topologies/as1239-r0.txt"
+  ],
+  "outputs": [
+    "results/paper_<timestamp>",
+    "../figures"
+  ],
+  "default_environment": {
+    "TOPO": "rocketfuel",
+    "FAILURE_POLICY": "auto-noncut",
+    "SEEDS": "42",
+    "DOMAINS_LIST": "8 16 32 64"
+  }
+}

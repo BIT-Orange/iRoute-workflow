@@ -1,0 +1,2990 @@
+# Rocketfuel topology converted to ndnSIM format
+# Nodes: 700, Links: 2279
+# Bandwidth: 10Gbps, Delay: 2ms
+
+router
+
+# node	comment	yPos	xPos
+Node0	Chicago+IL	0	21
+Node1	Chicago+IL	2	21
+Node2	Seattle+WA	0	105
+Node3	Dallas+TX	0	27
+Node4	T	0	123
+Node5	Seattle+WA	2	105
+Node6	Stockton+CA	0	117
+Node7	Dallas+TX	2	27
+Node8	Pennsauken+NJ	0	78
+Node9	Atlanta+GA	0	9
+Node10	Dallas+TX	4	27
+Node11	Relay+MD	0	84
+Node12	Dallas+TX	6	27
+Node13	Seattle+WA	4	105
+Node14	New+York+NY	0	66
+Node15	New+York+NY	2	66
+Node16	Pennsauken+NJ	2	78
+Node17	Seattle+WA	6	105
+Node18	Springfield+MA	0	111
+Node19	New+York+NY	4	66
+Node20	Seattle+WA	8	105
+Node21	Springfield+MA	2	111
+Node22	New+York+NY	6	66
+Node23	New+York+NY	8	66
+Node24	New+York+NY	10	66
+Node25	Springfield+MA	4	111
+Node26	Pennsauken+NJ	4	78
+Node27	New+York+NY	12	66
+Node28	Relay+MD	2	84
+Node29	Amsterdam+Netherland	0	0
+Node30	Anaheim+CA	0	3
+Node31	Anaheim+CA	2	3
+Node32	Atlanta+GA	2	9
+Node33	Atlanta+GA	4	9
+Node34	Brussels+Belgium	0	15
+Node35	Cheyenne+WY	0	18
+Node36	Cheyenne+WY	2	18
+Node37	Chicago+IL	4	21
+Node38	Chicago+IL	6	21
+Node39	Chicago+IL	8	21
+Node40	Chicago+IL	10	21
+Node41	Copenhagen+Denmark	0	24
+Node42	Copenhagen+Denmark	2	24
+Node43	Dublin+Ireland	0	33
+Node44	Frankfurt+Germany	0	36
+Node45	Frankfurt+Germany	2	36
+Node46	Dallas+TX	8	27
+Node47	Hamburg+Germany	0	39
+Node48	Hong+Kong	0	42
+Node49	Hong+Kong	2	42
+Node50	Kansas+City+MO	0	45
+Node51	Kansas+City+MO	2	45
+Node52	London+UnitedKingdom	0	51
+Node53	London+UnitedKingdom	2	51
+Node54	Milan+Italy	0	60
+Node55	Manasquan+NJ	0	57
+Node56	Manasquan+NJ	2	57
+Node57	New+York+NY	14	66
+Node58	New+York+NY	16	66
+Node59	New+York+NY	18	66
+Node60	New+York+NY	20	66
+Node61	New+York+NY	22	66
+Node62	Orlando+FL	0	69
+Node63	Orlando+FL	2	69
+Node64	Orlando+FL	4	69
+Node65	Paris+France	0	72
+Node66	Pennsauken+NJ	6	78
+Node67	Pearl+Harbor+HI	0	75
+Node68	Pearl+Harbor+HI	2	75
+Node69	Pearl+Harbor+HI	4	75
+Node70	Relay+MD	4	84
+Node71	Relay+MD	6	84
+Node72	Relay+MD	8	84
+Node73	Roachdale+IN	0	96
+Node74	Research+Triangle+Pa	0	87
+Node75	Seattle+WA	10	105
+Node76	Seattle+WA	12	105
+Node77	Seattle+WA	14	105
+Node78	Singapore	0	108
+Node79	San+Jose+CA	0	99
+Node80	San+Jose+CA	2	99
+Node81	San+Jose+CA	4	99
+Node82	Stockton+CA	2	117
+Node83	Stockton+CA	4	117
+Node84	Stockholm+Sweden	0	114
+Node85	Sydney+Australia	0	120
+Node86	Tacoma+WA	0	126
+Node87	Tokyo+Japan	0	129
+Node88	Tokyo+Japan	2	129
+Node89	Tokyo+Japan	4	129
+Node90	Amsterdam+Netherland	2	0
+Node91	Anaheim+CA	4	3
+Node92	Anaheim+CA	6	3
+Node93	Atlanta+GA	6	9
+Node94	Atlanta+GA	8	9
+Node95	Brussels+Belgium	2	15
+Node96	Cheyenne+WY	4	18
+Node97	Cheyenne+WY	6	18
+Node98	Chicago+IL	12	21
+Node99	Chicago+IL	14	21
+Node100	Chicago+IL	16	21
+Node101	Copenhagen+Denmark	4	24
+Node102	Copenhagen+Denmark	6	24
+Node103	Dublin+Ireland	2	33
+Node104	Frankfurt+Germany	4	36
+Node105	Dallas+TX	10	27
+Node106	Dallas+TX	12	27
+Node107	Dallas+TX	14	27
+Node108	Hamburg+Germany	2	39
+Node109	Kansas+City+MO	4	45
+Node110	London+UnitedKingdom	4	51
+Node111	London+UnitedKingdom	6	51
+Node112	Milan+Italy	2	60
+Node113	Manasquan+NJ	4	57
+Node114	Manasquan+NJ	6	57
+Node115	Munich+Germany	0	63
+Node116	New+York+NY	24	66
+Node117	New+York+NY	26	66
+Node118	New+York+NY	28	66
+Node119	Orlando+FL	6	69
+Node120	Orlando+FL	8	69
+Node121	Paris+France	2	72
+Node122	Pennsauken+NJ	8	78
+Node123	Pearl+Harbor+HI	6	75
+Node124	Relay+MD	10	84
+Node125	Seattle+WA	16	105
+Node126	Seattle+WA	18	105
+Node127	Singapore	2	108
+Node128	San+Jose+CA	6	99
+Node129	San+Jose+CA	8	99
+Node130	San+Jose+CA	10	99
+Node131	Stockton+CA	6	117
+Node132	Stockton+CA	8	117
+Node133	Stockholm+Sweden	2	114
+Node134	Sydney+Australia	2	120
+Node135	Tacoma+WA	2	126
+Node136	Tacoma+WA	4	126
+Node137	Tacoma+WA	6	126
+Node138	Tacoma+WA	8	126
+Node139	Anaheim+CA	8	3
+Node140	Anaheim+CA	10	3
+Node141	Anaheim+CA	12	3
+Node142	Atlanta+GA	10	9
+Node143	Chicago+IL	18	21
+Node144	Chicago+IL	20	21
+Node145	Dallas+TX	16	27
+Node146	Kansas+City+MO	6	45
+Node147	Kansas+City+MO	8	45
+Node148	Kansas+City+MO	10	45
+Node149	New+York+NY	30	66
+Node150	New+York+NY	32	66
+Node151	Orlando+FL	10	69
+Node152	Orlando+FL	12	69
+Node153	Pennsauken+NJ	10	78
+Node154	Relay+MD	12	84
+Node155	Relay+MD	14	84
+Node156	Relay+MD	16	84
+Node157	Relay+MD	18	84
+Node158	Roachdale+IN	2	96
+Node159	San+Jose+CA	12	99
+Node160	San+Jose+CA	14	99
+Node161	Tacoma+WA	10	126
+Node162	Tacoma+WA	12	126
+Node163	Anaheim+CA	14	3
+Node164	Anaheim+CA	16	3
+Node165	Atlanta+GA	12	9
+Node166	Chicago+IL	22	21
+Node167	Chicago+IL	24	21
+Node168	Chicago+IL	26	21
+Node169	Dallas+TX	18	27
+Node170	Dallas+TX	20	27
+Node171	Dallas+TX	22	27
+Node172	New+York+NY	34	66
+Node173	New+York+NY	36	66
+Node174	New+York+NY	38	66
+Node175	New+York+NY	40	66
+Node176	Pennsauken+NJ	12	78
+Node177	Pennsauken+NJ	14	78
+Node178	Relay+MD	20	84
+Node179	San+Jose+CA	16	99
+Node180	Anaheim+CA	18	3
+Node181	Atlanta+GA	14	9
+Node182	Chicago+IL	28	21
+Node183	New+York+NY	42	66
+Node184	Pennsauken+NJ	16	78
+Node185	Relay+MD	22	84
+Node186	San+Jose+CA	18	99
+Node187	Chicago+IL	30	21
+Node188	New+York+NY	44	66
+Node189	Pennsauken+NJ	18	78
+Node190	Pennsauken+NJ	20	78
+Node191	Relay+MD	24	84
+Node192	San+Jose+CA	20	99
+Node193	San+Jose+CA	22	99
+Node194	Dallas+TX	24	27
+Node195	New+York+NY	46	66
+Node196	New+York+NY	48	66
+Node197	New+York+NY	50	66
+Node198	Pennsauken+NJ	22	78
+Node199	Pennsauken+NJ	24	78
+Node200	Pennsauken+NJ	26	78
+Node201	Relay+MD	26	84
+Node202	New+York+NY	52	66
+Node203	New+York+NY	54	66
+Node204	Pennsauken+NJ	28	78
+Node205	Relay+MD	28	84
+Node206	Washington+DC	0	132
+Node207	Washington+DC	2	132
+Node208	Dallas+TX	26	27
+Node209	Washington+DC	4	132
+Node210	Reston+VA	0	90
+Node211	Reston+VA	2	90
+Node212	Atlanta+GA	16	9
+Node213	Boston+MA	0	12
+Node214	Richardson+TX	0	93
+Node215	Denver+Colorado	0	30
+Node216	Los+Angeles+CA	0	54
+Node217	Lees+Summit+MO	0	48
+Node218	New+York+NY	56	66
+Node219	Rancho+Cordova+CA	0	81
+Node220	Santa+Clara+CA	0	102
+Node221	Boston+MA	2	12
+Node222	Richardson+TX	2	93
+Node223	Denver+Colorado	2	30
+Node224	Lees+Summit+MO	2	48
+Node225	New+York+NY	58	66
+Node226	Rancho+Cordova+CA	2	81
+Node227	Relay+MD	30	84
+Node228	Atlanta+GA	18	9
+Node229	Kansas+City+MO	12	45
+Node230	New+York+NY	60	66
+Node231	Stockton+CA	10	117
+Node232	Tacoma+WA	14	126
+Node233	Atlanta+GA	20	9
+Node234	Atlanta+GA	22	9
+Node235	Cheyenne+WY	8	18
+Node236	Cheyenne+WY	10	18
+Node237	Chicago+IL	32	21
+Node238	Washington+DC	6	132
+Node239	Washington+DC	8	132
+Node240	Washington+DC	10	132
+Node241	Frankfurt+Germany	6	36
+Node242	Kansas+City+MO	14	45
+Node243	Kansas+City+MO	16	45
+Node244	Kansas+City+MO	18	45
+Node245	London+UnitedKingdom	8	51
+Node246	New+York+NY	62	66
+Node247	New+York+NY	64	66
+Node248	Orlando+FL	14	69
+Node249	Pennsauken+NJ	30	78
+Node250	Pennsauken+NJ	32	78
+Node251	Pearl+Harbor+HI	8	75
+Node252	Pearl+Harbor+HI	10	75
+Node253	Relay+MD	32	84
+Node254	Roachdale+IN	4	96
+Node255	Roachdale+IN	6	96
+Node256	Research+Triangle+Pa	2	87
+Node257	Seattle+WA	20	105
+Node258	San+Jose+CA	24	99
+Node259	Springfield+MA	6	111
+Node260	Springfield+MA	8	111
+Node261	Stockton+CA	12	117
+Node262	Tacoma+WA	16	126
+Node263	Amsterdam+Netherland	4	0
+Node264	Anaheim+CA	20	3
+Node265	Atlanta+GA	24	9
+Node266	Cheyenne+WY	12	18
+Node267	Cheyenne+WY	14	18
+Node268	Cheyenne+WY	16	18
+Node269	Chicago+IL	34	21
+Node270	Chicago+IL	36	21
+Node271	Washington+DC	12	132
+Node272	Frankfurt+Germany	8	36
+Node273	Dallas+TX	28	27
+Node274	Hong+Kong	4	42
+Node275	Kansas+City+MO	20	45
+Node276	London+UnitedKingdom	10	51
+Node277	Milan+Italy	4	60
+Node278	New+York+NY	66	66
+Node279	New+York+NY	68	66
+Node280	Orlando+FL	16	69
+Node281	Pennsauken+NJ	34	78
+Node282	Relay+MD	34	84
+Node283	Relay+MD	36	84
+Node284	Seattle+WA	22	105
+Node285	Seattle+WA	24	105
+Node286	Singapore	4	108
+Node287	San+Jose+CA	26	99
+Node288	Stockton+CA	14	117
+Node289	Stockholm+Sweden	4	114
+Node290	Sydney+Australia	4	120
+Node291	Anaheim+CA	22	3
+Node292	Atlanta+GA	26	9
+Node293	Cheyenne+WY	18	18
+Node294	Chicago+IL	38	21
+Node295	Washington+DC	14	132
+Node296	Dallas+TX	30	27
+Node297	Kansas+City+MO	22	45
+Node298	New+York+NY	70	66
+Node299	New+York+NY	72	66
+Node300	Orlando+FL	18	69
+Node301	Pennsauken+NJ	36	78
+Node302	Relay+MD	38	84
+Node303	Seattle+WA	26	105
+Node304	Seattle+WA	28	105
+Node305	Seattle+WA	30	105
+Node306	San+Jose+CA	28	99
+Node307	Stockton+CA	16	117
+Node308	Anaheim+CA	24	3
+Node309	Atlanta+GA	28	9
+Node310	Cheyenne+WY	20	18
+Node311	Cheyenne+WY	22	18
+Node312	Washington+DC	16	132
+Node313	Dallas+TX	32	27
+Node314	Kansas+City+MO	24	45
+Node315	Kansas+City+MO	26	45
+Node316	Orlando+FL	20	69
+Node317	Orlando+FL	22	69
+Node318	Pennsauken+NJ	38	78
+Node319	Relay+MD	40	84
+Node320	San+Jose+CA	30	99
+Node321	Stockton+CA	18	117
+Node322	Anaheim+CA	26	3
+Node323	Atlanta+GA	30	9
+Node324	Cheyenne+WY	24	18
+Node325	Chicago+IL	40	21
+Node326	Chicago+IL	42	21
+Node327	Washington+DC	18	132
+Node328	Dallas+TX	34	27
+Node329	Kansas+City+MO	28	45
+Node330	Orlando+FL	24	69
+Node331	Pennsauken+NJ	40	78
+Node332	Relay+MD	42	84
+Node333	Seattle+WA	32	105
+Node334	Seattle+WA	34	105
+Node335	San+Jose+CA	32	99
+Node336	San+Jose+CA	34	99
+Node337	Stockton+CA	20	117
+Node338	Stockton+CA	22	117
+Node339	Anaheim+CA	28	3
+Node340	Atlanta+GA	32	9
+Node341	Cheyenne+WY	26	18
+Node342	Dallas+TX	36	27
+Node343	New+York+NY	74	66
+Node344	Orlando+FL	26	69
+Node345	Pennsauken+NJ	42	78
+Node346	Pennsauken+NJ	44	78
+Node347	Relay+MD	44	84
+Node348	San+Jose+CA	36	99
+Node349	Stockton+CA	24	117
+Node350	Anaheim+CA	30	3
+Node351	Anaheim+CA	32	3
+Node352	Atlanta+GA	34	9
+Node353	Chicago+IL	44	21
+Node354	Chicago+IL	46	21
+Node355	Chicago+IL	48	21
+Node356	Dallas+TX	38	27
+Node357	Dallas+TX	40	27
+Node358	Dallas+TX	42	27
+Node359	New+York+NY	76	66
+Node360	New+York+NY	78	66
+Node361	Pennsauken+NJ	46	78
+Node362	Pennsauken+NJ	48	78
+Node363	Relay+MD	46	84
+Node364	San+Jose+CA	38	99
+Node365	Stockton+CA	26	117
+Node366	Anaheim+CA	34	3
+Node367	Anaheim+CA	36	3
+Node368	Atlanta+GA	36	9
+Node369	Dallas+TX	44	27
+Node370	Kansas+City+MO	30	45
+Node371	New+York+NY	80	66
+Node372	Pennsauken+NJ	50	78
+Node373	Relay+MD	48	84
+Node374	Stockton+CA	28	117
+Node375	Stockton+CA	30	117
+Node376	Anaheim+CA	38	3
+Node377	Anaheim+CA	40	3
+Node378	Atlanta+GA	38	9
+Node379	Chicago+IL	50	21
+Node380	New+York+NY	82	66
+Node381	Pennsauken+NJ	52	78
+Node382	Relay+MD	50	84
+Node383	Stockton+CA	32	117
+Node384	Anaheim+CA	42	3
+Node385	Dallas+TX	46	27
+Node386	New+York+NY	84	66
+Node387	New+York+NY	86	66
+Node388	New+York+NY	88	66
+Node389	Pennsauken+NJ	54	78
+Node390	Pennsauken+NJ	56	78
+Node391	Relay+MD	52	84
+Node392	Relay+MD	54	84
+Node393	Atlanta+GA	40	9
+Node394	Chicago+IL	52	21
+Node395	New+York+NY	90	66
+Node396	New+York+NY	92	66
+Node397	Pennsauken+NJ	58	78
+Node398	Relay+MD	56	84
+Node399	Relay+MD	58	84
+Node400	Stockton+CA	34	117
+Node401	Amsterdam+Netherland	6	0
+Node402	Anaheim+CA	44	3
+Node403	Atlanta+GA	42	9
+Node404	Atlanta+GA	44	9
+Node405	Brussels+Belgium	4	15
+Node406	Cheyenne+WY	28	18
+Node407	Cheyenne+WY	30	18
+Node408	Washington+DC	20	132
+Node409	Kansas+City+MO	32	45
+Node410	Kansas+City+MO	34	45
+Node411	London+UnitedKingdom	12	51
+Node412	New+York+NY	94	66
+Node413	Orlando+FL	28	69
+Node414	Paris+France	4	72
+Node415	Pennsauken+NJ	60	78
+Node416	Pearl+Harbor+HI	12	75
+Node417	Relay+MD	60	84
+Node418	Roachdale+IN	8	96
+Node419	Roachdale+IN	10	96
+Node420	Seattle+WA	36	105
+Node421	San+Jose+CA	40	99
+Node422	Tacoma+WA	18	126
+Node423	Tacoma+WA	20	126
+Node424	Anaheim+CA	46	3
+Node425	Dallas+TX	48	27
+Node426	Dallas+TX	50	27
+Node427	New+York+NY	96	66
+Node428	Pennsauken+NJ	62	78
+Node429	Relay+MD	62	84
+Node430	Relay+MD	64	84
+Node431	Roachdale+IN	12	96
+Node432	Stockton+CA	36	117
+Node433	Stockton+CA	38	117
+Node434	Anaheim+CA	48	3
+Node435	Atlanta+GA	46	9
+Node436	Dallas+TX	52	27
+Node437	Pennsauken+NJ	64	78
+Node438	Relay+MD	66	84
+Node439	Relay+MD	68	84
+Node440	Relay+MD	70	84
+Node441	Stockton+CA	40	117
+Node442	Stockton+CA	42	117
+Node443	Anaheim+CA	50	3
+Node444	Anaheim+CA	52	3
+Node445	Anaheim+CA	54	3
+Node446	Atlanta+GA	48	9
+Node447	Chicago+IL	54	21
+Node448	Chicago+IL	56	21
+Node449	Dallas+TX	54	27
+Node450	Dallas+TX	56	27
+Node451	Pennsauken+NJ	66	78
+Node452	Relay+MD	72	84
+Node453	Relay+MD	74	84
+Node454	Stockton+CA	44	117
+Node455	Stockton+CA	46	117
+Node456	Stockton+CA	48	117
+Node457	Anaheim+CA	56	3
+Node458	Atlanta+GA	50	9
+Node459	Dallas+TX	58	27
+Node460	Pennsauken+NJ	68	78
+Node461	Relay+MD	76	84
+Node462	Stockton+CA	50	117
+Node463	Anaheim+CA	58	3
+Node464	Anaheim+CA	60	3
+Node465	Atlanta+GA	52	9
+Node466	Chicago+IL	58	21
+Node467	Chicago+IL	60	21
+Node468	Dallas+TX	60	27
+Node469	Dallas+TX	62	27
+Node470	Pennsauken+NJ	70	78
+Node471	Relay+MD	78	84
+Node472	Stockton+CA	52	117
+Node473	Stockton+CA	54	117
+Node474	Anaheim+CA	62	3
+Node475	Atlanta+GA	54	9
+Node476	Chicago+IL	62	21
+Node477	Stockton+CA	56	117
+Node478	Stockton+CA	58	117
+Node479	Chicago+IL	64	21
+Node480	Chicago+IL	66	21
+Node481	Dallas+TX	64	27
+Node482	Dallas+TX	66	27
+Node483	Pennsauken+NJ	72	78
+Node484	Relay+MD	80	84
+Node485	Stockton+CA	60	117
+Node486	Chicago+IL	68	21
+Node487	Chicago+IL	70	21
+Node488	Dallas+TX	68	27
+Node489	Dallas+TX	70	27
+Node490	New+York+NY	98	66
+Node491	New+York+NY	100	66
+Node492	New+York+NY	102	66
+Node493	New+York+NY	104	66
+Node494	Pennsauken+NJ	74	78
+Node495	Stockton+CA	62	117
+Node496	Anaheim+CA	64	3
+Node497	Chicago+IL	72	21
+Node498	Dallas+TX	72	27
+Node499	New+York+NY	106	66
+Node500	Pennsauken+NJ	76	78
+Node501	Pennsauken+NJ	78	78
+Node502	Anaheim+CA	66	3
+Node503	Chicago+IL	74	21
+Node504	Chicago+IL	76	21
+Node505	Dallas+TX	74	27
+Node506	Pennsauken+NJ	80	78
+Node507	Pennsauken+NJ	82	78
+Node508	Stockton+CA	64	117
+Node509	Anaheim+CA	68	3
+Node510	Atlanta+GA	56	9
+Node511	Cheyenne+WY	32	18
+Node512	Cheyenne+WY	34	18
+Node513	Cheyenne+WY	36	18
+Node514	Cheyenne+WY	38	18
+Node515	Cheyenne+WY	40	18
+Node516	Chicago+IL	78	21
+Node517	Washington+DC	22	132
+Node518	Kansas+City+MO	36	45
+Node519	New+York+NY	108	66
+Node520	Orlando+FL	30	69
+Node521	Pennsauken+NJ	84	78
+Node522	Roachdale+IN	14	96
+Node523	Seattle+WA	38	105
+Node524	San+Jose+CA	42	99
+Node525	Chicago+IL	80	21
+Node526	Chicago+IL	82	21
+Node527	Dallas+TX	76	27
+Node528	Dallas+TX	78	27
+Node529	Dallas+TX	80	27
+Node530	Dallas+TX	82	27
+Node531	Pennsauken+NJ	86	78
+Node532	Chicago+IL	84	21
+Node533	Chicago+IL	86	21
+Node534	Chicago+IL	88	21
+Node535	Chicago+IL	90	21
+Node536	Chicago+IL	92	21
+Node537	Dallas+TX	84	27
+Node538	Dallas+TX	86	27
+Node539	Dallas+TX	88	27
+Node540	New+York+NY	110	66
+Node541	Pennsauken+NJ	88	78
+Node542	Chicago+IL	94	21
+Node543	Pennsauken+NJ	90	78
+Node544	Chicago+IL	96	21
+Node545	Chicago+IL	98	21
+Node546	Chicago+IL	100	21
+Node547	Pennsauken+NJ	92	78
+Node548	Chicago+IL	102	21
+Node549	Chicago+IL	104	21
+Node550	Dallas+TX	90	27
+Node551	Dallas+TX	92	27
+Node552	Pennsauken+NJ	94	78
+Node553	Dallas+TX	94	27
+Node554	Dallas+TX	96	27
+Node555	Pennsauken+NJ	96	78
+Node556	Chicago+IL	106	21
+Node557	Dallas+TX	98	27
+Node558	Pennsauken+NJ	98	78
+Node559	Dallas+TX	100	27
+Node560	Dallas+TX	102	27
+Node561	Dallas+TX	104	27
+Node562	Pennsauken+NJ	100	78
+Node563	Pennsauken+NJ	102	78
+Node564	Anaheim+CA	70	3
+Node565	Anaheim+CA	72	3
+Node566	Atlanta+GA	58	9
+Node567	Chicago+IL	108	21
+Node568	Washington+DC	24	132
+Node569	Dallas+TX	106	27
+Node570	Kansas+City+MO	38	45
+Node571	Orlando+FL	32	69
+Node572	Pennsauken+NJ	104	78
+Node573	Pennsauken+NJ	106	78
+Node574	Relay+MD	82	84
+Node575	Relay+MD	84	84
+Node576	Relay+MD	86	84
+Node577	Relay+MD	88	84
+Node578	Roachdale+IN	16	96
+Node579	Roachdale+IN	18	96
+Node580	Seattle+WA	40	105
+Node581	San+Jose+CA	44	99
+Node582	Springfield+MA	10	111
+Node583	Stockton+CA	66	117
+Node584	Tacoma+WA	22	126
+Node585	Dallas+TX	108	27
+Node586	Dallas+TX	110	27
+Node587	Dallas+TX	112	27
+Node588	Anaheim+CA	74	3
+Node589	Atlanta+GA	60	9
+Node590	Cheyenne+WY	42	18
+Node591	Cheyenne+WY	44	18
+Node592	Chicago+IL	110	21
+Node593	Washington+DC	26	132
+Node594	Dallas+TX	114	27
+Node595	Dallas+TX	116	27
+Node596	Kansas+City+MO	40	45
+Node597	Orlando+FL	34	69
+Node598	Orlando+FL	36	69
+Node599	Orlando+FL	38	69
+Node600	Orlando+FL	40	69
+Node601	Pennsauken+NJ	108	78
+Node602	Relay+MD	90	84
+Node603	Relay+MD	92	84
+Node604	Roachdale+IN	20	96
+Node605	Seattle+WA	42	105
+Node606	San+Jose+CA	46	99
+Node607	Stockton+CA	68	117
+Node608	Tacoma+WA	24	126
+Node609	Anaheim+CA	76	3
+Node610	Anaheim+CA	78	3
+Node611	Atlanta+GA	62	9
+Node612	Chicago+IL	112	21
+Node613	Washington+DC	28	132
+Node614	Dallas+TX	118	27
+Node615	Kansas+City+MO	42	45
+Node616	Kansas+City+MO	44	45
+Node617	New+York+NY	112	66
+Node618	Orlando+FL	42	69
+Node619	Orlando+FL	44	69
+Node620	Pennsauken+NJ	110	78
+Node621	Pennsauken+NJ	112	78
+Node622	Relay+MD	94	84
+Node623	Roachdale+IN	22	96
+Node624	Roachdale+IN	24	96
+Node625	San+Jose+CA	48	99
+Node626	Springfield+MA	12	111
+Node627	Stockton+CA	70	117
+Node628	Tacoma+WA	26	126
+Node629	Anaheim+CA	80	3
+Node630	Atlanta+GA	64	9
+Node631	Cheyenne+WY	46	18
+Node632	Cheyenne+WY	48	18
+Node633	Chicago+IL	114	21
+Node634	Chicago+IL	116	21
+Node635	Washington+DC	30	132
+Node636	Dallas+TX	120	27
+Node637	Kansas+City+MO	46	45
+Node638	Kansas+City+MO	48	45
+Node639	Kansas+City+MO	50	45
+Node640	Pennsauken+NJ	114	78
+Node641	Roachdale+IN	26	96
+Node642	Seattle+WA	44	105
+Node643	San+Jose+CA	50	99
+Node644	Stockton+CA	72	117
+Node645	Tacoma+WA	28	126
+Node646	Tacoma+WA	30	126
+Node647	Anaheim+CA	82	3
+Node648	Atlanta+GA	66	9
+Node649	Washington+DC	32	132
+Node650	Washington+DC	34	132
+Node651	Washington+DC	36	132
+Node652	Dallas+TX	122	27
+Node653	Dallas+TX	124	27
+Node654	Kansas+City+MO	52	45
+Node655	Orlando+FL	46	69
+Node656	Pennsauken+NJ	116	78
+Node657	Seattle+WA	46	105
+Node658	San+Jose+CA	52	99
+Node659	San+Jose+CA	54	99
+Node660	San+Jose+CA	56	99
+Node661	San+Jose+CA	58	99
+Node662	Stockton+CA	74	117
+Node663	Anaheim+CA	84	3
+Node664	Atlanta+GA	68	9
+Node665	Cheyenne+WY	50	18
+Node666	Cheyenne+WY	52	18
+Node667	Chicago+IL	118	21
+Node668	Chicago+IL	120	21
+Node669	Washington+DC	38	132
+Node670	Dallas+TX	126	27
+Node671	Kansas+City+MO	54	45
+Node672	Kansas+City+MO	56	45
+Node673	Kansas+City+MO	58	45
+Node674	New+York+NY	114	66
+Node675	New+York+NY	116	66
+Node676	Orlando+FL	48	69
+Node677	Pennsauken+NJ	118	78
+Node678	Pennsauken+NJ	120	78
+Node679	Relay+MD	96	84
+Node680	Seattle+WA	48	105
+Node681	San+Jose+CA	60	99
+Node682	Stockton+CA	76	117
+Node683	Stockton+CA	78	117
+Node684	Chicago+IL	122	21
+Node685	Pennsauken+NJ	122	78
+Node686	Pennsauken+NJ	124	78
+Node687	Atlanta+GA	70	9
+Node688	Chicago+IL	124	21
+Node689	Washington+DC	40	132
+Node690	Dallas+TX	128	27
+Node691	Kansas+City+MO	60	45
+Node692	New+York+NY	118	66
+Node693	Orlando+FL	50	69
+Node694	Pennsauken+NJ	126	78
+Node695	Relay+MD	98	84
+Node696	Seattle+WA	50	105
+Node697	San+Jose+CA	62	99
+Node698	Ashburn+VA	0	6
+Node699	Ashburn+VA	2	6
+
+link
+
+# srcNode	dstNode	bandwidth	metric	delay	queue
+Node0	Node100	10Gbps	1	2ms	100
+Node0	Node143	10Gbps	1	2ms	100
+Node0	Node144	10Gbps	1	2ms	100
+Node0	Node170	10Gbps	1	2ms	100
+Node0	Node237	10Gbps	1	2ms	100
+Node0	Node294	10Gbps	1	2ms	100
+Node1	Node21	10Gbps	1	2ms	100
+Node1	Node40	10Gbps	1	2ms	100
+Node1	Node93	10Gbps	1	2ms	100
+Node1	Node97	10Gbps	1	2ms	100
+Node1	Node105	10Gbps	1	2ms	100
+Node1	Node116	10Gbps	1	2ms	100
+Node1	Node269	10Gbps	1	2ms	100
+Node1	Node325	10Gbps	1	2ms	100
+Node1	Node353	10Gbps	1	2ms	100
+Node1	Node394	10Gbps	1	2ms	100
+Node1	Node447	10Gbps	1	2ms	100
+Node1	Node476	10Gbps	1	2ms	100
+Node1	Node479	10Gbps	1	2ms	100
+Node1	Node486	10Gbps	1	2ms	100
+Node1	Node497	10Gbps	1	2ms	100
+Node1	Node503	10Gbps	1	2ms	100
+Node1	Node525	10Gbps	1	2ms	100
+Node1	Node532	10Gbps	1	2ms	100
+Node1	Node542	10Gbps	1	2ms	100
+Node1	Node548	10Gbps	1	2ms	100
+Node1	Node567	10Gbps	1	2ms	100
+Node1	Node633	10Gbps	1	2ms	100
+Node1	Node667	10Gbps	1	2ms	100
+Node2	Node13	10Gbps	1	2ms	100
+Node2	Node75	10Gbps	1	2ms	100
+Node2	Node77	10Gbps	1	2ms	100
+Node2	Node126	10Gbps	1	2ms	100
+Node2	Node303	10Gbps	1	2ms	100
+Node2	Node304	10Gbps	1	2ms	100
+Node2	Node333	10Gbps	1	2ms	100
+Node2	Node580	10Gbps	1	2ms	100
+Node3	Node144	10Gbps	1	2ms	100
+Node3	Node194	10Gbps	1	2ms	100
+Node3	Node551	10Gbps	1	2ms	100
+Node3	Node557	10Gbps	1	2ms	100
+Node4	Node77	10Gbps	1	2ms	100
+Node4	Node81	10Gbps	1	2ms	100
+Node4	Node85	10Gbps	1	2ms	100
+Node4	Node97	10Gbps	1	2ms	100
+Node4	Node161	10Gbps	1	2ms	100
+Node4	Node162	10Gbps	1	2ms	100
+Node4	Node232	10Gbps	1	2ms	100
+Node4	Node262	10Gbps	1	2ms	100
+Node4	Node584	10Gbps	1	2ms	100
+Node4	Node608	10Gbps	1	2ms	100
+Node4	Node628	10Gbps	1	2ms	100
+Node4	Node646	10Gbps	1	2ms	100
+Node5	Node75	10Gbps	1	2ms	100
+Node5	Node76	10Gbps	1	2ms	100
+Node5	Node77	10Gbps	1	2ms	100
+Node5	Node125	10Gbps	1	2ms	100
+Node5	Node257	10Gbps	1	2ms	100
+Node6	Node82	10Gbps	1	2ms	100
+Node6	Node83	10Gbps	1	2ms	100
+Node6	Node131	10Gbps	1	2ms	100
+Node6	Node132	10Gbps	1	2ms	100
+Node6	Node376	10Gbps	1	2ms	100
+Node7	Node27	10Gbps	1	2ms	100
+Node7	Node105	10Gbps	1	2ms	100
+Node7	Node106	10Gbps	1	2ms	100
+Node7	Node145	10Gbps	1	2ms	100
+Node7	Node169	10Gbps	1	2ms	100
+Node7	Node170	10Gbps	1	2ms	100
+Node8	Node122	10Gbps	1	2ms	100
+Node9	Node32	10Gbps	1	2ms	100
+Node10	Node145	10Gbps	1	2ms	100
+Node11	Node70	10Gbps	1	2ms	100
+Node11	Node71	10Gbps	1	2ms	100
+Node11	Node72	10Gbps	1	2ms	100
+Node11	Node154	10Gbps	1	2ms	100
+Node11	Node155	10Gbps	1	2ms	100
+Node11	Node156	10Gbps	1	2ms	100
+Node11	Node157	10Gbps	1	2ms	100
+Node12	Node91	10Gbps	1	2ms	100
+Node12	Node94	10Gbps	1	2ms	100
+Node12	Node107	10Gbps	1	2ms	100
+Node12	Node551	10Gbps	1	2ms	100
+Node13	Node17	10Gbps	1	2ms	100
+Node13	Node20	10Gbps	1	2ms	100
+Node13	Node420	10Gbps	1	2ms	100
+Node14	Node60	10Gbps	1	2ms	100
+Node14	Node111	10Gbps	1	2ms	100
+Node14	Node195	10Gbps	1	2ms	100
+Node14	Node196	10Gbps	1	2ms	100
+Node14	Node197	10Gbps	1	2ms	100
+Node14	Node617	10Gbps	1	2ms	100
+Node15	Node57	10Gbps	1	2ms	100
+Node15	Node58	10Gbps	1	2ms	100
+Node15	Node59	10Gbps	1	2ms	100
+Node15	Node60	10Gbps	1	2ms	100
+Node15	Node61	10Gbps	1	2ms	100
+Node15	Node196	10Gbps	1	2ms	100
+Node15	Node617	10Gbps	1	2ms	100
+Node16	Node66	10Gbps	1	2ms	100
+Node17	Node75	10Gbps	1	2ms	100
+Node17	Node77	10Gbps	1	2ms	100
+Node17	Node125	10Gbps	1	2ms	100
+Node17	Node144	10Gbps	1	2ms	100
+Node17	Node303	10Gbps	1	2ms	100
+Node17	Node304	10Gbps	1	2ms	100
+Node17	Node305	10Gbps	1	2ms	100
+Node17	Node333	10Gbps	1	2ms	100
+Node17	Node523	10Gbps	1	2ms	100
+Node17	Node580	10Gbps	1	2ms	100
+Node17	Node642	10Gbps	1	2ms	100
+Node17	Node696	10Gbps	1	2ms	100
+Node18	Node25	10Gbps	1	2ms	100
+Node18	Node37	10Gbps	1	2ms	100
+Node18	Node38	10Gbps	1	2ms	100
+Node18	Node39	10Gbps	1	2ms	100
+Node18	Node40	10Gbps	1	2ms	100
+Node18	Node184	10Gbps	1	2ms	100
+Node18	Node213	10Gbps	1	2ms	100
+Node18	Node259	10Gbps	1	2ms	100
+Node18	Node582	10Gbps	1	2ms	100
+Node18	Node626	10Gbps	1	2ms	100
+Node19	Node57	10Gbps	1	2ms	100
+Node19	Node58	10Gbps	1	2ms	100
+Node19	Node59	10Gbps	1	2ms	100
+Node19	Node60	10Gbps	1	2ms	100
+Node19	Node61	10Gbps	1	2ms	100
+Node19	Node197	10Gbps	1	2ms	100
+Node20	Node126	10Gbps	1	2ms	100
+Node20	Node303	10Gbps	1	2ms	100
+Node20	Node304	10Gbps	1	2ms	100
+Node20	Node305	10Gbps	1	2ms	100
+Node20	Node333	10Gbps	1	2ms	100
+Node20	Node580	10Gbps	1	2ms	100
+Node20	Node642	10Gbps	1	2ms	100
+Node21	Node25	10Gbps	1	2ms	100
+Node21	Node98	10Gbps	1	2ms	100
+Node21	Node99	10Gbps	1	2ms	100
+Node21	Node100	10Gbps	1	2ms	100
+Node21	Node122	10Gbps	1	2ms	100
+Node21	Node221	10Gbps	1	2ms	100
+Node21	Node259	10Gbps	1	2ms	100
+Node21	Node582	10Gbps	1	2ms	100
+Node21	Node626	10Gbps	1	2ms	100
+Node22	Node52	10Gbps	1	2ms	100
+Node22	Node57	10Gbps	1	2ms	100
+Node22	Node58	10Gbps	1	2ms	100
+Node22	Node59	10Gbps	1	2ms	100
+Node22	Node60	10Gbps	1	2ms	100
+Node22	Node61	10Gbps	1	2ms	100
+Node22	Node195	10Gbps	1	2ms	100
+Node22	Node196	10Gbps	1	2ms	100
+Node22	Node197	10Gbps	1	2ms	100
+Node22	Node617	10Gbps	1	2ms	100
+Node23	Node59	10Gbps	1	2ms	100
+Node23	Node111	10Gbps	1	2ms	100
+Node24	Node59	10Gbps	1	2ms	100
+Node24	Node111	10Gbps	1	2ms	100
+Node24	Node197	10Gbps	1	2ms	100
+Node24	Node617	10Gbps	1	2ms	100
+Node25	Node182	10Gbps	1	2ms	100
+Node27	Node120	10Gbps	1	2ms	100
+Node27	Node147	10Gbps	1	2ms	100
+Node27	Node187	10Gbps	1	2ms	100
+Node27	Node199	10Gbps	1	2ms	100
+Node27	Node273	10Gbps	1	2ms	100
+Node27	Node296	10Gbps	1	2ms	100
+Node27	Node328	10Gbps	1	2ms	100
+Node27	Node342	10Gbps	1	2ms	100
+Node27	Node356	10Gbps	1	2ms	100
+Node27	Node369	10Gbps	1	2ms	100
+Node27	Node436	10Gbps	1	2ms	100
+Node27	Node449	10Gbps	1	2ms	100
+Node27	Node459	10Gbps	1	2ms	100
+Node27	Node468	10Gbps	1	2ms	100
+Node27	Node481	10Gbps	1	2ms	100
+Node27	Node488	10Gbps	1	2ms	100
+Node27	Node498	10Gbps	1	2ms	100
+Node27	Node505	10Gbps	1	2ms	100
+Node27	Node527	10Gbps	1	2ms	100
+Node27	Node537	10Gbps	1	2ms	100
+Node27	Node594	10Gbps	1	2ms	100
+Node27	Node614	10Gbps	1	2ms	100
+Node27	Node636	10Gbps	1	2ms	100
+Node27	Node652	10Gbps	1	2ms	100
+Node27	Node670	10Gbps	1	2ms	100
+Node28	Node70	10Gbps	1	2ms	100
+Node28	Node71	10Gbps	1	2ms	100
+Node28	Node72	10Gbps	1	2ms	100
+Node28	Node154	10Gbps	1	2ms	100
+Node28	Node155	10Gbps	1	2ms	100
+Node28	Node156	10Gbps	1	2ms	100
+Node28	Node157	10Gbps	1	2ms	100
+Node29	Node90	10Gbps	1	2ms	100
+Node29	Node95	10Gbps	1	2ms	100
+Node29	Node263	10Gbps	1	2ms	100
+Node29	Node401	10Gbps	1	2ms	100
+Node30	Node139	10Gbps	1	2ms	100
+Node30	Node141	10Gbps	1	2ms	100
+Node30	Node160	10Gbps	1	2ms	100
+Node30	Node164	10Gbps	1	2ms	100
+Node30	Node170	10Gbps	1	2ms	100
+Node30	Node180	10Gbps	1	2ms	100
+Node30	Node216	10Gbps	1	2ms	100
+Node30	Node443	10Gbps	1	2ms	100
+Node30	Node457	10Gbps	1	2ms	100
+Node30	Node464	10Gbps	1	2ms	100
+Node31	Node139	10Gbps	1	2ms	100
+Node31	Node160	10Gbps	1	2ms	100
+Node31	Node163	10Gbps	1	2ms	100
+Node31	Node164	10Gbps	1	2ms	100
+Node31	Node170	10Gbps	1	2ms	100
+Node31	Node216	10Gbps	1	2ms	100
+Node31	Node291	10Gbps	1	2ms	100
+Node31	Node308	10Gbps	1	2ms	100
+Node31	Node322	10Gbps	1	2ms	100
+Node31	Node366	10Gbps	1	2ms	100
+Node31	Node376	10Gbps	1	2ms	100
+Node31	Node384	10Gbps	1	2ms	100
+Node31	Node402	10Gbps	1	2ms	100
+Node31	Node424	10Gbps	1	2ms	100
+Node31	Node434	10Gbps	1	2ms	100
+Node31	Node443	10Gbps	1	2ms	100
+Node31	Node457	10Gbps	1	2ms	100
+Node31	Node464	10Gbps	1	2ms	100
+Node31	Node509	10Gbps	1	2ms	100
+Node31	Node588	10Gbps	1	2ms	100
+Node31	Node609	10Gbps	1	2ms	100
+Node32	Node124	10Gbps	1	2ms	100
+Node32	Node152	10Gbps	1	2ms	100
+Node32	Node165	10Gbps	1	2ms	100
+Node32	Node166	10Gbps	1	2ms	100
+Node32	Node167	10Gbps	1	2ms	100
+Node32	Node168	10Gbps	1	2ms	100
+Node32	Node212	10Gbps	1	2ms	100
+Node32	Node233	10Gbps	1	2ms	100
+Node32	Node265	10Gbps	1	2ms	100
+Node32	Node309	10Gbps	1	2ms	100
+Node32	Node323	10Gbps	1	2ms	100
+Node32	Node340	10Gbps	1	2ms	100
+Node32	Node342	10Gbps	1	2ms	100
+Node32	Node352	10Gbps	1	2ms	100
+Node32	Node368	10Gbps	1	2ms	100
+Node32	Node403	10Gbps	1	2ms	100
+Node32	Node435	10Gbps	1	2ms	100
+Node32	Node446	10Gbps	1	2ms	100
+Node32	Node458	10Gbps	1	2ms	100
+Node32	Node488	10Gbps	1	2ms	100
+Node32	Node510	10Gbps	1	2ms	100
+Node32	Node566	10Gbps	1	2ms	100
+Node32	Node589	10Gbps	1	2ms	100
+Node32	Node611	10Gbps	1	2ms	100
+Node32	Node630	10Gbps	1	2ms	100
+Node32	Node648	10Gbps	1	2ms	100
+Node32	Node664	10Gbps	1	2ms	100
+Node33	Node57	10Gbps	1	2ms	100
+Node33	Node58	10Gbps	1	2ms	100
+Node33	Node59	10Gbps	1	2ms	100
+Node33	Node60	10Gbps	1	2ms	100
+Node33	Node61	10Gbps	1	2ms	100
+Node33	Node145	10Gbps	1	2ms	100
+Node33	Node151	10Gbps	1	2ms	100
+Node33	Node152	10Gbps	1	2ms	100
+Node33	Node165	10Gbps	1	2ms	100
+Node33	Node212	10Gbps	1	2ms	100
+Node33	Node233	10Gbps	1	2ms	100
+Node33	Node265	10Gbps	1	2ms	100
+Node33	Node309	10Gbps	1	2ms	100
+Node33	Node323	10Gbps	1	2ms	100
+Node33	Node340	10Gbps	1	2ms	100
+Node33	Node368	10Gbps	1	2ms	100
+Node33	Node403	10Gbps	1	2ms	100
+Node33	Node435	10Gbps	1	2ms	100
+Node33	Node458	10Gbps	1	2ms	100
+Node33	Node510	10Gbps	1	2ms	100
+Node33	Node566	10Gbps	1	2ms	100
+Node33	Node589	10Gbps	1	2ms	100
+Node33	Node611	10Gbps	1	2ms	100
+Node33	Node630	10Gbps	1	2ms	100
+Node33	Node648	10Gbps	1	2ms	100
+Node33	Node664	10Gbps	1	2ms	100
+Node34	Node52	10Gbps	1	2ms	100
+Node34	Node95	10Gbps	1	2ms	100
+Node34	Node110	10Gbps	1	2ms	100
+Node34	Node111	10Gbps	1	2ms	100
+Node34	Node405	10Gbps	1	2ms	100
+Node35	Node97	10Gbps	1	2ms	100
+Node35	Node136	10Gbps	1	2ms	100
+Node35	Node144	10Gbps	1	2ms	100
+Node35	Node168	10Gbps	1	2ms	100
+Node35	Node266	10Gbps	1	2ms	100
+Node35	Node268	10Gbps	1	2ms	100
+Node35	Node293	10Gbps	1	2ms	100
+Node35	Node341	10Gbps	1	2ms	100
+Node35	Node406	10Gbps	1	2ms	100
+Node35	Node511	10Gbps	1	2ms	100
+Node35	Node631	10Gbps	1	2ms	100
+Node36	Node38	10Gbps	1	2ms	100
+Node36	Node96	10Gbps	1	2ms	100
+Node36	Node98	10Gbps	1	2ms	100
+Node36	Node135	10Gbps	1	2ms	100
+Node36	Node136	10Gbps	1	2ms	100
+Node36	Node137	10Gbps	1	2ms	100
+Node36	Node138	10Gbps	1	2ms	100
+Node36	Node166	10Gbps	1	2ms	100
+Node36	Node167	10Gbps	1	2ms	100
+Node36	Node168	10Gbps	1	2ms	100
+Node36	Node223	10Gbps	1	2ms	100
+Node36	Node235	10Gbps	1	2ms	100
+Node36	Node266	10Gbps	1	2ms	100
+Node36	Node293	10Gbps	1	2ms	100
+Node36	Node311	10Gbps	1	2ms	100
+Node36	Node324	10Gbps	1	2ms	100
+Node36	Node341	10Gbps	1	2ms	100
+Node36	Node406	10Gbps	1	2ms	100
+Node36	Node511	10Gbps	1	2ms	100
+Node36	Node515	10Gbps	1	2ms	100
+Node36	Node631	10Gbps	1	2ms	100
+Node37	Node106	10Gbps	1	2ms	100
+Node37	Node107	10Gbps	1	2ms	100
+Node37	Node144	10Gbps	1	2ms	100
+Node37	Node168	10Gbps	1	2ms	100
+Node37	Node182	10Gbps	1	2ms	100
+Node37	Node237	10Gbps	1	2ms	100
+Node37	Node269	10Gbps	1	2ms	100
+Node37	Node294	10Gbps	1	2ms	100
+Node37	Node325	10Gbps	1	2ms	100
+Node37	Node353	10Gbps	1	2ms	100
+Node37	Node394	10Gbps	1	2ms	100
+Node37	Node425	10Gbps	1	2ms	100
+Node37	Node466	10Gbps	1	2ms	100
+Node37	Node476	10Gbps	1	2ms	100
+Node37	Node479	10Gbps	1	2ms	100
+Node37	Node486	10Gbps	1	2ms	100
+Node37	Node497	10Gbps	1	2ms	100
+Node37	Node503	10Gbps	1	2ms	100
+Node37	Node525	10Gbps	1	2ms	100
+Node37	Node556	10Gbps	1	2ms	100
+Node37	Node592	10Gbps	1	2ms	100
+Node37	Node612	10Gbps	1	2ms	100
+Node37	Node633	10Gbps	1	2ms	100
+Node37	Node634	10Gbps	1	2ms	100
+Node37	Node667	10Gbps	1	2ms	100
+Node38	Node144	10Gbps	1	2ms	100
+Node38	Node168	10Gbps	1	2ms	100
+Node38	Node182	10Gbps	1	2ms	100
+Node38	Node237	10Gbps	1	2ms	100
+Node38	Node269	10Gbps	1	2ms	100
+Node38	Node294	10Gbps	1	2ms	100
+Node38	Node325	10Gbps	1	2ms	100
+Node38	Node353	10Gbps	1	2ms	100
+Node38	Node394	10Gbps	1	2ms	100
+Node38	Node447	10Gbps	1	2ms	100
+Node38	Node466	10Gbps	1	2ms	100
+Node38	Node476	10Gbps	1	2ms	100
+Node38	Node479	10Gbps	1	2ms	100
+Node38	Node486	10Gbps	1	2ms	100
+Node38	Node497	10Gbps	1	2ms	100
+Node38	Node503	10Gbps	1	2ms	100
+Node38	Node516	10Gbps	1	2ms	100
+Node38	Node525	10Gbps	1	2ms	100
+Node38	Node533	10Gbps	1	2ms	100
+Node38	Node542	10Gbps	1	2ms	100
+Node38	Node548	10Gbps	1	2ms	100
+Node38	Node556	10Gbps	1	2ms	100
+Node38	Node567	10Gbps	1	2ms	100
+Node38	Node592	10Gbps	1	2ms	100
+Node38	Node633	10Gbps	1	2ms	100
+Node38	Node667	10Gbps	1	2ms	100
+Node39	Node167	10Gbps	1	2ms	100
+Node39	Node168	10Gbps	1	2ms	100
+Node39	Node187	10Gbps	1	2ms	100
+Node39	Node237	10Gbps	1	2ms	100
+Node40	Node98	10Gbps	1	2ms	100
+Node40	Node99	10Gbps	1	2ms	100
+Node40	Node143	10Gbps	1	2ms	100
+Node40	Node144	10Gbps	1	2ms	100
+Node40	Node168	10Gbps	1	2ms	100
+Node40	Node182	10Gbps	1	2ms	100
+Node40	Node237	10Gbps	1	2ms	100
+Node40	Node269	10Gbps	1	2ms	100
+Node40	Node294	10Gbps	1	2ms	100
+Node40	Node325	10Gbps	1	2ms	100
+Node40	Node353	10Gbps	1	2ms	100
+Node40	Node394	10Gbps	1	2ms	100
+Node40	Node466	10Gbps	1	2ms	100
+Node40	Node476	10Gbps	1	2ms	100
+Node40	Node479	10Gbps	1	2ms	100
+Node40	Node486	10Gbps	1	2ms	100
+Node40	Node497	10Gbps	1	2ms	100
+Node40	Node503	10Gbps	1	2ms	100
+Node40	Node516	10Gbps	1	2ms	100
+Node40	Node525	10Gbps	1	2ms	100
+Node40	Node556	10Gbps	1	2ms	100
+Node40	Node567	10Gbps	1	2ms	100
+Node40	Node592	10Gbps	1	2ms	100
+Node40	Node612	10Gbps	1	2ms	100
+Node40	Node633	10Gbps	1	2ms	100
+Node40	Node667	10Gbps	1	2ms	100
+Node41	Node47	10Gbps	1	2ms	100
+Node41	Node84	10Gbps	1	2ms	100
+Node41	Node102	10Gbps	1	2ms	100
+Node41	Node114	10Gbps	1	2ms	100
+Node42	Node47	10Gbps	1	2ms	100
+Node42	Node84	10Gbps	1	2ms	100
+Node42	Node102	10Gbps	1	2ms	100
+Node42	Node113	10Gbps	1	2ms	100
+Node42	Node114	10Gbps	1	2ms	100
+Node43	Node52	10Gbps	1	2ms	100
+Node43	Node53	10Gbps	1	2ms	100
+Node44	Node104	10Gbps	1	2ms	100
+Node44	Node108	10Gbps	1	2ms	100
+Node44	Node241	10Gbps	1	2ms	100
+Node44	Node272	10Gbps	1	2ms	100
+Node45	Node104	10Gbps	1	2ms	100
+Node45	Node108	10Gbps	1	2ms	100
+Node45	Node241	10Gbps	1	2ms	100
+Node46	Node51	10Gbps	1	2ms	100
+Node46	Node64	10Gbps	1	2ms	100
+Node46	Node91	10Gbps	1	2ms	100
+Node46	Node94	10Gbps	1	2ms	100
+Node46	Node105	10Gbps	1	2ms	100
+Node46	Node106	10Gbps	1	2ms	100
+Node46	Node116	10Gbps	1	2ms	100
+Node46	Node144	10Gbps	1	2ms	100
+Node46	Node145	10Gbps	1	2ms	100
+Node46	Node153	10Gbps	1	2ms	100
+Node46	Node157	10Gbps	1	2ms	100
+Node46	Node214	10Gbps	1	2ms	100
+Node46	Node273	10Gbps	1	2ms	100
+Node46	Node280	10Gbps	1	2ms	100
+Node46	Node342	10Gbps	1	2ms	100
+Node46	Node356	10Gbps	1	2ms	100
+Node46	Node369	10Gbps	1	2ms	100
+Node46	Node403	10Gbps	1	2ms	100
+Node46	Node425	10Gbps	1	2ms	100
+Node46	Node426	10Gbps	1	2ms	100
+Node46	Node436	10Gbps	1	2ms	100
+Node46	Node449	10Gbps	1	2ms	100
+Node46	Node468	10Gbps	1	2ms	100
+Node46	Node481	10Gbps	1	2ms	100
+Node46	Node488	10Gbps	1	2ms	100
+Node46	Node498	10Gbps	1	2ms	100
+Node46	Node505	10Gbps	1	2ms	100
+Node46	Node527	10Gbps	1	2ms	100
+Node46	Node537	10Gbps	1	2ms	100
+Node46	Node551	10Gbps	1	2ms	100
+Node46	Node554	10Gbps	1	2ms	100
+Node46	Node557	10Gbps	1	2ms	100
+Node46	Node594	10Gbps	1	2ms	100
+Node46	Node596	10Gbps	1	2ms	100
+Node46	Node614	10Gbps	1	2ms	100
+Node46	Node648	10Gbps	1	2ms	100
+Node46	Node652	10Gbps	1	2ms	100
+Node46	Node670	10Gbps	1	2ms	100
+Node47	Node90	10Gbps	1	2ms	100
+Node47	Node108	10Gbps	1	2ms	100
+Node47	Node115	10Gbps	1	2ms	100
+Node48	Node87	10Gbps	1	2ms	100
+Node48	Node88	10Gbps	1	2ms	100
+Node48	Node89	10Gbps	1	2ms	100
+Node48	Node274	10Gbps	1	2ms	100
+Node49	Node87	10Gbps	1	2ms	100
+Node49	Node89	10Gbps	1	2ms	100
+Node49	Node274	10Gbps	1	2ms	100
+Node50	Node109	10Gbps	1	2ms	100
+Node50	Node126	10Gbps	1	2ms	100
+Node50	Node143	10Gbps	1	2ms	100
+Node50	Node229	10Gbps	1	2ms	100
+Node50	Node243	10Gbps	1	2ms	100
+Node51	Node76	10Gbps	1	2ms	100
+Node51	Node94	10Gbps	1	2ms	100
+Node51	Node125	10Gbps	1	2ms	100
+Node51	Node126	10Gbps	1	2ms	100
+Node51	Node143	10Gbps	1	2ms	100
+Node51	Node144	10Gbps	1	2ms	100
+Node51	Node146	10Gbps	1	2ms	100
+Node51	Node147	10Gbps	1	2ms	100
+Node51	Node148	10Gbps	1	2ms	100
+Node51	Node217	10Gbps	1	2ms	100
+Node51	Node229	10Gbps	1	2ms	100
+Node51	Node242	10Gbps	1	2ms	100
+Node51	Node297	10Gbps	1	2ms	100
+Node51	Node314	10Gbps	1	2ms	100
+Node51	Node329	10Gbps	1	2ms	100
+Node51	Node370	10Gbps	1	2ms	100
+Node51	Node409	10Gbps	1	2ms	100
+Node51	Node425	10Gbps	1	2ms	100
+Node51	Node518	10Gbps	1	2ms	100
+Node51	Node570	10Gbps	1	2ms	100
+Node51	Node596	10Gbps	1	2ms	100
+Node51	Node615	10Gbps	1	2ms	100
+Node51	Node637	10Gbps	1	2ms	100
+Node51	Node654	10Gbps	1	2ms	100
+Node51	Node691	10Gbps	1	2ms	100
+Node52	Node101	10Gbps	1	2ms	100
+Node52	Node102	10Gbps	1	2ms	100
+Node52	Node111	10Gbps	1	2ms	100
+Node52	Node121	10Gbps	1	2ms	100
+Node52	Node245	10Gbps	1	2ms	100
+Node52	Node276	10Gbps	1	2ms	100
+Node53	Node102	10Gbps	1	2ms	100
+Node53	Node110	10Gbps	1	2ms	100
+Node53	Node111	10Gbps	1	2ms	100
+Node53	Node121	10Gbps	1	2ms	100
+Node54	Node112	10Gbps	1	2ms	100
+Node54	Node121	10Gbps	1	2ms	100
+Node54	Node277	10Gbps	1	2ms	100
+Node55	Node57	10Gbps	1	2ms	100
+Node55	Node58	10Gbps	1	2ms	100
+Node55	Node59	10Gbps	1	2ms	100
+Node55	Node60	10Gbps	1	2ms	100
+Node55	Node61	10Gbps	1	2ms	100
+Node55	Node70	10Gbps	1	2ms	100
+Node55	Node71	10Gbps	1	2ms	100
+Node55	Node110	10Gbps	1	2ms	100
+Node55	Node114	10Gbps	1	2ms	100
+Node56	Node72	10Gbps	1	2ms	100
+Node56	Node110	10Gbps	1	2ms	100
+Node56	Node111	10Gbps	1	2ms	100
+Node56	Node113	10Gbps	1	2ms	100
+Node56	Node114	10Gbps	1	2ms	100
+Node57	Node66	10Gbps	1	2ms	100
+Node57	Node144	10Gbps	1	2ms	100
+Node57	Node150	10Gbps	1	2ms	100
+Node57	Node156	10Gbps	1	2ms	100
+Node57	Node197	10Gbps	1	2ms	100
+Node57	Node203	10Gbps	1	2ms	100
+Node57	Node246	10Gbps	1	2ms	100
+Node57	Node278	10Gbps	1	2ms	100
+Node57	Node298	10Gbps	1	2ms	100
+Node57	Node343	10Gbps	1	2ms	100
+Node57	Node359	10Gbps	1	2ms	100
+Node57	Node360	10Gbps	1	2ms	100
+Node57	Node395	10Gbps	1	2ms	100
+Node57	Node427	10Gbps	1	2ms	100
+Node57	Node519	10Gbps	1	2ms	100
+Node57	Node674	10Gbps	1	2ms	100
+Node58	Node66	10Gbps	1	2ms	100
+Node58	Node143	10Gbps	1	2ms	100
+Node58	Node144	10Gbps	1	2ms	100
+Node58	Node150	10Gbps	1	2ms	100
+Node58	Node156	10Gbps	1	2ms	100
+Node58	Node197	10Gbps	1	2ms	100
+Node58	Node202	10Gbps	1	2ms	100
+Node58	Node203	10Gbps	1	2ms	100
+Node58	Node218	10Gbps	1	2ms	100
+Node58	Node225	10Gbps	1	2ms	100
+Node58	Node246	10Gbps	1	2ms	100
+Node58	Node278	10Gbps	1	2ms	100
+Node58	Node298	10Gbps	1	2ms	100
+Node58	Node343	10Gbps	1	2ms	100
+Node58	Node359	10Gbps	1	2ms	100
+Node58	Node371	10Gbps	1	2ms	100
+Node58	Node395	10Gbps	1	2ms	100
+Node58	Node396	10Gbps	1	2ms	100
+Node58	Node412	10Gbps	1	2ms	100
+Node58	Node427	10Gbps	1	2ms	100
+Node58	Node519	10Gbps	1	2ms	100
+Node58	Node692	10Gbps	1	2ms	100
+Node59	Node66	10Gbps	1	2ms	100
+Node59	Node116	10Gbps	1	2ms	100
+Node59	Node144	10Gbps	1	2ms	100
+Node59	Node150	10Gbps	1	2ms	100
+Node59	Node156	10Gbps	1	2ms	100
+Node59	Node203	10Gbps	1	2ms	100
+Node59	Node246	10Gbps	1	2ms	100
+Node59	Node278	10Gbps	1	2ms	100
+Node59	Node298	10Gbps	1	2ms	100
+Node59	Node343	10Gbps	1	2ms	100
+Node59	Node356	10Gbps	1	2ms	100
+Node59	Node359	10Gbps	1	2ms	100
+Node59	Node395	10Gbps	1	2ms	100
+Node59	Node412	10Gbps	1	2ms	100
+Node59	Node427	10Gbps	1	2ms	100
+Node59	Node511	10Gbps	1	2ms	100
+Node59	Node519	10Gbps	1	2ms	100
+Node59	Node674	10Gbps	1	2ms	100
+Node59	Node675	10Gbps	1	2ms	100
+Node60	Node66	10Gbps	1	2ms	100
+Node60	Node116	10Gbps	1	2ms	100
+Node60	Node117	10Gbps	1	2ms	100
+Node60	Node118	10Gbps	1	2ms	100
+Node60	Node144	10Gbps	1	2ms	100
+Node60	Node150	10Gbps	1	2ms	100
+Node60	Node156	10Gbps	1	2ms	100
+Node60	Node203	10Gbps	1	2ms	100
+Node60	Node246	10Gbps	1	2ms	100
+Node60	Node278	10Gbps	1	2ms	100
+Node60	Node298	10Gbps	1	2ms	100
+Node60	Node343	10Gbps	1	2ms	100
+Node60	Node359	10Gbps	1	2ms	100
+Node60	Node395	10Gbps	1	2ms	100
+Node60	Node427	10Gbps	1	2ms	100
+Node60	Node519	10Gbps	1	2ms	100
+Node61	Node66	10Gbps	1	2ms	100
+Node61	Node144	10Gbps	1	2ms	100
+Node61	Node150	10Gbps	1	2ms	100
+Node61	Node156	10Gbps	1	2ms	100
+Node61	Node197	10Gbps	1	2ms	100
+Node61	Node203	10Gbps	1	2ms	100
+Node61	Node246	10Gbps	1	2ms	100
+Node61	Node278	10Gbps	1	2ms	100
+Node61	Node298	10Gbps	1	2ms	100
+Node61	Node343	10Gbps	1	2ms	100
+Node61	Node359	10Gbps	1	2ms	100
+Node61	Node395	10Gbps	1	2ms	100
+Node61	Node427	10Gbps	1	2ms	100
+Node61	Node519	10Gbps	1	2ms	100
+Node62	Node94	10Gbps	1	2ms	100
+Node62	Node142	10Gbps	1	2ms	100
+Node62	Node151	10Gbps	1	2ms	100
+Node62	Node248	10Gbps	1	2ms	100
+Node62	Node280	10Gbps	1	2ms	100
+Node62	Node300	10Gbps	1	2ms	100
+Node62	Node316	10Gbps	1	2ms	100
+Node62	Node330	10Gbps	1	2ms	100
+Node62	Node344	10Gbps	1	2ms	100
+Node62	Node413	10Gbps	1	2ms	100
+Node62	Node520	10Gbps	1	2ms	100
+Node62	Node571	10Gbps	1	2ms	100
+Node62	Node597	10Gbps	1	2ms	100
+Node62	Node618	10Gbps	1	2ms	100
+Node62	Node655	10Gbps	1	2ms	100
+Node63	Node120	10Gbps	1	2ms	100
+Node63	Node152	10Gbps	1	2ms	100
+Node63	Node300	10Gbps	1	2ms	100
+Node63	Node330	10Gbps	1	2ms	100
+Node63	Node344	10Gbps	1	2ms	100
+Node63	Node655	10Gbps	1	2ms	100
+Node64	Node93	10Gbps	1	2ms	100
+Node64	Node94	10Gbps	1	2ms	100
+Node64	Node248	10Gbps	1	2ms	100
+Node64	Node280	10Gbps	1	2ms	100
+Node64	Node300	10Gbps	1	2ms	100
+Node64	Node316	10Gbps	1	2ms	100
+Node64	Node330	10Gbps	1	2ms	100
+Node64	Node344	10Gbps	1	2ms	100
+Node64	Node413	10Gbps	1	2ms	100
+Node64	Node425	10Gbps	1	2ms	100
+Node64	Node520	10Gbps	1	2ms	100
+Node64	Node571	10Gbps	1	2ms	100
+Node64	Node597	10Gbps	1	2ms	100
+Node64	Node618	10Gbps	1	2ms	100
+Node64	Node655	10Gbps	1	2ms	100
+Node64	Node676	10Gbps	1	2ms	100
+Node65	Node104	10Gbps	1	2ms	100
+Node65	Node121	10Gbps	1	2ms	100
+Node66	Node82	10Gbps	1	2ms	100
+Node66	Node109	10Gbps	1	2ms	100
+Node66	Node122	10Gbps	1	2ms	100
+Node66	Node184	10Gbps	1	2ms	100
+Node66	Node189	10Gbps	1	2ms	100
+Node66	Node250	10Gbps	1	2ms	100
+Node66	Node281	10Gbps	1	2ms	100
+Node66	Node301	10Gbps	1	2ms	100
+Node66	Node318	10Gbps	1	2ms	100
+Node66	Node331	10Gbps	1	2ms	100
+Node66	Node345	10Gbps	1	2ms	100
+Node66	Node361	10Gbps	1	2ms	100
+Node66	Node381	10Gbps	1	2ms	100
+Node66	Node389	10Gbps	1	2ms	100
+Node66	Node415	10Gbps	1	2ms	100
+Node66	Node500	10Gbps	1	2ms	100
+Node66	Node506	10Gbps	1	2ms	100
+Node66	Node531	10Gbps	1	2ms	100
+Node66	Node543	10Gbps	1	2ms	100
+Node66	Node547	10Gbps	1	2ms	100
+Node66	Node562	10Gbps	1	2ms	100
+Node66	Node596	10Gbps	1	2ms	100
+Node66	Node601	10Gbps	1	2ms	100
+Node66	Node620	10Gbps	1	2ms	100
+Node66	Node640	10Gbps	1	2ms	100
+Node66	Node656	10Gbps	1	2ms	100
+Node66	Node677	10Gbps	1	2ms	100
+Node67	Node131	10Gbps	1	2ms	100
+Node67	Node252	10Gbps	1	2ms	100
+Node67	Node416	10Gbps	1	2ms	100
+Node68	Node123	10Gbps	1	2ms	100
+Node68	Node140	10Gbps	1	2ms	100
+Node68	Node141	10Gbps	1	2ms	100
+Node68	Node163	10Gbps	1	2ms	100
+Node68	Node164	10Gbps	1	2ms	100
+Node68	Node252	10Gbps	1	2ms	100
+Node68	Node416	10Gbps	1	2ms	100
+Node69	Node82	10Gbps	1	2ms	100
+Node69	Node83	10Gbps	1	2ms	100
+Node69	Node123	10Gbps	1	2ms	100
+Node69	Node132	10Gbps	1	2ms	100
+Node69	Node139	10Gbps	1	2ms	100
+Node69	Node251	10Gbps	1	2ms	100
+Node69	Node252	10Gbps	1	2ms	100
+Node69	Node416	10Gbps	1	2ms	100
+Node70	Node74	10Gbps	1	2ms	100
+Node70	Node149	10Gbps	1	2ms	100
+Node70	Node176	10Gbps	1	2ms	100
+Node70	Node185	10Gbps	1	2ms	100
+Node70	Node188	10Gbps	1	2ms	100
+Node70	Node191	10Gbps	1	2ms	100
+Node70	Node206	10Gbps	1	2ms	100
+Node70	Node207	10Gbps	1	2ms	100
+Node70	Node210	10Gbps	1	2ms	100
+Node70	Node253	10Gbps	1	2ms	100
+Node70	Node282	10Gbps	1	2ms	100
+Node70	Node295	10Gbps	1	2ms	100
+Node70	Node302	10Gbps	1	2ms	100
+Node70	Node312	10Gbps	1	2ms	100
+Node70	Node319	10Gbps	1	2ms	100
+Node70	Node327	10Gbps	1	2ms	100
+Node70	Node332	10Gbps	1	2ms	100
+Node70	Node363	10Gbps	1	2ms	100
+Node70	Node373	10Gbps	1	2ms	100
+Node70	Node382	10Gbps	1	2ms	100
+Node70	Node391	10Gbps	1	2ms	100
+Node70	Node399	10Gbps	1	2ms	100
+Node70	Node417	10Gbps	1	2ms	100
+Node70	Node430	10Gbps	1	2ms	100
+Node70	Node484	10Gbps	1	2ms	100
+Node70	Node574	10Gbps	1	2ms	100
+Node70	Node602	10Gbps	1	2ms	100
+Node70	Node669	10Gbps	1	2ms	100
+Node70	Node679	10Gbps	1	2ms	100
+Node70	Node689	10Gbps	1	2ms	100
+Node71	Node74	10Gbps	1	2ms	100
+Node71	Node178	10Gbps	1	2ms	100
+Node71	Node185	10Gbps	1	2ms	100
+Node71	Node188	10Gbps	1	2ms	100
+Node71	Node191	10Gbps	1	2ms	100
+Node71	Node206	10Gbps	1	2ms	100
+Node71	Node207	10Gbps	1	2ms	100
+Node71	Node210	10Gbps	1	2ms	100
+Node71	Node253	10Gbps	1	2ms	100
+Node71	Node282	10Gbps	1	2ms	100
+Node71	Node295	10Gbps	1	2ms	100
+Node71	Node302	10Gbps	1	2ms	100
+Node71	Node312	10Gbps	1	2ms	100
+Node71	Node319	10Gbps	1	2ms	100
+Node71	Node327	10Gbps	1	2ms	100
+Node71	Node332	10Gbps	1	2ms	100
+Node71	Node363	10Gbps	1	2ms	100
+Node71	Node373	10Gbps	1	2ms	100
+Node71	Node382	10Gbps	1	2ms	100
+Node71	Node391	10Gbps	1	2ms	100
+Node71	Node399	10Gbps	1	2ms	100
+Node71	Node417	10Gbps	1	2ms	100
+Node71	Node430	10Gbps	1	2ms	100
+Node71	Node484	10Gbps	1	2ms	100
+Node71	Node574	10Gbps	1	2ms	100
+Node71	Node602	10Gbps	1	2ms	100
+Node71	Node669	10Gbps	1	2ms	100
+Node71	Node679	10Gbps	1	2ms	100
+Node71	Node689	10Gbps	1	2ms	100
+Node72	Node74	10Gbps	1	2ms	100
+Node72	Node154	10Gbps	1	2ms	100
+Node72	Node183	10Gbps	1	2ms	100
+Node72	Node185	10Gbps	1	2ms	100
+Node72	Node188	10Gbps	1	2ms	100
+Node72	Node191	10Gbps	1	2ms	100
+Node72	Node195	10Gbps	1	2ms	100
+Node72	Node201	10Gbps	1	2ms	100
+Node72	Node205	10Gbps	1	2ms	100
+Node72	Node206	10Gbps	1	2ms	100
+Node72	Node207	10Gbps	1	2ms	100
+Node72	Node210	10Gbps	1	2ms	100
+Node72	Node253	10Gbps	1	2ms	100
+Node72	Node282	10Gbps	1	2ms	100
+Node72	Node295	10Gbps	1	2ms	100
+Node72	Node302	10Gbps	1	2ms	100
+Node72	Node312	10Gbps	1	2ms	100
+Node72	Node319	10Gbps	1	2ms	100
+Node72	Node327	10Gbps	1	2ms	100
+Node72	Node332	10Gbps	1	2ms	100
+Node72	Node363	10Gbps	1	2ms	100
+Node72	Node373	10Gbps	1	2ms	100
+Node72	Node382	10Gbps	1	2ms	100
+Node72	Node391	10Gbps	1	2ms	100
+Node72	Node399	10Gbps	1	2ms	100
+Node72	Node417	10Gbps	1	2ms	100
+Node72	Node430	10Gbps	1	2ms	100
+Node72	Node484	10Gbps	1	2ms	100
+Node72	Node574	10Gbps	1	2ms	100
+Node72	Node602	10Gbps	1	2ms	100
+Node72	Node622	10Gbps	1	2ms	100
+Node72	Node649	10Gbps	1	2ms	100
+Node72	Node669	10Gbps	1	2ms	100
+Node72	Node679	10Gbps	1	2ms	100
+Node72	Node689	10Gbps	1	2ms	100
+Node73	Node158	10Gbps	1	2ms	100
+Node73	Node522	10Gbps	1	2ms	100
+Node73	Node579	10Gbps	1	2ms	100
+Node74	Node93	10Gbps	1	2ms	100
+Node74	Node94	10Gbps	1	2ms	100
+Node75	Node135	10Gbps	1	2ms	100
+Node75	Node136	10Gbps	1	2ms	100
+Node75	Node137	10Gbps	1	2ms	100
+Node75	Node143	10Gbps	1	2ms	100
+Node75	Node284	10Gbps	1	2ms	100
+Node75	Node642	10Gbps	1	2ms	100
+Node75	Node657	10Gbps	1	2ms	100
+Node76	Node77	10Gbps	1	2ms	100
+Node76	Node136	10Gbps	1	2ms	100
+Node76	Node143	10Gbps	1	2ms	100
+Node76	Node284	10Gbps	1	2ms	100
+Node76	Node680	10Gbps	1	2ms	100
+Node77	Node86	10Gbps	1	2ms	100
+Node77	Node98	10Gbps	1	2ms	100
+Node77	Node136	10Gbps	1	2ms	100
+Node77	Node138	10Gbps	1	2ms	100
+Node77	Node143	10Gbps	1	2ms	100
+Node77	Node144	10Gbps	1	2ms	100
+Node77	Node284	10Gbps	1	2ms	100
+Node77	Node422	10Gbps	1	2ms	100
+Node77	Node605	10Gbps	1	2ms	100
+Node77	Node642	10Gbps	1	2ms	100
+Node77	Node657	10Gbps	1	2ms	100
+Node77	Node680	10Gbps	1	2ms	100
+Node78	Node127	10Gbps	1	2ms	100
+Node79	Node86	10Gbps	1	2ms	100
+Node79	Node145	10Gbps	1	2ms	100
+Node79	Node156	10Gbps	1	2ms	100
+Node79	Node179	10Gbps	1	2ms	100
+Node79	Node192	10Gbps	1	2ms	100
+Node79	Node258	10Gbps	1	2ms	100
+Node79	Node306	10Gbps	1	2ms	100
+Node79	Node320	10Gbps	1	2ms	100
+Node79	Node421	10Gbps	1	2ms	100
+Node79	Node658	10Gbps	1	2ms	100
+Node79	Node659	10Gbps	1	2ms	100
+Node79	Node661	10Gbps	1	2ms	100
+Node79	Node681	10Gbps	1	2ms	100
+Node80	Node86	10Gbps	1	2ms	100
+Node80	Node156	10Gbps	1	2ms	100
+Node80	Node160	10Gbps	1	2ms	100
+Node80	Node179	10Gbps	1	2ms	100
+Node80	Node193	10Gbps	1	2ms	100
+Node80	Node258	10Gbps	1	2ms	100
+Node80	Node306	10Gbps	1	2ms	100
+Node80	Node661	10Gbps	1	2ms	100
+Node80	Node681	10Gbps	1	2ms	100
+Node81	Node86	10Gbps	1	2ms	100
+Node81	Node154	10Gbps	1	2ms	100
+Node81	Node155	10Gbps	1	2ms	100
+Node81	Node156	10Gbps	1	2ms	100
+Node81	Node157	10Gbps	1	2ms	100
+Node81	Node166	10Gbps	1	2ms	100
+Node81	Node167	10Gbps	1	2ms	100
+Node81	Node168	10Gbps	1	2ms	100
+Node81	Node179	10Gbps	1	2ms	100
+Node81	Node192	10Gbps	1	2ms	100
+Node81	Node258	10Gbps	1	2ms	100
+Node81	Node306	10Gbps	1	2ms	100
+Node81	Node422	10Gbps	1	2ms	100
+Node81	Node661	10Gbps	1	2ms	100
+Node81	Node681	10Gbps	1	2ms	100
+Node81	Node697	10Gbps	1	2ms	100
+Node82	Node85	10Gbps	1	2ms	100
+Node82	Node87	10Gbps	1	2ms	100
+Node82	Node89	10Gbps	1	2ms	100
+Node82	Node164	10Gbps	1	2ms	100
+Node82	Node179	10Gbps	1	2ms	100
+Node82	Node231	10Gbps	1	2ms	100
+Node82	Node261	10Gbps	1	2ms	100
+Node82	Node288	10Gbps	1	2ms	100
+Node82	Node307	10Gbps	1	2ms	100
+Node82	Node321	10Gbps	1	2ms	100
+Node82	Node337	10Gbps	1	2ms	100
+Node82	Node374	10Gbps	1	2ms	100
+Node82	Node400	10Gbps	1	2ms	100
+Node82	Node432	10Gbps	1	2ms	100
+Node82	Node441	10Gbps	1	2ms	100
+Node82	Node454	10Gbps	1	2ms	100
+Node82	Node462	10Gbps	1	2ms	100
+Node82	Node472	10Gbps	1	2ms	100
+Node82	Node478	10Gbps	1	2ms	100
+Node82	Node485	10Gbps	1	2ms	100
+Node82	Node583	10Gbps	1	2ms	100
+Node82	Node607	10Gbps	1	2ms	100
+Node82	Node627	10Gbps	1	2ms	100
+Node82	Node644	10Gbps	1	2ms	100
+Node82	Node662	10Gbps	1	2ms	100
+Node82	Node682	10Gbps	1	2ms	100
+Node83	Node85	10Gbps	1	2ms	100
+Node83	Node87	10Gbps	1	2ms	100
+Node83	Node231	10Gbps	1	2ms	100
+Node83	Node261	10Gbps	1	2ms	100
+Node83	Node288	10Gbps	1	2ms	100
+Node83	Node307	10Gbps	1	2ms	100
+Node83	Node321	10Gbps	1	2ms	100
+Node83	Node337	10Gbps	1	2ms	100
+Node83	Node374	10Gbps	1	2ms	100
+Node83	Node432	10Gbps	1	2ms	100
+Node83	Node441	10Gbps	1	2ms	100
+Node83	Node454	10Gbps	1	2ms	100
+Node83	Node462	10Gbps	1	2ms	100
+Node83	Node472	10Gbps	1	2ms	100
+Node83	Node478	10Gbps	1	2ms	100
+Node83	Node485	10Gbps	1	2ms	100
+Node83	Node583	10Gbps	1	2ms	100
+Node83	Node627	10Gbps	1	2ms	100
+Node83	Node644	10Gbps	1	2ms	100
+Node83	Node662	10Gbps	1	2ms	100
+Node83	Node682	10Gbps	1	2ms	100
+Node84	Node133	10Gbps	1	2ms	100
+Node84	Node289	10Gbps	1	2ms	100
+Node85	Node86	10Gbps	1	2ms	100
+Node85	Node131	10Gbps	1	2ms	100
+Node85	Node134	10Gbps	1	2ms	100
+Node85	Node136	10Gbps	1	2ms	100
+Node85	Node137	10Gbps	1	2ms	100
+Node85	Node138	10Gbps	1	2ms	100
+Node85	Node290	10Gbps	1	2ms	100
+Node86	Node87	10Gbps	1	2ms	100
+Node86	Node97	10Gbps	1	2ms	100
+Node86	Node137	10Gbps	1	2ms	100
+Node86	Node141	10Gbps	1	2ms	100
+Node86	Node162	10Gbps	1	2ms	100
+Node86	Node232	10Gbps	1	2ms	100
+Node86	Node262	10Gbps	1	2ms	100
+Node86	Node422	10Gbps	1	2ms	100
+Node86	Node584	10Gbps	1	2ms	100
+Node86	Node608	10Gbps	1	2ms	100
+Node86	Node628	10Gbps	1	2ms	100
+Node86	Node646	10Gbps	1	2ms	100
+Node86	Node658	10Gbps	1	2ms	100
+Node86	Node659	10Gbps	1	2ms	100
+Node87	Node88	10Gbps	1	2ms	100
+Node87	Node89	10Gbps	1	2ms	100
+Node87	Node127	10Gbps	1	2ms	100
+Node88	Node89	10Gbps	1	2ms	100
+Node88	Node132	10Gbps	1	2ms	100
+Node89	Node89	10Gbps	1	2ms	100
+Node89	Node127	10Gbps	1	2ms	100
+Node89	Node138	10Gbps	1	2ms	100
+Node89	Node161	10Gbps	1	2ms	100
+Node90	Node263	10Gbps	1	2ms	100
+Node91	Node139	10Gbps	1	2ms	100
+Node91	Node141	10Gbps	1	2ms	100
+Node91	Node163	10Gbps	1	2ms	100
+Node91	Node164	10Gbps	1	2ms	100
+Node91	Node291	10Gbps	1	2ms	100
+Node91	Node308	10Gbps	1	2ms	100
+Node91	Node322	10Gbps	1	2ms	100
+Node91	Node339	10Gbps	1	2ms	100
+Node91	Node366	10Gbps	1	2ms	100
+Node91	Node376	10Gbps	1	2ms	100
+Node91	Node384	10Gbps	1	2ms	100
+Node91	Node402	10Gbps	1	2ms	100
+Node91	Node424	10Gbps	1	2ms	100
+Node91	Node425	10Gbps	1	2ms	100
+Node91	Node434	10Gbps	1	2ms	100
+Node91	Node464	10Gbps	1	2ms	100
+Node91	Node502	10Gbps	1	2ms	100
+Node91	Node509	10Gbps	1	2ms	100
+Node91	Node588	10Gbps	1	2ms	100
+Node91	Node609	10Gbps	1	2ms	100
+Node91	Node629	10Gbps	1	2ms	100
+Node92	Node139	10Gbps	1	2ms	100
+Node92	Node141	10Gbps	1	2ms	100
+Node92	Node180	10Gbps	1	2ms	100
+Node93	Node99	10Gbps	1	2ms	100
+Node93	Node100	10Gbps	1	2ms	100
+Node93	Node116	10Gbps	1	2ms	100
+Node93	Node154	10Gbps	1	2ms	100
+Node93	Node155	10Gbps	1	2ms	100
+Node93	Node156	10Gbps	1	2ms	100
+Node93	Node157	10Gbps	1	2ms	100
+Node93	Node165	10Gbps	1	2ms	100
+Node93	Node167	10Gbps	1	2ms	100
+Node93	Node181	10Gbps	1	2ms	100
+Node93	Node233	10Gbps	1	2ms	100
+Node93	Node265	10Gbps	1	2ms	100
+Node93	Node309	10Gbps	1	2ms	100
+Node93	Node323	10Gbps	1	2ms	100
+Node93	Node340	10Gbps	1	2ms	100
+Node93	Node352	10Gbps	1	2ms	100
+Node93	Node368	10Gbps	1	2ms	100
+Node93	Node403	10Gbps	1	2ms	100
+Node93	Node475	10Gbps	1	2ms	100
+Node93	Node510	10Gbps	1	2ms	100
+Node93	Node566	10Gbps	1	2ms	100
+Node93	Node589	10Gbps	1	2ms	100
+Node93	Node611	10Gbps	1	2ms	100
+Node93	Node630	10Gbps	1	2ms	100
+Node93	Node648	10Gbps	1	2ms	100
+Node93	Node664	10Gbps	1	2ms	100
+Node93	Node687	10Gbps	1	2ms	100
+Node94	Node97	10Gbps	1	2ms	100
+Node94	Node116	10Gbps	1	2ms	100
+Node94	Node157	10Gbps	1	2ms	100
+Node94	Node165	10Gbps	1	2ms	100
+Node94	Node181	10Gbps	1	2ms	100
+Node94	Node183	10Gbps	1	2ms	100
+Node94	Node233	10Gbps	1	2ms	100
+Node94	Node265	10Gbps	1	2ms	100
+Node94	Node292	10Gbps	1	2ms	100
+Node94	Node298	10Gbps	1	2ms	100
+Node94	Node302	10Gbps	1	2ms	100
+Node94	Node309	10Gbps	1	2ms	100
+Node94	Node323	10Gbps	1	2ms	100
+Node94	Node340	10Gbps	1	2ms	100
+Node94	Node352	10Gbps	1	2ms	100
+Node94	Node368	10Gbps	1	2ms	100
+Node94	Node382	10Gbps	1	2ms	100
+Node94	Node386	10Gbps	1	2ms	100
+Node94	Node403	10Gbps	1	2ms	100
+Node94	Node425	10Gbps	1	2ms	100
+Node94	Node458	10Gbps	1	2ms	100
+Node94	Node475	10Gbps	1	2ms	100
+Node94	Node503	10Gbps	1	2ms	100
+Node94	Node510	10Gbps	1	2ms	100
+Node94	Node566	10Gbps	1	2ms	100
+Node94	Node574	10Gbps	1	2ms	100
+Node94	Node589	10Gbps	1	2ms	100
+Node94	Node602	10Gbps	1	2ms	100
+Node94	Node611	10Gbps	1	2ms	100
+Node94	Node630	10Gbps	1	2ms	100
+Node94	Node648	10Gbps	1	2ms	100
+Node94	Node664	10Gbps	1	2ms	100
+Node96	Node99	10Gbps	1	2ms	100
+Node96	Node136	10Gbps	1	2ms	100
+Node96	Node162	10Gbps	1	2ms	100
+Node96	Node215	10Gbps	1	2ms	100
+Node96	Node235	10Gbps	1	2ms	100
+Node96	Node268	10Gbps	1	2ms	100
+Node96	Node293	10Gbps	1	2ms	100
+Node96	Node310	10Gbps	1	2ms	100
+Node96	Node341	10Gbps	1	2ms	100
+Node96	Node406	10Gbps	1	2ms	100
+Node96	Node511	10Gbps	1	2ms	100
+Node96	Node631	10Gbps	1	2ms	100
+Node97	Node98	10Gbps	1	2ms	100
+Node97	Node99	10Gbps	1	2ms	100
+Node97	Node100	10Gbps	1	2ms	100
+Node97	Node107	10Gbps	1	2ms	100
+Node97	Node138	10Gbps	1	2ms	100
+Node97	Node161	10Gbps	1	2ms	100
+Node97	Node162	10Gbps	1	2ms	100
+Node97	Node215	10Gbps	1	2ms	100
+Node97	Node235	10Gbps	1	2ms	100
+Node97	Node266	10Gbps	1	2ms	100
+Node97	Node293	10Gbps	1	2ms	100
+Node97	Node310	10Gbps	1	2ms	100
+Node97	Node324	10Gbps	1	2ms	100
+Node97	Node341	10Gbps	1	2ms	100
+Node97	Node406	10Gbps	1	2ms	100
+Node97	Node511	10Gbps	1	2ms	100
+Node97	Node512	10Gbps	1	2ms	100
+Node97	Node513	10Gbps	1	2ms	100
+Node97	Node514	10Gbps	1	2ms	100
+Node97	Node515	10Gbps	1	2ms	100
+Node97	Node631	10Gbps	1	2ms	100
+Node98	Node106	10Gbps	1	2ms	100
+Node98	Node107	10Gbps	1	2ms	100
+Node98	Node116	10Gbps	1	2ms	100
+Node98	Node164	10Gbps	1	2ms	100
+Node98	Node167	10Gbps	1	2ms	100
+Node98	Node266	10Gbps	1	2ms	100
+Node98	Node269	10Gbps	1	2ms	100
+Node98	Node294	10Gbps	1	2ms	100
+Node98	Node325	10Gbps	1	2ms	100
+Node98	Node353	10Gbps	1	2ms	100
+Node98	Node394	10Gbps	1	2ms	100
+Node98	Node425	10Gbps	1	2ms	100
+Node98	Node466	10Gbps	1	2ms	100
+Node98	Node476	10Gbps	1	2ms	100
+Node98	Node479	10Gbps	1	2ms	100
+Node98	Node486	10Gbps	1	2ms	100
+Node98	Node497	10Gbps	1	2ms	100
+Node98	Node503	10Gbps	1	2ms	100
+Node98	Node516	10Gbps	1	2ms	100
+Node98	Node525	10Gbps	1	2ms	100
+Node98	Node532	10Gbps	1	2ms	100
+Node98	Node533	10Gbps	1	2ms	100
+Node98	Node542	10Gbps	1	2ms	100
+Node98	Node548	10Gbps	1	2ms	100
+Node98	Node567	10Gbps	1	2ms	100
+Node98	Node592	10Gbps	1	2ms	100
+Node98	Node612	10Gbps	1	2ms	100
+Node98	Node633	10Gbps	1	2ms	100
+Node98	Node667	10Gbps	1	2ms	100
+Node98	Node684	10Gbps	1	2ms	100
+Node99	Node105	10Gbps	1	2ms	100
+Node99	Node116	10Gbps	1	2ms	100
+Node99	Node117	10Gbps	1	2ms	100
+Node99	Node118	10Gbps	1	2ms	100
+Node99	Node167	10Gbps	1	2ms	100
+Node99	Node187	10Gbps	1	2ms	100
+Node99	Node269	10Gbps	1	2ms	100
+Node99	Node294	10Gbps	1	2ms	100
+Node99	Node325	10Gbps	1	2ms	100
+Node99	Node353	10Gbps	1	2ms	100
+Node99	Node394	10Gbps	1	2ms	100
+Node99	Node447	10Gbps	1	2ms	100
+Node99	Node466	10Gbps	1	2ms	100
+Node99	Node476	10Gbps	1	2ms	100
+Node99	Node479	10Gbps	1	2ms	100
+Node99	Node486	10Gbps	1	2ms	100
+Node99	Node497	10Gbps	1	2ms	100
+Node99	Node503	10Gbps	1	2ms	100
+Node99	Node516	10Gbps	1	2ms	100
+Node99	Node525	10Gbps	1	2ms	100
+Node99	Node532	10Gbps	1	2ms	100
+Node99	Node536	10Gbps	1	2ms	100
+Node99	Node542	10Gbps	1	2ms	100
+Node99	Node548	10Gbps	1	2ms	100
+Node99	Node567	10Gbps	1	2ms	100
+Node99	Node592	10Gbps	1	2ms	100
+Node99	Node612	10Gbps	1	2ms	100
+Node99	Node633	10Gbps	1	2ms	100
+Node99	Node667	10Gbps	1	2ms	100
+Node99	Node684	10Gbps	1	2ms	100
+Node100	Node105	10Gbps	1	2ms	100
+Node100	Node116	10Gbps	1	2ms	100
+Node100	Node143	10Gbps	1	2ms	100
+Node100	Node144	10Gbps	1	2ms	100
+Node100	Node187	10Gbps	1	2ms	100
+Node100	Node532	10Gbps	1	2ms	100
+Node100	Node536	10Gbps	1	2ms	100
+Node100	Node542	10Gbps	1	2ms	100
+Node100	Node548	10Gbps	1	2ms	100
+Node101	Node108	10Gbps	1	2ms	100
+Node102	Node108	10Gbps	1	2ms	100
+Node102	Node133	10Gbps	1	2ms	100
+Node103	Node110	10Gbps	1	2ms	100
+Node103	Node111	10Gbps	1	2ms	100
+Node104	Node241	10Gbps	1	2ms	100
+Node104	Node272	10Gbps	1	2ms	100
+Node105	Node145	10Gbps	1	2ms	100
+Node105	Node169	10Gbps	1	2ms	100
+Node105	Node170	10Gbps	1	2ms	100
+Node105	Node171	10Gbps	1	2ms	100
+Node105	Node214	10Gbps	1	2ms	100
+Node105	Node273	10Gbps	1	2ms	100
+Node105	Node296	10Gbps	1	2ms	100
+Node105	Node328	10Gbps	1	2ms	100
+Node105	Node342	10Gbps	1	2ms	100
+Node105	Node356	10Gbps	1	2ms	100
+Node105	Node369	10Gbps	1	2ms	100
+Node105	Node425	10Gbps	1	2ms	100
+Node105	Node436	10Gbps	1	2ms	100
+Node105	Node449	10Gbps	1	2ms	100
+Node105	Node459	10Gbps	1	2ms	100
+Node105	Node468	10Gbps	1	2ms	100
+Node105	Node481	10Gbps	1	2ms	100
+Node105	Node488	10Gbps	1	2ms	100
+Node105	Node498	10Gbps	1	2ms	100
+Node105	Node505	10Gbps	1	2ms	100
+Node105	Node527	10Gbps	1	2ms	100
+Node105	Node537	10Gbps	1	2ms	100
+Node105	Node554	10Gbps	1	2ms	100
+Node105	Node559	10Gbps	1	2ms	100
+Node105	Node594	10Gbps	1	2ms	100
+Node105	Node614	10Gbps	1	2ms	100
+Node105	Node636	10Gbps	1	2ms	100
+Node105	Node652	10Gbps	1	2ms	100
+Node105	Node670	10Gbps	1	2ms	100
+Node106	Node109	10Gbps	1	2ms	100
+Node106	Node139	10Gbps	1	2ms	100
+Node106	Node163	10Gbps	1	2ms	100
+Node106	Node164	10Gbps	1	2ms	100
+Node106	Node171	10Gbps	1	2ms	100
+Node106	Node214	10Gbps	1	2ms	100
+Node106	Node273	10Gbps	1	2ms	100
+Node106	Node296	10Gbps	1	2ms	100
+Node106	Node328	10Gbps	1	2ms	100
+Node106	Node342	10Gbps	1	2ms	100
+Node106	Node356	10Gbps	1	2ms	100
+Node106	Node369	10Gbps	1	2ms	100
+Node106	Node425	10Gbps	1	2ms	100
+Node106	Node436	10Gbps	1	2ms	100
+Node106	Node449	10Gbps	1	2ms	100
+Node106	Node459	10Gbps	1	2ms	100
+Node106	Node464	10Gbps	1	2ms	100
+Node106	Node468	10Gbps	1	2ms	100
+Node106	Node481	10Gbps	1	2ms	100
+Node106	Node488	10Gbps	1	2ms	100
+Node106	Node498	10Gbps	1	2ms	100
+Node106	Node505	10Gbps	1	2ms	100
+Node106	Node527	10Gbps	1	2ms	100
+Node106	Node537	10Gbps	1	2ms	100
+Node106	Node554	10Gbps	1	2ms	100
+Node106	Node559	10Gbps	1	2ms	100
+Node106	Node594	10Gbps	1	2ms	100
+Node106	Node614	10Gbps	1	2ms	100
+Node106	Node636	10Gbps	1	2ms	100
+Node106	Node652	10Gbps	1	2ms	100
+Node106	Node670	10Gbps	1	2ms	100
+Node107	Node144	10Gbps	1	2ms	100
+Node107	Node145	10Gbps	1	2ms	100
+Node107	Node167	10Gbps	1	2ms	100
+Node107	Node171	10Gbps	1	2ms	100
+Node107	Node179	10Gbps	1	2ms	100
+Node107	Node214	10Gbps	1	2ms	100
+Node107	Node273	10Gbps	1	2ms	100
+Node107	Node294	10Gbps	1	2ms	100
+Node107	Node356	10Gbps	1	2ms	100
+Node107	Node366	10Gbps	1	2ms	100
+Node107	Node425	10Gbps	1	2ms	100
+Node107	Node436	10Gbps	1	2ms	100
+Node107	Node449	10Gbps	1	2ms	100
+Node107	Node459	10Gbps	1	2ms	100
+Node107	Node468	10Gbps	1	2ms	100
+Node107	Node476	10Gbps	1	2ms	100
+Node107	Node481	10Gbps	1	2ms	100
+Node107	Node488	10Gbps	1	2ms	100
+Node107	Node498	10Gbps	1	2ms	100
+Node107	Node505	10Gbps	1	2ms	100
+Node107	Node527	10Gbps	1	2ms	100
+Node107	Node532	10Gbps	1	2ms	100
+Node107	Node537	10Gbps	1	2ms	100
+Node107	Node554	10Gbps	1	2ms	100
+Node107	Node559	10Gbps	1	2ms	100
+Node107	Node670	10Gbps	1	2ms	100
+Node109	Node217	10Gbps	1	2ms	100
+Node109	Node242	10Gbps	1	2ms	100
+Node109	Node314	10Gbps	1	2ms	100
+Node109	Node329	10Gbps	1	2ms	100
+Node109	Node409	10Gbps	1	2ms	100
+Node109	Node518	10Gbps	1	2ms	100
+Node109	Node596	10Gbps	1	2ms	100
+Node109	Node615	10Gbps	1	2ms	100
+Node109	Node637	10Gbps	1	2ms	100
+Node109	Node654	10Gbps	1	2ms	100
+Node109	Node673	10Gbps	1	2ms	100
+Node110	Node245	10Gbps	1	2ms	100
+Node110	Node276	10Gbps	1	2ms	100
+Node110	Node411	10Gbps	1	2ms	100
+Node113	Node116	10Gbps	1	2ms	100
+Node113	Node117	10Gbps	1	2ms	100
+Node113	Node118	10Gbps	1	2ms	100
+Node113	Node154	10Gbps	1	2ms	100
+Node113	Node155	10Gbps	1	2ms	100
+Node113	Node156	10Gbps	1	2ms	100
+Node113	Node157	10Gbps	1	2ms	100
+Node114	Node117	10Gbps	1	2ms	100
+Node114	Node157	10Gbps	1	2ms	100
+Node116	Node150	10Gbps	1	2ms	100
+Node116	Node175	10Gbps	1	2ms	100
+Node116	Node183	10Gbps	1	2ms	100
+Node116	Node246	10Gbps	1	2ms	100
+Node116	Node278	10Gbps	1	2ms	100
+Node116	Node298	10Gbps	1	2ms	100
+Node116	Node343	10Gbps	1	2ms	100
+Node116	Node359	10Gbps	1	2ms	100
+Node116	Node360	10Gbps	1	2ms	100
+Node116	Node371	10Gbps	1	2ms	100
+Node116	Node386	10Gbps	1	2ms	100
+Node116	Node388	10Gbps	1	2ms	100
+Node116	Node395	10Gbps	1	2ms	100
+Node116	Node427	10Gbps	1	2ms	100
+Node116	Node499	10Gbps	1	2ms	100
+Node116	Node519	10Gbps	1	2ms	100
+Node117	Node150	10Gbps	1	2ms	100
+Node117	Node175	10Gbps	1	2ms	100
+Node117	Node183	10Gbps	1	2ms	100
+Node117	Node230	10Gbps	1	2ms	100
+Node117	Node246	10Gbps	1	2ms	100
+Node117	Node278	10Gbps	1	2ms	100
+Node117	Node298	10Gbps	1	2ms	100
+Node117	Node343	10Gbps	1	2ms	100
+Node117	Node359	10Gbps	1	2ms	100
+Node117	Node386	10Gbps	1	2ms	100
+Node117	Node395	10Gbps	1	2ms	100
+Node117	Node427	10Gbps	1	2ms	100
+Node117	Node499	10Gbps	1	2ms	100
+Node117	Node519	10Gbps	1	2ms	100
+Node118	Node150	10Gbps	1	2ms	100
+Node118	Node174	10Gbps	1	2ms	100
+Node118	Node175	10Gbps	1	2ms	100
+Node118	Node183	10Gbps	1	2ms	100
+Node118	Node203	10Gbps	1	2ms	100
+Node118	Node278	10Gbps	1	2ms	100
+Node118	Node298	10Gbps	1	2ms	100
+Node118	Node343	10Gbps	1	2ms	100
+Node118	Node386	10Gbps	1	2ms	100
+Node118	Node395	10Gbps	1	2ms	100
+Node118	Node427	10Gbps	1	2ms	100
+Node118	Node499	10Gbps	1	2ms	100
+Node118	Node519	10Gbps	1	2ms	100
+Node119	Node152	10Gbps	1	2ms	100
+Node119	Node170	10Gbps	1	2ms	100
+Node119	Node248	10Gbps	1	2ms	100
+Node119	Node280	10Gbps	1	2ms	100
+Node119	Node300	10Gbps	1	2ms	100
+Node119	Node330	10Gbps	1	2ms	100
+Node119	Node344	10Gbps	1	2ms	100
+Node119	Node597	10Gbps	1	2ms	100
+Node119	Node655	10Gbps	1	2ms	100
+Node120	Node170	10Gbps	1	2ms	100
+Node120	Node171	10Gbps	1	2ms	100
+Node120	Node248	10Gbps	1	2ms	100
+Node120	Node280	10Gbps	1	2ms	100
+Node120	Node300	10Gbps	1	2ms	100
+Node120	Node330	10Gbps	1	2ms	100
+Node120	Node344	10Gbps	1	2ms	100
+Node120	Node413	10Gbps	1	2ms	100
+Node120	Node520	10Gbps	1	2ms	100
+Node120	Node571	10Gbps	1	2ms	100
+Node120	Node597	10Gbps	1	2ms	100
+Node120	Node618	10Gbps	1	2ms	100
+Node120	Node655	10Gbps	1	2ms	100
+Node121	Node414	10Gbps	1	2ms	100
+Node122	Node153	10Gbps	1	2ms	100
+Node122	Node177	10Gbps	1	2ms	100
+Node122	Node178	10Gbps	1	2ms	100
+Node122	Node198	10Gbps	1	2ms	100
+Node122	Node281	10Gbps	1	2ms	100
+Node122	Node301	10Gbps	1	2ms	100
+Node122	Node318	10Gbps	1	2ms	100
+Node122	Node331	10Gbps	1	2ms	100
+Node122	Node345	10Gbps	1	2ms	100
+Node122	Node361	10Gbps	1	2ms	100
+Node122	Node381	10Gbps	1	2ms	100
+Node122	Node389	10Gbps	1	2ms	100
+Node122	Node500	10Gbps	1	2ms	100
+Node122	Node506	10Gbps	1	2ms	100
+Node122	Node531	10Gbps	1	2ms	100
+Node122	Node543	10Gbps	1	2ms	100
+Node122	Node547	10Gbps	1	2ms	100
+Node122	Node552	10Gbps	1	2ms	100
+Node122	Node555	10Gbps	1	2ms	100
+Node122	Node558	10Gbps	1	2ms	100
+Node122	Node601	10Gbps	1	2ms	100
+Node122	Node620	10Gbps	1	2ms	100
+Node122	Node640	10Gbps	1	2ms	100
+Node122	Node656	10Gbps	1	2ms	100
+Node122	Node677	10Gbps	1	2ms	100
+Node122	Node694	10Gbps	1	2ms	100
+Node123	Node139	10Gbps	1	2ms	100
+Node123	Node251	10Gbps	1	2ms	100
+Node123	Node252	10Gbps	1	2ms	100
+Node123	Node416	10Gbps	1	2ms	100
+Node124	Node155	10Gbps	1	2ms	100
+Node124	Node185	10Gbps	1	2ms	100
+Node124	Node191	10Gbps	1	2ms	100
+Node124	Node205	10Gbps	1	2ms	100
+Node124	Node206	10Gbps	1	2ms	100
+Node124	Node207	10Gbps	1	2ms	100
+Node124	Node209	10Gbps	1	2ms	100
+Node124	Node211	10Gbps	1	2ms	100
+Node124	Node253	10Gbps	1	2ms	100
+Node124	Node282	10Gbps	1	2ms	100
+Node124	Node295	10Gbps	1	2ms	100
+Node124	Node302	10Gbps	1	2ms	100
+Node124	Node312	10Gbps	1	2ms	100
+Node124	Node319	10Gbps	1	2ms	100
+Node124	Node363	10Gbps	1	2ms	100
+Node124	Node373	10Gbps	1	2ms	100
+Node124	Node382	10Gbps	1	2ms	100
+Node124	Node417	10Gbps	1	2ms	100
+Node124	Node438	10Gbps	1	2ms	100
+Node124	Node452	10Gbps	1	2ms	100
+Node124	Node574	10Gbps	1	2ms	100
+Node124	Node602	10Gbps	1	2ms	100
+Node124	Node669	10Gbps	1	2ms	100
+Node125	Node138	10Gbps	1	2ms	100
+Node125	Node284	10Gbps	1	2ms	100
+Node125	Node605	10Gbps	1	2ms	100
+Node125	Node642	10Gbps	1	2ms	100
+Node125	Node657	10Gbps	1	2ms	100
+Node125	Node680	10Gbps	1	2ms	100
+Node126	Node135	10Gbps	1	2ms	100
+Node126	Node136	10Gbps	1	2ms	100
+Node126	Node137	10Gbps	1	2ms	100
+Node126	Node138	10Gbps	1	2ms	100
+Node126	Node284	10Gbps	1	2ms	100
+Node126	Node605	10Gbps	1	2ms	100
+Node126	Node657	10Gbps	1	2ms	100
+Node126	Node680	10Gbps	1	2ms	100
+Node127	Node286	10Gbps	1	2ms	100
+Node128	Node162	10Gbps	1	2ms	100
+Node128	Node186	10Gbps	1	2ms	100
+Node128	Node258	10Gbps	1	2ms	100
+Node128	Node335	10Gbps	1	2ms	100
+Node128	Node348	10Gbps	1	2ms	100
+Node128	Node421	10Gbps	1	2ms	100
+Node128	Node524	10Gbps	1	2ms	100
+Node129	Node159	10Gbps	1	2ms	100
+Node129	Node160	10Gbps	1	2ms	100
+Node129	Node162	10Gbps	1	2ms	100
+Node129	Node179	10Gbps	1	2ms	100
+Node129	Node186	10Gbps	1	2ms	100
+Node129	Node258	10Gbps	1	2ms	100
+Node129	Node335	10Gbps	1	2ms	100
+Node129	Node348	10Gbps	1	2ms	100
+Node129	Node524	10Gbps	1	2ms	100
+Node130	Node161	10Gbps	1	2ms	100
+Node130	Node162	10Gbps	1	2ms	100
+Node130	Node186	10Gbps	1	2ms	100
+Node130	Node258	10Gbps	1	2ms	100
+Node130	Node287	10Gbps	1	2ms	100
+Node130	Node335	10Gbps	1	2ms	100
+Node130	Node348	10Gbps	1	2ms	100
+Node130	Node364	10Gbps	1	2ms	100
+Node130	Node524	10Gbps	1	2ms	100
+Node131	Node160	10Gbps	1	2ms	100
+Node131	Node175	10Gbps	1	2ms	100
+Node131	Node192	10Gbps	1	2ms	100
+Node131	Node193	10Gbps	1	2ms	100
+Node131	Node226	10Gbps	1	2ms	100
+Node131	Node231	10Gbps	1	2ms	100
+Node131	Node261	10Gbps	1	2ms	100
+Node131	Node274	10Gbps	1	2ms	100
+Node131	Node288	10Gbps	1	2ms	100
+Node131	Node307	10Gbps	1	2ms	100
+Node131	Node321	10Gbps	1	2ms	100
+Node131	Node337	10Gbps	1	2ms	100
+Node131	Node349	10Gbps	1	2ms	100
+Node131	Node365	10Gbps	1	2ms	100
+Node131	Node374	10Gbps	1	2ms	100
+Node131	Node383	10Gbps	1	2ms	100
+Node131	Node400	10Gbps	1	2ms	100
+Node131	Node432	10Gbps	1	2ms	100
+Node131	Node441	10Gbps	1	2ms	100
+Node131	Node454	10Gbps	1	2ms	100
+Node131	Node462	10Gbps	1	2ms	100
+Node131	Node472	10Gbps	1	2ms	100
+Node131	Node508	10Gbps	1	2ms	100
+Node131	Node583	10Gbps	1	2ms	100
+Node131	Node607	10Gbps	1	2ms	100
+Node131	Node627	10Gbps	1	2ms	100
+Node131	Node644	10Gbps	1	2ms	100
+Node131	Node658	10Gbps	1	2ms	100
+Node131	Node659	10Gbps	1	2ms	100
+Node131	Node662	10Gbps	1	2ms	100
+Node131	Node682	10Gbps	1	2ms	100
+Node132	Node231	10Gbps	1	2ms	100
+Node132	Node261	10Gbps	1	2ms	100
+Node132	Node288	10Gbps	1	2ms	100
+Node132	Node307	10Gbps	1	2ms	100
+Node132	Node321	10Gbps	1	2ms	100
+Node132	Node337	10Gbps	1	2ms	100
+Node132	Node374	10Gbps	1	2ms	100
+Node132	Node400	10Gbps	1	2ms	100
+Node132	Node432	10Gbps	1	2ms	100
+Node132	Node441	10Gbps	1	2ms	100
+Node132	Node454	10Gbps	1	2ms	100
+Node132	Node462	10Gbps	1	2ms	100
+Node132	Node472	10Gbps	1	2ms	100
+Node132	Node478	10Gbps	1	2ms	100
+Node132	Node485	10Gbps	1	2ms	100
+Node132	Node583	10Gbps	1	2ms	100
+Node132	Node607	10Gbps	1	2ms	100
+Node132	Node627	10Gbps	1	2ms	100
+Node132	Node644	10Gbps	1	2ms	100
+Node132	Node662	10Gbps	1	2ms	100
+Node132	Node682	10Gbps	1	2ms	100
+Node133	Node289	10Gbps	1	2ms	100
+Node134	Node290	10Gbps	1	2ms	100
+Node135	Node628	10Gbps	1	2ms	100
+Node135	Node645	10Gbps	1	2ms	100
+Node136	Node161	10Gbps	1	2ms	100
+Node136	Node232	10Gbps	1	2ms	100
+Node136	Node262	10Gbps	1	2ms	100
+Node136	Node422	10Gbps	1	2ms	100
+Node136	Node584	10Gbps	1	2ms	100
+Node136	Node628	10Gbps	1	2ms	100
+Node136	Node645	10Gbps	1	2ms	100
+Node137	Node138	10Gbps	1	2ms	100
+Node137	Node161	10Gbps	1	2ms	100
+Node137	Node162	10Gbps	1	2ms	100
+Node137	Node232	10Gbps	1	2ms	100
+Node137	Node262	10Gbps	1	2ms	100
+Node137	Node422	10Gbps	1	2ms	100
+Node137	Node584	10Gbps	1	2ms	100
+Node137	Node628	10Gbps	1	2ms	100
+Node137	Node645	10Gbps	1	2ms	100
+Node137	Node646	10Gbps	1	2ms	100
+Node138	Node161	10Gbps	1	2ms	100
+Node138	Node232	10Gbps	1	2ms	100
+Node138	Node262	10Gbps	1	2ms	100
+Node138	Node422	10Gbps	1	2ms	100
+Node138	Node584	10Gbps	1	2ms	100
+Node138	Node608	10Gbps	1	2ms	100
+Node138	Node628	10Gbps	1	2ms	100
+Node138	Node645	10Gbps	1	2ms	100
+Node139	Node140	10Gbps	1	2ms	100
+Node139	Node145	10Gbps	1	2ms	100
+Node139	Node163	10Gbps	1	2ms	100
+Node139	Node179	10Gbps	1	2ms	100
+Node139	Node194	10Gbps	1	2ms	100
+Node139	Node291	10Gbps	1	2ms	100
+Node139	Node308	10Gbps	1	2ms	100
+Node139	Node322	10Gbps	1	2ms	100
+Node139	Node366	10Gbps	1	2ms	100
+Node139	Node376	10Gbps	1	2ms	100
+Node139	Node384	10Gbps	1	2ms	100
+Node139	Node402	10Gbps	1	2ms	100
+Node139	Node424	10Gbps	1	2ms	100
+Node139	Node434	10Gbps	1	2ms	100
+Node139	Node443	10Gbps	1	2ms	100
+Node139	Node463	10Gbps	1	2ms	100
+Node139	Node464	10Gbps	1	2ms	100
+Node139	Node474	10Gbps	1	2ms	100
+Node139	Node509	10Gbps	1	2ms	100
+Node139	Node588	10Gbps	1	2ms	100
+Node139	Node609	10Gbps	1	2ms	100
+Node140	Node145	10Gbps	1	2ms	100
+Node140	Node163	10Gbps	1	2ms	100
+Node140	Node164	10Gbps	1	2ms	100
+Node140	Node464	10Gbps	1	2ms	100
+Node140	Node474	10Gbps	1	2ms	100
+Node141	Node144	10Gbps	1	2ms	100
+Node141	Node145	10Gbps	1	2ms	100
+Node141	Node163	10Gbps	1	2ms	100
+Node141	Node180	10Gbps	1	2ms	100
+Node141	Node291	10Gbps	1	2ms	100
+Node141	Node308	10Gbps	1	2ms	100
+Node141	Node322	10Gbps	1	2ms	100
+Node141	Node350	10Gbps	1	2ms	100
+Node141	Node351	10Gbps	1	2ms	100
+Node141	Node366	10Gbps	1	2ms	100
+Node141	Node376	10Gbps	1	2ms	100
+Node141	Node384	10Gbps	1	2ms	100
+Node141	Node402	10Gbps	1	2ms	100
+Node141	Node424	10Gbps	1	2ms	100
+Node141	Node434	10Gbps	1	2ms	100
+Node141	Node464	10Gbps	1	2ms	100
+Node141	Node474	10Gbps	1	2ms	100
+Node141	Node509	10Gbps	1	2ms	100
+Node141	Node609	10Gbps	1	2ms	100
+Node141	Node629	10Gbps	1	2ms	100
+Node142	Node191	10Gbps	1	2ms	100
+Node142	Node228	10Gbps	1	2ms	100
+Node142	Node233	10Gbps	1	2ms	100
+Node142	Node265	10Gbps	1	2ms	100
+Node142	Node292	10Gbps	1	2ms	100
+Node142	Node309	10Gbps	1	2ms	100
+Node142	Node323	10Gbps	1	2ms	100
+Node142	Node340	10Gbps	1	2ms	100
+Node142	Node352	10Gbps	1	2ms	100
+Node142	Node368	10Gbps	1	2ms	100
+Node142	Node403	10Gbps	1	2ms	100
+Node142	Node510	10Gbps	1	2ms	100
+Node142	Node566	10Gbps	1	2ms	100
+Node142	Node589	10Gbps	1	2ms	100
+Node142	Node611	10Gbps	1	2ms	100
+Node142	Node630	10Gbps	1	2ms	100
+Node142	Node648	10Gbps	1	2ms	100
+Node142	Node664	10Gbps	1	2ms	100
+Node143	Node145	10Gbps	1	2ms	100
+Node143	Node269	10Gbps	1	2ms	100
+Node143	Node294	10Gbps	1	2ms	100
+Node143	Node325	10Gbps	1	2ms	100
+Node143	Node353	10Gbps	1	2ms	100
+Node143	Node394	10Gbps	1	2ms	100
+Node143	Node466	10Gbps	1	2ms	100
+Node143	Node476	10Gbps	1	2ms	100
+Node143	Node479	10Gbps	1	2ms	100
+Node143	Node486	10Gbps	1	2ms	100
+Node143	Node497	10Gbps	1	2ms	100
+Node143	Node503	10Gbps	1	2ms	100
+Node143	Node516	10Gbps	1	2ms	100
+Node143	Node525	10Gbps	1	2ms	100
+Node143	Node546	10Gbps	1	2ms	100
+Node143	Node567	10Gbps	1	2ms	100
+Node143	Node592	10Gbps	1	2ms	100
+Node143	Node612	10Gbps	1	2ms	100
+Node143	Node633	10Gbps	1	2ms	100
+Node143	Node667	10Gbps	1	2ms	100
+Node143	Node684	10Gbps	1	2ms	100
+Node143	Node688	10Gbps	1	2ms	100
+Node144	Node145	10Gbps	1	2ms	100
+Node144	Node155	10Gbps	1	2ms	100
+Node144	Node175	10Gbps	1	2ms	100
+Node144	Node182	10Gbps	1	2ms	100
+Node144	Node269	10Gbps	1	2ms	100
+Node144	Node294	10Gbps	1	2ms	100
+Node144	Node325	10Gbps	1	2ms	100
+Node144	Node353	10Gbps	1	2ms	100
+Node144	Node394	10Gbps	1	2ms	100
+Node144	Node418	10Gbps	1	2ms	100
+Node144	Node466	10Gbps	1	2ms	100
+Node144	Node476	10Gbps	1	2ms	100
+Node144	Node479	10Gbps	1	2ms	100
+Node144	Node486	10Gbps	1	2ms	100
+Node144	Node497	10Gbps	1	2ms	100
+Node144	Node503	10Gbps	1	2ms	100
+Node144	Node516	10Gbps	1	2ms	100
+Node144	Node525	10Gbps	1	2ms	100
+Node144	Node546	10Gbps	1	2ms	100
+Node144	Node567	10Gbps	1	2ms	100
+Node144	Node592	10Gbps	1	2ms	100
+Node144	Node612	10Gbps	1	2ms	100
+Node144	Node633	10Gbps	1	2ms	100
+Node144	Node667	10Gbps	1	2ms	100
+Node145	Node148	10Gbps	1	2ms	100
+Node145	Node171	10Gbps	1	2ms	100
+Node145	Node208	10Gbps	1	2ms	100
+Node145	Node273	10Gbps	1	2ms	100
+Node145	Node296	10Gbps	1	2ms	100
+Node145	Node323	10Gbps	1	2ms	100
+Node145	Node328	10Gbps	1	2ms	100
+Node145	Node342	10Gbps	1	2ms	100
+Node145	Node356	10Gbps	1	2ms	100
+Node145	Node369	10Gbps	1	2ms	100
+Node145	Node385	10Gbps	1	2ms	100
+Node145	Node436	10Gbps	1	2ms	100
+Node145	Node449	10Gbps	1	2ms	100
+Node145	Node459	10Gbps	1	2ms	100
+Node145	Node464	10Gbps	1	2ms	100
+Node145	Node468	10Gbps	1	2ms	100
+Node145	Node481	10Gbps	1	2ms	100
+Node145	Node488	10Gbps	1	2ms	100
+Node145	Node498	10Gbps	1	2ms	100
+Node145	Node505	10Gbps	1	2ms	100
+Node145	Node527	10Gbps	1	2ms	100
+Node145	Node537	10Gbps	1	2ms	100
+Node145	Node551	10Gbps	1	2ms	100
+Node145	Node557	10Gbps	1	2ms	100
+Node145	Node561	10Gbps	1	2ms	100
+Node145	Node569	10Gbps	1	2ms	100
+Node145	Node594	10Gbps	1	2ms	100
+Node145	Node614	10Gbps	1	2ms	100
+Node145	Node636	10Gbps	1	2ms	100
+Node145	Node652	10Gbps	1	2ms	100
+Node145	Node670	10Gbps	1	2ms	100
+Node145	Node690	10Gbps	1	2ms	100
+Node146	Node177	10Gbps	1	2ms	100
+Node147	Node170	10Gbps	1	2ms	100
+Node147	Node204	10Gbps	1	2ms	100
+Node147	Node224	10Gbps	1	2ms	100
+Node147	Node242	10Gbps	1	2ms	100
+Node147	Node275	10Gbps	1	2ms	100
+Node147	Node297	10Gbps	1	2ms	100
+Node147	Node314	10Gbps	1	2ms	100
+Node147	Node329	10Gbps	1	2ms	100
+Node147	Node409	10Gbps	1	2ms	100
+Node147	Node518	10Gbps	1	2ms	100
+Node147	Node596	10Gbps	1	2ms	100
+Node147	Node615	10Gbps	1	2ms	100
+Node147	Node637	10Gbps	1	2ms	100
+Node147	Node654	10Gbps	1	2ms	100
+Node148	Node224	10Gbps	1	2ms	100
+Node148	Node242	10Gbps	1	2ms	100
+Node148	Node275	10Gbps	1	2ms	100
+Node148	Node297	10Gbps	1	2ms	100
+Node148	Node314	10Gbps	1	2ms	100
+Node148	Node329	10Gbps	1	2ms	100
+Node148	Node409	10Gbps	1	2ms	100
+Node148	Node518	10Gbps	1	2ms	100
+Node148	Node570	10Gbps	1	2ms	100
+Node148	Node596	10Gbps	1	2ms	100
+Node148	Node615	10Gbps	1	2ms	100
+Node148	Node637	10Gbps	1	2ms	100
+Node148	Node654	10Gbps	1	2ms	100
+Node149	Node195	10Gbps	1	2ms	100
+Node149	Node246	10Gbps	1	2ms	100
+Node149	Node278	10Gbps	1	2ms	100
+Node149	Node298	10Gbps	1	2ms	100
+Node149	Node343	10Gbps	1	2ms	100
+Node149	Node360	10Gbps	1	2ms	100
+Node149	Node395	10Gbps	1	2ms	100
+Node149	Node396	10Gbps	1	2ms	100
+Node149	Node427	10Gbps	1	2ms	100
+Node149	Node519	10Gbps	1	2ms	100
+Node150	Node175	10Gbps	1	2ms	100
+Node150	Node195	10Gbps	1	2ms	100
+Node150	Node196	10Gbps	1	2ms	100
+Node150	Node197	10Gbps	1	2ms	100
+Node150	Node278	10Gbps	1	2ms	100
+Node150	Node298	10Gbps	1	2ms	100
+Node150	Node343	10Gbps	1	2ms	100
+Node150	Node395	10Gbps	1	2ms	100
+Node150	Node427	10Gbps	1	2ms	100
+Node150	Node519	10Gbps	1	2ms	100
+Node152	Node248	10Gbps	1	2ms	100
+Node152	Node280	10Gbps	1	2ms	100
+Node152	Node413	10Gbps	1	2ms	100
+Node152	Node520	10Gbps	1	2ms	100
+Node152	Node571	10Gbps	1	2ms	100
+Node152	Node597	10Gbps	1	2ms	100
+Node152	Node618	10Gbps	1	2ms	100
+Node152	Node676	10Gbps	1	2ms	100
+Node152	Node693	10Gbps	1	2ms	100
+Node153	Node174	10Gbps	1	2ms	100
+Node153	Node200	10Gbps	1	2ms	100
+Node153	Node281	10Gbps	1	2ms	100
+Node153	Node301	10Gbps	1	2ms	100
+Node153	Node318	10Gbps	1	2ms	100
+Node153	Node331	10Gbps	1	2ms	100
+Node153	Node345	10Gbps	1	2ms	100
+Node153	Node361	10Gbps	1	2ms	100
+Node153	Node381	10Gbps	1	2ms	100
+Node153	Node389	10Gbps	1	2ms	100
+Node153	Node425	10Gbps	1	2ms	100
+Node153	Node500	10Gbps	1	2ms	100
+Node153	Node506	10Gbps	1	2ms	100
+Node153	Node531	10Gbps	1	2ms	100
+Node153	Node543	10Gbps	1	2ms	100
+Node153	Node547	10Gbps	1	2ms	100
+Node153	Node563	10Gbps	1	2ms	100
+Node153	Node601	10Gbps	1	2ms	100
+Node153	Node620	10Gbps	1	2ms	100
+Node153	Node640	10Gbps	1	2ms	100
+Node153	Node656	10Gbps	1	2ms	100
+Node153	Node677	10Gbps	1	2ms	100
+Node154	Node205	10Gbps	1	2ms	100
+Node154	Node207	10Gbps	1	2ms	100
+Node154	Node227	10Gbps	1	2ms	100
+Node154	Node253	10Gbps	1	2ms	100
+Node154	Node282	10Gbps	1	2ms	100
+Node154	Node295	10Gbps	1	2ms	100
+Node154	Node302	10Gbps	1	2ms	100
+Node154	Node312	10Gbps	1	2ms	100
+Node154	Node319	10Gbps	1	2ms	100
+Node154	Node327	10Gbps	1	2ms	100
+Node154	Node363	10Gbps	1	2ms	100
+Node154	Node373	10Gbps	1	2ms	100
+Node154	Node391	10Gbps	1	2ms	100
+Node154	Node574	10Gbps	1	2ms	100
+Node154	Node602	10Gbps	1	2ms	100
+Node154	Node669	10Gbps	1	2ms	100
+Node155	Node191	10Gbps	1	2ms	100
+Node155	Node201	10Gbps	1	2ms	100
+Node155	Node206	10Gbps	1	2ms	100
+Node155	Node207	10Gbps	1	2ms	100
+Node155	Node227	10Gbps	1	2ms	100
+Node155	Node282	10Gbps	1	2ms	100
+Node155	Node295	10Gbps	1	2ms	100
+Node155	Node302	10Gbps	1	2ms	100
+Node155	Node319	10Gbps	1	2ms	100
+Node155	Node327	10Gbps	1	2ms	100
+Node155	Node363	10Gbps	1	2ms	100
+Node155	Node373	10Gbps	1	2ms	100
+Node155	Node391	10Gbps	1	2ms	100
+Node155	Node417	10Gbps	1	2ms	100
+Node155	Node574	10Gbps	1	2ms	100
+Node155	Node602	10Gbps	1	2ms	100
+Node155	Node669	10Gbps	1	2ms	100
+Node156	Node201	10Gbps	1	2ms	100
+Node156	Node205	10Gbps	1	2ms	100
+Node156	Node206	10Gbps	1	2ms	100
+Node156	Node207	10Gbps	1	2ms	100
+Node156	Node227	10Gbps	1	2ms	100
+Node156	Node253	10Gbps	1	2ms	100
+Node156	Node282	10Gbps	1	2ms	100
+Node156	Node295	10Gbps	1	2ms	100
+Node156	Node302	10Gbps	1	2ms	100
+Node156	Node312	10Gbps	1	2ms	100
+Node156	Node319	10Gbps	1	2ms	100
+Node156	Node327	10Gbps	1	2ms	100
+Node156	Node332	10Gbps	1	2ms	100
+Node156	Node347	10Gbps	1	2ms	100
+Node156	Node363	10Gbps	1	2ms	100
+Node156	Node373	10Gbps	1	2ms	100
+Node156	Node382	10Gbps	1	2ms	100
+Node156	Node391	10Gbps	1	2ms	100
+Node156	Node417	10Gbps	1	2ms	100
+Node156	Node471	10Gbps	1	2ms	100
+Node156	Node574	10Gbps	1	2ms	100
+Node156	Node602	10Gbps	1	2ms	100
+Node156	Node622	10Gbps	1	2ms	100
+Node156	Node658	10Gbps	1	2ms	100
+Node156	Node659	10Gbps	1	2ms	100
+Node156	Node669	10Gbps	1	2ms	100
+Node156	Node689	10Gbps	1	2ms	100
+Node156	Node695	10Gbps	1	2ms	100
+Node157	Node175	10Gbps	1	2ms	100
+Node157	Node201	10Gbps	1	2ms	100
+Node157	Node206	10Gbps	1	2ms	100
+Node157	Node207	10Gbps	1	2ms	100
+Node157	Node227	10Gbps	1	2ms	100
+Node157	Node253	10Gbps	1	2ms	100
+Node157	Node282	10Gbps	1	2ms	100
+Node157	Node295	10Gbps	1	2ms	100
+Node157	Node302	10Gbps	1	2ms	100
+Node157	Node312	10Gbps	1	2ms	100
+Node157	Node319	10Gbps	1	2ms	100
+Node157	Node327	10Gbps	1	2ms	100
+Node157	Node332	10Gbps	1	2ms	100
+Node157	Node363	10Gbps	1	2ms	100
+Node157	Node373	10Gbps	1	2ms	100
+Node157	Node382	10Gbps	1	2ms	100
+Node157	Node391	10Gbps	1	2ms	100
+Node157	Node417	10Gbps	1	2ms	100
+Node157	Node574	10Gbps	1	2ms	100
+Node157	Node602	10Gbps	1	2ms	100
+Node157	Node622	10Gbps	1	2ms	100
+Node157	Node669	10Gbps	1	2ms	100
+Node157	Node689	10Gbps	1	2ms	100
+Node158	Node177	10Gbps	1	2ms	100
+Node158	Node204	10Gbps	1	2ms	100
+Node158	Node254	10Gbps	1	2ms	100
+Node158	Node418	10Gbps	1	2ms	100
+Node158	Node431	10Gbps	1	2ms	100
+Node158	Node522	10Gbps	1	2ms	100
+Node158	Node578	10Gbps	1	2ms	100
+Node158	Node604	10Gbps	1	2ms	100
+Node158	Node623	10Gbps	1	2ms	100
+Node158	Node641	10Gbps	1	2ms	100
+Node159	Node524	10Gbps	1	2ms	100
+Node159	Node658	10Gbps	1	2ms	100
+Node159	Node659	10Gbps	1	2ms	100
+Node159	Node681	10Gbps	1	2ms	100
+Node160	Node164	10Gbps	1	2ms	100
+Node160	Node192	10Gbps	1	2ms	100
+Node160	Node524	10Gbps	1	2ms	100
+Node160	Node681	10Gbps	1	2ms	100
+Node162	Node262	10Gbps	1	2ms	100
+Node162	Node422	10Gbps	1	2ms	100
+Node163	Node179	10Gbps	1	2ms	100
+Node163	Node194	10Gbps	1	2ms	100
+Node163	Node291	10Gbps	1	2ms	100
+Node163	Node308	10Gbps	1	2ms	100
+Node163	Node322	10Gbps	1	2ms	100
+Node163	Node366	10Gbps	1	2ms	100
+Node163	Node376	10Gbps	1	2ms	100
+Node163	Node384	10Gbps	1	2ms	100
+Node163	Node402	10Gbps	1	2ms	100
+Node163	Node424	10Gbps	1	2ms	100
+Node163	Node434	10Gbps	1	2ms	100
+Node163	Node443	10Gbps	1	2ms	100
+Node163	Node463	10Gbps	1	2ms	100
+Node163	Node474	10Gbps	1	2ms	100
+Node163	Node509	10Gbps	1	2ms	100
+Node163	Node588	10Gbps	1	2ms	100
+Node163	Node609	10Gbps	1	2ms	100
+Node163	Node629	10Gbps	1	2ms	100
+Node164	Node179	10Gbps	1	2ms	100
+Node164	Node180	10Gbps	1	2ms	100
+Node164	Node194	10Gbps	1	2ms	100
+Node164	Node308	10Gbps	1	2ms	100
+Node164	Node322	10Gbps	1	2ms	100
+Node164	Node366	10Gbps	1	2ms	100
+Node164	Node376	10Gbps	1	2ms	100
+Node164	Node384	10Gbps	1	2ms	100
+Node164	Node402	10Gbps	1	2ms	100
+Node164	Node443	10Gbps	1	2ms	100
+Node164	Node463	10Gbps	1	2ms	100
+Node164	Node464	10Gbps	1	2ms	100
+Node164	Node468	10Gbps	1	2ms	100
+Node164	Node474	10Gbps	1	2ms	100
+Node164	Node509	10Gbps	1	2ms	100
+Node164	Node609	10Gbps	1	2ms	100
+Node165	Node435	10Gbps	1	2ms	100
+Node165	Node458	10Gbps	1	2ms	100
+Node165	Node475	10Gbps	1	2ms	100
+Node166	Node294	10Gbps	1	2ms	100
+Node167	Node187	10Gbps	1	2ms	100
+Node167	Node269	10Gbps	1	2ms	100
+Node167	Node294	10Gbps	1	2ms	100
+Node167	Node325	10Gbps	1	2ms	100
+Node167	Node353	10Gbps	1	2ms	100
+Node167	Node394	10Gbps	1	2ms	100
+Node167	Node466	10Gbps	1	2ms	100
+Node167	Node476	10Gbps	1	2ms	100
+Node167	Node479	10Gbps	1	2ms	100
+Node167	Node486	10Gbps	1	2ms	100
+Node167	Node497	10Gbps	1	2ms	100
+Node167	Node503	10Gbps	1	2ms	100
+Node167	Node525	10Gbps	1	2ms	100
+Node167	Node533	10Gbps	1	2ms	100
+Node167	Node542	10Gbps	1	2ms	100
+Node167	Node548	10Gbps	1	2ms	100
+Node167	Node556	10Gbps	1	2ms	100
+Node167	Node567	10Gbps	1	2ms	100
+Node167	Node592	10Gbps	1	2ms	100
+Node167	Node612	10Gbps	1	2ms	100
+Node167	Node623	10Gbps	1	2ms	100
+Node167	Node633	10Gbps	1	2ms	100
+Node167	Node667	10Gbps	1	2ms	100
+Node168	Node269	10Gbps	1	2ms	100
+Node168	Node294	10Gbps	1	2ms	100
+Node168	Node325	10Gbps	1	2ms	100
+Node168	Node353	10Gbps	1	2ms	100
+Node168	Node447	10Gbps	1	2ms	100
+Node168	Node466	10Gbps	1	2ms	100
+Node168	Node476	10Gbps	1	2ms	100
+Node168	Node479	10Gbps	1	2ms	100
+Node168	Node525	10Gbps	1	2ms	100
+Node168	Node533	10Gbps	1	2ms	100
+Node168	Node536	10Gbps	1	2ms	100
+Node168	Node542	10Gbps	1	2ms	100
+Node168	Node548	10Gbps	1	2ms	100
+Node168	Node556	10Gbps	1	2ms	100
+Node168	Node567	10Gbps	1	2ms	100
+Node168	Node612	10Gbps	1	2ms	100
+Node168	Node623	10Gbps	1	2ms	100
+Node168	Node667	10Gbps	1	2ms	100
+Node169	Node198	10Gbps	1	2ms	100
+Node169	Node199	10Gbps	1	2ms	100
+Node169	Node200	10Gbps	1	2ms	100
+Node169	Node273	10Gbps	1	2ms	100
+Node169	Node328	10Gbps	1	2ms	100
+Node169	Node342	10Gbps	1	2ms	100
+Node169	Node356	10Gbps	1	2ms	100
+Node169	Node436	10Gbps	1	2ms	100
+Node169	Node449	10Gbps	1	2ms	100
+Node169	Node459	10Gbps	1	2ms	100
+Node169	Node468	10Gbps	1	2ms	100
+Node169	Node481	10Gbps	1	2ms	100
+Node169	Node488	10Gbps	1	2ms	100
+Node169	Node498	10Gbps	1	2ms	100
+Node169	Node505	10Gbps	1	2ms	100
+Node169	Node527	10Gbps	1	2ms	100
+Node169	Node537	10Gbps	1	2ms	100
+Node169	Node594	10Gbps	1	2ms	100
+Node169	Node614	10Gbps	1	2ms	100
+Node169	Node652	10Gbps	1	2ms	100
+Node169	Node670	10Gbps	1	2ms	100
+Node170	Node187	10Gbps	1	2ms	100
+Node170	Node199	10Gbps	1	2ms	100
+Node170	Node273	10Gbps	1	2ms	100
+Node170	Node296	10Gbps	1	2ms	100
+Node170	Node328	10Gbps	1	2ms	100
+Node170	Node342	10Gbps	1	2ms	100
+Node170	Node356	10Gbps	1	2ms	100
+Node170	Node369	10Gbps	1	2ms	100
+Node170	Node436	10Gbps	1	2ms	100
+Node170	Node449	10Gbps	1	2ms	100
+Node170	Node459	10Gbps	1	2ms	100
+Node170	Node468	10Gbps	1	2ms	100
+Node170	Node481	10Gbps	1	2ms	100
+Node170	Node488	10Gbps	1	2ms	100
+Node170	Node498	10Gbps	1	2ms	100
+Node170	Node505	10Gbps	1	2ms	100
+Node170	Node527	10Gbps	1	2ms	100
+Node170	Node537	10Gbps	1	2ms	100
+Node170	Node594	10Gbps	1	2ms	100
+Node170	Node614	10Gbps	1	2ms	100
+Node170	Node636	10Gbps	1	2ms	100
+Node170	Node652	10Gbps	1	2ms	100
+Node170	Node670	10Gbps	1	2ms	100
+Node171	Node199	10Gbps	1	2ms	100
+Node172	Node203	10Gbps	1	2ms	100
+Node172	Node246	10Gbps	1	2ms	100
+Node172	Node346	10Gbps	1	2ms	100
+Node172	Node360	10Gbps	1	2ms	100
+Node172	Node395	10Gbps	1	2ms	100
+Node172	Node396	10Gbps	1	2ms	100
+Node172	Node519	10Gbps	1	2ms	100
+Node173	Node183	10Gbps	1	2ms	100
+Node173	Node246	10Gbps	1	2ms	100
+Node173	Node278	10Gbps	1	2ms	100
+Node173	Node298	10Gbps	1	2ms	100
+Node173	Node343	10Gbps	1	2ms	100
+Node173	Node395	10Gbps	1	2ms	100
+Node173	Node427	10Gbps	1	2ms	100
+Node173	Node519	10Gbps	1	2ms	100
+Node173	Node540	10Gbps	1	2ms	100
+Node174	Node203	10Gbps	1	2ms	100
+Node174	Node246	10Gbps	1	2ms	100
+Node174	Node278	10Gbps	1	2ms	100
+Node174	Node298	10Gbps	1	2ms	100
+Node174	Node343	10Gbps	1	2ms	100
+Node174	Node395	10Gbps	1	2ms	100
+Node174	Node427	10Gbps	1	2ms	100
+Node174	Node519	10Gbps	1	2ms	100
+Node175	Node203	10Gbps	1	2ms	100
+Node175	Node246	10Gbps	1	2ms	100
+Node175	Node278	10Gbps	1	2ms	100
+Node175	Node298	10Gbps	1	2ms	100
+Node175	Node343	10Gbps	1	2ms	100
+Node175	Node359	10Gbps	1	2ms	100
+Node175	Node395	10Gbps	1	2ms	100
+Node175	Node427	10Gbps	1	2ms	100
+Node175	Node490	10Gbps	1	2ms	100
+Node175	Node491	10Gbps	1	2ms	100
+Node175	Node493	10Gbps	1	2ms	100
+Node175	Node519	10Gbps	1	2ms	100
+Node175	Node540	10Gbps	1	2ms	100
+Node176	Node183	10Gbps	1	2ms	100
+Node176	Node184	10Gbps	1	2ms	100
+Node176	Node203	10Gbps	1	2ms	100
+Node176	Node281	10Gbps	1	2ms	100
+Node176	Node301	10Gbps	1	2ms	100
+Node176	Node318	10Gbps	1	2ms	100
+Node176	Node331	10Gbps	1	2ms	100
+Node176	Node345	10Gbps	1	2ms	100
+Node176	Node361	10Gbps	1	2ms	100
+Node176	Node381	10Gbps	1	2ms	100
+Node176	Node389	10Gbps	1	2ms	100
+Node176	Node500	10Gbps	1	2ms	100
+Node176	Node506	10Gbps	1	2ms	100
+Node176	Node543	10Gbps	1	2ms	100
+Node176	Node547	10Gbps	1	2ms	100
+Node176	Node601	10Gbps	1	2ms	100
+Node176	Node620	10Gbps	1	2ms	100
+Node176	Node640	10Gbps	1	2ms	100
+Node176	Node656	10Gbps	1	2ms	100
+Node176	Node677	10Gbps	1	2ms	100
+Node177	Node203	10Gbps	1	2ms	100
+Node178	Node185	10Gbps	1	2ms	100
+Node178	Node398	10Gbps	1	2ms	100
+Node178	Node429	10Gbps	1	2ms	100
+Node178	Node484	10Gbps	1	2ms	100
+Node178	Node679	10Gbps	1	2ms	100
+Node179	Node193	10Gbps	1	2ms	100
+Node179	Node220	10Gbps	1	2ms	100
+Node179	Node336	10Gbps	1	2ms	100
+Node179	Node348	10Gbps	1	2ms	100
+Node179	Node464	10Gbps	1	2ms	100
+Node179	Node581	10Gbps	1	2ms	100
+Node179	Node606	10Gbps	1	2ms	100
+Node179	Node625	10Gbps	1	2ms	100
+Node179	Node643	10Gbps	1	2ms	100
+Node179	Node682	10Gbps	1	2ms	100
+Node180	Node291	10Gbps	1	2ms	100
+Node180	Node308	10Gbps	1	2ms	100
+Node180	Node322	10Gbps	1	2ms	100
+Node180	Node350	10Gbps	1	2ms	100
+Node180	Node351	10Gbps	1	2ms	100
+Node180	Node366	10Gbps	1	2ms	100
+Node180	Node376	10Gbps	1	2ms	100
+Node180	Node384	10Gbps	1	2ms	100
+Node180	Node402	10Gbps	1	2ms	100
+Node180	Node424	10Gbps	1	2ms	100
+Node180	Node434	10Gbps	1	2ms	100
+Node180	Node588	10Gbps	1	2ms	100
+Node180	Node609	10Gbps	1	2ms	100
+Node181	Node228	10Gbps	1	2ms	100
+Node181	Node292	10Gbps	1	2ms	100
+Node182	Node544	10Gbps	1	2ms	100
+Node183	Node188	10Gbps	1	2ms	100
+Node183	Node195	10Gbps	1	2ms	100
+Node183	Node196	10Gbps	1	2ms	100
+Node183	Node197	10Gbps	1	2ms	100
+Node183	Node202	10Gbps	1	2ms	100
+Node184	Node200	10Gbps	1	2ms	100
+Node184	Node204	10Gbps	1	2ms	100
+Node184	Node521	10Gbps	1	2ms	100
+Node185	Node191	10Gbps	1	2ms	100
+Node185	Node440	10Gbps	1	2ms	100
+Node185	Node452	10Gbps	1	2ms	100
+Node185	Node461	10Gbps	1	2ms	100
+Node185	Node699	10Gbps	1	2ms	100
+Node186	Node193	10Gbps	1	2ms	100
+Node186	Node581	10Gbps	1	2ms	100
+Node186	Node606	10Gbps	1	2ms	100
+Node186	Node625	10Gbps	1	2ms	100
+Node187	Node187	10Gbps	1	2ms	100
+Node187	Node237	10Gbps	1	2ms	100
+Node187	Node269	10Gbps	1	2ms	100
+Node187	Node294	10Gbps	1	2ms	100
+Node187	Node325	10Gbps	1	2ms	100
+Node187	Node353	10Gbps	1	2ms	100
+Node187	Node394	10Gbps	1	2ms	100
+Node187	Node466	10Gbps	1	2ms	100
+Node187	Node476	10Gbps	1	2ms	100
+Node187	Node479	10Gbps	1	2ms	100
+Node187	Node486	10Gbps	1	2ms	100
+Node187	Node497	10Gbps	1	2ms	100
+Node187	Node503	10Gbps	1	2ms	100
+Node187	Node516	10Gbps	1	2ms	100
+Node187	Node525	10Gbps	1	2ms	100
+Node187	Node544	10Gbps	1	2ms	100
+Node187	Node567	10Gbps	1	2ms	100
+Node187	Node592	10Gbps	1	2ms	100
+Node187	Node612	10Gbps	1	2ms	100
+Node187	Node633	10Gbps	1	2ms	100
+Node187	Node667	10Gbps	1	2ms	100
+Node188	Node195	10Gbps	1	2ms	100
+Node188	Node196	10Gbps	1	2ms	100
+Node188	Node197	10Gbps	1	2ms	100
+Node188	Node203	10Gbps	1	2ms	100
+Node188	Node387	10Gbps	1	2ms	100
+Node188	Node388	10Gbps	1	2ms	100
+Node189	Node200	10Gbps	1	2ms	100
+Node189	Node204	10Gbps	1	2ms	100
+Node189	Node250	10Gbps	1	2ms	100
+Node189	Node372	10Gbps	1	2ms	100
+Node189	Node397	10Gbps	1	2ms	100
+Node189	Node428	10Gbps	1	2ms	100
+Node189	Node437	10Gbps	1	2ms	100
+Node189	Node451	10Gbps	1	2ms	100
+Node189	Node460	10Gbps	1	2ms	100
+Node189	Node470	10Gbps	1	2ms	100
+Node189	Node483	10Gbps	1	2ms	100
+Node189	Node494	10Gbps	1	2ms	100
+Node189	Node541	10Gbps	1	2ms	100
+Node189	Node685	10Gbps	1	2ms	100
+Node190	Node200	10Gbps	1	2ms	100
+Node190	Node204	10Gbps	1	2ms	100
+Node190	Node250	10Gbps	1	2ms	100
+Node190	Node372	10Gbps	1	2ms	100
+Node190	Node397	10Gbps	1	2ms	100
+Node190	Node415	10Gbps	1	2ms	100
+Node190	Node428	10Gbps	1	2ms	100
+Node190	Node437	10Gbps	1	2ms	100
+Node190	Node451	10Gbps	1	2ms	100
+Node190	Node460	10Gbps	1	2ms	100
+Node190	Node470	10Gbps	1	2ms	100
+Node190	Node483	10Gbps	1	2ms	100
+Node190	Node541	10Gbps	1	2ms	100
+Node190	Node562	10Gbps	1	2ms	100
+Node190	Node573	10Gbps	1	2ms	100
+Node191	Node698	10Gbps	1	2ms	100
+Node192	Node306	10Gbps	1	2ms	100
+Node192	Node320	10Gbps	1	2ms	100
+Node192	Node660	10Gbps	1	2ms	100
+Node193	Node306	10Gbps	1	2ms	100
+Node193	Node320	10Gbps	1	2ms	100
+Node193	Node660	10Gbps	1	2ms	100
+Node198	Node204	10Gbps	1	2ms	100
+Node198	Node372	10Gbps	1	2ms	100
+Node198	Node397	10Gbps	1	2ms	100
+Node198	Node428	10Gbps	1	2ms	100
+Node198	Node437	10Gbps	1	2ms	100
+Node198	Node451	10Gbps	1	2ms	100
+Node198	Node460	10Gbps	1	2ms	100
+Node198	Node470	10Gbps	1	2ms	100
+Node198	Node483	10Gbps	1	2ms	100
+Node198	Node494	10Gbps	1	2ms	100
+Node198	Node521	10Gbps	1	2ms	100
+Node198	Node541	10Gbps	1	2ms	100
+Node198	Node686	10Gbps	1	2ms	100
+Node199	Node204	10Gbps	1	2ms	100
+Node199	Node372	10Gbps	1	2ms	100
+Node199	Node397	10Gbps	1	2ms	100
+Node199	Node428	10Gbps	1	2ms	100
+Node199	Node437	10Gbps	1	2ms	100
+Node199	Node451	10Gbps	1	2ms	100
+Node199	Node460	10Gbps	1	2ms	100
+Node199	Node470	10Gbps	1	2ms	100
+Node199	Node483	10Gbps	1	2ms	100
+Node199	Node494	10Gbps	1	2ms	100
+Node199	Node521	10Gbps	1	2ms	100
+Node199	Node541	10Gbps	1	2ms	100
+Node200	Node372	10Gbps	1	2ms	100
+Node200	Node397	10Gbps	1	2ms	100
+Node200	Node428	10Gbps	1	2ms	100
+Node200	Node437	10Gbps	1	2ms	100
+Node200	Node451	10Gbps	1	2ms	100
+Node200	Node460	10Gbps	1	2ms	100
+Node200	Node470	10Gbps	1	2ms	100
+Node200	Node483	10Gbps	1	2ms	100
+Node200	Node494	10Gbps	1	2ms	100
+Node200	Node521	10Gbps	1	2ms	100
+Node200	Node541	10Gbps	1	2ms	100
+Node200	Node686	10Gbps	1	2ms	100
+Node201	Node699	10Gbps	1	2ms	100
+Node203	Node540	10Gbps	1	2ms	100
+Node204	Node563	10Gbps	1	2ms	100
+Node205	Node698	10Gbps	1	2ms	100
+Node206	Node238	10Gbps	1	2ms	100
+Node206	Node271	10Gbps	1	2ms	100
+Node206	Node408	10Gbps	1	2ms	100
+Node206	Node517	10Gbps	1	2ms	100
+Node206	Node568	10Gbps	1	2ms	100
+Node206	Node593	10Gbps	1	2ms	100
+Node206	Node613	10Gbps	1	2ms	100
+Node206	Node635	10Gbps	1	2ms	100
+Node206	Node649	10Gbps	1	2ms	100
+Node207	Node238	10Gbps	1	2ms	100
+Node207	Node271	10Gbps	1	2ms	100
+Node207	Node408	10Gbps	1	2ms	100
+Node207	Node517	10Gbps	1	2ms	100
+Node207	Node568	10Gbps	1	2ms	100
+Node207	Node593	10Gbps	1	2ms	100
+Node207	Node613	10Gbps	1	2ms	100
+Node207	Node635	10Gbps	1	2ms	100
+Node207	Node649	10Gbps	1	2ms	100
+Node209	Node238	10Gbps	1	2ms	100
+Node209	Node271	10Gbps	1	2ms	100
+Node209	Node408	10Gbps	1	2ms	100
+Node209	Node517	10Gbps	1	2ms	100
+Node209	Node568	10Gbps	1	2ms	100
+Node209	Node593	10Gbps	1	2ms	100
+Node209	Node613	10Gbps	1	2ms	100
+Node209	Node635	10Gbps	1	2ms	100
+Node209	Node649	10Gbps	1	2ms	100
+Node210	Node211	10Gbps	1	2ms	100
+Node213	Node221	10Gbps	1	2ms	100
+Node214	Node222	10Gbps	1	2ms	100
+Node219	Node226	10Gbps	1	2ms	100
+Node227	Node449	10Gbps	1	2ms	100
+Node238	Node239	10Gbps	1	2ms	100
+Node238	Node240	10Gbps	1	2ms	100
+Node238	Node295	10Gbps	1	2ms	100
+Node238	Node312	10Gbps	1	2ms	100
+Node238	Node327	10Gbps	1	2ms	100
+Node238	Node669	10Gbps	1	2ms	100
+Node238	Node689	10Gbps	1	2ms	100
+Node246	Node247	10Gbps	1	2ms	100
+Node249	Node250	10Gbps	1	2ms	100
+Node253	Node282	10Gbps	1	2ms	100
+Node253	Node302	10Gbps	1	2ms	100
+Node253	Node319	10Gbps	1	2ms	100
+Node253	Node417	10Gbps	1	2ms	100
+Node253	Node574	10Gbps	1	2ms	100
+Node253	Node602	10Gbps	1	2ms	100
+Node253	Node622	10Gbps	1	2ms	100
+Node271	Node295	10Gbps	1	2ms	100
+Node271	Node312	10Gbps	1	2ms	100
+Node271	Node327	10Gbps	1	2ms	100
+Node271	Node669	10Gbps	1	2ms	100
+Node271	Node689	10Gbps	1	2ms	100
+Node273	Node273	10Gbps	1	2ms	100
+Node275	Node691	10Gbps	1	2ms	100
+Node278	Node360	10Gbps	1	2ms	100
+Node288	Node644	10Gbps	1	2ms	100
+Node291	Node629	10Gbps	1	2ms	100
+Node295	Node408	10Gbps	1	2ms	100
+Node295	Node517	10Gbps	1	2ms	100
+Node295	Node568	10Gbps	1	2ms	100
+Node295	Node593	10Gbps	1	2ms	100
+Node295	Node613	10Gbps	1	2ms	100
+Node295	Node635	10Gbps	1	2ms	100
+Node295	Node649	10Gbps	1	2ms	100
+Node298	Node360	10Gbps	1	2ms	100
+Node300	Node330	10Gbps	1	2ms	100
+Node308	Node629	10Gbps	1	2ms	100
+Node312	Node408	10Gbps	1	2ms	100
+Node312	Node517	10Gbps	1	2ms	100
+Node312	Node568	10Gbps	1	2ms	100
+Node312	Node593	10Gbps	1	2ms	100
+Node312	Node613	10Gbps	1	2ms	100
+Node312	Node635	10Gbps	1	2ms	100
+Node312	Node649	10Gbps	1	2ms	100
+Node314	Node315	10Gbps	1	2ms	100
+Node322	Node629	10Gbps	1	2ms	100
+Node327	Node593	10Gbps	1	2ms	100
+Node327	Node613	10Gbps	1	2ms	100
+Node327	Node635	10Gbps	1	2ms	100
+Node329	Node329	10Gbps	1	2ms	100
+Node332	Node363	10Gbps	1	2ms	100
+Node333	Node334	10Gbps	1	2ms	100
+Node343	Node360	10Gbps	1	2ms	100
+Node353	Node354	10Gbps	1	2ms	100
+Node356	Node357	10Gbps	1	2ms	100
+Node356	Node358	10Gbps	1	2ms	100
+Node361	Node362	10Gbps	1	2ms	100
+Node363	Node373	10Gbps	1	2ms	100
+Node363	Node382	10Gbps	1	2ms	100
+Node363	Node391	10Gbps	1	2ms	100
+Node366	Node464	10Gbps	1	2ms	100
+Node366	Node629	10Gbps	1	2ms	100
+Node374	Node375	10Gbps	1	2ms	100
+Node376	Node464	10Gbps	1	2ms	100
+Node376	Node629	10Gbps	1	2ms	100
+Node384	Node629	10Gbps	1	2ms	100
+Node395	Node396	10Gbps	1	2ms	100
+Node402	Node629	10Gbps	1	2ms	100
+Node408	Node669	10Gbps	1	2ms	100
+Node412	Node427	10Gbps	1	2ms	100
+Node417	Node417	10Gbps	1	2ms	100
+Node424	Node629	10Gbps	1	2ms	100
+Node425	Node436	10Gbps	1	2ms	100
+Node425	Node449	10Gbps	1	2ms	100
+Node425	Node481	10Gbps	1	2ms	100
+Node425	Node537	10Gbps	1	2ms	100
+Node425	Node551	10Gbps	1	2ms	100
+Node432	Node433	10Gbps	1	2ms	100
+Node434	Node629	10Gbps	1	2ms	100
+Node436	Node468	10Gbps	1	2ms	100
+Node468	Node469	10Gbps	1	2ms	100
+Node479	Node480	10Gbps	1	2ms	100
+Node493	Node493	10Gbps	1	2ms	100
+Node506	Node506	10Gbps	1	2ms	100
+Node509	Node629	10Gbps	1	2ms	100
+Node517	Node669	10Gbps	1	2ms	100
+Node517	Node689	10Gbps	1	2ms	100
+Node527	Node530	10Gbps	1	2ms	100
+Node532	Node536	10Gbps	1	2ms	100
+Node533	Node536	10Gbps	1	2ms	100
+Node568	Node669	10Gbps	1	2ms	100
+Node568	Node689	10Gbps	1	2ms	100
+Node569	Node569	10Gbps	1	2ms	100
+Node574	Node575	10Gbps	1	2ms	100
+Node578	Node579	10Gbps	1	2ms	100
+Node588	Node629	10Gbps	1	2ms	100
+Node593	Node669	10Gbps	1	2ms	100
+Node593	Node689	10Gbps	1	2ms	100
+Node597	Node600	10Gbps	1	2ms	100
+Node609	Node609	10Gbps	1	2ms	100
+Node609	Node610	10Gbps	1	2ms	100
+Node609	Node629	10Gbps	1	2ms	100
+Node613	Node669	10Gbps	1	2ms	100
+Node613	Node689	10Gbps	1	2ms	100
+Node631	Node631	10Gbps	1	2ms	100
+Node635	Node669	10Gbps	1	2ms	100
+Node635	Node689	10Gbps	1	2ms	100
+Node637	Node637	10Gbps	1	2ms	100
+Node649	Node651	10Gbps	1	2ms	100
+Node649	Node669	10Gbps	1	2ms	100
+Node649	Node689	10Gbps	1	2ms	100
+Node652	Node653	10Gbps	1	2ms	100
+Node667	Node668	10Gbps	1	2ms	100

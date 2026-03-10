@@ -1,0 +1,109 @@
+Created results directory: /home/jiyuan/ndnSIM/ns-3/results/iroute_v2_full_run_star_s42_r1_20260213_000831
+Running: ./waf --run 'iroute-v2-exp2.1-packet-baselines --resultDir=/home/jiyuan/ndnSIM/ns-3/results/iroute_v2_full_run_star_s42_r1_20260213_000831 --seed=42 --run=1 --topo=star --domains=8 --queries=50 --kMax=5 --trace=/home/jiyuan/ndnSIM/ns-3/dataset/sdm_smartcity_dataset/consumer_trace_test.csv --centroids=/home/jiyuan/ndnSIM/ns-3/dataset/sdm_smartcity_dataset/domain_centroids.csv --content=/home/jiyuan/ndnSIM/ns-3/dataset/sdm_smartcity_dataset/producer_content.csv --simTime=50 --handDict=dataset/sdm_smartcity_dataset/index_exact.csv --method=iroute'
+Waf: Entering directory `/home/jiyuan/ndnSIM/ns-3/build'
+Waf: Leaving directory `/home/jiyuan/ndnSIM/ns-3/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.883s)
+=== Exp2.1: Packet-level Baseline Comparison ===
+Domains: 8, M: 4, kMax: 5, tau: 0.3
+Method: iroute
+Loaded 8 domains with centroids
+Loaded 8 domains with content
+Loaded 100 queries
+
+=== Running iRoute ===
+SetQueryTrace size=100 at 4.9
+IRouteDiscoveryConsumer started on node 0 freq=2
+StartDiscovery idx=0 traceSize=100
+[Producer] Responding with Data: /domain1/data/doc/sl_000501
+[Producer] Responding with Data: /domain3/data/doc/p_000424
+[Producer] Responding with Data: /domain0/data/doc/p_000204
+[Producer] Responding with Data: /domain2/data/doc/p_000181
+[Producer] Responding with Data: /domain7/data/doc/pol_000038
+[Producer] Responding with Data: /domain4/data/doc/pol_000221
+[Producer] Responding with Data: /domain6/data/doc/p_000005
+[Producer] Responding with Data: /domain1/data/doc/traf_000135
+[Producer] Responding with Data: /domain7/data/doc/traf_000548
+[Producer] Responding with Data: /domain1/data/doc/p_000144
+[Producer] Responding with Data: /domain1/data/doc/p_000440
+[Producer] Responding with Data: /domain5/data/doc/sl_000381
+[Producer] Responding with Data: /domain1/data/doc/traf_000121
+[Producer] Responding with Data: /domain7/data/doc/traf_000182
+[Producer] Responding with Data: /domain1/data/doc/traf_000593
+[Producer] Responding with Data: /domain2/data/doc/traf_000546
+[Producer] Responding with Data: /domain0/data/doc/p_000193
+[Producer] Responding with Data: /domain0/data/doc/traf_000392
+[Producer] Responding with Data: /domain0/data/doc/p_000420
+[Producer] Responding with Data: /domain6/data/doc/sl_000282
+[Producer] Responding with Data: /domain2/data/doc/pol_000347
+[Producer] Responding with Data: /domain7/data/doc/sl_000338
+[Producer] Responding with Data: /domain6/data/doc/pol_000459
+[Producer] Responding with Data: /domain1/data/doc/pol_000477
+[Producer] Responding with Data: /domain4/data/doc/traf_000044
+[Producer] Responding with Data: /domain4/data/doc/sl_000351
+[Producer] Responding with Data: /domain6/data/doc/pol_000055
+[Producer] Responding with Data: /domain2/data/doc/sl_000408
+[Producer] Responding with Data: /domain1/data/doc/p_000368
+[Producer] Responding with Data: /domain5/data/doc/traf_000505
+[Producer] Responding with Data: /domain7/data/doc/pol_000498
+[Producer] Responding with Data: /domain3/data/doc/pol_000338
+[Producer] Responding with Data: /domain5/data/doc/p_000363
+[Producer] Responding with Data: /domain1/data/doc/traf_000572
+[Producer] Responding with Data: /domain0/data/doc/sl_000032
+[Producer] Responding with Data: /domain1/data/doc/pol_000312
+[Producer] Responding with Data: /domain3/data/doc/traf_000527
+[Producer] Responding with Data: /domain2/data/doc/traf_900104
+[Producer] Responding with Data: /domain5/data/doc/traf_000503
+[Producer] Responding with Data: /domain5/data/doc/sl_000279
+[Producer] Responding with Data: /domain7/data/doc/traf_000280
+[Producer] Responding with Data: /domain5/data/doc/traf_000089
+[Producer] Responding with Data: /domain7/data/doc/sl_000154
+[Producer] Responding with Data: /domain1/data/doc/traf_000549
+[Producer] Responding with Data: /domain0/data/doc/pol_000175
+[Producer] Responding with Data: /domain6/data/doc/p_000557
+[Producer] Responding with Data: /domain3/data/doc/p_000078
+[Producer] Responding with Data: /domain5/data/doc/pol_000353
+[Producer] Responding with Data: /domain1/data/doc/pol_000585
+StartDiscovery idx=50 traceSize=100
+[Producer] Responding with Data: /domain7/data/doc/traf_000081
+[Producer] Responding with Data: /domain1/data/doc/pol_000565
+[Producer] Responding with Data: /domain1/data/doc/sl_000240
+[Producer] Responding with Data: /domain0/data/doc/p_000359
+[Producer] Responding with Data: /domain5/data/doc/sl_000140
+[Producer] Responding with Data: /domain5/data/doc/sl_000497
+[Producer] Responding with Data: /domain6/data/doc/pol_000545
+[Producer] Responding with Data: /domain3/data/doc/traf_000580
+[Producer] Responding with Data: /domain6/data/doc/pol_000514
+[Producer] Responding with Data: /domain6/data/doc/pol_000237
+[Producer] Responding with Data: /domain3/data/doc/traf_000183
+[Producer] Responding with Data: /domain2/data/doc/sl_000007
+[Producer] Responding with Data: /domain1/data/doc/pol_000064
+[Producer] Responding with Data: /domain5/data/doc/traf_000422
+[Producer] Responding with Data: /domain5/data/doc/pol_000566
+[Producer] Responding with Data: /domain5/data/doc/pol_000106
+[Producer] Responding with Data: /domain5/data/doc/pol_000442
+[Producer] Responding with Data: /domain5/data/doc/traf_000311
+[Producer] Responding with Data: /domain1/data/doc/pol_000076
+[Producer] Responding with Data: /domain1/data/doc/traf_000553
+[Producer] Responding with Data: /domain4/data/doc/traf_000426
+[Producer] Responding with Data: /domain3/data/doc/traf_000387
+[Producer] Responding with Data: /domain0/data/doc/traf_000296
+[Producer] Responding with Data: /domain1/data/doc/traf_000425
+[Producer] Responding with Data: /domain4/data/doc/traf_000582
+[Producer] Responding with Data: /domain5/data/doc/p_000565
+[Producer] Responding with Data: /domain1/data/doc/p_000522
+[Producer] Responding with Data: /domain1/data/doc/pol_000191
+[Producer] Responding with Data: /domain6/data/doc/pol_000368
+[Producer] Responding with Data: /domain7/data/doc/traf_000524
+[Producer] Responding with Data: /domain1/data/doc/pol_000013
+[Producer] Responding with Data: /domain0/data/doc/traf_900077
+
+=== Summary ===
+iRoute: DomAcc=0%, DocAcc=31.4607%, p50=8.01574ms, p95=8.01577ms, interests=422
+Exported comparison to /home/jiyuan/ndnSIM/ns-3/results/iroute_v2_full_run_star_s42_r1_20260213_000831/exp2.1_comparison_iroute.csv
+Exported failure breakdown to /home/jiyuan/ndnSIM/ns-3/results/iroute_v2_full_run_star_s42_r1_20260213_000831/exp2.1_failure_breakdown_iroute.csv
+
+Results saved to /home/jiyuan/ndnSIM/ns-3/results/iroute_v2_full_run_star_s42_r1_20260213_000831
+
+SUCCESS: Run iroute_v2_full_run_star_s42_r1_20260213_000831 completed.
+Results in: /home/jiyuan/ndnSIM/ns-3/results/iroute_v2_full_run_star_s42_r1_20260213_000831

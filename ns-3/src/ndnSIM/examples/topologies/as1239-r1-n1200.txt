@@ -1,0 +1,2071 @@
+# Rocketfuel topology converted to ndnSIM format
+# Nodes: 1200, Links: 860
+# Bandwidth: 10Gbps, Delay: 2ms
+
+router
+
+# node	comment	yPos	xPos
+Node0	T	0	111
+Node1	Atlanta+GA	0	9
+Node2	Relay+MD	0	78
+Node3	Chicago+IL	0	21
+Node4	New+York+NY	0	60
+Node5	Atlanta+GA	2	9
+Node6	Atlanta+GA	4	9
+Node7	New+York+NY	2	60
+Node8	Washington+DC	0	120
+Node9	Tacoma+WA	0	114
+Node10	Stockton+CA	0	105
+Node11	Relay+MD	2	78
+Node12	Dallas+TX	0	27
+Node13	Pennsauken+NJ	0	72
+Node14	Anaheim+CA	0	3
+Node15	Pennsauken+NJ	2	72
+Node16	Roachdale+IN	0	87
+Node17	Pennsauken+NJ	4	72
+Node18	Dallas+TX	2	27
+Node19	Seattle+WA	0	93
+Node20	Brussels+Belgium	0	15
+Node21	Seattle+WA	2	93
+Node22	Chicago+IL	2	21
+Node23	Relay+MD	4	78
+Node24	Pennsauken+NJ	6	72
+Node25	Cheyenne+WY	0	18
+Node26	Kansas+City+MO	0	42
+Node27	Relay+MD	6	78
+Node28	Anaheim+CA	2	3
+Node29	Reston+VA	0	84
+Node30	T	2	111
+Node31	Relay+MD	8	78
+Node32	Atlanta+GA	6	9
+Node33	Pennsauken+NJ	8	72
+Node34	Pennsauken+NJ	10	72
+Node35	Orlando+FL	0	63
+Node36	Atlanta+GA	8	9
+Node37	Anaheim+CA	4	3
+Node38	Atlanta+GA	10	9
+Node39	Roachdale+IN	2	87
+Node40	Atlanta+GA	12	9
+Node41	Washington+DC	2	120
+Node42	Pennsauken+NJ	12	72
+Node43	T	4	111
+Node44	New+York+NY	4	60
+Node45	Dallas+TX	4	27
+Node46	Stockton+CA	2	105
+Node47	Anaheim+CA	6	3
+Node48	Cheyenne+WY	2	18
+Node49	Dallas+TX	6	27
+Node50	Atlanta+GA	14	9
+Node51	Atlanta+GA	16	9
+Node52	Roachdale+IN	4	87
+Node53	Dallas+TX	8	27
+Node54	Atlanta+GA	18	9
+Node55	Pennsauken+NJ	14	72
+Node56	New+York+NY	6	60
+Node57	Atlanta+GA	20	9
+Node58	Dallas+TX	10	27
+Node59	Roachdale+IN	6	87
+Node60	Chicago+IL	4	21
+Node61	Anaheim+CA	8	3
+Node62	Chicago+IL	6	21
+Node63	Pennsauken+NJ	16	72
+Node64	Pennsauken+NJ	18	72
+Node65	Stockton+CA	4	105
+Node66	Seattle+WA	4	93
+Node67	Atlanta+GA	22	9
+Node68	Dallas+TX	12	27
+Node69	Relay+MD	10	78
+Node70	Chicago+IL	8	21
+Node71	Chicago+IL	10	21
+Node72	Chicago+IL	12	21
+Node73	Dallas+TX	14	27
+Node74	Pennsauken+NJ	20	72
+Node75	Cheyenne+WY	4	18
+Node76	New+York+NY	8	60
+Node77	Cheyenne+WY	6	18
+Node78	Orlando+FL	2	63
+Node79	Pennsauken+NJ	22	72
+Node80	Chicago+IL	14	21
+Node81	Anaheim+CA	10	3
+Node82	Pennsauken+NJ	24	72
+Node83	Stockton+CA	6	105
+Node84	Chicago+IL	16	21
+Node85	Pennsauken+NJ	26	72
+Node86	New+York+NY	10	60
+Node87	Dallas+TX	16	27
+Node88	Springfield+MA	0	99
+Node89	Atlanta+GA	24	9
+Node90	New+York+NY	12	60
+Node91	Pennsauken+NJ	28	72
+Node92	Kansas+City+MO	2	42
+Node93	Orlando+FL	4	63
+Node94	New+York+NY	14	60
+Node95	Chicago+IL	18	21
+Node96	Cheyenne+WY	8	18
+Node97	Kansas+City+MO	4	42
+Node98	Dallas+TX	18	27
+Node99	Pennsauken+NJ	30	72
+Node100	San+Jose+CA	0	90
+Node101	Orlando+FL	6	63
+Node102	Stockton+CA	8	105
+Node103	Roachdale+IN	8	87
+Node104	Cheyenne+WY	10	18
+Node105	Dallas+TX	20	27
+Node106	Cheyenne+WY	12	18
+Node107	Dallas+TX	22	27
+Node108	Dallas+TX	24	27
+Node109	Dallas+TX	26	27
+Node110	Pennsauken+NJ	32	72
+Node111	Stockholm+Sweden	0	102
+Node112	Research+Triangle+Pa	0	81
+Node113	Pennsauken+NJ	34	72
+Node114	Pennsauken+NJ	36	72
+Node115	Rancho+Cordova+CA	0	75
+Node116	Orlando+FL	8	63
+Node117	Chicago+IL	20	21
+Node118	Tacoma+WA	2	114
+Node119	Stockton+CA	10	105
+Node120	Kansas+City+MO	6	42
+Node121	Orlando+FL	10	63
+Node122	Dallas+TX	28	27
+Node123	Cheyenne+WY	14	18
+Node124	T	6	111
+Node125	Stockton+CA	12	105
+Node126	Chicago+IL	22	21
+Node127	T	8	111
+Node128	Stockton+CA	14	105
+Node129	Chicago+IL	24	21
+Node130	Chicago+IL	26	21
+Node131	Pennsauken+NJ	38	72
+Node132	Stockton+CA	16	105
+Node133	Stockton+CA	18	105
+Node134	Anaheim+CA	12	3
+Node135	Anaheim+CA	14	3
+Node136	Atlanta+GA	26	9
+Node137	T	10	111
+Node138	Stockton+CA	20	105
+Node139	Chicago+IL	28	21
+Node140	Relay+MD	12	78
+Node141	Pennsauken+NJ	40	72
+Node142	Chicago+IL	30	21
+Node143	T	12	111
+Node144	Lees+Summit+MO	0	45
+Node145	Boston+MA	0	12
+Node146	New+York+NY	16	60
+Node147	New+York+NY	18	60
+Node148	Pennsauken+NJ	42	72
+Node149	Lees+Summit+MO	2	45
+Node150	New+York+NY	20	60
+Node151	Cheyenne+WY	16	18
+Node152	Boston+MA	2	12
+Node153	Seattle+WA	6	93
+Node154	Pennsauken+NJ	44	72
+Node155	Chicago+IL	32	21
+Node156	T	14	111
+Node157	London+UnitedKingdom	0	48
+Node158	Chicago+IL	34	21
+Node159	Rancho+Cordova+CA	2	75
+Node160	Dallas+TX	30	27
+Node161	T	16	111
+Node162	Pennsauken+NJ	46	72
+Node163	Pennsauken+NJ	48	72
+Node164	T	18	111
+Node165	Pennsauken+NJ	50	72
+Node166	Pennsauken+NJ	52	72
+Node167	T	20	111
+Node168	T	22	111
+Node169	Pennsauken+NJ	54	72
+Node170	T	24	111
+Node171	Atlanta+GA	28	9
+Node172	T	26	111
+Node173	Pennsauken+NJ	56	72
+Node174	T	28	111
+Node175	T	30	111
+Node176	Reston+VA	2	84
+Node177	Pennsauken+NJ	58	72
+Node178	Relay+MD	14	78
+Node179	Pennsauken+NJ	60	72
+Node180	San+Jose+CA	2	90
+Node181	Chicago+IL	36	21
+Node182	Relay+MD	16	78
+Node183	Pennsauken+NJ	62	72
+Node184	T	32	111
+Node185	Chicago+IL	38	21
+Node186	Chicago+IL	40	21
+Node187	Relay+MD	18	78
+Node188	Kansas+City+MO	8	42
+Node189	Tacoma+WA	4	114
+Node190	Dallas+TX	32	27
+Node191	Chicago+IL	42	21
+Node192	Dallas+TX	34	27
+Node193	London+UnitedKingdom	2	48
+Node194	Stockton+CA	22	105
+Node195	Chicago+IL	44	21
+Node196	Dallas+TX	36	27
+Node197	Stockton+CA	24	105
+Node198	Pennsauken+NJ	64	72
+Node199	Seattle+WA	8	93
+Node200	Atlanta+GA	30	9
+Node201	Orlando+FL	12	63
+Node202	Pennsauken+NJ	66	72
+Node203	Dallas+TX	38	27
+Node204	Dallas+TX	40	27
+Node205	Stockton+CA	26	105
+Node206	Stockton+CA	28	105
+Node207	Cheyenne+WY	18	18
+Node208	Relay+MD	20	78
+Node209	Orlando+FL	14	63
+Node210	Cheyenne+WY	20	18
+Node211	Washington+DC	4	120
+Node212	Dallas+TX	42	27
+Node213	T	34	111
+Node214	Kansas+City+MO	10	42
+Node215	Washington+DC	6	120
+Node216	T	36	111
+Node217	T	38	111
+Node218	T	40	111
+Node219	New+York+NY	22	60
+Node220	T	42	111
+Node221	Relay+MD	22	78
+Node222	T	44	111
+Node223	Dallas+TX	44	27
+Node224	Chicago+IL	46	21
+Node225	T	46	111
+Node226	Chicago+IL	48	21
+Node227	Chicago+IL	50	21
+Node228	Relay+MD	24	78
+Node229	Relay+MD	26	78
+Node230	Relay+MD	28	78
+Node231	Cheyenne+WY	22	18
+Node232	T	48	111
+Node233	Dallas+TX	46	27
+Node234	T	50	111
+Node235	Stockton+CA	30	105
+Node236	Dallas+TX	48	27
+Node237	Dallas+TX	50	27
+Node238	Seattle+WA	10	93
+Node239	Atlanta+GA	32	9
+Node240	Dallas+TX	52	27
+Node241	Relay+MD	30	78
+Node242	Chicago+IL	52	21
+Node243	Atlanta+GA	34	9
+Node244	Chicago+IL	54	21
+Node245	Kansas+City+MO	12	42
+Node246	New+York+NY	24	60
+Node247	Seattle+WA	12	93
+Node248	T	52	111
+Node249	Pennsauken+NJ	68	72
+Node250	London+UnitedKingdom	4	48
+Node251	Chicago+IL	56	21
+Node252	Dallas+TX	54	27
+Node253	Kansas+City+MO	14	42
+Node254	Seattle+WA	14	93
+Node255	Pennsauken+NJ	70	72
+Node256	T	54	111
+Node257	Frankfurt+Germany	0	33
+Node258	Stockton+CA	32	105
+Node259	Kansas+City+MO	16	42
+Node260	Stockton+CA	34	105
+Node261	Dallas+TX	56	27
+Node262	Seattle+WA	16	93
+Node263	Washington+DC	8	120
+Node264	New+York+NY	26	60
+Node265	Washington+DC	10	120
+Node266	Stockton+CA	36	105
+Node267	T	56	111
+Node268	Chicago+IL	58	21
+Node269	T	58	111
+Node270	Stockton+CA	38	105
+Node271	Chicago+IL	60	21
+Node272	Orlando+FL	16	63
+Node273	Stockton+CA	40	105
+Node274	Washington+DC	12	120
+Node275	Relay+MD	32	78
+Node276	Stockton+CA	42	105
+Node277	Stockton+CA	44	105
+Node278	T	60	111
+Node279	T	62	111
+Node280	T	64	111
+Node281	New+York+NY	28	60
+Node282	New+York+NY	30	60
+Node283	T	66	111
+Node284	New+York+NY	32	60
+Node285	Dallas+TX	58	27
+Node286	T	68	111
+Node287	Stockton+CA	46	105
+Node288	Chicago+IL	62	21
+Node289	Dallas+TX	60	27
+Node290	Relay+MD	34	78
+Node291	Atlanta+GA	36	9
+Node292	Chicago+IL	64	21
+Node293	Dallas+TX	62	27
+Node294	Cheyenne+WY	24	18
+Node295	Kansas+City+MO	18	42
+Node296	Stockton+CA	48	105
+Node297	Pennsauken+NJ	72	72
+Node298	Stockton+CA	50	105
+Node299	Atlanta+GA	38	9
+Node300	Relay+MD	36	78
+Node301	Pennsauken+NJ	74	72
+Node302	Seattle+WA	18	93
+Node303	Dallas+TX	64	27
+Node304	Stockton+CA	52	105
+Node305	Relay+MD	38	78
+Node306	Dublin+Ireland	0	30
+Node307	Amsterdam+Netherland	0	0
+Node308	T	70	111
+Node309	Stockton+CA	54	105
+Node310	T	72	111
+Node311	New+York+NY	34	60
+Node312	Stockton+CA	56	105
+Node313	Washington+DC	14	120
+Node314	Washington+DC	16	120
+Node315	T	74	111
+Node316	Kansas+City+MO	20	42
+Node317	Chicago+IL	66	21
+Node318	T	76	111
+Node319	Seattle+WA	20	93
+Node320	Relay+MD	40	78
+Node321	Pennsauken+NJ	76	72
+Node322	Stockton+CA	58	105
+Node323	Pennsauken+NJ	78	72
+Node324	Pennsauken+NJ	80	72
+Node325	Atlanta+GA	40	9
+Node326	Chicago+IL	68	21
+Node327	Kansas+City+MO	22	42
+Node328	Pennsauken+NJ	82	72
+Node329	San+Jose+CA	4	90
+Node330	Stockton+CA	60	105
+Node331	Seattle+WA	22	93
+Node332	Relay+MD	42	78
+Node333	Atlanta+GA	42	9
+Node334	Atlanta+GA	44	9
+Node335	Dallas+TX	66	27
+Node336	Anaheim+CA	16	3
+Node337	Chicago+IL	70	21
+Node338	Chicago+IL	72	21
+Node339	Kansas+City+MO	24	42
+Node340	Stockton+CA	62	105
+Node341	Tacoma+WA	6	114
+Node342	Chicago+IL	74	21
+Node343	Dallas+TX	68	27
+Node344	Tacoma+WA	8	114
+Node345	Tacoma+WA	10	114
+Node346	Dallas+TX	70	27
+Node347	Pennsauken+NJ	84	72
+Node348	Atlanta+GA	46	9
+Node349	Dallas+TX	72	27
+Node350	Relay+MD	44	78
+Node351	Dallas+TX	74	27
+Node352	Cheyenne+WY	26	18
+Node353	Kansas+City+MO	26	42
+Node354	Dallas+TX	76	27
+Node355	Stockton+CA	64	105
+Node356	Atlanta+GA	48	9
+Node357	Seattle+WA	24	93
+Node358	Relay+MD	46	78
+Node359	New+York+NY	36	60
+Node360	Dallas+TX	78	27
+Node361	Kansas+City+MO	28	42
+Node362	Relay+MD	48	78
+Node363	Chicago+IL	76	21
+Node364	Dallas+TX	80	27
+Node365	Dallas+TX	82	27
+Node366	Anaheim+CA	18	3
+Node367	Relay+MD	50	78
+Node368	Relay+MD	52	78
+Node369	Dallas+TX	84	27
+Node370	Dallas+TX	86	27
+Node371	Roachdale+IN	10	87
+Node372	Kansas+City+MO	30	42
+Node373	Stockton+CA	66	105
+Node374	Anaheim+CA	20	3
+Node375	Anaheim+CA	22	3
+Node376	New+York+NY	38	60
+Node377	Relay+MD	54	78
+Node378	Chicago+IL	78	21
+Node379	Chicago+IL	80	21
+Node380	San+Jose+CA	6	90
+Node381	Chicago+IL	82	21
+Node382	Relay+MD	56	78
+Node383	Chicago+IL	84	21
+Node384	Dallas+TX	88	27
+Node385	Anaheim+CA	24	3
+Node386	Stockton+CA	68	105
+Node387	Chicago+IL	86	21
+Node388	Stockton+CA	70	105
+Node389	Roachdale+IN	12	87
+Node390	Relay+MD	58	78
+Node391	Atlanta+GA	50	9
+Node392	Kansas+City+MO	32	42
+Node393	Dallas+TX	90	27
+Node394	Dallas+TX	92	27
+Node395	Dallas+TX	94	27
+Node396	Dallas+TX	96	27
+Node397	Dallas+TX	98	27
+Node398	Dallas+TX	100	27
+Node399	Chicago+IL	88	21
+Node400	Relay+MD	60	78
+Node401	Kansas+City+MO	34	42
+Node402	Relay+MD	62	78
+Node403	Cheyenne+WY	28	18
+Node404	Atlanta+GA	52	9
+Node405	Stockton+CA	72	105
+Node406	Anaheim+CA	26	3
+Node407	Cheyenne+WY	30	18
+Node408	T	78	111
+Node409	Chicago+IL	90	21
+Node410	Atlanta+GA	54	9
+Node411	Anaheim+CA	28	3
+Node412	Chicago+IL	92	21
+Node413	Washington+DC	18	120
+Node414	Cheyenne+WY	32	18
+Node415	Relay+MD	64	78
+Node416	Dallas+TX	102	27
+Node417	Anaheim+CA	30	3
+Node418	Roachdale+IN	14	87
+Node419	Chicago+IL	94	21
+Node420	Atlanta+GA	56	9
+Node421	Dallas+TX	104	27
+Node422	Chicago+IL	96	21
+Node423	Cheyenne+WY	34	18
+Node424	New+York+NY	40	60
+Node425	Dallas+TX	106	27
+Node426	Cheyenne+WY	36	18
+Node427	Stockton+CA	74	105
+Node428	Atlanta+GA	58	9
+Node429	Anaheim+CA	32	3
+Node430	Cheyenne+WY	38	18
+Node431	Atlanta+GA	60	9
+Node432	Relay+MD	66	78
+Node433	Chicago+IL	98	21
+Node434	Kansas+City+MO	36	42
+Node435	Cheyenne+WY	40	18
+Node436	Chicago+IL	100	21
+Node437	Stockton+CA	76	105
+Node438	Roachdale+IN	16	87
+Node439	Chicago+IL	102	21
+Node440	Chicago+IL	104	21
+Node441	Pennsauken+NJ	86	72
+Node442	Atlanta+GA	62	9
+Node443	Atlanta+GA	64	9
+Node444	New+York+NY	42	60
+Node445	Atlanta+GA	66	9
+Node446	Dallas+TX	108	27
+Node447	Pearl+Harbor+HI	0	69
+Node448	Pennsauken+NJ	88	72
+Node449	Relay+MD	68	78
+Node450	Kansas+City+MO	38	42
+Node451	Chicago+IL	106	21
+Node452	Anaheim+CA	34	3
+Node453	Dallas+TX	110	27
+Node454	Dallas+TX	112	27
+Node455	Orlando+FL	18	63
+Node456	Anaheim+CA	36	3
+Node457	New+York+NY	44	60
+Node458	Chicago+IL	108	21
+Node459	Anaheim+CA	38	3
+Node460	Atlanta+GA	68	9
+Node461	Atlanta+GA	70	9
+Node462	Dallas+TX	114	27
+Node463	Dallas+TX	116	27
+Node464	Cheyenne+WY	42	18
+Node465	Dallas+TX	118	27
+Node466	Dallas+TX	120	27
+Node467	Anaheim+CA	40	3
+Node468	Anaheim+CA	42	3
+Node469	Chicago+IL	110	21
+Node470	Chicago+IL	112	21
+Node471	Cheyenne+WY	44	18
+Node472	Relay+MD	70	78
+Node473	Seattle+WA	26	93
+Node474	Stockton+CA	78	105
+Node475	Chicago+IL	114	21
+Node476	Chicago+IL	116	21
+Node477	Atlanta+GA	72	9
+Node478	Orlando+FL	20	63
+Node479	Kansas+City+MO	40	42
+Node480	Chicago+IL	118	21
+Node481	Kansas+City+MO	42	42
+Node482	Chicago+IL	120	21
+Node483	Tacoma+WA	12	114
+Node484	Stockton+CA	80	105
+Node485	Chicago+IL	122	21
+Node486	Anaheim+CA	44	3
+Node487	New+York+NY	46	60
+Node488	Stockton+CA	82	105
+Node489	Orlando+FL	22	63
+Node490	Chicago+IL	124	21
+Node491	Chicago+IL	126	21
+Node492	Pennsauken+NJ	90	72
+Node493	Anaheim+CA	46	3
+Node494	Relay+MD	72	78
+Node495	New+York+NY	48	60
+Node496	Washington+DC	20	120
+Node497	Dallas+TX	122	27
+Node498	Chicago+IL	128	21
+Node499	Kansas+City+MO	44	42
+Node500	Relay+MD	74	78
+Node501	Relay+MD	76	78
+Node502	Anaheim+CA	48	3
+Node503	Anaheim+CA	50	3
+Node504	Relay+MD	78	78
+Node505	Kansas+City+MO	46	42
+Node506	Chicago+IL	130	21
+Node507	Stockton+CA	84	105
+Node508	Kansas+City+MO	48	42
+Node509	Pennsauken+NJ	92	72
+Node510	Dallas+TX	124	27
+Node511	Pennsauken+NJ	94	72
+Node512	Dallas+TX	126	27
+Node513	Anaheim+CA	52	3
+Node514	Chicago+IL	132	21
+Node515	Stockton+CA	86	105
+Node516	Atlanta+GA	74	9
+Node517	New+York+NY	50	60
+Node518	Relay+MD	80	78
+Node519	Dallas+TX	128	27
+Node520	Atlanta+GA	76	9
+Node521	Relay+MD	82	78
+Node522	Kansas+City+MO	50	42
+Node523	Anaheim+CA	54	3
+Node524	Stockton+CA	88	105
+Node525	Orlando+FL	24	63
+Node526	Stockton+CA	90	105
+Node527	Chicago+IL	134	21
+Node528	New+York+NY	52	60
+Node529	Dallas+TX	130	27
+Node530	Chicago+IL	136	21
+Node531	Anaheim+CA	56	3
+Node532	Chicago+IL	138	21
+Node533	Chicago+IL	140	21
+Node534	Relay+MD	84	78
+Node535	Pennsauken+NJ	96	72
+Node536	Chicago+IL	142	21
+Node537	Seattle+WA	28	93
+Node538	Atlanta+GA	78	9
+Node539	Chicago+IL	144	21
+Node540	New+York+NY	54	60
+Node541	Anaheim+CA	58	3
+Node542	Kansas+City+MO	52	42
+Node543	Orlando+FL	26	63
+Node544	Atlanta+GA	80	9
+Node545	Dallas+TX	132	27
+Node546	Atlanta+GA	82	9
+Node547	Atlanta+GA	84	9
+Node548	Relay+MD	86	78
+Node549	Chicago+IL	146	21
+Node550	Pennsauken+NJ	98	72
+Node551	Atlanta+GA	86	9
+Node552	Relay+MD	88	78
+Node553	Dallas+TX	134	27
+Node554	Relay+MD	90	78
+Node555	New+York+NY	56	60
+Node556	Dallas+TX	136	27
+Node557	Dallas+TX	138	27
+Node558	Dallas+TX	140	27
+Node559	Chicago+IL	148	21
+Node560	Atlanta+GA	88	9
+Node561	Pennsauken+NJ	100	72
+Node562	Chicago+IL	150	21
+Node563	Relay+MD	92	78
+Node564	Pennsauken+NJ	102	72
+Node565	Relay+MD	94	78
+Node566	Pennsauken+NJ	104	72
+Node567	New+York+NY	58	60
+Node568	New+York+NY	60	60
+Node569	New+York+NY	62	60
+Node570	Dallas+TX	142	27
+Node571	Atlanta+GA	90	9
+Node572	Atlanta+GA	92	9
+Node573	Atlanta+GA	94	9
+Node574	Stockton+CA	92	105
+Node575	Cheyenne+WY	46	18
+Node576	Atlanta+GA	96	9
+Node577	Dallas+TX	144	27
+Node578	Roachdale+IN	18	87
+Node579	Kansas+City+MO	54	42
+Node580	Relay+MD	96	78
+Node581	Anaheim+CA	60	3
+Node582	Kansas+City+MO	56	42
+Node583	Pennsauken+NJ	106	72
+Node584	Dallas+TX	146	27
+Node585	Pearl+Harbor+HI	2	69
+Node586	Chicago+IL	152	21
+Node587	Anaheim+CA	62	3
+Node588	Atlanta+GA	98	9
+Node589	Pennsauken+NJ	108	72
+Node590	Atlanta+GA	100	9
+Node591	Anaheim+CA	64	3
+Node592	Dallas+TX	148	27
+Node593	New+York+NY	64	60
+Node594	Cheyenne+WY	48	18
+Node595	Atlanta+GA	102	9
+Node596	Kansas+City+MO	58	42
+Node597	Cheyenne+WY	50	18
+Node598	Chicago+IL	154	21
+Node599	Seattle+WA	30	93
+Node600	Pennsauken+NJ	110	72
+Node601	Seattle+WA	32	93
+Node602	Kansas+City+MO	60	42
+Node603	Orlando+FL	28	63
+Node604	Stockton+CA	94	105
+Node605	Chicago+IL	156	21
+Node606	Pennsauken+NJ	112	72
+Node607	Relay+MD	98	78
+Node608	Stockton+CA	96	105
+Node609	Relay+MD	100	78
+Node610	Relay+MD	102	78
+Node611	Atlanta+GA	104	9
+Node612	Relay+MD	104	78
+Node613	Orlando+FL	30	63
+Node614	Relay+MD	106	78
+Node615	Stockton+CA	98	105
+Node616	Stockton+CA	100	105
+Node617	Cheyenne+WY	52	18
+Node618	Chicago+IL	158	21
+Node619	Chicago+IL	160	21
+Node620	Orlando+FL	32	63
+Node621	Stockton+CA	102	105
+Node622	Dallas+TX	150	27
+Node623	Anaheim+CA	66	3
+Node624	Anaheim+CA	68	3
+Node625	Kansas+City+MO	62	42
+Node626	Relay+MD	108	78
+Node627	Dallas+TX	152	27
+Node628	Dallas+TX	154	27
+Node629	Stockton+CA	104	105
+Node630	Dallas+TX	156	27
+Node631	Dallas+TX	158	27
+Node632	Pennsauken+NJ	114	72
+Node633	Atlanta+GA	106	9
+Node634	Ashburn+VA	0	6
+Node635	Kansas+City+MO	64	42
+Node636	Anaheim+CA	70	3
+Node637	Cheyenne+WY	54	18
+Node638	Cheyenne+WY	56	18
+Node639	T	80	111
+Node640	T	82	111
+Node641	Cheyenne+WY	58	18
+Node642	Pennsauken+NJ	116	72
+Node643	Pennsauken+NJ	118	72
+Node644	Dallas+TX	160	27
+Node645	Pennsauken+NJ	120	72
+Node646	Orlando+FL	34	63
+Node647	Roachdale+IN	20	87
+Node648	Kansas+City+MO	66	42
+Node649	New+York+NY	66	60
+Node650	Pennsauken+NJ	122	72
+Node651	Kansas+City+MO	68	42
+Node652	New+York+NY	68	60
+Node653	Kansas+City+MO	70	42
+Node654	Pennsauken+NJ	124	72
+Node655	Pennsauken+NJ	126	72
+Node656	Atlanta+GA	108	9
+Node657	Relay+MD	110	78
+Node658	Chicago+IL	162	21
+Node659	Relay+MD	112	78
+Node660	Pennsauken+NJ	128	72
+Node661	Dallas+TX	162	27
+Node662	Seattle+WA	34	93
+Node663	Relay+MD	114	78
+Node664	Relay+MD	116	78
+Node665	Stockton+CA	106	105
+Node666	Cheyenne+WY	60	18
+Node667	Stockton+CA	108	105
+Node668	Chicago+IL	164	21
+Node669	Chicago+IL	166	21
+Node670	Chicago+IL	168	21
+Node671	Dallas+TX	164	27
+Node672	Relay+MD	118	78
+Node673	Dallas+TX	166	27
+Node674	Chicago+IL	170	21
+Node675	Anaheim+CA	72	3
+Node676	Pennsauken+NJ	130	72
+Node677	Stockton+CA	110	105
+Node678	Chicago+IL	172	21
+Node679	Orlando+FL	36	63
+Node680	Relay+MD	120	78
+Node681	Atlanta+GA	110	9
+Node682	Relay+MD	122	78
+Node683	Tacoma+WA	14	114
+Node684	Chicago+IL	174	21
+Node685	Chicago+IL	176	21
+Node686	Atlanta+GA	112	9
+Node687	New+York+NY	70	60
+Node688	Washington+DC	22	120
+Node689	Washington+DC	24	120
+Node690	Pennsauken+NJ	132	72
+Node691	Cheyenne+WY	62	18
+Node692	Relay+MD	124	78
+Node693	Chicago+IL	178	21
+Node694	Roachdale+IN	22	87
+Node695	Chicago+IL	180	21
+Node696	Chicago+IL	182	21
+Node697	Dallas+TX	168	27
+Node698	Atlanta+GA	114	9
+Node699	Anaheim+CA	74	3
+Node700	New+York+NY	72	60
+Node701	Dallas+TX	170	27
+Node702	Anaheim+CA	76	3
+Node703	Atlanta+GA	116	9
+Node704	Chicago+IL	184	21
+Node705	Chicago+IL	186	21
+Node706	Kansas+City+MO	72	42
+Node707	Relay+MD	126	78
+Node708	Atlanta+GA	118	9
+Node709	Dallas+TX	172	27
+Node710	Pennsauken+NJ	134	72
+Node711	Chicago+IL	188	21
+Node712	New+York+NY	74	60
+Node713	Dallas+TX	174	27
+Node714	Relay+MD	128	78
+Node715	Pennsauken+NJ	136	72
+Node716	Dallas+TX	176	27
+Node717	Chicago+IL	190	21
+Node718	Atlanta+GA	120	9
+Node719	Pennsauken+NJ	138	72
+Node720	Relay+MD	130	78
+Node721	Washington+DC	26	120
+Node722	Chicago+IL	192	21
+Node723	Stockton+CA	112	105
+Node724	Atlanta+GA	122	9
+Node725	Chicago+IL	194	21
+Node726	Dallas+TX	178	27
+Node727	New+York+NY	76	60
+Node728	Stockton+CA	114	105
+Node729	Pennsauken+NJ	140	72
+Node730	Anaheim+CA	78	3
+Node731	Anaheim+CA	80	3
+Node732	T	84	111
+Node733	Pennsauken+NJ	142	72
+Node734	Roachdale+IN	24	87
+Node735	Relay+MD	132	78
+Node736	Kansas+City+MO	74	42
+Node737	Chicago+IL	196	21
+Node738	Dallas+TX	180	27
+Node739	Atlanta+GA	124	9
+Node740	T	86	111
+Node741	Kansas+City+MO	76	42
+Node742	Relay+MD	134	78
+Node743	Anaheim+CA	82	3
+Node744	Roachdale+IN	26	87
+Node745	Anaheim+CA	84	3
+Node746	Chicago+IL	198	21
+Node747	New+York+NY	78	60
+Node748	Atlanta+GA	126	9
+Node749	Chicago+IL	200	21
+Node750	Chicago+IL	202	21
+Node751	Relay+MD	136	78
+Node752	Relay+MD	138	78
+Node753	Anaheim+CA	86	3
+Node754	London+UnitedKingdom	6	48
+Node755	Dallas+TX	182	27
+Node756	Tacoma+WA	16	114
+Node757	Chicago+IL	204	21
+Node758	Atlanta+GA	128	9
+Node759	Chicago+IL	206	21
+Node760	Pennsauken+NJ	144	72
+Node761	Stockton+CA	116	105
+Node762	Orlando+FL	38	63
+Node763	Stockton+CA	118	105
+Node764	Pennsauken+NJ	146	72
+Node765	Washington+DC	28	120
+Node766	Dallas+TX	184	27
+Node767	Dallas+TX	186	27
+Node768	Pennsauken+NJ	148	72
+Node769	Washington+DC	30	120
+Node770	Chicago+IL	208	21
+Node771	Stockton+CA	120	105
+Node772	Chicago+IL	210	21
+Node773	Dallas+TX	188	27
+Node774	Chicago+IL	212	21
+Node775	Chicago+IL	214	21
+Node776	Atlanta+GA	130	9
+Node777	Atlanta+GA	132	9
+Node778	Anaheim+CA	88	3
+Node779	Relay+MD	140	78
+Node780	Pennsauken+NJ	150	72
+Node781	Orlando+FL	40	63
+Node782	Pennsauken+NJ	152	72
+Node783	New+York+NY	80	60
+Node784	New+York+NY	82	60
+Node785	New+York+NY	84	60
+Node786	New+York+NY	86	60
+Node787	New+York+NY	88	60
+Node788	New+York+NY	90	60
+Node789	Orlando+FL	42	63
+Node790	Relay+MD	142	78
+Node791	Washington+DC	32	120
+Node792	Dallas+TX	190	27
+Node793	Cheyenne+WY	64	18
+Node794	Orlando+FL	44	63
+Node795	Anaheim+CA	90	3
+Node796	Stockton+CA	122	105
+Node797	Seattle+WA	36	93
+Node798	Relay+MD	144	78
+Node799	Kansas+City+MO	78	42
+Node800	Stockton+CA	124	105
+Node801	Stockton+CA	126	105
+Node802	San+Jose+CA	8	90
+Node803	Relay+MD	146	78
+Node804	Pennsauken+NJ	154	72
+Node805	Dallas+TX	192	27
+Node806	Atlanta+GA	134	9
+Node807	Orlando+FL	46	63
+Node808	New+York+NY	92	60
+Node809	Pennsauken+NJ	156	72
+Node810	Atlanta+GA	136	9
+Node811	Roachdale+IN	28	87
+Node812	Anaheim+CA	92	3
+Node813	Dallas+TX	194	27
+Node814	Dallas+TX	196	27
+Node815	Pennsauken+NJ	158	72
+Node816	Tacoma+WA	18	114
+Node817	Stockton+CA	128	105
+Node818	Anaheim+CA	94	3
+Node819	Pennsauken+NJ	160	72
+Node820	Stockton+CA	130	105
+Node821	Pennsauken+NJ	162	72
+Node822	Dallas+TX	198	27
+Node823	Anaheim+CA	96	3
+Node824	Pennsauken+NJ	164	72
+Node825	Atlanta+GA	138	9
+Node826	Atlanta+GA	140	9
+Node827	Atlanta+GA	142	9
+Node828	Kansas+City+MO	80	42
+Node829	Chicago+IL	216	21
+Node830	New+York+NY	94	60
+Node831	Cheyenne+WY	66	18
+Node832	Atlanta+GA	144	9
+Node833	Dallas+TX	200	27
+Node834	Stockton+CA	132	105
+Node835	Relay+MD	148	78
+Node836	Anaheim+CA	98	3
+Node837	Atlanta+GA	146	9
+Node838	Pennsauken+NJ	166	72
+Node839	Chicago+IL	218	21
+Node840	Orlando+FL	48	63
+Node841	Anaheim+CA	100	3
+Node842	Chicago+IL	220	21
+Node843	Atlanta+GA	148	9
+Node844	Dallas+TX	202	27
+Node845	Pennsauken+NJ	168	72
+Node846	Chicago+IL	222	21
+Node847	Roachdale+IN	30	87
+Node848	Relay+MD	150	78
+Node849	T	88	111
+Node850	Atlanta+GA	150	9
+Node851	Anaheim+CA	102	3
+Node852	Tacoma+WA	20	114
+Node853	Springfield+MA	2	99
+Node854	Cheyenne+WY	68	18
+Node855	Chicago+IL	224	21
+Node856	Kansas+City+MO	82	42
+Node857	Stockton+CA	134	105
+Node858	Washington+DC	34	120
+Node859	Relay+MD	152	78
+Node860	Relay+MD	154	78
+Node861	Relay+MD	156	78
+Node862	Relay+MD	158	78
+Node863	New+York+NY	96	60
+Node864	Atlanta+GA	152	9
+Node865	Stockton+CA	136	105
+Node866	London+UnitedKingdom	8	48
+Node867	Anaheim+CA	104	3
+Node868	New+York+NY	98	60
+Node869	Relay+MD	160	78
+Node870	Dallas+TX	204	27
+Node871	Stockton+CA	138	105
+Node872	Relay+MD	162	78
+Node873	New+York+NY	100	60
+Node874	Dallas+TX	206	27
+Node875	Stockton+CA	140	105
+Node876	Roachdale+IN	32	87
+Node877	Chicago+IL	226	21
+Node878	Chicago+IL	228	21
+Node879	Anaheim+CA	106	3
+Node880	Kansas+City+MO	84	42
+Node881	Orlando+FL	50	63
+Node882	Pennsauken+NJ	170	72
+Node883	Tacoma+WA	22	114
+Node884	Anaheim+CA	108	3
+Node885	Cheyenne+WY	70	18
+Node886	Dallas+TX	208	27
+Node887	Anaheim+CA	110	3
+Node888	Pennsauken+NJ	172	72
+Node889	Chicago+IL	230	21
+Node890	Stockton+CA	142	105
+Node891	Anaheim+CA	112	3
+Node892	Pennsauken+NJ	174	72
+Node893	Atlanta+GA	154	9
+Node894	Dallas+TX	210	27
+Node895	Relay+MD	164	78
+Node896	Dallas+TX	212	27
+Node897	Seattle+WA	38	93
+Node898	New+York+NY	102	60
+Node899	New+York+NY	104	60
+Node900	Pennsauken+NJ	176	72
+Node901	Seattle+WA	40	93
+Node902	Springfield+MA	4	99
+Node903	New+York+NY	106	60
+Node904	Seattle+WA	42	93
+Node905	Springfield+MA	6	99
+Node906	New+York+NY	108	60
+Node907	New+York+NY	110	60
+Node908	New+York+NY	112	60
+Node909	Springfield+MA	8	99
+Node910	Pennsauken+NJ	178	72
+Node911	New+York+NY	114	60
+Node912	Relay+MD	166	78
+Node913	Amsterdam+Netherland	2	0
+Node914	Anaheim+CA	114	3
+Node915	Anaheim+CA	116	3
+Node916	Atlanta+GA	156	9
+Node917	Atlanta+GA	158	9
+Node918	Brussels+Belgium	2	15
+Node919	Cheyenne+WY	72	18
+Node920	Cheyenne+WY	74	18
+Node921	Chicago+IL	232	21
+Node922	Chicago+IL	234	21
+Node923	Chicago+IL	236	21
+Node924	Chicago+IL	238	21
+Node925	Copenhagen+Denmark	0	24
+Node926	Copenhagen+Denmark	2	24
+Node927	Dublin+Ireland	2	30
+Node928	Frankfurt+Germany	2	33
+Node929	Frankfurt+Germany	4	33
+Node930	Dallas+TX	214	27
+Node931	Hamburg+Germany	0	36
+Node932	Hong+Kong	0	39
+Node933	Hong+Kong	2	39
+Node934	Kansas+City+MO	86	42
+Node935	Kansas+City+MO	88	42
+Node936	London+UnitedKingdom	10	48
+Node937	London+UnitedKingdom	12	48
+Node938	Milan+Italy	0	54
+Node939	Manasquan+NJ	0	51
+Node940	Manasquan+NJ	2	51
+Node941	New+York+NY	116	60
+Node942	New+York+NY	118	60
+Node943	New+York+NY	120	60
+Node944	New+York+NY	122	60
+Node945	New+York+NY	124	60
+Node946	Orlando+FL	52	63
+Node947	Orlando+FL	54	63
+Node948	Orlando+FL	56	63
+Node949	Paris+France	0	66
+Node950	Pennsauken+NJ	180	72
+Node951	Pearl+Harbor+HI	4	69
+Node952	Pearl+Harbor+HI	6	69
+Node953	Pearl+Harbor+HI	8	69
+Node954	Relay+MD	168	78
+Node955	Relay+MD	170	78
+Node956	Relay+MD	172	78
+Node957	Roachdale+IN	34	87
+Node958	Research+Triangle+Pa	2	81
+Node959	Seattle+WA	44	93
+Node960	Seattle+WA	46	93
+Node961	Seattle+WA	48	93
+Node962	Singapore	0	96
+Node963	San+Jose+CA	10	90
+Node964	San+Jose+CA	12	90
+Node965	San+Jose+CA	14	90
+Node966	Stockton+CA	144	105
+Node967	Stockton+CA	146	105
+Node968	Stockholm+Sweden	2	102
+Node969	Sydney+Australia	0	108
+Node970	Tacoma+WA	24	114
+Node971	Tokyo+Japan	0	117
+Node972	Tokyo+Japan	2	117
+Node973	Tokyo+Japan	4	117
+Node974	Amsterdam+Netherland	4	0
+Node975	Anaheim+CA	118	3
+Node976	Anaheim+CA	120	3
+Node977	Atlanta+GA	160	9
+Node978	Atlanta+GA	162	9
+Node979	Brussels+Belgium	4	15
+Node980	Cheyenne+WY	76	18
+Node981	Cheyenne+WY	78	18
+Node982	Chicago+IL	240	21
+Node983	Chicago+IL	242	21
+Node984	Chicago+IL	244	21
+Node985	Copenhagen+Denmark	4	24
+Node986	Copenhagen+Denmark	6	24
+Node987	Dublin+Ireland	4	30
+Node988	Frankfurt+Germany	6	33
+Node989	Dallas+TX	216	27
+Node990	Dallas+TX	218	27
+Node991	Dallas+TX	220	27
+Node992	Hamburg+Germany	2	36
+Node993	Kansas+City+MO	90	42
+Node994	London+UnitedKingdom	14	48
+Node995	London+UnitedKingdom	16	48
+Node996	Milan+Italy	2	54
+Node997	Manasquan+NJ	4	51
+Node998	Manasquan+NJ	6	51
+Node999	Munich+Germany	0	57
+Node1000	New+York+NY	126	60
+Node1001	New+York+NY	128	60
+Node1002	New+York+NY	130	60
+Node1003	Orlando+FL	58	63
+Node1004	Orlando+FL	60	63
+Node1005	Paris+France	2	66
+Node1006	Pennsauken+NJ	182	72
+Node1007	Pearl+Harbor+HI	10	69
+Node1008	Relay+MD	174	78
+Node1009	Seattle+WA	50	93
+Node1010	Seattle+WA	52	93
+Node1011	Singapore	2	96
+Node1012	San+Jose+CA	16	90
+Node1013	San+Jose+CA	18	90
+Node1014	San+Jose+CA	20	90
+Node1015	Stockton+CA	148	105
+Node1016	Stockton+CA	150	105
+Node1017	Stockholm+Sweden	4	102
+Node1018	Sydney+Australia	2	108
+Node1019	Tacoma+WA	26	114
+Node1020	Tacoma+WA	28	114
+Node1021	Tacoma+WA	30	114
+Node1022	Tacoma+WA	32	114
+Node1023	Anaheim+CA	122	3
+Node1024	Anaheim+CA	124	3
+Node1025	Anaheim+CA	126	3
+Node1026	Atlanta+GA	164	9
+Node1027	Chicago+IL	246	21
+Node1028	Chicago+IL	248	21
+Node1029	Dallas+TX	222	27
+Node1030	Kansas+City+MO	92	42
+Node1031	Kansas+City+MO	94	42
+Node1032	Kansas+City+MO	96	42
+Node1033	New+York+NY	132	60
+Node1034	New+York+NY	134	60
+Node1035	Orlando+FL	62	63
+Node1036	Orlando+FL	64	63
+Node1037	Pennsauken+NJ	184	72
+Node1038	Relay+MD	176	78
+Node1039	Relay+MD	178	78
+Node1040	Relay+MD	180	78
+Node1041	Relay+MD	182	78
+Node1042	Roachdale+IN	36	87
+Node1043	San+Jose+CA	22	90
+Node1044	San+Jose+CA	24	90
+Node1045	Tacoma+WA	34	114
+Node1046	Tacoma+WA	36	114
+Node1047	Anaheim+CA	128	3
+Node1048	Anaheim+CA	130	3
+Node1049	Atlanta+GA	166	9
+Node1050	Chicago+IL	250	21
+Node1051	Chicago+IL	252	21
+Node1052	Chicago+IL	254	21
+Node1053	Dallas+TX	224	27
+Node1054	Dallas+TX	226	27
+Node1055	Dallas+TX	228	27
+Node1056	New+York+NY	136	60
+Node1057	New+York+NY	138	60
+Node1058	New+York+NY	140	60
+Node1059	New+York+NY	142	60
+Node1060	Pennsauken+NJ	186	72
+Node1061	Pennsauken+NJ	188	72
+Node1062	Relay+MD	184	78
+Node1063	San+Jose+CA	26	90
+Node1064	Anaheim+CA	132	3
+Node1065	Atlanta+GA	168	9
+Node1066	Chicago+IL	256	21
+Node1067	New+York+NY	144	60
+Node1068	Pennsauken+NJ	190	72
+Node1069	Relay+MD	186	78
+Node1070	San+Jose+CA	28	90
+Node1071	Chicago+IL	258	21
+Node1072	New+York+NY	146	60
+Node1073	Pennsauken+NJ	192	72
+Node1074	Pennsauken+NJ	194	72
+Node1075	Relay+MD	188	78
+Node1076	San+Jose+CA	30	90
+Node1077	San+Jose+CA	32	90
+Node1078	Dallas+TX	230	27
+Node1079	New+York+NY	148	60
+Node1080	New+York+NY	150	60
+Node1081	New+York+NY	152	60
+Node1082	Pennsauken+NJ	196	72
+Node1083	Pennsauken+NJ	198	72
+Node1084	Pennsauken+NJ	200	72
+Node1085	Relay+MD	190	78
+Node1086	New+York+NY	154	60
+Node1087	New+York+NY	156	60
+Node1088	Pennsauken+NJ	202	72
+Node1089	Relay+MD	192	78
+Node1090	Washington+DC	36	120
+Node1091	Washington+DC	38	120
+Node1092	Dallas+TX	232	27
+Node1093	Washington+DC	40	120
+Node1094	Dallas+TX	234	27
+Node1095	Relay+MD	194	78
+Node1096	Atlanta+GA	170	9
+Node1097	Kansas+City+MO	98	42
+Node1098	T	90	111
+Node1099	San+Jose+CA	34	90
+Node1100	T	92	111
+Node1101	Dallas+TX	236	27
+Node1102	Dallas+TX	238	27
+Node1103	Atlanta+GA	172	9
+Node1104	New+York+NY	158	60
+Node1105	Chicago+IL	260	21
+Node1106	Relay+MD	196	78
+Node1107	Dallas+TX	240	27
+Node1108	T	94	111
+Node1109	New+York+NY	160	60
+Node1110	Chicago+IL	262	21
+Node1111	Washington+DC	42	120
+Node1112	Washington+DC	44	120
+Node1113	New+York+NY	162	60
+Node1114	Pennsauken+NJ	204	72
+Node1115	Seattle+WA	54	93
+Node1116	Pennsauken+NJ	206	72
+Node1117	Orlando+FL	66	63
+Node1118	Pennsauken+NJ	208	72
+Node1119	Relay+MD	198	78
+Node1120	Relay+MD	200	78
+Node1121	Chicago+IL	264	21
+Node1122	Pennsauken+NJ	210	72
+Node1123	Anaheim+CA	134	3
+Node1124	Pennsauken+NJ	212	72
+Node1125	New+York+NY	164	60
+Node1126	Atlanta+GA	174	9
+Node1127	Atlanta+GA	176	9
+Node1128	Relay+MD	202	78
+Node1129	Tacoma+WA	38	114
+Node1130	Tacoma+WA	40	114
+Node1131	Washington+DC	46	120
+Node1132	Stockton+CA	152	105
+Node1133	Orlando+FL	68	63
+Node1134	Dallas+TX	242	27
+Node1135	Chicago+IL	266	21
+Node1136	Relay+MD	204	78
+Node1137	New+York+NY	166	60
+Node1138	Dallas+TX	244	27
+Node1139	Relay+MD	206	78
+Node1140	Dallas+TX	246	27
+Node1141	Chicago+IL	268	21
+Node1142	Dallas+TX	248	27
+Node1143	Relay+MD	208	78
+Node1144	Stockton+CA	154	105
+Node1145	Tacoma+WA	42	114
+Node1146	T	96	111
+Node1147	Chicago+IL	270	21
+Node1148	Chicago+IL	272	21
+Node1149	Pennsauken+NJ	214	72
+Node1150	Stockton+CA	156	105
+Node1151	Pennsauken+NJ	216	72
+Node1152	Pennsauken+NJ	218	72
+Node1153	Stockton+CA	158	105
+Node1154	Dallas+TX	250	27
+Node1155	Chicago+IL	274	21
+Node1156	Chicago+IL	276	21
+Node1157	Anaheim+CA	136	3
+Node1158	New+York+NY	168	60
+Node1159	Dallas+TX	252	27
+Node1160	Chicago+IL	278	21
+Node1161	Chicago+IL	280	21
+Node1162	New+York+NY	170	60
+Node1163	Relay+MD	210	78
+Node1164	Washington+DC	48	120
+Node1165	Anaheim+CA	138	3
+Node1166	Roachdale+IN	38	87
+Node1167	New+York+NY	172	60
+Node1168	Relay+MD	212	78
+Node1169	Pennsauken+NJ	220	72
+Node1170	Chicago+IL	282	21
+Node1171	Dallas+TX	254	27
+Node1172	Seattle+WA	56	93
+Node1173	Relay+MD	214	78
+Node1174	Atlanta+GA	178	9
+Node1175	T	98	111
+Node1176	Pennsauken+NJ	222	72
+Node1177	Tacoma+WA	44	114
+Node1178	Pennsauken+NJ	224	72
+Node1179	Stockton+CA	160	105
+Node1180	Anaheim+CA	140	3
+Node1181	Stockton+CA	162	105
+Node1182	Stockton+CA	164	105
+Node1183	Relay+MD	216	78
+Node1184	Atlanta+GA	180	9
+Node1185	New+York+NY	174	60
+Node1186	Dallas+TX	256	27
+Node1187	Dallas+TX	258	27
+Node1188	Pennsauken+NJ	226	72
+Node1189	Anaheim+CA	142	3
+Node1190	Chicago+IL	284	21
+Node1191	Stockton+CA	166	105
+Node1192	Springfield+MA	10	99
+Node1193	Washington+DC	50	120
+Node1194	Dallas+TX	260	27
+Node1195	Chicago+IL	286	21
+Node1196	Pennsauken+NJ	228	72
+Node1197	Atlanta+GA	182	9
+Node1198	Kansas+City+MO	100	42
+Node1199	Orlando+FL	70	63
+
+link
+
+# srcNode	dstNode	bandwidth	metric	delay	queue
+Node0	Node936	10Gbps	1	2ms	100
+Node0	Node987	10Gbps	1	2ms	100
+Node7	Node906	10Gbps	1	2ms	100
+Node7	Node908	10Gbps	1	2ms	100
+Node111	Node968	10Gbps	1	2ms	100
+Node112	Node958	10Gbps	1	2ms	100
+Node116	Node948	10Gbps	1	2ms	100
+Node118	Node1022	10Gbps	1	2ms	100
+Node126	Node984	10Gbps	1	2ms	100
+Node126	Node1027	10Gbps	1	2ms	100
+Node126	Node1028	10Gbps	1	2ms	100
+Node126	Node1054	10Gbps	1	2ms	100
+Node127	Node184	10Gbps	1	2ms	100
+Node127	Node921	10Gbps	1	2ms	100
+Node127	Node922	10Gbps	1	2ms	100
+Node127	Node924	10Gbps	1	2ms	100
+Node127	Node982	10Gbps	1	2ms	100
+Node127	Node983	10Gbps	1	2ms	100
+Node127	Node1027	10Gbps	1	2ms	100
+Node127	Node1028	10Gbps	1	2ms	100
+Node127	Node1052	10Gbps	1	2ms	100
+Node127	Node1071	10Gbps	1	2ms	100
+Node128	Node388	10Gbps	1	2ms	100
+Node129	Node142	10Gbps	1	2ms	100
+Node129	Node921	10Gbps	1	2ms	100
+Node129	Node922	10Gbps	1	2ms	100
+Node129	Node924	10Gbps	1	2ms	100
+Node129	Node982	10Gbps	1	2ms	100
+Node129	Node983	10Gbps	1	2ms	100
+Node129	Node1027	10Gbps	1	2ms	100
+Node129	Node1028	10Gbps	1	2ms	100
+Node129	Node1051	10Gbps	1	2ms	100
+Node129	Node1071	10Gbps	1	2ms	100
+Node130	Node1027	10Gbps	1	2ms	100
+Node130	Node1028	10Gbps	1	2ms	100
+Node142	Node905	10Gbps	1	2ms	100
+Node142	Node924	10Gbps	1	2ms	100
+Node142	Node977	10Gbps	1	2ms	100
+Node142	Node981	10Gbps	1	2ms	100
+Node142	Node989	10Gbps	1	2ms	100
+Node142	Node1000	10Gbps	1	2ms	100
+Node143	Node975	10Gbps	1	2ms	100
+Node146	Node150	10Gbps	1	2ms	100
+Node153	Node897	10Gbps	1	2ms	100
+Node153	Node959	10Gbps	1	2ms	100
+Node153	Node961	10Gbps	1	2ms	100
+Node153	Node1010	10Gbps	1	2ms	100
+Node155	Node982	10Gbps	1	2ms	100
+Node155	Node983	10Gbps	1	2ms	100
+Node155	Node984	10Gbps	1	2ms	100
+Node157	Node936	10Gbps	1	2ms	100
+Node157	Node937	10Gbps	1	2ms	100
+Node161	Node952	10Gbps	1	2ms	100
+Node161	Node1029	10Gbps	1	2ms	100
+Node164	Node175	10Gbps	1	2ms	100
+Node164	Node914	10Gbps	1	2ms	100
+Node164	Node952	10Gbps	1	2ms	100
+Node164	Node976	10Gbps	1	2ms	100
+Node164	Node1029	10Gbps	1	2ms	100
+Node164	Node1047	10Gbps	1	2ms	100
+Node167	Node168	10Gbps	1	2ms	100
+Node167	Node952	10Gbps	1	2ms	100
+Node167	Node975	10Gbps	1	2ms	100
+Node167	Node990	10Gbps	1	2ms	100
+Node167	Node1024	10Gbps	1	2ms	100
+Node167	Node1063	10Gbps	1	2ms	100
+Node167	Node1078	10Gbps	1	2ms	100
+Node168	Node1023	10Gbps	1	2ms	100
+Node168	Node1047	10Gbps	1	2ms	100
+Node168	Node1048	10Gbps	1	2ms	100
+Node170	Node318	10Gbps	1	2ms	100
+Node170	Node970	10Gbps	1	2ms	100
+Node170	Node1022	10Gbps	1	2ms	100
+Node172	Node232	10Gbps	1	2ms	100
+Node172	Node278	10Gbps	1	2ms	100
+Node172	Node911	10Gbps	1	2ms	100
+Node172	Node930	10Gbps	1	2ms	100
+Node172	Node989	10Gbps	1	2ms	100
+Node172	Node990	10Gbps	1	2ms	100
+Node172	Node991	10Gbps	1	2ms	100
+Node172	Node1029	10Gbps	1	2ms	100
+Node172	Node1053	10Gbps	1	2ms	100
+Node172	Node1054	10Gbps	1	2ms	100
+Node174	Node975	10Gbps	1	2ms	100
+Node174	Node1044	10Gbps	1	2ms	100
+Node174	Node1054	10Gbps	1	2ms	100
+Node175	Node915	10Gbps	1	2ms	100
+Node175	Node1025	10Gbps	1	2ms	100
+Node175	Node1047	10Gbps	1	2ms	100
+Node175	Node1048	10Gbps	1	2ms	100
+Node177	Node1084	10Gbps	1	2ms	100
+Node178	Node1008	10Gbps	1	2ms	100
+Node184	Node222	10Gbps	1	2ms	100
+Node184	Node935	10Gbps	1	2ms	100
+Node184	Node942	10Gbps	1	2ms	100
+Node184	Node984	10Gbps	1	2ms	100
+Node184	Node1029	10Gbps	1	2ms	100
+Node185	Node1028	10Gbps	1	2ms	100
+Node193	Node937	10Gbps	1	2ms	100
+Node199	Node901	10Gbps	1	2ms	100
+Node199	Node904	10Gbps	1	2ms	100
+Node204	Node1029	10Gbps	1	2ms	100
+Node213	Node916	10Gbps	1	2ms	100
+Node213	Node917	10Gbps	1	2ms	100
+Node213	Node930	10Gbps	1	2ms	100
+Node213	Node964	10Gbps	1	2ms	100
+Node213	Node977	10Gbps	1	2ms	100
+Node213	Node978	10Gbps	1	2ms	100
+Node213	Node1026	10Gbps	1	2ms	100
+Node216	Node916	10Gbps	1	2ms	100
+Node216	Node917	10Gbps	1	2ms	100
+Node216	Node977	10Gbps	1	2ms	100
+Node216	Node978	10Gbps	1	2ms	100
+Node216	Node1026	10Gbps	1	2ms	100
+Node217	Node916	10Gbps	1	2ms	100
+Node217	Node917	10Gbps	1	2ms	100
+Node217	Node977	10Gbps	1	2ms	100
+Node217	Node978	10Gbps	1	2ms	100
+Node217	Node1026	10Gbps	1	2ms	100
+Node218	Node916	10Gbps	1	2ms	100
+Node218	Node917	10Gbps	1	2ms	100
+Node218	Node977	10Gbps	1	2ms	100
+Node218	Node978	10Gbps	1	2ms	100
+Node218	Node1026	10Gbps	1	2ms	100
+Node219	Node941	10Gbps	1	2ms	100
+Node219	Node942	10Gbps	1	2ms	100
+Node219	Node943	10Gbps	1	2ms	100
+Node219	Node944	10Gbps	1	2ms	100
+Node219	Node945	10Gbps	1	2ms	100
+Node219	Node1000	10Gbps	1	2ms	100
+Node219	Node1001	10Gbps	1	2ms	100
+Node219	Node1002	10Gbps	1	2ms	100
+Node219	Node1033	10Gbps	1	2ms	100
+Node219	Node1057	10Gbps	1	2ms	100
+Node219	Node1058	10Gbps	1	2ms	100
+Node219	Node1059	10Gbps	1	2ms	100
+Node220	Node916	10Gbps	1	2ms	100
+Node220	Node917	10Gbps	1	2ms	100
+Node220	Node930	10Gbps	1	2ms	100
+Node220	Node977	10Gbps	1	2ms	100
+Node220	Node978	10Gbps	1	2ms	100
+Node220	Node1026	10Gbps	1	2ms	100
+Node221	Node1038	10Gbps	1	2ms	100
+Node222	Node921	10Gbps	1	2ms	100
+Node222	Node922	10Gbps	1	2ms	100
+Node222	Node924	10Gbps	1	2ms	100
+Node222	Node982	10Gbps	1	2ms	100
+Node222	Node983	10Gbps	1	2ms	100
+Node222	Node1027	10Gbps	1	2ms	100
+Node222	Node1028	10Gbps	1	2ms	100
+Node222	Node1051	10Gbps	1	2ms	100
+Node222	Node1052	10Gbps	1	2ms	100
+Node222	Node1071	10Gbps	1	2ms	100
+Node224	Node921	10Gbps	1	2ms	100
+Node224	Node922	10Gbps	1	2ms	100
+Node224	Node924	10Gbps	1	2ms	100
+Node224	Node982	10Gbps	1	2ms	100
+Node224	Node983	10Gbps	1	2ms	100
+Node224	Node1027	10Gbps	1	2ms	100
+Node224	Node1028	10Gbps	1	2ms	100
+Node224	Node1051	10Gbps	1	2ms	100
+Node224	Node1052	10Gbps	1	2ms	100
+Node224	Node1071	10Gbps	1	2ms	100
+Node225	Node640	10Gbps	1	2ms	100
+Node225	Node919	10Gbps	1	2ms	100
+Node225	Node920	10Gbps	1	2ms	100
+Node225	Node980	10Gbps	1	2ms	100
+Node225	Node981	10Gbps	1	2ms	100
+Node226	Node921	10Gbps	1	2ms	100
+Node226	Node922	10Gbps	1	2ms	100
+Node226	Node924	10Gbps	1	2ms	100
+Node226	Node982	10Gbps	1	2ms	100
+Node226	Node983	10Gbps	1	2ms	100
+Node226	Node1027	10Gbps	1	2ms	100
+Node226	Node1028	10Gbps	1	2ms	100
+Node226	Node1051	10Gbps	1	2ms	100
+Node226	Node1052	10Gbps	1	2ms	100
+Node226	Node1071	10Gbps	1	2ms	100
+Node227	Node921	10Gbps	1	2ms	100
+Node227	Node922	10Gbps	1	2ms	100
+Node227	Node924	10Gbps	1	2ms	100
+Node227	Node982	10Gbps	1	2ms	100
+Node227	Node983	10Gbps	1	2ms	100
+Node227	Node1027	10Gbps	1	2ms	100
+Node227	Node1028	10Gbps	1	2ms	100
+Node227	Node1071	10Gbps	1	2ms	100
+Node231	Node920	10Gbps	1	2ms	100
+Node231	Node981	10Gbps	1	2ms	100
+Node232	Node248	10Gbps	1	2ms	100
+Node232	Node510	10Gbps	1	2ms	100
+Node232	Node930	10Gbps	1	2ms	100
+Node234	Node639	10Gbps	1	2ms	100
+Node234	Node919	10Gbps	1	2ms	100
+Node234	Node920	10Gbps	1	2ms	100
+Node234	Node980	10Gbps	1	2ms	100
+Node234	Node981	10Gbps	1	2ms	100
+Node248	Node267	10Gbps	1	2ms	100
+Node248	Node278	10Gbps	1	2ms	100
+Node248	Node279	10Gbps	1	2ms	100
+Node248	Node310	10Gbps	1	2ms	100
+Node248	Node911	10Gbps	1	2ms	100
+Node248	Node990	10Gbps	1	2ms	100
+Node248	Node1054	10Gbps	1	2ms	100
+Node250	Node994	10Gbps	1	2ms	100
+Node252	Node1028	10Gbps	1	2ms	100
+Node252	Node1078	10Gbps	1	2ms	100
+Node254	Node319	10Gbps	1	2ms	100
+Node256	Node1029	10Gbps	1	2ms	100
+Node256	Node1047	10Gbps	1	2ms	100
+Node257	Node928	10Gbps	1	2ms	100
+Node264	Node903	10Gbps	1	2ms	100
+Node267	Node510	10Gbps	1	2ms	100
+Node267	Node989	10Gbps	1	2ms	100
+Node267	Node1004	10Gbps	1	2ms	100
+Node267	Node1078	10Gbps	1	2ms	100
+Node267	Node1083	10Gbps	1	2ms	100
+Node268	Node922	10Gbps	1	2ms	100
+Node269	Node1005	10Gbps	1	2ms	100
+Node278	Node921	10Gbps	1	2ms	100
+Node278	Node930	10Gbps	1	2ms	100
+Node278	Node982	10Gbps	1	2ms	100
+Node278	Node1055	10Gbps	1	2ms	100
+Node279	Node911	10Gbps	1	2ms	100
+Node279	Node1047	10Gbps	1	2ms	100
+Node279	Node1053	10Gbps	1	2ms	100
+Node280	Node929	10Gbps	1	2ms	100
+Node282	Node942	10Gbps	1	2ms	100
+Node285	Node510	10Gbps	1	2ms	100
+Node292	Node1027	10Gbps	1	2ms	100
+Node292	Node1028	10Gbps	1	2ms	100
+Node293	Node510	10Gbps	1	2ms	100
+Node306	Node927	10Gbps	1	2ms	100
+Node306	Node987	10Gbps	1	2ms	100
+Node307	Node913	10Gbps	1	2ms	100
+Node308	Node932	10Gbps	1	2ms	100
+Node308	Node933	10Gbps	1	2ms	100
+Node310	Node1051	10Gbps	1	2ms	100
+Node315	Node964	10Gbps	1	2ms	100
+Node315	Node1013	10Gbps	1	2ms	100
+Node315	Node1015	10Gbps	1	2ms	100
+Node316	Node1031	10Gbps	1	2ms	100
+Node316	Node1032	10Gbps	1	2ms	100
+Node317	Node1027	10Gbps	1	2ms	100
+Node317	Node1028	10Gbps	1	2ms	100
+Node318	Node961	10Gbps	1	2ms	100
+Node318	Node965	10Gbps	1	2ms	100
+Node318	Node969	10Gbps	1	2ms	100
+Node318	Node981	10Gbps	1	2ms	100
+Node318	Node1045	10Gbps	1	2ms	100
+Node318	Node1046	10Gbps	1	2ms	100
+Node319	Node959	10Gbps	1	2ms	100
+Node319	Node960	10Gbps	1	2ms	100
+Node319	Node961	10Gbps	1	2ms	100
+Node319	Node1009	10Gbps	1	2ms	100
+Node320	Node954	10Gbps	1	2ms	100
+Node323	Node1082	10Gbps	1	2ms	100
+Node324	Node1073	10Gbps	1	2ms	100
+Node330	Node388	10Gbps	1	2ms	100
+Node388	Node966	10Gbps	1	2ms	100
+Node388	Node967	10Gbps	1	2ms	100
+Node388	Node1015	10Gbps	1	2ms	100
+Node388	Node1016	10Gbps	1	2ms	100
+Node444	Node898	10Gbps	1	2ms	100
+Node444	Node899	10Gbps	1	2ms	100
+Node487	Node906	10Gbps	1	2ms	100
+Node487	Node908	10Gbps	1	2ms	100
+Node510	Node773	10Gbps	1	2ms	100
+Node510	Node911	10Gbps	1	2ms	100
+Node510	Node989	10Gbps	1	2ms	100
+Node510	Node990	10Gbps	1	2ms	100
+Node510	Node1029	10Gbps	1	2ms	100
+Node510	Node1053	10Gbps	1	2ms	100
+Node510	Node1054	10Gbps	1	2ms	100
+Node511	Node1006	10Gbps	1	2ms	100
+Node517	Node898	10Gbps	1	2ms	100
+Node517	Node899	10Gbps	1	2ms	100
+Node534	Node1069	10Gbps	1	2ms	100
+Node639	Node981	10Gbps	1	2ms	100
+Node645	Node1037	10Gbps	1	2ms	100
+Node649	Node898	10Gbps	1	2ms	100
+Node649	Node899	10Gbps	1	2ms	100
+Node700	Node903	10Gbps	1	2ms	100
+Node893	Node916	10Gbps	1	2ms	100
+Node894	Node1029	10Gbps	1	2ms	100
+Node895	Node954	10Gbps	1	2ms	100
+Node895	Node955	10Gbps	1	2ms	100
+Node895	Node956	10Gbps	1	2ms	100
+Node895	Node1038	10Gbps	1	2ms	100
+Node895	Node1039	10Gbps	1	2ms	100
+Node895	Node1040	10Gbps	1	2ms	100
+Node895	Node1041	10Gbps	1	2ms	100
+Node896	Node975	10Gbps	1	2ms	100
+Node896	Node978	10Gbps	1	2ms	100
+Node896	Node991	10Gbps	1	2ms	100
+Node897	Node901	10Gbps	1	2ms	100
+Node897	Node904	10Gbps	1	2ms	100
+Node898	Node944	10Gbps	1	2ms	100
+Node898	Node995	10Gbps	1	2ms	100
+Node898	Node1079	10Gbps	1	2ms	100
+Node898	Node1080	10Gbps	1	2ms	100
+Node898	Node1081	10Gbps	1	2ms	100
+Node898	Node1158	10Gbps	1	2ms	100
+Node899	Node941	10Gbps	1	2ms	100
+Node899	Node942	10Gbps	1	2ms	100
+Node899	Node943	10Gbps	1	2ms	100
+Node899	Node944	10Gbps	1	2ms	100
+Node899	Node945	10Gbps	1	2ms	100
+Node899	Node1080	10Gbps	1	2ms	100
+Node899	Node1158	10Gbps	1	2ms	100
+Node900	Node950	10Gbps	1	2ms	100
+Node901	Node959	10Gbps	1	2ms	100
+Node901	Node961	10Gbps	1	2ms	100
+Node901	Node1009	10Gbps	1	2ms	100
+Node901	Node1028	10Gbps	1	2ms	100
+Node902	Node909	10Gbps	1	2ms	100
+Node902	Node921	10Gbps	1	2ms	100
+Node902	Node922	10Gbps	1	2ms	100
+Node902	Node923	10Gbps	1	2ms	100
+Node902	Node924	10Gbps	1	2ms	100
+Node902	Node1068	10Gbps	1	2ms	100
+Node903	Node941	10Gbps	1	2ms	100
+Node903	Node942	10Gbps	1	2ms	100
+Node903	Node943	10Gbps	1	2ms	100
+Node903	Node944	10Gbps	1	2ms	100
+Node903	Node945	10Gbps	1	2ms	100
+Node903	Node1081	10Gbps	1	2ms	100
+Node904	Node1010	10Gbps	1	2ms	100
+Node905	Node909	10Gbps	1	2ms	100
+Node905	Node982	10Gbps	1	2ms	100
+Node905	Node983	10Gbps	1	2ms	100
+Node905	Node984	10Gbps	1	2ms	100
+Node905	Node1006	10Gbps	1	2ms	100
+Node906	Node936	10Gbps	1	2ms	100
+Node906	Node941	10Gbps	1	2ms	100
+Node906	Node942	10Gbps	1	2ms	100
+Node906	Node943	10Gbps	1	2ms	100
+Node906	Node944	10Gbps	1	2ms	100
+Node906	Node945	10Gbps	1	2ms	100
+Node906	Node1079	10Gbps	1	2ms	100
+Node906	Node1080	10Gbps	1	2ms	100
+Node906	Node1081	10Gbps	1	2ms	100
+Node907	Node943	10Gbps	1	2ms	100
+Node907	Node995	10Gbps	1	2ms	100
+Node908	Node943	10Gbps	1	2ms	100
+Node908	Node995	10Gbps	1	2ms	100
+Node908	Node1081	10Gbps	1	2ms	100
+Node909	Node1066	10Gbps	1	2ms	100
+Node911	Node1004	10Gbps	1	2ms	100
+Node911	Node1031	10Gbps	1	2ms	100
+Node911	Node1071	10Gbps	1	2ms	100
+Node911	Node1083	10Gbps	1	2ms	100
+Node912	Node954	10Gbps	1	2ms	100
+Node912	Node955	10Gbps	1	2ms	100
+Node912	Node956	10Gbps	1	2ms	100
+Node912	Node1038	10Gbps	1	2ms	100
+Node912	Node1039	10Gbps	1	2ms	100
+Node912	Node1040	10Gbps	1	2ms	100
+Node912	Node1041	10Gbps	1	2ms	100
+Node913	Node974	10Gbps	1	2ms	100
+Node913	Node979	10Gbps	1	2ms	100
+Node914	Node1023	10Gbps	1	2ms	100
+Node914	Node1025	10Gbps	1	2ms	100
+Node914	Node1044	10Gbps	1	2ms	100
+Node914	Node1048	10Gbps	1	2ms	100
+Node914	Node1054	10Gbps	1	2ms	100
+Node914	Node1064	10Gbps	1	2ms	100
+Node915	Node1023	10Gbps	1	2ms	100
+Node915	Node1044	10Gbps	1	2ms	100
+Node915	Node1047	10Gbps	1	2ms	100
+Node915	Node1048	10Gbps	1	2ms	100
+Node915	Node1054	10Gbps	1	2ms	100
+Node916	Node1008	10Gbps	1	2ms	100
+Node916	Node1036	10Gbps	1	2ms	100
+Node916	Node1049	10Gbps	1	2ms	100
+Node916	Node1050	10Gbps	1	2ms	100
+Node916	Node1051	10Gbps	1	2ms	100
+Node916	Node1052	10Gbps	1	2ms	100
+Node917	Node941	10Gbps	1	2ms	100
+Node917	Node942	10Gbps	1	2ms	100
+Node917	Node943	10Gbps	1	2ms	100
+Node917	Node944	10Gbps	1	2ms	100
+Node917	Node945	10Gbps	1	2ms	100
+Node917	Node1029	10Gbps	1	2ms	100
+Node917	Node1035	10Gbps	1	2ms	100
+Node917	Node1036	10Gbps	1	2ms	100
+Node917	Node1049	10Gbps	1	2ms	100
+Node918	Node936	10Gbps	1	2ms	100
+Node918	Node979	10Gbps	1	2ms	100
+Node918	Node994	10Gbps	1	2ms	100
+Node918	Node995	10Gbps	1	2ms	100
+Node919	Node981	10Gbps	1	2ms	100
+Node919	Node1020	10Gbps	1	2ms	100
+Node919	Node1028	10Gbps	1	2ms	100
+Node919	Node1052	10Gbps	1	2ms	100
+Node920	Node922	10Gbps	1	2ms	100
+Node920	Node980	10Gbps	1	2ms	100
+Node920	Node982	10Gbps	1	2ms	100
+Node920	Node1019	10Gbps	1	2ms	100
+Node920	Node1020	10Gbps	1	2ms	100
+Node920	Node1021	10Gbps	1	2ms	100
+Node920	Node1022	10Gbps	1	2ms	100
+Node920	Node1050	10Gbps	1	2ms	100
+Node920	Node1051	10Gbps	1	2ms	100
+Node920	Node1052	10Gbps	1	2ms	100
+Node921	Node990	10Gbps	1	2ms	100
+Node921	Node991	10Gbps	1	2ms	100
+Node921	Node1028	10Gbps	1	2ms	100
+Node921	Node1052	10Gbps	1	2ms	100
+Node921	Node1066	10Gbps	1	2ms	100
+Node922	Node1028	10Gbps	1	2ms	100
+Node922	Node1052	10Gbps	1	2ms	100
+Node922	Node1066	10Gbps	1	2ms	100
+Node923	Node1051	10Gbps	1	2ms	100
+Node923	Node1052	10Gbps	1	2ms	100
+Node923	Node1071	10Gbps	1	2ms	100
+Node924	Node982	10Gbps	1	2ms	100
+Node924	Node983	10Gbps	1	2ms	100
+Node924	Node1027	10Gbps	1	2ms	100
+Node924	Node1028	10Gbps	1	2ms	100
+Node924	Node1052	10Gbps	1	2ms	100
+Node924	Node1066	10Gbps	1	2ms	100
+Node925	Node931	10Gbps	1	2ms	100
+Node925	Node968	10Gbps	1	2ms	100
+Node925	Node986	10Gbps	1	2ms	100
+Node925	Node998	10Gbps	1	2ms	100
+Node926	Node931	10Gbps	1	2ms	100
+Node926	Node968	10Gbps	1	2ms	100
+Node926	Node986	10Gbps	1	2ms	100
+Node926	Node997	10Gbps	1	2ms	100
+Node926	Node998	10Gbps	1	2ms	100
+Node927	Node936	10Gbps	1	2ms	100
+Node927	Node937	10Gbps	1	2ms	100
+Node928	Node988	10Gbps	1	2ms	100
+Node928	Node992	10Gbps	1	2ms	100
+Node929	Node988	10Gbps	1	2ms	100
+Node929	Node992	10Gbps	1	2ms	100
+Node930	Node935	10Gbps	1	2ms	100
+Node930	Node948	10Gbps	1	2ms	100
+Node930	Node975	10Gbps	1	2ms	100
+Node930	Node978	10Gbps	1	2ms	100
+Node930	Node989	10Gbps	1	2ms	100
+Node930	Node990	10Gbps	1	2ms	100
+Node930	Node1000	10Gbps	1	2ms	100
+Node930	Node1028	10Gbps	1	2ms	100
+Node930	Node1029	10Gbps	1	2ms	100
+Node930	Node1037	10Gbps	1	2ms	100
+Node930	Node1041	10Gbps	1	2ms	100
+Node931	Node974	10Gbps	1	2ms	100
+Node931	Node992	10Gbps	1	2ms	100
+Node931	Node999	10Gbps	1	2ms	100
+Node932	Node971	10Gbps	1	2ms	100
+Node932	Node972	10Gbps	1	2ms	100
+Node932	Node973	10Gbps	1	2ms	100
+Node933	Node971	10Gbps	1	2ms	100
+Node933	Node973	10Gbps	1	2ms	100
+Node934	Node993	10Gbps	1	2ms	100
+Node934	Node1010	10Gbps	1	2ms	100
+Node934	Node1027	10Gbps	1	2ms	100
+Node935	Node960	10Gbps	1	2ms	100
+Node935	Node978	10Gbps	1	2ms	100
+Node935	Node1009	10Gbps	1	2ms	100
+Node935	Node1010	10Gbps	1	2ms	100
+Node935	Node1027	10Gbps	1	2ms	100
+Node935	Node1028	10Gbps	1	2ms	100
+Node935	Node1030	10Gbps	1	2ms	100
+Node935	Node1031	10Gbps	1	2ms	100
+Node935	Node1032	10Gbps	1	2ms	100
+Node936	Node985	10Gbps	1	2ms	100
+Node936	Node986	10Gbps	1	2ms	100
+Node936	Node995	10Gbps	1	2ms	100
+Node936	Node1005	10Gbps	1	2ms	100
+Node937	Node986	10Gbps	1	2ms	100
+Node937	Node994	10Gbps	1	2ms	100
+Node937	Node995	10Gbps	1	2ms	100
+Node937	Node1005	10Gbps	1	2ms	100
+Node938	Node996	10Gbps	1	2ms	100
+Node938	Node1005	10Gbps	1	2ms	100
+Node939	Node941	10Gbps	1	2ms	100
+Node939	Node942	10Gbps	1	2ms	100
+Node939	Node943	10Gbps	1	2ms	100
+Node939	Node944	10Gbps	1	2ms	100
+Node939	Node945	10Gbps	1	2ms	100
+Node939	Node954	10Gbps	1	2ms	100
+Node939	Node955	10Gbps	1	2ms	100
+Node939	Node994	10Gbps	1	2ms	100
+Node939	Node998	10Gbps	1	2ms	100
+Node940	Node956	10Gbps	1	2ms	100
+Node940	Node994	10Gbps	1	2ms	100
+Node940	Node995	10Gbps	1	2ms	100
+Node940	Node997	10Gbps	1	2ms	100
+Node940	Node998	10Gbps	1	2ms	100
+Node941	Node950	10Gbps	1	2ms	100
+Node941	Node1028	10Gbps	1	2ms	100
+Node941	Node1034	10Gbps	1	2ms	100
+Node941	Node1040	10Gbps	1	2ms	100
+Node941	Node1081	10Gbps	1	2ms	100
+Node941	Node1087	10Gbps	1	2ms	100
+Node942	Node950	10Gbps	1	2ms	100
+Node942	Node1027	10Gbps	1	2ms	100
+Node942	Node1028	10Gbps	1	2ms	100
+Node942	Node1034	10Gbps	1	2ms	100
+Node942	Node1040	10Gbps	1	2ms	100
+Node942	Node1081	10Gbps	1	2ms	100
+Node942	Node1086	10Gbps	1	2ms	100
+Node942	Node1087	10Gbps	1	2ms	100
+Node943	Node950	10Gbps	1	2ms	100
+Node943	Node1000	10Gbps	1	2ms	100
+Node943	Node1028	10Gbps	1	2ms	100
+Node943	Node1034	10Gbps	1	2ms	100
+Node943	Node1040	10Gbps	1	2ms	100
+Node943	Node1087	10Gbps	1	2ms	100
+Node944	Node950	10Gbps	1	2ms	100
+Node944	Node1000	10Gbps	1	2ms	100
+Node944	Node1001	10Gbps	1	2ms	100
+Node944	Node1002	10Gbps	1	2ms	100
+Node944	Node1028	10Gbps	1	2ms	100
+Node944	Node1034	10Gbps	1	2ms	100
+Node944	Node1040	10Gbps	1	2ms	100
+Node944	Node1087	10Gbps	1	2ms	100
+Node945	Node950	10Gbps	1	2ms	100
+Node945	Node1028	10Gbps	1	2ms	100
+Node945	Node1034	10Gbps	1	2ms	100
+Node945	Node1040	10Gbps	1	2ms	100
+Node945	Node1081	10Gbps	1	2ms	100
+Node945	Node1087	10Gbps	1	2ms	100
+Node946	Node978	10Gbps	1	2ms	100
+Node946	Node1026	10Gbps	1	2ms	100
+Node946	Node1035	10Gbps	1	2ms	100
+Node947	Node1004	10Gbps	1	2ms	100
+Node947	Node1036	10Gbps	1	2ms	100
+Node948	Node977	10Gbps	1	2ms	100
+Node948	Node978	10Gbps	1	2ms	100
+Node949	Node988	10Gbps	1	2ms	100
+Node949	Node1005	10Gbps	1	2ms	100
+Node950	Node966	10Gbps	1	2ms	100
+Node950	Node993	10Gbps	1	2ms	100
+Node950	Node1006	10Gbps	1	2ms	100
+Node950	Node1068	10Gbps	1	2ms	100
+Node950	Node1073	10Gbps	1	2ms	100
+Node951	Node1015	10Gbps	1	2ms	100
+Node952	Node1007	10Gbps	1	2ms	100
+Node952	Node1024	10Gbps	1	2ms	100
+Node952	Node1025	10Gbps	1	2ms	100
+Node952	Node1047	10Gbps	1	2ms	100
+Node952	Node1048	10Gbps	1	2ms	100
+Node953	Node966	10Gbps	1	2ms	100
+Node953	Node967	10Gbps	1	2ms	100
+Node953	Node1007	10Gbps	1	2ms	100
+Node953	Node1016	10Gbps	1	2ms	100
+Node953	Node1023	10Gbps	1	2ms	100
+Node954	Node958	10Gbps	1	2ms	100
+Node954	Node1033	10Gbps	1	2ms	100
+Node954	Node1060	10Gbps	1	2ms	100
+Node954	Node1069	10Gbps	1	2ms	100
+Node954	Node1072	10Gbps	1	2ms	100
+Node954	Node1075	10Gbps	1	2ms	100
+Node954	Node1090	10Gbps	1	2ms	100
+Node954	Node1091	10Gbps	1	2ms	100
+Node955	Node958	10Gbps	1	2ms	100
+Node955	Node1062	10Gbps	1	2ms	100
+Node955	Node1069	10Gbps	1	2ms	100
+Node955	Node1072	10Gbps	1	2ms	100
+Node955	Node1075	10Gbps	1	2ms	100
+Node955	Node1090	10Gbps	1	2ms	100
+Node955	Node1091	10Gbps	1	2ms	100
+Node956	Node958	10Gbps	1	2ms	100
+Node956	Node1038	10Gbps	1	2ms	100
+Node956	Node1067	10Gbps	1	2ms	100
+Node956	Node1069	10Gbps	1	2ms	100
+Node956	Node1072	10Gbps	1	2ms	100
+Node956	Node1075	10Gbps	1	2ms	100
+Node956	Node1079	10Gbps	1	2ms	100
+Node956	Node1085	10Gbps	1	2ms	100
+Node956	Node1089	10Gbps	1	2ms	100
+Node956	Node1090	10Gbps	1	2ms	100
+Node956	Node1091	10Gbps	1	2ms	100
+Node957	Node1042	10Gbps	1	2ms	100
+Node958	Node977	10Gbps	1	2ms	100
+Node958	Node978	10Gbps	1	2ms	100
+Node959	Node1019	10Gbps	1	2ms	100
+Node959	Node1020	10Gbps	1	2ms	100
+Node959	Node1021	10Gbps	1	2ms	100
+Node959	Node1027	10Gbps	1	2ms	100
+Node960	Node961	10Gbps	1	2ms	100
+Node960	Node1020	10Gbps	1	2ms	100
+Node960	Node1027	10Gbps	1	2ms	100
+Node961	Node970	10Gbps	1	2ms	100
+Node961	Node982	10Gbps	1	2ms	100
+Node961	Node1020	10Gbps	1	2ms	100
+Node961	Node1022	10Gbps	1	2ms	100
+Node961	Node1027	10Gbps	1	2ms	100
+Node961	Node1028	10Gbps	1	2ms	100
+Node962	Node1011	10Gbps	1	2ms	100
+Node963	Node970	10Gbps	1	2ms	100
+Node963	Node1029	10Gbps	1	2ms	100
+Node963	Node1040	10Gbps	1	2ms	100
+Node963	Node1063	10Gbps	1	2ms	100
+Node963	Node1076	10Gbps	1	2ms	100
+Node964	Node970	10Gbps	1	2ms	100
+Node964	Node1040	10Gbps	1	2ms	100
+Node964	Node1044	10Gbps	1	2ms	100
+Node964	Node1063	10Gbps	1	2ms	100
+Node964	Node1077	10Gbps	1	2ms	100
+Node965	Node970	10Gbps	1	2ms	100
+Node965	Node1038	10Gbps	1	2ms	100
+Node965	Node1039	10Gbps	1	2ms	100
+Node965	Node1040	10Gbps	1	2ms	100
+Node965	Node1041	10Gbps	1	2ms	100
+Node965	Node1050	10Gbps	1	2ms	100
+Node965	Node1051	10Gbps	1	2ms	100
+Node965	Node1052	10Gbps	1	2ms	100
+Node965	Node1063	10Gbps	1	2ms	100
+Node965	Node1076	10Gbps	1	2ms	100
+Node966	Node969	10Gbps	1	2ms	100
+Node966	Node971	10Gbps	1	2ms	100
+Node966	Node973	10Gbps	1	2ms	100
+Node966	Node1048	10Gbps	1	2ms	100
+Node966	Node1063	10Gbps	1	2ms	100
+Node967	Node969	10Gbps	1	2ms	100
+Node967	Node971	10Gbps	1	2ms	100
+Node968	Node1017	10Gbps	1	2ms	100
+Node969	Node970	10Gbps	1	2ms	100
+Node969	Node1015	10Gbps	1	2ms	100
+Node969	Node1018	10Gbps	1	2ms	100
+Node969	Node1020	10Gbps	1	2ms	100
+Node969	Node1021	10Gbps	1	2ms	100
+Node969	Node1022	10Gbps	1	2ms	100
+Node970	Node971	10Gbps	1	2ms	100
+Node970	Node981	10Gbps	1	2ms	100
+Node970	Node1021	10Gbps	1	2ms	100
+Node970	Node1025	10Gbps	1	2ms	100
+Node970	Node1046	10Gbps	1	2ms	100
+Node971	Node972	10Gbps	1	2ms	100
+Node971	Node973	10Gbps	1	2ms	100
+Node971	Node1011	10Gbps	1	2ms	100
+Node972	Node973	10Gbps	1	2ms	100
+Node972	Node1016	10Gbps	1	2ms	100
+Node973	Node973	10Gbps	1	2ms	100
+Node973	Node1011	10Gbps	1	2ms	100
+Node973	Node1022	10Gbps	1	2ms	100
+Node973	Node1045	10Gbps	1	2ms	100
+Node975	Node1023	10Gbps	1	2ms	100
+Node975	Node1025	10Gbps	1	2ms	100
+Node975	Node1047	10Gbps	1	2ms	100
+Node975	Node1048	10Gbps	1	2ms	100
+Node976	Node1023	10Gbps	1	2ms	100
+Node976	Node1025	10Gbps	1	2ms	100
+Node976	Node1064	10Gbps	1	2ms	100
+Node977	Node983	10Gbps	1	2ms	100
+Node977	Node984	10Gbps	1	2ms	100
+Node977	Node1000	10Gbps	1	2ms	100
+Node977	Node1038	10Gbps	1	2ms	100
+Node977	Node1039	10Gbps	1	2ms	100
+Node977	Node1040	10Gbps	1	2ms	100
+Node977	Node1041	10Gbps	1	2ms	100
+Node977	Node1049	10Gbps	1	2ms	100
+Node977	Node1051	10Gbps	1	2ms	100
+Node977	Node1065	10Gbps	1	2ms	100
+Node978	Node981	10Gbps	1	2ms	100
+Node978	Node1000	10Gbps	1	2ms	100
+Node978	Node1041	10Gbps	1	2ms	100
+Node978	Node1049	10Gbps	1	2ms	100
+Node978	Node1065	10Gbps	1	2ms	100
+Node978	Node1067	10Gbps	1	2ms	100
+Node980	Node983	10Gbps	1	2ms	100
+Node980	Node1020	10Gbps	1	2ms	100
+Node980	Node1046	10Gbps	1	2ms	100
+Node981	Node982	10Gbps	1	2ms	100
+Node981	Node983	10Gbps	1	2ms	100
+Node981	Node984	10Gbps	1	2ms	100
+Node981	Node991	10Gbps	1	2ms	100
+Node981	Node1022	10Gbps	1	2ms	100
+Node981	Node1045	10Gbps	1	2ms	100
+Node981	Node1046	10Gbps	1	2ms	100
+Node982	Node990	10Gbps	1	2ms	100
+Node982	Node991	10Gbps	1	2ms	100
+Node982	Node1000	10Gbps	1	2ms	100
+Node982	Node1048	10Gbps	1	2ms	100
+Node982	Node1051	10Gbps	1	2ms	100
+Node983	Node989	10Gbps	1	2ms	100
+Node983	Node1000	10Gbps	1	2ms	100
+Node983	Node1001	10Gbps	1	2ms	100
+Node983	Node1002	10Gbps	1	2ms	100
+Node983	Node1051	10Gbps	1	2ms	100
+Node983	Node1071	10Gbps	1	2ms	100
+Node984	Node989	10Gbps	1	2ms	100
+Node984	Node1000	10Gbps	1	2ms	100
+Node984	Node1027	10Gbps	1	2ms	100
+Node984	Node1028	10Gbps	1	2ms	100
+Node984	Node1071	10Gbps	1	2ms	100
+Node985	Node992	10Gbps	1	2ms	100
+Node986	Node992	10Gbps	1	2ms	100
+Node986	Node1017	10Gbps	1	2ms	100
+Node987	Node994	10Gbps	1	2ms	100
+Node987	Node995	10Gbps	1	2ms	100
+Node989	Node1029	10Gbps	1	2ms	100
+Node989	Node1053	10Gbps	1	2ms	100
+Node989	Node1054	10Gbps	1	2ms	100
+Node989	Node1055	10Gbps	1	2ms	100
+Node990	Node993	10Gbps	1	2ms	100
+Node990	Node1023	10Gbps	1	2ms	100
+Node990	Node1047	10Gbps	1	2ms	100
+Node990	Node1048	10Gbps	1	2ms	100
+Node990	Node1055	10Gbps	1	2ms	100
+Node991	Node1028	10Gbps	1	2ms	100
+Node991	Node1029	10Gbps	1	2ms	100
+Node991	Node1051	10Gbps	1	2ms	100
+Node991	Node1055	10Gbps	1	2ms	100
+Node991	Node1063	10Gbps	1	2ms	100
+Node997	Node1000	10Gbps	1	2ms	100
+Node997	Node1001	10Gbps	1	2ms	100
+Node997	Node1002	10Gbps	1	2ms	100
+Node997	Node1038	10Gbps	1	2ms	100
+Node997	Node1039	10Gbps	1	2ms	100
+Node997	Node1040	10Gbps	1	2ms	100
+Node997	Node1041	10Gbps	1	2ms	100
+Node998	Node1001	10Gbps	1	2ms	100
+Node998	Node1041	10Gbps	1	2ms	100
+Node1000	Node1034	10Gbps	1	2ms	100
+Node1000	Node1059	10Gbps	1	2ms	100
+Node1000	Node1067	10Gbps	1	2ms	100
+Node1001	Node1034	10Gbps	1	2ms	100
+Node1001	Node1059	10Gbps	1	2ms	100
+Node1001	Node1067	10Gbps	1	2ms	100
+Node1002	Node1034	10Gbps	1	2ms	100
+Node1002	Node1058	10Gbps	1	2ms	100
+Node1002	Node1059	10Gbps	1	2ms	100
+Node1002	Node1067	10Gbps	1	2ms	100
+Node1002	Node1087	10Gbps	1	2ms	100
+Node1003	Node1036	10Gbps	1	2ms	100
+Node1003	Node1054	10Gbps	1	2ms	100
+Node1004	Node1054	10Gbps	1	2ms	100
+Node1004	Node1055	10Gbps	1	2ms	100
+Node1006	Node1037	10Gbps	1	2ms	100
+Node1006	Node1061	10Gbps	1	2ms	100
+Node1006	Node1062	10Gbps	1	2ms	100
+Node1006	Node1082	10Gbps	1	2ms	100
+Node1007	Node1023	10Gbps	1	2ms	100
+Node1008	Node1039	10Gbps	1	2ms	100
+Node1008	Node1069	10Gbps	1	2ms	100
+Node1008	Node1075	10Gbps	1	2ms	100
+Node1008	Node1089	10Gbps	1	2ms	100
+Node1008	Node1090	10Gbps	1	2ms	100
+Node1008	Node1091	10Gbps	1	2ms	100
+Node1008	Node1093	10Gbps	1	2ms	100
+Node1009	Node1022	10Gbps	1	2ms	100
+Node1010	Node1019	10Gbps	1	2ms	100
+Node1010	Node1020	10Gbps	1	2ms	100
+Node1010	Node1021	10Gbps	1	2ms	100
+Node1010	Node1022	10Gbps	1	2ms	100
+Node1012	Node1046	10Gbps	1	2ms	100
+Node1012	Node1070	10Gbps	1	2ms	100
+Node1013	Node1043	10Gbps	1	2ms	100
+Node1013	Node1044	10Gbps	1	2ms	100
+Node1013	Node1046	10Gbps	1	2ms	100
+Node1013	Node1063	10Gbps	1	2ms	100
+Node1013	Node1070	10Gbps	1	2ms	100
+Node1014	Node1045	10Gbps	1	2ms	100
+Node1014	Node1046	10Gbps	1	2ms	100
+Node1014	Node1070	10Gbps	1	2ms	100
+Node1015	Node1044	10Gbps	1	2ms	100
+Node1015	Node1059	10Gbps	1	2ms	100
+Node1015	Node1076	10Gbps	1	2ms	100
+Node1015	Node1077	10Gbps	1	2ms	100
+Node1020	Node1045	10Gbps	1	2ms	100
+Node1021	Node1022	10Gbps	1	2ms	100
+Node1021	Node1045	10Gbps	1	2ms	100
+Node1021	Node1046	10Gbps	1	2ms	100
+Node1022	Node1045	10Gbps	1	2ms	100
+Node1023	Node1024	10Gbps	1	2ms	100
+Node1023	Node1029	10Gbps	1	2ms	100
+Node1023	Node1047	10Gbps	1	2ms	100
+Node1023	Node1063	10Gbps	1	2ms	100
+Node1023	Node1078	10Gbps	1	2ms	100
+Node1024	Node1029	10Gbps	1	2ms	100
+Node1024	Node1047	10Gbps	1	2ms	100
+Node1024	Node1048	10Gbps	1	2ms	100
+Node1025	Node1028	10Gbps	1	2ms	100
+Node1025	Node1029	10Gbps	1	2ms	100
+Node1025	Node1047	10Gbps	1	2ms	100
+Node1025	Node1064	10Gbps	1	2ms	100
+Node1026	Node1075	10Gbps	1	2ms	100
+Node1027	Node1029	10Gbps	1	2ms	100
+Node1028	Node1029	10Gbps	1	2ms	100
+Node1028	Node1039	10Gbps	1	2ms	100
+Node1028	Node1059	10Gbps	1	2ms	100
+Node1028	Node1066	10Gbps	1	2ms	100
+Node1029	Node1032	10Gbps	1	2ms	100
+Node1029	Node1055	10Gbps	1	2ms	100
+Node1029	Node1092	10Gbps	1	2ms	100
+Node1030	Node1061	10Gbps	1	2ms	100
+Node1031	Node1054	10Gbps	1	2ms	100
+Node1031	Node1088	10Gbps	1	2ms	100
+Node1033	Node1079	10Gbps	1	2ms	100
+Node1034	Node1059	10Gbps	1	2ms	100
+Node1034	Node1079	10Gbps	1	2ms	100
+Node1034	Node1080	10Gbps	1	2ms	100
+Node1034	Node1081	10Gbps	1	2ms	100
+Node1037	Node1058	10Gbps	1	2ms	100
+Node1037	Node1084	10Gbps	1	2ms	100
+Node1038	Node1089	10Gbps	1	2ms	100
+Node1038	Node1091	10Gbps	1	2ms	100
+Node1039	Node1075	10Gbps	1	2ms	100
+Node1039	Node1085	10Gbps	1	2ms	100
+Node1039	Node1090	10Gbps	1	2ms	100
+Node1039	Node1091	10Gbps	1	2ms	100
+Node1040	Node1085	10Gbps	1	2ms	100
+Node1040	Node1089	10Gbps	1	2ms	100
+Node1040	Node1090	10Gbps	1	2ms	100
+Node1040	Node1091	10Gbps	1	2ms	100
+Node1041	Node1059	10Gbps	1	2ms	100
+Node1041	Node1085	10Gbps	1	2ms	100
+Node1041	Node1090	10Gbps	1	2ms	100
+Node1041	Node1091	10Gbps	1	2ms	100
+Node1042	Node1061	10Gbps	1	2ms	100
+Node1042	Node1088	10Gbps	1	2ms	100
+Node1044	Node1048	10Gbps	1	2ms	100
+Node1044	Node1076	10Gbps	1	2ms	100
+Node1047	Node1063	10Gbps	1	2ms	100
+Node1047	Node1078	10Gbps	1	2ms	100
+Node1048	Node1063	10Gbps	1	2ms	100
+Node1048	Node1064	10Gbps	1	2ms	100
+Node1048	Node1078	10Gbps	1	2ms	100
+Node1051	Node1071	10Gbps	1	2ms	100
+Node1053	Node1082	10Gbps	1	2ms	100
+Node1053	Node1083	10Gbps	1	2ms	100
+Node1053	Node1084	10Gbps	1	2ms	100
+Node1054	Node1071	10Gbps	1	2ms	100
+Node1054	Node1083	10Gbps	1	2ms	100
+Node1055	Node1083	10Gbps	1	2ms	100
+Node1056	Node1087	10Gbps	1	2ms	100
+Node1057	Node1067	10Gbps	1	2ms	100
+Node1058	Node1087	10Gbps	1	2ms	100
+Node1059	Node1087	10Gbps	1	2ms	100
+Node1060	Node1067	10Gbps	1	2ms	100
+Node1060	Node1068	10Gbps	1	2ms	100
+Node1060	Node1087	10Gbps	1	2ms	100
+Node1061	Node1087	10Gbps	1	2ms	100
+Node1062	Node1069	10Gbps	1	2ms	100
+Node1063	Node1077	10Gbps	1	2ms	100
+Node1067	Node1072	10Gbps	1	2ms	100
+Node1067	Node1079	10Gbps	1	2ms	100
+Node1067	Node1080	10Gbps	1	2ms	100
+Node1067	Node1081	10Gbps	1	2ms	100
+Node1067	Node1086	10Gbps	1	2ms	100
+Node1068	Node1084	10Gbps	1	2ms	100
+Node1068	Node1088	10Gbps	1	2ms	100
+Node1069	Node1075	10Gbps	1	2ms	100
+Node1070	Node1077	10Gbps	1	2ms	100
+Node1071	Node1071	10Gbps	1	2ms	100
+Node1072	Node1079	10Gbps	1	2ms	100
+Node1072	Node1080	10Gbps	1	2ms	100
+Node1072	Node1081	10Gbps	1	2ms	100
+Node1072	Node1087	10Gbps	1	2ms	100
+Node1073	Node1084	10Gbps	1	2ms	100
+Node1073	Node1088	10Gbps	1	2ms	100
+Node1074	Node1084	10Gbps	1	2ms	100
+Node1074	Node1088	10Gbps	1	2ms	100
+Node1082	Node1088	10Gbps	1	2ms	100
+Node1083	Node1088	10Gbps	1	2ms	100

@@ -1,0 +1,2 @@
+scenario,target,event_time,scheduled,applied,before_connected,after_connected,affected_apps,pre_hit,post_hit,pre_rtt_ms,post_rtt_ms,pre_count,post_count,notes
+domain-fail,domain3,50.000,1,1,-1,-1,5,1.000000,1.000000,10.791705,3332.693429,100,100,apps_stopped=3;isolated_links=2;metric=is_success

@@ -1,0 +1,2 @@
+scheme,total_queries,measurement_queries,success_queries,timeout_queries,timeout_rate,unique_rtt_values,p50_ms,p95_ms,top_rtt_values,cache_miss_queries,cache_miss_unique_rtt_values,cache_miss_p50_ms,cache_miss_p95_ms
+sanr-tag,100,88,88,0,0.000000,42,16.8344,4010.0000,4010.000:43;8.880:2;8.961:2;9.003:2;9.018:2;8.476:1;8.633:1;8.665:1;8.714:1;8.781:1,1,1,16.8344,16.8344

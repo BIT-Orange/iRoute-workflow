@@ -1,0 +1,31 @@
+{
+  "run_id": "flood_freq5_s43",
+  "scheme": "flood",
+  "seed": 43,
+  "topology": "rocketfuel",
+  "domains": 8,
+  "sim_time": 115,
+  "frequency": 5,
+  "warmup_sec": 20,
+  "measure_start_sec": 20,
+  "cs_size": 1000,
+  "data_freshness_ms": 120000,
+  "sanr": {
+    "sim_thresh": 0.8,
+    "msrr_top_pct": 0.2,
+    "cmlt_s": 4,
+    "slot_s": 5,
+    "ccn_k": 1,
+    "top_l": 32
+  },
+  "summary": {
+    "total_queries": 474,
+    "measurable_queries": 474,
+    "domain_acc": 0.56962,
+    "recall_at_1": 0.0759494,
+    "p50_ms": 37.8091,
+    "p95_ms": 58.2058,
+    "cache_hit_exact_ratio": 0,
+    "cache_hit_semantic_ratio": 0
+  }
+}

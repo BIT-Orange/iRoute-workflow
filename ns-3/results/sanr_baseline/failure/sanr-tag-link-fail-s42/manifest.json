@@ -1,0 +1,31 @@
+{
+  "run_id": "sanr-tag-link-fail-s42",
+  "scheme": "sanr-tag",
+  "seed": 42,
+  "topology": "redundant",
+  "domains": 8,
+  "sim_time": 90,
+  "frequency": 5,
+  "warmup_sec": 20,
+  "measure_start_sec": 20,
+  "cs_size": 512,
+  "data_freshness_ms": 120000,
+  "sanr": {
+    "sim_thresh": -1,
+    "msrr_top_pct": 0.2,
+    "cmlt_s": 120,
+    "slot_s": 5,
+    "ccn_k": 1,
+    "top_l": 32
+  },
+  "summary": {
+    "total_queries": 100,
+    "measurable_queries": 88,
+    "domain_acc": 0.170455,
+    "recall_at_1": 0.0113636,
+    "p50_ms": 4010,
+    "p95_ms": 4010,
+    "cache_hit_exact_ratio": 0,
+    "cache_hit_semantic_ratio": 0.988636
+  }
+}

@@ -1,0 +1,2 @@
+scenario,target,event_time,scheduled,applied,before_connected,after_connected,affected_apps,pre_hit,post_hit,pre_rtt_ms,post_rtt_ms,pre_count,post_count,notes
+link-fail,ingress-domain0,50.000,1,1,1,0,0,1.000000,0.973333,10.263827,116.818308,149,150,link_recovered;metric=is_success

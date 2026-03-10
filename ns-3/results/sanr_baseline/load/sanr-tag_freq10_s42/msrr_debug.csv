@@ -1,0 +1,17 @@
+time_slot,nodeId,clusterId,count,selected
+4,0,domain1,10,1
+4,0,domain3,10,1
+4,0,domain6,7,0
+4,0,domain5,6,0
+4,0,domain2,5,0
+4,0,domain0,4,0
+4,0,domain7,4,0
+4,0,domain4,3,0
+5,0,domain6,9,1
+5,0,domain1,8,1
+5,0,domain0,7,0
+5,0,domain5,7,0
+5,0,domain2,5,0
+5,0,domain3,5,0
+5,0,domain4,5,0
+5,0,domain7,4,0

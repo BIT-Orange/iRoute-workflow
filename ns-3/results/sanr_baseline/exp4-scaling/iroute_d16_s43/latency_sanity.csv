@@ -1,0 +1,2 @@
+scheme,total_queries,measurement_queries,success_queries,timeout_queries,timeout_rate,unique_rtt_values,p50_ms,p95_ms,top_rtt_values,cache_miss_queries,cache_miss_unique_rtt_values,cache_miss_p50_ms,cache_miss_p95_ms
+iroute,499,499,499,0,0.000000,287,28.9632,57.4919,28.746:38;20.947:35;28.745:33;20.948:23;30.382:23;21.435:16;37.809:16;57.492:10;75.621:7;42.535:6,499,287,28.9632,57.4919

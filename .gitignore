@@ -1,0 +1,54 @@
+.DS_Store
+*.pyc
+*.pyo
+__pycache__/
+
+# Editor and local temp files
+*.swp
+*.swo
+*~
+
+# Local review bundles and one-off paper build artifacts
+iroute_review_bundle_20260310.zip
+pgfplots_test.aux
+pgfplots_test.log
+pgfplots_test.pdf
+
+# LaTeX build products
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.out
+*.synctex.gz
+*.toc
+
+# ns-3 local runtime/build state
+ns-3/.home/
+ns-3/.mplcache/
+ns-3/.venv/
+ns-3/build/
+ns-3/build-dir/
+ns-3/testpy-output/
+
+# pybindgen local build state
+pybindgen/build/
+pybindgen/__pycache__/
+
+# Keep only dataset tooling plus the active stage-1 working set under ns-3/dataset
+ns-3/dataset/*
+!ns-3/dataset/*.py
+!ns-3/dataset/requirements.txt
+!ns-3/dataset/sdm_smartcity_dataset/
+!ns-3/dataset/sdm_smartcity_dataset/**
+ns-3/dataset/.DS_Store
+ns-3/dataset/__pycache__/
+ns-3/dataset/run.log
+
+# Keep only the current evidence bundle under ns-3/results
+ns-3/results/*
+!ns-3/results/sanr_baseline/
+!ns-3/results/sanr_baseline/**

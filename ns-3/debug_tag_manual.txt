@@ -1,0 +1,32 @@
+Invalid command-line arguments: --tagK=64
+ [Program Options] [General Arguments]
+
+Program Options:
+    --scheme:          Routing scheme: iroute|exact|central|flood|tag [tag]
+    --centroids:       Centroids CSV []
+    --content:         Content CSV []
+    --trace:           Trace CSV []
+    --domains:         Number of domains [8]
+    --K:               Top-K for query [5]
+    --tau:             Similarity threshold [0.3]
+    --simTime:         Simulation time (sec) [300]
+    --seed:            Random seed [42]
+    --resultDir:       Result directory [results/baselines]
+    --index:           Index file for exact/central []
+    --qrels:           Qrels TSV (for scheme=central) []
+    --floodResponder:  Flood responder mode: domain|producer [producer]
+    --floodThreshold:  Flood similarity threshold [0]
+    --tagIndex:        Tag index CSV (tid,domain,weight) []
+    --queryToTag:      Query->Tag CSV (qid,tid) []
+    --lsaPeriod:       LSA broadcast period (ms) [500]
+    --churnTime:       Time to trigger churn (sec, -1=none) [-1]
+
+General Arguments:
+    --PrintGlobals:              Print the list of globals.
+    --PrintGroups:               Print the list of groups.
+    --PrintGroup=[group]:        Print all TypeIds of group.
+    --PrintTypeIds:              Print all TypeIds.
+    --PrintAttributes=[typeid]:  Print all attributes of typeid.
+    --PrintVersion:              Print the ns-3 version.
+    --PrintHelp:                 Print this help message.
+

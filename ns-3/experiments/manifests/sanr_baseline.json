@@ -1,0 +1,26 @@
+{
+  "name": "sanr_baseline",
+  "description": "Stage-1 baseline workflow for accuracy comparison and figure generation used by the current review bundle.",
+  "working_directory": "ns-3",
+  "runner": "experiments/runners/run_sanr_baseline.sh",
+  "legacy_entrypoint": "experiments/run_sanr_baseline.sh",
+  "inputs": [
+    "dataset/sdm_smartcity_dataset/consumer_trace.csv",
+    "dataset/sdm_smartcity_dataset/domain_centroids_m4.csv",
+    "dataset/sdm_smartcity_dataset/producer_content.csv",
+    "dataset/sdm_smartcity_dataset/tag_index.csv",
+    "dataset/sdm_smartcity_dataset/query_to_tag.csv",
+    "src/ndnSIM/examples/topologies/as1239-r0.txt"
+  ],
+  "outputs": [
+    "results/sanr_baseline/accuracy_comparison",
+    "../figures/sanr_baseline"
+  ],
+  "default_environment": {
+    "TOPO": "rocketfuel",
+    "SEEDS": "42 43 44",
+    "QUERY_REPEAT_FACTOR": "3",
+    "CS_SIZE": "512",
+    "DATA_FRESHNESS_MS": "60000"
+  }
+}

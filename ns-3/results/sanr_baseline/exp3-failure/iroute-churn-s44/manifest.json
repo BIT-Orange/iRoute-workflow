@@ -1,0 +1,31 @@
+{
+  "run_id": "iroute-churn-s44",
+  "scheme": "iroute",
+  "seed": 44,
+  "topology": "redundant",
+  "domains": 8,
+  "sim_time": 120,
+  "frequency": 5,
+  "warmup_sec": 20,
+  "measure_start_sec": 20,
+  "cs_size": 0,
+  "data_freshness_ms": 120000,
+  "sanr": {
+    "sim_thresh": 0.8,
+    "msrr_top_pct": 0.2,
+    "cmlt_s": 4,
+    "slot_s": 5,
+    "ccn_k": 1,
+    "top_l": 32
+  },
+  "summary": {
+    "total_queries": 499,
+    "measurable_queries": 499,
+    "domain_acc": 0.681363,
+    "recall_at_1": 0.0801603,
+    "p50_ms": 16.7374,
+    "p95_ms": 17.0162,
+    "cache_hit_exact_ratio": 0,
+    "cache_hit_semantic_ratio": 0
+  }
+}

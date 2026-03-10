@@ -1,0 +1,604 @@
+% Deprecated legacy paper source.
+% The canonical paper now lives at ../../../../paper/main.tex.
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% Packages
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{subcaption}
+\usepackage{pifont}
+\usepackage{tabularx}
+\usepackage{array}
+
+% Macros
+\newcommand{\sysname}{iRoute}
+% allow line-break inside long typewriter identifier (prints the same string)
+\newcommand{\PSDC}{\texttt{ParametersSha256Digest\allowbreak Component}}
+\newcommand{\AP}{\texttt{Application\allowbreakParameters}}
+
+\newcommand{\boldparagraph}[1]{\vspace{0.1cm}\noindent\textbf{#1.}}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+% =============================================================================
+% Title
+% =============================================================================
+\title{iRoute: A Scalable and Semantic-Aware Routing Protocol for Named Data Networking}
+
+\maketitle
+
+% =============================================================================
+% Abstract
+% =============================================================================
+\begin{abstract}
+Named Data Networking (NDN) faces a fundamental tension between semantic expressiveness and routing scalability. While applications require rich, unbounded namespaces to capture content meaning, the routing system demands bounded, stable prefixes to maintain global scalability. Existing solutions either suffer from state explosion ($O(N_{objects})$) or rely on centralized resolution services that introduce latency and single points of failure. 
+
+In this paper, we present \sysname{}, a decentralized semantic routing framework that decouples semantic discovery from content delivery. \sysname{} introduces Decentralized Vector Aggregation, enabling domains to independently compress their content semantics into a bounded set of centroids and broadcast them via a budgeted advertisement mechanism ($M$). By confining complex semantic inference to an ingress-driven discovery phase and utilizing standard prefix forwarding in the core, \sysname{} transforms the semantic routing problem into a scalable Anycast destination selection problem. Our evaluation shows that \sysname{} reduces control-plane overhead by orders of magnitude (scaling with $O(|Domains|)$ rather than content size) while maintaining high retrieval accuracy and achieving line-speed forwarding compatibility.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Named Data Networking, Semantic Routing, Vector Embeddings, Scalability, Compute-Network Tradeoff
+\end{IEEEkeywords}
+
+% =============================================================================
+\section{Introduction}
+\label{sec:intro}
+% =============================================================================
+
+Named Data Networking (NDN)\cite{ndn} represents a paradigm shift from host-centric to content-centric communication, relocating the Internet's ``thin waist'' from IP addresses to hierarchical content names. By forwarding requests based on immutable names rather than ephemeral locations, NDN natively supports in-network caching, multipath retrieval, and data-centric security. This architecture promises to simplify content distribution; however, elevating application-layer names to the network layer introduces a fundamental tension between expressiveness and scalability.
+
+An NDN name serves a dual purpose: it is an application identifier (describing what the content is) and a network locator (guiding Interests to where it resides). While applications require rich, unbounded, and dynamic namespaces to capture semantic context, the routing system requires bounded, stable, and aggregatable prefixes to maintain global scalability. Current NDN deployments rely heavily on syntactic aggregation to bridge this gap. This approach works only when the semantic hierarchy perfectly mirrors the topological hierarchy. However, as the Internet evolves, this alignment breaks down: semantically related content is frequently fragmented across disjoint provider prefixes, while single prefixes often encompass semantically heterogeneous data.
+
+Consequently, the network faces a ``syntactic cliff'': to route requests based on content meaning, routers are forced to maintain an explosion of disjoint forwarding entries. Embedding semantic awareness directly into the routing plane offers a compelling way to bridge this gap. By routing on meaning rather than strictly on string representation, the network could natively aggregate disparate prefixes that share a conceptual context (e.g., aggregating traffic for ``global news'' regardless of whether it originates from \texttt{/bbc} or \texttt{/cnn}). This shift promises to decouple content retrieval from specific provider hierarchies, enabling users to express intent without knowing precise canonical names, and significantly improving retrieval resilience by identifying semantically equivalent copies across administrative boundaries.
+
+However, achieving this vision introduces formidable architectural hurdles. Unlike hierarchical prefixes which are naturally aggregatable, semantic relationships are high-dimensional and non-contiguous. Mapping these complex relationships directly to a linear forwarding table risks catastrophic growth in the routing state---the very ``state explosion'' problem that NDN aims to solve. Furthermore, semantic inference is computationally intensive; requiring routers to perform deep linguistic analysis on every packet clashes with the requirement for line-rate forwarding in high-speed networks.
+
+Recent attempts to introduce semantic awareness often try to bypass these hurdles by resorting to centralized intelligence or on-path deep inspection, where specialized nodes resolve natural language queries in real-time. Although functionally appealing, such designs invariably introduce significant processing latency and single points of failure, effectively trading the scalability of the data plane for the expressiveness of the control plane.
+
+We argue that the scalable solution lies not in making routers ``read'' every packet, but in exploiting the asymmetry between abundant edge compute capacity and scarce core bandwidth. To this end, we present \sysname{}, a decentralized framework that achieves the benefits of semantic aggregation while neutralizing its scalability costs. Unlike prior works that rely on global codebooks or centralized resolution, \sysname{} employs Decentralized Vector Aggregation. It allows domains to independently aggregate their content into a bounded set of Semantic Centroids and broadcast compact summaries using a budgeted advertisement mechanism. By confining complex semantic inference to an Ingress-Driven Discovery Phase, \sysname{} transforms the semantic routing problem into a scalable Anycast destination selection problem, enabling the network to route on semantics without burdening the steady-state forwarding path.
+
+% =============================================================================
+\section{Background and Motivation}
+\label{sec:background}
+% =============================================================================
+
+\subsection{Named Data Networking}
+\label{sec:background_ndn}
+
+Named Data Networking (NDN) fundamentally reshapes the network layer by replacing host addresses with hierarchical content names as the primary identifier. In this receiver-driven architecture, communication is initiated by a consumer issuing an Interest packet carrying a specific name. The network forwards this Interest toward potential data sources based on the name, and a matching Data packet returns along the reverse path, secured by a producer's cryptographic signature rather than a secure channel. This design naturally supports in-network caching, multipath retrieval, and mobility, as the delivery logic is decoupled from the physical location of endpoints.
+
+To enable this name-based delivery, NDN routers maintain a stateful forwarding plane composed of three core data structures: the Content Store (CS), the Pending Interest Table (PIT) and the Forwarding Information Base (FIB). The CS caches passing Data packets to satisfy future requests locally. The PIT aggregates multiple Interests for the same data, suppressing duplicate forwarding and establishing a reverse path for data return. The FIB maps name prefixes to outgoing interfaces, guiding Interests upstream.
+
+However, the scalability of this forwarding plane relies heavily on the assumption that semantic hierarchy aligns with syntactic hierarchy. Standard NDN forwarding employs Longest Prefix Matching (LPM) against the FIB, treating names as opaque character strings. While effective for known, canonical content, this syntactic rigidity creates a critical limitation: the routing system cannot aggregate semantically related content if their names lack a common string prefix. Consequently, to support rich, semantically diverse applications, the FIB must either explode in size to accommodate disjoint prefixes or fail to capture the user's intent. This disconnect highlights the necessity of semantic routing: a mechanism to transcend strict string matching, enabling the network to aggregate reachability based on conceptual similarity and thereby unlocking the full potential of NDN's data-centric design.
+
+\subsection{Related Work}
+\label{sec:related_work}
+
+The challenge of routing on vast, expressive namespaces has driven extensive research in the ICN community. We categorize existing approaches into three domains: conventional syntactic routing, coordinate and hash-based embeddings, and emerging semantic-aware forwarding.
+
+\subsubsection{Conventional Syntactic Routing}
+Early NDN routing protocols adapted IP-based paradigms to the content namespace. NLSR (Named-data Link State Routing)\cite{nlsr} propagates reachability for name prefixes, building a global topology to ensure loop-free forwarding. To reduce the signaling overhead of link-state synchronization, Distance-Vector approaches~\cite{distance_vector} have been adapted for NDN. Alternatively, On-Demand schemes~\cite{ondemand} avoid global FIBs by flooding the first Interest.
+To address the state explosion in FIBs, recent works have proposed architectural optimizations. CNR\cite{cnr} explicitly decouples name resolution from routing, employing a mapping service to translate content names into routable locators. Similarly, SAMBA\cite{samba} introduces implicit FIB aggregation by forwarding Interests to the lexicographically closest prefix, thereby reducing the number of required FIB entries.
+
+Despite these optimizations, these protocols share a common vulnerability: the ``syntactic cliff''. Protocols like NLSR and CNR are forced to track forwarding state for disjoint prefixes explicitly. While SAMBA reduces FIB size, it relies on lexical proximity rather than semantic proximity. Semantically related contents scattered across lexicographically distant providers cannot be aggregated. Techniques like PANINI\cite{panini} manage local table size through partial installation, but like SAMBA, they treat names as opaque strings, failing to capture the high-dimensional semantic relationships required for intent-based routing.
+
+\subsubsection{Hash, Geometric, and Distance Embeddings}
+To decouple routing state from namespace size, researchers have explored mapping names to numerical identifiers or geometric coordinates.
+MUCA\cite{muca} introduces a distributed hash table (DHT)-like approach for multicast, mapping content names to numeric IDs to facilitate exact-match delivery without massive FIBs. Similarly, Hyperbolic Routing (HR)\cite{hyperbolic} embeds the topology into a hyperbolic disk, forwarding packets based on greedy geometric distance coordinates.
+Other works, such as those by Fayazbakhsh et al.~\cite{distance_info}, utilize string edit distance and Bloom filters to route Interests to the closest matching name, attempting to tolerate minor naming variations.
+
+While these methods improve scalability, they fundamentally lack \textit{semantic locality}. Hash-based schemes scatter semantically related names (e.g., \texttt{/video/sports} and \texttt{/video/news}) to uncorrelated hash values, preventing aggregation. Similarly, string edit distance captures lexical similarity (e.g., ``car'' is close to ``cat'') but fails to capture conceptual similarity (e.g., ``car'' is semantically far from ``cat'' but close to ``vehicle''). Consequently, these coordinate systems are efficient for finding a specific known string, but they cannot guide an abstract intent to a relevant semantic cluster without reverting to flooding or centralized lookups.
+
+\subsubsection{Semantic and Intelligent Forwarding}
+Recognizing that strict syntax limits expressiveness, recent works have integrated Natural Language Processing (NLP) into the network layer.
+Fuzzy Interest Forwarding\cite{fuzzy_forwarding} enables routers to forward Interests based on semantic similarity using ontologies (e.g., WordNet) or Latent Semantic Analysis (LSA), allowing retrieval even when exact names are unknown.
+INF-NDN\cite{inf_ndn_iot} extends this for IoT, employing a Principal Node to parse natural language Interests and route them to Supernodes via a Complete Database (CDB).
+
+While these approaches demonstrate the utility of semantic addressing, they face a critical trade-off between intelligence and scalability.
+First, schemes like Fuzzy Forwarding and INF-NDN rely on on-path heavy computation: performing ontology lookups or NLP tasks on every packet introduces prohibitive latency and prevents line-rate forwarding.
+Second, architectures like INF-NDN rely on centralized nodes or synchronized databases (CDB) to maintain global prefix lists, effectively reintroducing the $O(N)$ state explosion.
+
+In contrast, \sysname{} fundamentally departs from these designs through architectural decoupling. Instead of mapping names to random hashes (MUCA) or relying on central parsers (INF-NDN), \sysname{} aggregates the namespace into bounded Semantic Clusters. By confining complex semantic embedding to the network edge (Stage 1) and utilizing exact-match switching for delivery (Stage 2), \sysname{} achieves the expressiveness of semantic routing with the scalability of coordinate-based systems.
+
+\subsection{Complexity Analysis and Comparison}
+\label{sec:related_complexity}
+
+% ==========================================
+% Complexity Comparison Table
+% ==========================================
+
+\begin{table*}[t]
+\centering
+\caption{Complexity and Feature Comparison of NDN Routing Paradigms}
+\label{tab:complexity}
+
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.35}
+
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccccc@{}}
+\toprule
+\textbf{Routing Paradigm} &
+\textbf{Representative} &
+\textbf{Ingress/Core State} &
+\textbf{Control Overhead} &
+\textbf{Forwarding Cost (Core)} &
+\textbf{Semantic Aggregation} \\
+\midrule
+
+\textbf{Syntactic Link-State} &
+NLSR~\cite{nlsr} &
+$O(N_{pfx})$ (High) &
+$O(N_{pfx}\!\cdot\!|E|)$ &
+$O(\log N_{pfx})$ (LPM) &
+No \\
+
+\textbf{Distance Vector} &
+DM-NDN~\cite{distance_vector} &
+$O(N_{pfx})$ (High) &
+$O(N_{pfx})$ (Periodic) &
+$O(\log N_{pfx})$ (LPM) &
+No \\
+
+\textbf{Geometric} &
+Hyperbolic~\cite{hyperbolic} &
+$O(1)$ (None) &
+$O(1)$ (Static) &
+$O(Deg)$ (Greedy Calc) &
+No \\
+
+\textbf{Hash-based/DHT} &
+MUCA~\cite{muca} &
+$O(N_{nodes})$ (DHT Ring) &
+$O(\log N_{nodes})$ &
+$O(1)$ (Hash Map) &
+No (Breaks locality) \\
+
+\textbf{Semantic (Centralized)} &
+INF-NDN~\cite{inf_ndn_iot} &
+$O(N_{pfx})$ (at Supernodes) &
+$O(N_{pfx}\!\cdot\!|E|)$ &
+$O(NLP)$ (Deep Inference) &
+Yes (Tag-based) \\
+
+\textbf{Semantic (Decentralized)} &
+\textbf{iRoute} &
+$\mathbf{O(K)}$ (bounded by $\mathbf{M}$) &
+$\mathbf{O(K\!\cdot\!|E|)}$ &
+$\mathbf{O(\log N_{domain})}$ (LPM) &
+\textbf{Yes (Centroid Summaries)} \\
+\bottomrule
+\end{tabular*}
+
+\vspace{2pt}
+\begin{minipage}{\textwidth}
+\scriptsize
+\textbf{Notation:}
+$N_{pfx}$, number of routable prefixes (often $\approx N_{objects}$);
+$|E|$, number of network links;
+$Deg$, node degree;
+$NLP$, cost of inference model;
+$K$, number of semantic clusters ($K \ll N_{pfx}$);
+$M$, advertisement budget per domain.
+\end{minipage}
+
+\vspace{-2mm}
+\end{table*}
+
+
+To systematically situate \sysname{} within the existing landscape, we analyze the asymptotic complexities of routing state, control plane overhead, and forwarding computational cost. Table~\ref{tab:complexity} summarizes the comparison between \sysname{} and representative protocols including NLSR (Syntactic), Hyperbolic Routing (Geometric), MUCA (Hash-based), and INF-NDN (Semantic).
+
+\subsubsection{Routing State Scalability}
+The fundamental bottleneck for NDN routing is the forwarding state size.
+Conventional syntactic protocols like NLSR~\cite{nlsr} scale linearly with the number of unique routable prefixes ($N_{pfx}$). In an Internet-scale namespace where $N_{pfx}$ approaches the number of objects ($N_{obj}$), this leads to state explosion ($O(N_{pfx})$).
+Hyperbolic Routing (HR)~\cite{hyperbolic} achieves theoretically zero state ($O(1)$) by embedding topology into coordinates but suffers from high path stretch.
+MUCA~\cite{muca} maps names to hash IDs, effectively requiring a Distributed Hash Table (DHT) state ($O(N_{nodes})$) but destroying semantic locality.
+INF-NDN~\cite{inf_ndn_iot} mandates Supernodes to maintain a Complete Database (CDB) of all service prefixes, resulting in $O(N_{pfx})$ state at critical hubs, merely shifting the explosion problem.
+In contrast, \sysname{} bounds the routing state by the Advertisement Budget $M$ per domain. The global \emph{Ingress Semantic Index} scales with the number of advertised semantic centroids ($O(K)$), where $K \ll N_{pfx}$ and $K \propto |Domains| \times M$, ensuring strictly bounded state regardless of namespace growth.
+
+\subsubsection{Control Plane Overhead}
+Control overhead denotes the signaling cost to synchronize reachability.
+NLSR disseminates Link State Advertisements (LSAs) for every new prefix, incurring $O(N_{pfx} \cdot |E|)$ overhead in dynamic environments.
+On-Demand schemes~\cite{ondemand} eliminate steady-state maintenance but incur prohibitive $O(N_{req} \cdot |E|)$ flooding costs for every discovery.
+\sysname{} decouples object availability from routing advertisements. Route updates are triggered only when the reachability of a coarse-grained \emph{Semantic Cluster} changes, not when individual objects are added or removed. This reduces control signaling to $O(K \cdot |E|)$, orders of magnitude lower than prefix-based schemes.
+
+\subsubsection{Forwarding Plane Cost}
+Forwarding cost measures per-packet processing latency.
+Syntactic schemes utilize efficient Longest Prefix Matching (LPM) ($O(\log N_{pfx})$).
+Geometric/Hash schemes involve coordinate calculations or hash operations ($O(1)$ or $O(Deg)$), which are fast but semantically oblivious.
+Semantic approaches like INF-NDN impose a heavy penalty: performing NLP inference or ontology lookups on the critical path ($O(Model)$), creating significant latency bottlenecks.
+\sysname{} adopts a hybrid approach. It confines the heavy embedding computation ($O(Model)$) to the network edge (Ingress) during the Discovery phase. The core network and the subsequent Fetch phase rely solely on standard LPM over domain or provider prefixes, preserving the high-speed forwarding characteristics ($O(\log N_{domain})$) of standard NDN.
+
+
+\subsection{Challenges and Requirements}
+\label{sec:challenges}
+
+Semantic embeddings enable intent-based retrieval by mapping user queries and content objects into a shared vector space. Despite this benefit, turning continuous semantics into a network-wide routing primitive is non-trivial. Routers are engineered for discrete, bounded forwarding state and near-constant-time lookup, while semantic discovery is high-dimensional and often relies on similarity computations over large candidate sets. This section summarizes two fundamental gaps and the practical requirements they impose.
+
+The first gap originates from the computational and state mismatch between vector semantics and router forwarding. Embedding representations typically contain hundreds of dimensions, and resolving an intent by comparing it with a large pool of advertised semantic entries can be expensive. If such similarity search were executed frequently or inside the network core, the per-packet cost would grow with both the vector dimension and the number of candidates, which conflicts with the throughput requirements of line-rate forwarding. Beyond computation, advertising fine-grained semantic identifiers at scale risks reintroducing a state explosion problem similar to what prefix-based routing faces under highly diverse namespaces. Therefore, a viable semantic routing approach must ensure that routing state remains bounded independently of content cardinality, and semantic reachability must be summarized at the granularity of domains rather than individual content objects. At the same time, routers in the core should avoid heavy semantic operations and remain close to traditional forwarding behavior.
+
+The second gap comes from the asymmetry between discovery and delivery. Semantic resolution is compute-dominated and is naturally executed at ingress or at dedicated services within a domain, where embedding computation, ranking, and indexing can be provisioned and optimized. In contrast, large-scale content retrieval is bandwidth-dominated and benefits from the standard properties of NDN, including in-network caching and Interest aggregation. If semantic inference is intertwined with delivery and repeated along the path, the additional inference latency can dominate end-to-end performance and reduce effective throughput. To preserve efficient delivery, semantic discovery should be separated from subsequent data transfer. A practical way to achieve this separation is to make the discovery phase return a routable pointer, such as a canonical name or a manifest prefix, so that the delivery phase can proceed using standard name-based forwarding.
+
+In summary, these gaps suggest two requirements. First, semantic routing must bound exported control-plane state via domain-level summarization. Second, it must decouple semantic resolution from bulk delivery using pointer-based indirection, so that the network core remains lightweight while data transfer retains the benefits of conventional NDN forwarding. We next distill these requirements into design principles and describe how \sysname{} realizes them in Sec.~\ref{sec:design_principles}.
+
+% =============================================================================
+\section{System Design}
+\label{sec:design}
+% =============================================================================
+
+\sysname{} is designed to bridge the ``Syntactic Cliff" between application namespace diversity and bounded routing state. Unlike prior centralized solutions that rely on global indexing or heavy on-path inference, \sysname{} adopts a modular architecture grounded in two principles: Spatial Quantization via Decentralized Aggregation and Temporal Decoupling of Inference and Delivery. We explicitly do not require object-level prefix advertisements in the routing plane, nor do we introduce centralized global resolution services. We refer to an administrative routing stub as a domain, identified by a routable topological prefix. Each domain is constrained by an advertisement budget $M$, the maximum number of semantic centroids it can export.
+
+\subsection{Design Principles}
+\label{sec:design_principles}
+
+The requirements in Sec.~\ref{sec:challenges} suggest that semantic routing must achieve two goals simultaneously.
+It must keep inter-domain routing state small and stable, and it must avoid pushing high-dimensional inference onto the forwarding path.
+\sysname{} meets these goals through two principles that convert semantic discovery into a bounded, domain-oriented routing problem while retaining standard NDN delivery semantics.
+
+\subsubsection{Spatial Quantization via Decentralized Aggregation}
+The first principle is to make semantic reachability exportable at Internet scale by quantizing it at the domain boundary. Instead of exposing item-level content semantics, each domain summarizes its local embedding space into a small set of semantic centroids that act as coarse-grained representatives. This summarization is computed within the domain and constrained by an advertisement budget $M$, which limits how many centroids can be exported. With this budget, the size of inter-domain semantic routing state is governed by the number of domains and their configured budgets, not by the number of content objects.
+
+These centroids serve as compact reachability descriptors. When a consumer issues a discovery intent vector $q$, an ingress node compares $q$ against the exported centroids and identifies a small set of candidate domains that best match the intent. Forwarding then targets one of these candidate domains, which turns global semantic discovery into a bounded selection problem over domains. This design avoids per-packet similarity search in the core and prevents routing tables from tracking fine-grained semantic objects.
+
+\subsubsection{Temporal Decoupling of Ingress-Driven Resolution}
+The second principle is to separate intent resolution from bulk delivery so that semantic computation does not sit on the critical path of data transfer. \sysname{} therefore structures retrieval as a two-phase workflow, where semantic discovery produces a stable handle that can be forwarded efficiently.
+
+In the discovery phase, the ingress node sends a lightweight discovery Interest that carries $q$ in the application parameters. A selected domain processes the request using its local indexing and returns a compact response containing a routable pointer, such as a canonical name or a manifest prefix. This pointer is designed to be stable and routable, so it can be reused by the consumer without repeating semantic inference along the path.
+
+In the delivery phase, the consumer fetches content using standard NDN Interests formed from the returned canonical name. Routers forward these Interests using ordinary name-based forwarding, preserving caching and Interest aggregation at line rate. By separating the two phases, \sysname{} confines semantic inference to ingress or domain services and keeps the network core focused on efficient packet forwarding.
+
+
+\subsection{Architecture Overview}
+\label{sec:design_overview}
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/system-arch.png}
+    \vspace{5pt}
+    \caption{System architecture of \sysname{}}
+    \label{fig:system-arch}
+\end{figure*}
+
+Figure~\ref{fig:system-arch} shows the architecture of \sysname{}. At a high level, \sysname{} turns semantic resolution into an ingress-driven destination selection workflow, so that semantic inference and ranking remain at the network edge, while the core continues to operate with conventional name-based forwarding. This design is realized through three interacting planes that separate semantic representation, reachability dissemination, and packet forwarding.
+
+The Semantic Space Construction Plane is responsible for producing semantic reachability summaries within each domain. To maintain a clear trust boundary, embeddings are generated by a domain-side Control Service (or an Ingress Gateway) from canonical object names, rather than accepted from producers as-is. This prevents untrusted endpoints from inflating relevance by advertising arbitrary vectors. Each domain then aggregates its locally computed embeddings into a bounded set of semantic centroids, with the total number of exported representatives capped by an advertisement budget $M$. Because both embedding computation and aggregation are domain-local, this process can run asynchronously and does not require global coordination.
+
+The Semantic Control Plane disseminates these domain summaries to support fast intent resolution at ingress nodes. Domains advertise Semantic-LSAs that carry centroid descriptors such as centroids $C_i$, optional coverage radii $r_i$, and weights $w_i$. In contrast to NLSR, which floods fine-grained routable prefixes, \sysname{} propagates only budgeted summaries and can scope their dissemination based on policy. As a result, ingress and edge routers maintain a compact semantic directory whose size scales with the number of domains, on the order of $O(|Domains| \times M)$. Meanwhile, core routers remain semantic-agnostic and forward Interests purely by routable domain prefixes such as \texttt{/<DomainID>}.
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=1.0\textwidth]{figures/mermaid.png}
+    \caption{Two-stage forwarding workflow of \sysname{}}
+    \label{fig:system-arch}
+\end{figure*}
+
+The Two-Stage Forwarding Plane executes retrieval using a discovery phase followed by a standard fetch phase. In the Ingress-Driven Discovery Phase (Stage~1), the ingress node ranks candidate domains by comparing the intent vector against the advertised centroids, then probes a selected destination using a Discovery Interest. To preserve compatibility with longest-prefix matching, the probe Interest is named under the chosen domain prefix, for example \texttt{/<DomainID>/iroute/disc/...}, while the discovery payload (e.g., the query vector or an encrypted token) is carried in \textit{Application Parameters}. Core routers forward these probes solely based on \texttt{/<DomainID>} and do not interpret the semantic payload. Once the destination domain resolves the query, it returns a compact pointer such as a canonical name or a manifest prefix. In the Fetch Phase (Stage~2), the consumer retrieves the content using standard NDN Interests formed from that pointer, which reuses unmodified NDN forwarding and preserves caching and Interest aggregation.
+
+\subsection{Decentralized Semantic Alignment}
+\label{sec:design_space}
+
+A key obstacle for decentralized semantic routing is comparability. Even when different domains agree on using embeddings, vectors are only meaningful if they are generated under a consistent pipeline and interpreted in a compatible coordinate system. Otherwise, a centroid advertised by one domain cannot be compared against an intent vector computed at another, and similarity-based selection becomes arbitrary. To make cross-domain comparison well-defined without introducing central coordination, \sysname{} anchors the embedding and transformation pipeline using a version identifier, denoted as \texttt{semVer}, that is treated as part of the routing contract.
+
+Concretely, \texttt{semVer} defines the complete semantic representation stack that affects similarity computation. This includes the embedding model identity and its deployed weights, as well as deterministic preprocessing steps such as tokenization assumptions (when applicable), text normalization rules, and vector normalization. A domain exports semantic centroids together with their \texttt{semVer}, and ingress nodes only compare an intent vector against centroids that share the same \texttt{semVer}. This keeps the network core semantic-agnostic. Routers do not need to interpret vectors or perform similarity search, and they only forward routable names produced by the ingress. The responsibility of maintaining semantic comparability is therefore confined to domain control services and ingress gateways, where embedding computation already takes place.
+
+To further reduce dissemination overhead, \sysname{} performs routing in a projected space that is smaller than the raw embedding dimension. Each domain maps its local embeddings into a lower-dimensional routing space using a deterministic projection associated with \texttt{semVer}. The projection can be instantiated using a fixed random mapping, such as Johnson--Lindenstrauss style projection, or a predefined linear transform agreed upon by participating domains. Because the projection is tied to \texttt{semVer}, the same intent vector embedded at the ingress and the centroids generated inside a domain are aligned into the same coordinate system before any similarity computation. This preserves the ability to rank candidate domains while significantly reducing the size of control-plane advertisements.
+
+Model evolution is handled through controlled version rollout rather than implicit best-effort compatibility. During an upgrade, a domain can temporarily export centroids for both the current and the previous \texttt{semVer}, allowing ingress nodes to continue resolving intents even when different domains migrate at different times. Ingress nodes can also compute intent vectors under multiple active versions when necessary, and select candidates from whichever version yields valid reachability. This dual-version window prevents discovery failures caused by version skew while keeping the compatibility logic explicit and confined to the endpoints that already manage semantic inference.
+
+\subsection{Ingress-Driven Destination Selection}
+\label{sec:design_forwarding}
+
+The second challenge is integrating semantic selection into routing without turning forwarding into hop-by-hop semantic navigation. Greedy, similarity-driven forwarding decisions at each router are difficult to reason about and can introduce instability, especially under partial information or inconsistent advertisements. \sysname{} avoids this class of issues by adopting an ingress-driven source selection model. Semantic reasoning happens once at the ingress, which then commits to a small set of candidate destination domains using routable names.
+The network core remains unchanged and forwards Interests using existing name-based mechanisms.
+
+In \sysname{}, semantic discovery is formulated as a domain selection problem rather than a content name lookup problem. Ingress nodes maintain a compact view of semantic reachability learned from the Semantic Control Plane, which disseminates per-domain centroid summaries. Given a user intent, the ingress computes the corresponding intent vector $q$ under a chosen \texttt{semVer} and ranks candidate domains by comparing $q$ against the advertised centroids. The output of this step is a short list of destination domains that are likely to satisfy the intent. The ingress then probes these candidates using Discovery Interests, either sequentially with timeouts or in parallel depending on the deployment's latency objectives. This approach bounds the amount of semantic work per intent and keeps the search space limited to a small number of domains.
+
+Crucially, Discovery Interests are constructed as topologically routable names.
+Each probe is named under the selected domain prefix \texttt{/<DomainID>}, with \sysname{}-specific components placed after the domain identifier. As a result, intermediate routers forward the probe using ordinary longest-prefix matching on \texttt{/<DomainID>} without inspecting semantic payloads. Once a domain accepts a probe, it returns a compact pointer to the actual content, such as a canonical name or a manifest prefix. The consumer then retrieves the content using standard NDN Interests formed from that canonical name. Since both the probe forwarding and the subsequent fetch rely on regular name-based forwarding, \sysname{} does not introduce new hop-by-hop forwarding rules. Any loop freedom and convergence properties therefore reduce to those of the underlying routing substrate used for prefix reachability, while semantic inference remains confined to ingress nodes and domain services.
+
+
+% =============================================================================
+\section{Protocol Specification and Implementation}
+\label{sec:spec}
+% =============================================================================
+
+This section specifies the message formats and processing rules of \sysname{} across the control plane and data plane, including Semantic-LSAs, discovery naming, payload placement, and reply semantics.
+
+\subsection{Semantic-LSA and State Management}
+\label{sec:spec_control}
+
+\sysname{} represents semantic reachability using Semantic-LSAs that are encoded as compact TLV blocks and carried in signed NDN Data packets.
+Each LSA is published under a structured namespace that enables efficient synchronization and avoids long, descriptive names.
+Specifically, a domain identified by \texttt{OriginID} publishes updates using a short \texttt{SemVerID} and a monotonically increasing sequence number:
+\[
+\texttt{/iroute/lsa/}\langle\texttt{OriginID}\rangle\texttt{/}\langle\texttt{SemVerID}\rangle\texttt{/}\langle\texttt{SeqNo}\rangle
+\]
+Routers can track these updates using an off-the-shelf synchronization primitive such as PSync, or by periodically fetching the latest \texttt{SeqNo} depending on deployment constraints.
+
+The \texttt{SemVerID} acts as a compact handle for the full semantic pipeline specification.
+Rather than embedding a verbose model description directly into every LSA name, \sysname{} resolves \texttt{SemVerID} through a separate metadata object published by the domain, for example:
+\[
+\texttt{/iroute/semver/}\langle\texttt{SemVerID}\rangle
+\]
+The returned metadata binds \texttt{SemVerID} to the embedding model identity and any deterministic preprocessing or projection needed for cross-domain comparability.
+In this way, ingress nodes can compare intent vectors only against centroids produced under a compatible \texttt{SemVerID}, while the core forwarding plane remains unaware of semantic details.
+
+Table~\ref{tab:lsa_format} summarizes the Semantic-LSA fields used by \sysname{}.
+\texttt{OriginID} provides the routable domain prefix, and the centroid list encodes a bounded semantic summary exported under the advertisement budget $M$.
+\texttt{Scope} allows domains to restrict propagation across administrative boundaries, with border routers enforcing export policies.
+All Semantic-LSAs are signed by the domain and validated against its certificate chain before being accepted.
+
+\begin{table}[h]
+\centering
+\caption{Semantic-LSA Field Specification}
+\label{tab:lsa_format}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{l|p{5.0cm}}
+\toprule
+\textbf{Field} & \textbf{Description} \\
+\midrule
+\texttt{OriginID} & Topologically routable domain prefix (also denoted as \texttt{DomainID}). \\
+\texttt{SemVerID} & Short identifier that maps to the full semantic pipeline specification. \\
+\texttt{SeqNo} & Monotonically increasing sequence number for update ordering. \\
+\texttt{Lifetime} & Soft-state validity duration for refresh and expiration. \\
+\texttt{Scope} & Propagation scope used to gate inter-domain dissemination. \\
+\texttt{Centroids} & List of tuples $\{(\texttt{CentroidID}_i, C_i, r_i, w_i)\}$ describing exported representatives. \\
+\texttt{Signature} & Domain signature over the LSA content; verified by receivers. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Upon receiving a Semantic-LSA, a router validates the signature, checks that the advertised \texttt{SemVerID} is supported, and applies sequence-number ordering to discard stale updates.
+To keep higher-layer references stable across epochs, \sysname{} requires domains to maintain persistent \texttt{CentroidID}s.
+In practice, a domain can update its IDs by matching each newly computed centroid to the closest centroid from the previous epoch and reusing the prior identifier when the match is sufficiently strong.
+This avoids unnecessary identifier churn while remaining lightweight enough for periodic recomputation.
+
+To prevent excessive control-plane churn, \sysname{} applies a hysteresis policy when deciding whether a domain should refresh its LSA.
+Let $C_i$ and $r_i$ denote the centroid and coverage radius advertised in the current LSA, and let $C'_i$ and $r'_i$ denote the recomputed values.
+We measure drift using Euclidean distance over $L_2$-normalized vectors, which preserves ordering under cosine similarity.
+A refresh is triggered when either the maximum centroid drift exceeds a threshold $\delta$, or the relative radius change exceeds a threshold $\gamma$:
+\begin{equation}
+    \max_i \|C'_{i} - C_{i}\|_2 > \delta \quad \lor \quad \max_i \frac{|r'_{i} - r_{i}|}{r_{i}} > \gamma
+\end{equation}
+Both $\delta$ and $\gamma$ are configurable parameters.
+In our prototype, we use $\delta=0.01$ and $\gamma=0.2$ as conservative defaults that reduce update frequency while preserving responsiveness to meaningful semantic drift.
+
+\subsection{Discovery Naming and Payload Modes}
+\label{sec:spec_naming}
+
+\sysname{} constructs discovery requests as standard NDN Interests whose names remain topologically routable.
+To preserve compatibility with longest-prefix matching in the core, discovery Interests are named with the destination domain prefix first, followed by a \sysname{}-specific suffix and the short version identifier:
+{\setlength{\abovedisplayskip}{2pt}\setlength{\belowdisplayskip}{2pt}
+\begin{equation*}
+\footnotesize
+\texttt{/}\allowbreak\langle \texttt{DomainID} \rangle
+\texttt{/iroute/disc/}\allowbreak\langle \texttt{SemVerID} \rangle
+\texttt{/...}
+\end{equation*}}
+% \[
+% \texttt{/}\langle \texttt{DomainID} \rangle\texttt{/iroute/disc/}\langle \texttt{SemVerID} \rangle\texttt{/...}
+% \]
+Placing \texttt{DomainID} at the beginning ensures that intermediate routers can forward discovery probes using existing FIB state, without inspecting any semantic payload.
+
+The query payload is carried in \texttt{ApplicationPara\-meters} for all payload modes. When application parameters are present, the Interest wire encoding includes an implicit \PSDC, which makes Interests with identical parameters bitwise comparable for PIT aggregation.
+This choice also ensures that the returned Data packet can satisfy the pending PIT entry through exact name matching, without requiring any special-case forwarding behavior in the core.
+
+\sysname{} supports three payload modes that trade off privacy and utility.
+In \emph{Plain Mode}, the Interest carries the raw semantic vector (or a query string when applicable), enabling maximum recall at the destination.
+In \emph{Encrypted Mode}, the payload is encrypted to the destination domain's public key so that only the domain control service can decode it, while the network core observes only the routable prefix and an opaque parameter block.
+In \emph{Token Mode}, the Interest carries a compact token or hash that supports only exact-match resolution, which can be used for privacy-preserving lookups or replayable cached queries.
+
+The discovery response is returned as an NDN Data packet whose name exactly matches the discovery Interest name.
+We therefore define the final Interest component to be the parameter digest, which corresponds to \PSDC:
+{\setlength{\abovedisplayskip}{2pt}\setlength{\belowdisplayskip}{2pt}
+\begin{equation*}
+\footnotesize
+\texttt{/}\allowbreak\langle \texttt{DomainID} \rangle
+\texttt{/iroute/disc/}\allowbreak\langle \texttt{SemVerID} \rangle
+\texttt{/}\allowbreak\langle \texttt{ParamDigest} \rangle
+\end{equation*}}
+
+% \[
+% \texttt{/}\langle \texttt{DomainID} \rangle\texttt{/iroute/disc/}\langle \texttt{SemVerID} \rangle\texttt{/}\langle \texttt{ParamDigest} \rangle
+% \]
+The Data content carries a compact TLV block that includes (i) a \texttt{Status} indicating \texttt{Found} or \texttt{NotFound}, (ii) the resolved \texttt{CanonicalName} (or manifest prefix) used for Stage~2 fetching, (iii) an optional \texttt{ConfidenceScore} in the range $[0,1]$, and (iv) an optional \texttt{ManifestDigest} for multi-object results.
+Because the response name matches the Interest name, it naturally satisfies the PIT entry and can be cached by routers for future identical requests.
+Caching is deployment-configurable, and it can be disabled for sensitive payload modes such as encrypted discovery to reduce information leakage through cache observation.
+
+
+\subsection{Ingress Ranking and Scoring}
+\label{sec:spec_ranking}
+
+Upon receiving a discovery intent, the ingress selects candidate destination domains by scoring their advertised centroids.
+Let $q$ be the intent vector, and let each domain $D$ advertise a bounded set of centroid tuples $\{(\texttt{CentroidID}_i, C_i, r_i, w_i)\}$.
+The ingress computes a domain score $S_D(q)$ by taking the best matching centroid within that domain.
+
+All vectors are $L_2$-normalized so that the inner product $q \cdot C_i$ equals cosine similarity.
+We define cosine distance as $d(q, C_i) = 1 - (q \cdot C_i)$.
+Each centroid is associated with a radius $r_i$ that approximates the semantic coverage of its cluster.
+In our prototype, $r_i$ is defined as the 95th percentile of intra-cluster cosine distances to reduce sensitivity to outliers.
+The weight $w_i$ encodes the cluster size or object count, but it is clamped by a system-wide maximum $w_{\max}$ to prevent domains from inflating weights arbitrarily.
+Finally, $\text{Cost}_D$ captures the underlying network cost to reach \texttt{/<DomainID>} (e.g., hop count or an IGP metric obtained from the routing substrate), and $\text{Cost}_{\max}$ is a normalizing constant such as the network diameter or the maximum observed cost.
+
+We compute the score as:
+% {\setlength{\abovedisplayskip}{3pt}\setlength{\belowdisplayskip}{3pt}
+% \begin{equation}
+% \label{eq:score}
+% \resizebox{\columnwidth}{!}{$
+% S_D(q)=\max_{i\in D}\!\left(
+% \alpha(q\!\cdot\!C_i)\,
+% \sigma\!\left(\lambda(r_i-d(q,C_i))\right)\,
+% \log(1+w_i)
+% -\beta\,\frac{\text{Cost}_D}{\text{Cost}_{\max}}
+% \right)
+% $}
+% \end{equation}}
+
+\begin{equation}
+\label{eq:score}
+\begin{split}
+    S_D(q) = \max_{i \in D} \bigg( & \alpha \cdot (q \cdot C_i) \cdot \sigma(\lambda(r_i - d(q, C_i))) \\
+    & \cdot \log(1+w_i) - \beta \cdot \frac{\text{Cost}_D}{\text{Cost}_{\max}} \bigg)
+\end{split}
+\end{equation}
+where $\sigma(x)=\frac{1}{1+e^{-x}}$ is the logistic function.
+The gate $\sigma(\lambda(r_i - d(q, C_i)))$ implements a soft membership test.
+When $q$ lies well inside the centroid's coverage (i.e., $d(q,C_i) < r_i$), the gate approaches 1 and preserves the similarity term.
+When $q$ falls outside the coverage, the gate smoothly suppresses the contribution, preventing a single overly broad centroid from dominating the ranking.
+
+The parameters $\alpha$ and $\beta$ control the trade-off between semantic relevance and routing efficiency, while $\lambda$ controls how sharply the soft membership gate transitions around the radius boundary.
+% Unless otherwise stated, we use $\alpha=1.0$, $\beta=0.5$, and $\lambda=20$.
+The logarithmic factor $\log(1+w_i)$ favors domains that cover more relevant objects, but it avoids allowing volume alone to dominate the score.
+
+\subsection{Robustness: Handling Unknowns and Malice}
+\label{sec:spec_robustness}
+
+\sysname{} is designed to remain robust under two common failure modes in open multi-domain environments.
+First, a domain may blackhole discovery probes by attracting Interests but failing to return usable pointers or deliver content.
+Second, a rational domain may behave dishonestly by advertising overly broad or misleading centroids to capture traffic.
+We do not attempt to address Sybil attacks or coordinated multi-domain collusion in this version of the design, which would require an additional trust layer beyond the scope of this paper.
+
+To limit overhead and reduce tail latency under uncertainty, the ingress applies bounded probing.
+When the top-ranked domain has an insufficient score, $S_D(q) < \tau$, the ingress concurrently probes the top-$k$ candidate domains and accepts the first valid discovery reply.
+We cap the fanout by $k_{\max}=5$ to balance responsiveness and resource consumption, and treat $k$ as a tunable parameter within this bound.
+This mechanism also provides a natural fallback when semantic summaries are stale or when the best centroid match does not correspond to an actually retrievable object.
+
+To mitigate blackholing and centroid inflation over time, the ingress maintains an outcome-driven reliability signal for each domain based on Stage~2 delivery.
+We define a probe outcome as successful only if the Stage~2 fetch completes within a configurable timeout $T_{\text{fetch}}$.
+For each domain $D$, the ingress tracks an exponentially weighted moving average (EWMA) of this binary success signal and applies it as a multiplicative penalty to the ranking score:
+\begin{equation}
+    S'_D(q) = S_D(q) \times \text{EWMA}_{\text{success}}(D)
+\end{equation}
+This feedback loop gradually reduces the attractiveness of domains that repeatedly fail to deliver, while preserving stable rankings for well-behaved domains.
+To avoid cold-start bias, the penalty is enabled only after observing at least $n_{\min}=10$ outcomes for a domain; before that, the ingress uses the unpenalized score.
+
+\subsection{Implementation Efficiency}
+\label{sec:spec_impl}
+
+The ingress ranking procedure operates over a bounded semantic directory of size $N = O(|Domains| \times M)$.
+To support fast candidate retrieval, the ingress maintains an approximate nearest-neighbor index over all advertised centroids and queries it using the intent vector $q$.
+Our prototype uses HNSW graphs to retrieve high-similarity centroid candidates efficiently, and then computes domain scores using Eq.~\ref{eq:score} over the returned shortlist.
+
+We further optimize scoring by accelerating dot-product computation with SIMD instructions.
+In our implementation, similarity evaluations are vectorized using AVX2 (256-bit) operations, which reduces per-query latency and keeps Stage~1 ranking from becoming a bottleneck.
+We report microbenchmarks of the ranking throughput in Sec.~\ref{sec:eval}.
+
+
+\section{Evaluation and Discussion}
+
+\newpage
+
+% =============================================================================
+% Restored Full Bibliography
+% =============================================================================
+\bibliographystyle{IEEEtran}
+\begin{thebibliography}{00}
+
+% --- NDN Basics ---
+\bibitem{ndn}
+L.~Zhang \emph{et al.}, ``Named Data Networking,'' \emph{ACM SIGCOMM CCR}, vol. 44, no. 3, pp. 66--73, 2014.
+
+\bibitem{ndn_forwarding}
+H.~Yi \emph{et al.}, ``A Case for Stateful Forwarding Plane,'' \emph{Computer Communications}, vol. 36, no. 7, pp. 779--791, 2013.
+
+% --- Routing Protocols (Syntactic) ---
+\bibitem{nlsr}
+A.~Hoque \emph{et al.}, ``NLSR: Named-data Link State Routing,'' in \emph{Proc. ACM ICN}, 2013.
+
+\bibitem{distance_vector}
+J.~Wang, R.~Wakikawa, and L.~Zhang, ``Distance Vector Routing for Named Data Networking,'' in \emph{Proc. IEEE ICNP}, 2014.
+
+\bibitem{ondemand}
+O.~Ascigil \emph{et al.}, ``On-Demand Routing for Scalable Name-Based Forwarding,'' in \emph{Proc. IFIP Networking}, 2018.
+
+\bibitem{panini}
+T.~Wirtgen \emph{et al.}, ``The Case for PANINI: A Partial and Adaptive Name Information in Network Intermediaries,'' in \emph{Proc. IFIP Networking}, 2018.
+
+% --- Scalability & FIB Optimization ---
+\bibitem{cnr}
+S.~S.~Adhatarao \emph{et al.}, ``CNR: Content Name Resolution in Information Centric Networks,'' in \emph{Proc. IEEE GLOBECOM}, 2016.
+
+\bibitem{samba}
+A.~Esmaeili and A.~Mtibaa, ``SAMBA: Scalable Approximate Forwarding For NDN Implicit FIB Aggregation,'' \emph{arXiv preprint arXiv:2409.19154}, 2024.
+
+\bibitem{scalable_fib_icn15}
+T.~Song, H.~Yuan, P.~Crowley, and B.~Zhang, ``Scalable Name-based Packet Forwarding: From Millions to Billions,'' in \emph{Proc. ACM ICN}, 2015.
+
+\bibitem{scalable_pit_infocom14}
+H.~Yuan and P.~Crowley, ``Scalable Pending Interest Table Design: From Principles to Practice,'' in \emph{Proc. IEEE INFOCOM}, 2014.
+
+\bibitem{enhancing_forwarding_ancs17}
+H.~Yuan, P.~Crowley, and T.~Song, ``Enhancing Scalable Name-based Forwarding,'' in \emph{Proc. ACM/IEEE ANCS}, 2017.
+
+\bibitem{ptcam_sigcomm25}
+T.~Song, T.~Li, and Y.~Yang, ``PtCAM: Scalable High-Speed Name Prefix Lookup using TCAM,'' in \emph{Proc. ACM SIGCOMM}, 2025.
+
+% --- Geometric / Hash-based Routing ---
+\bibitem{hyperbolic}
+M.~Bogu{\~n}{\'a} \emph{et al.}, ``Hyperbolic Geometry of Complex Networks,'' \emph{Physical Review E}, vol. 82, 2010.
+
+\bibitem{muca}
+C.~Ghasemi \emph{et al.}, ``MUCA: New Routing for Named Data Networking,'' in \emph{Proc. IFIP Networking}, 2019.
+
+\bibitem{distance_info}
+S.~K.~Fayazbakhsh \emph{et al.}, ``Name-Based Content Routing in Information Centric Networks Using Distance Information,'' in \emph{Proc. ACM ICN}, 2013.
+
+\bibitem{bloom}
+S.~Rhea \emph{et al.}, ``Bloom Filters in P2P,'' in \emph{Proc. ACM SIGCOMM}, 2001.
+
+% --- Semantic & Intelligent Routing ---
+\bibitem{inf_ndn_iot}
+M.~B.~M.~Kamel \emph{et al.}, ``INF-NDN IoT: An Intelligent Naming and Forwarding,'' \emph{IEEE Access}, vol. 11, 2023.
+
+\bibitem{fuzzy_forwarding}
+K.~Chan \emph{et al.}, ``Fuzzy Interest Forwarding,'' in \emph{Proc. ACM ICN}, 2017.
+
+\bibitem{semantic_addressing}
+D.~Trossen \emph{et al.}, ``Design Considerations for Semantic-based Routing,'' in \emph{Proc. IEEE ICCCN}, 2012.
+
+\bibitem{ndn_iot_journal}
+W.~Shang \emph{et al.}, ``Named Data Networking of Things,'' \emph{IEEE Internet of Things Journal}, 2016.
+
+\bibitem{p4_ml_infocom19}
+Z.~Xiong \emph{et al.}, ``In-network Machine Learning with P4,'' in \emph{Proc. IEEE INFOCOM}, 2019.
+
+% --- NLP & Embeddings ---
+\bibitem{sbert}
+N.~Reimers and I.~Gurevych, ``Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks,'' in \emph{Proc. EMNLP}, 2019.
+
+\bibitem{jl_lemma}
+W.~B.~Johnson and J.~Lindenstrauss, ``Extensions of Lipschitz mappings into a Hilbert space,'' \emph{Contemporary Mathematics}, vol. 26, 1984.
+
+\bibitem{hnsw}
+Y.~Malkov and D.~Yashunin, ``Efficient and Robust Approximate Nearest Neighbor Search using HNSW Graphs,'' \emph{IEEE TPAMI}, vol. 42, no. 4, 2018.
+
+% --- System Implementation Related ---
+\bibitem{li2024istack}
+T.~Li, T.~Song, and Y.~Yang, ``iStack: A General and Stateful Name-based Protocol Stack for NDN,'' in \emph{Proc. USENIX NSDI}, 2024.
+
+\bibitem{cluster_caching_access19}
+W.~Huang, T.~Song, Y.~Yang, and Y.~Zhang, ``Cluster-based Cooperative Caching with Mobility Prediction in Vehicular NDN,'' \emph{IEEE Access}, vol. 7, 2019.
+
+\bibitem{nfd_guide}
+A.~Afanasyev \emph{et al.}, ``NFD Developer's Guide,'' NDN Technical Report NDN-0021, 2018.
+
+\bibitem{ndnsim}
+S.~Mastorakis \emph{et al.}, ``ndnSIM 2.0: A new version of the NDN simulator for NS-3,'' NDN Technical Report NDN-0028, 2015.
+
+\bibitem{rocketfuel}
+N.~Spring, R.~Mahajan, and D.~Wetherall, ``Measuring ISP Topologies with Rocketfuel,'' in \emph{Proc. ACM SIGCOMM}, 2002.
+
+\end{thebibliography}
+
+\end{document}

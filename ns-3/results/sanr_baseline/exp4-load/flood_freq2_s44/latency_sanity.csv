@@ -1,0 +1,2 @@
+scheme,total_queries,measurement_queries,success_queries,timeout_queries,timeout_rate,unique_rtt_values,p50_ms,p95_ms,top_rtt_values,cache_miss_queries,cache_miss_unique_rtt_values,cache_miss_p50_ms,cache_miss_p95_ms
+flood,319,319,303,0,0.050157,191,25.4117,45.4406,22.373:45;25.412:32;25.411:23;19.170:5;19.171:5;22.765:2;25.703:2;26.193:2;34.656:2;37.859:2,303,191,25.4117,45.4406

@@ -1,0 +1,2 @@
+scheme,total_queries,measurement_queries,success_queries,timeout_queries,timeout_rate,unique_rtt_values,p50_ms,p95_ms,top_rtt_values,cache_miss_queries,cache_miss_unique_rtt_values,cache_miss_p50_ms,cache_miss_p95_ms
+tag,199,199,199,0,0.000000,179,38.7065,67.9971,38.653:3;38.741:3;38.766:3;38.487:2;38.492:2;38.504:2;38.523:2;38.529:2;38.543:2;38.547:2,199,179,38.7065,67.9971

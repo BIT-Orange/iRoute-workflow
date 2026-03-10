@@ -1,0 +1,2 @@
+scenario,target,event_time,scheduled,applied,before_connected,after_connected,affected_apps,pre_hit,post_hit,pre_rtt_ms,post_rtt_ms,pre_count,post_count,notes
+churn,tag,25.000,1,1,-1,-1,12,1.000000,1.000000,9.223508,8.602286,24,76,churn_rounds=4;churn_interval_sec=10.000000;metric=is_success

@@ -1,0 +1,2 @@
+scheme,total_queries,measurement_queries,success_queries,timeout_queries,timeout_rate,unique_rtt_values,p50_ms,p95_ms,top_rtt_values
+flood,500,500,433,0,0.000000,52,14.7682,16.3483,8.183:19;8.101:18;8.105:16;8.096:15;15.332:15;14.703:14;14.991:14;15.337:14;7.755:13;14.768:13

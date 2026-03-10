@@ -1,0 +1,2 @@
+scheme,total_queries,measurement_queries,success_queries,timeout_queries,timeout_rate,unique_rtt_values,p50_ms,p95_ms,top_rtt_values,cache_miss_queries,cache_miss_unique_rtt_values,cache_miss_p50_ms,cache_miss_p95_ms
+central,94,88,88,0,0.000000,88,10.0030,11.0987,5.005:1;5.188:1;5.300:1;5.750:1;5.810:1;5.829:1;5.898:1;6.232:1;6.372:1;6.416:1,88,88,10.0030,11.0987
