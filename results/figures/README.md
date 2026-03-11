@@ -32,6 +32,13 @@ Publication rule:
   - byte-for-byte sync between `results/figures/` and `paper/figs/`
   - a manifest that is not `blocked` or `placeholder`
 
+Fig.3 / Fig.4 release rule:
+
+- `fig3_hop_load.paper_grade` and `fig4_state_scaling.paper_grade` have an extra release gate
+- they cannot be published from the older minimal bundles
+- they require a complete final-scope aggregate report plus a complete `batch_status.json`
+- they may update the machine-readable claim map only through an explicit `--upgrade-claim-status` publication flag
+
 Write a placeholder or provenance manifest with:
 
 ```bash
@@ -49,3 +56,15 @@ Dry-run validation without copying files:
 ```bash
 python3 scripts/paper_grade_pipeline.py publish-figure --figure-id fig3_hop_load.paper_grade --dry-run
 ```
+
+Fig.3 / Fig.4 release-gated dry-run with explicit claim-upgrade intent:
+
+```bash
+python3 scripts/paper_grade_pipeline.py publish-figure --figure-id fig3_hop_load.paper_grade --dry-run --upgrade-claim-status
+```
+
+Release summary:
+
+- `bash scripts/workflow.sh release-dossier` scans these figure manifests alongside claim and asset status
+- the generated dossier under `review/paper_audit/` is informational only
+- it helps reviewers see which figure families are already `published` versus still `partial`, `blocked`, or `placeholder`

@@ -1,0 +1,36 @@
+{
+  "artifact_check": {
+    "ran": true,
+    "status": "passed"
+  },
+  "batch_id": "fig4-scaling-paper-grade-final-20260311shard",
+  "expected_run_ids": [
+    "fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42"
+  ],
+  "family": "scaling",
+  "generated_at_utc": "2026-03-11T06:17:55.472180+00:00",
+  "notes": [
+    "Shard completion only proves the selected sub-matrix is present.",
+    "Claim status stays provisional until the full required final-scope matrix is complete and published."
+  ],
+  "promoted_run_ids": [
+    "fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42"
+  ],
+  "reused_canonical_runs": false,
+  "runner": "ns-3/experiments/runners/run_scaling_experiment.sh",
+  "scope": "final",
+  "selector": {
+    "domains": [
+      "8"
+    ],
+    "schemes": [
+      "iroute"
+    ],
+    "seeds": [
+      "42"
+    ]
+  },
+  "shard_id": "domains-8-schemes-iroute",
+  "stage_dir": "/tmp/iroute-fig34-final-scope/fig4-scaling-paper-grade-final-20260311shard/domains-8-schemes-iroute",
+  "status": "complete"
+}

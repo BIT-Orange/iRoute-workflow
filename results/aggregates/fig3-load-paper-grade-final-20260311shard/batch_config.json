@@ -1,0 +1,28 @@
+{
+  "batch_id": "fig3-load-paper-grade-final-20260311shard",
+  "family": "load",
+  "generated_at_utc": "2026-03-11T06:24:51.660029+00:00",
+  "notes": [
+    "Final-scope paper-grade Fig. 3 batch matching the current paper-grade load sweep.",
+    "SIM_TIME_MAX=0 is used to avoid truncating low-frequency full-trace runs."
+  ],
+  "requirements": {
+    "frequency": [
+      "1",
+      "2",
+      "5",
+      "10",
+      "20"
+    ],
+    "schemes": [
+      "central",
+      "iroute",
+      "tag",
+      "flood"
+    ],
+    "seeds": [
+      "42"
+    ]
+  },
+  "scope": "final"
+}

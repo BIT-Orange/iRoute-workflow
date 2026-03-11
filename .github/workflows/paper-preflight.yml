@@ -12,3 +12,17 @@ jobs:
 
       - name: Run strict paper-release gate
         run: bash scripts/workflow.sh paper-release-gate
+
+      - name: Generate paper release dossier
+        if: always()
+        run: bash scripts/workflow.sh release-dossier
+
+      - name: Upload paper release dossier
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-release-dossier
+          path: |
+            review/paper_audit/paper_release_dossier.json
+            review/paper_audit/paper_release_dossier.md
+          if-no-files-found: error

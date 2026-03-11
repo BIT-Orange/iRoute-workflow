@@ -1,0 +1,27 @@
+{
+  "batch_id": "fig4-scaling-paper-grade-final-20260311shard",
+  "family": "scaling",
+  "generated_at_utc": "2026-03-11T06:21:22.158349+00:00",
+  "notes": [
+    "Final-scope paper-grade Fig. 4 batch matching the current paper-grade scaling sweep.",
+    "This bundle covers four domain points and uses native seeds only."
+  ],
+  "requirements": {
+    "domains": [
+      "8",
+      "16",
+      "32",
+      "64"
+    ],
+    "schemes": [
+      "central",
+      "iroute",
+      "tag",
+      "flood"
+    ],
+    "seeds": [
+      "42"
+    ]
+  },
+  "scope": "final"
+}

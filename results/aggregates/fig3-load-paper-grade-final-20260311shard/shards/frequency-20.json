@@ -1,0 +1,45 @@
+{
+  "artifact_check": {
+    "ran": true,
+    "status": "passed"
+  },
+  "batch_id": "fig3-load-paper-grade-final-20260311shard",
+  "expected_run_ids": [
+    "fig3-load-paper-grade-final-20260311shard-central_freq20_s42",
+    "fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42",
+    "fig3-load-paper-grade-final-20260311shard-tag_freq20_s42",
+    "fig3-load-paper-grade-final-20260311shard-flood_freq20_s42"
+  ],
+  "family": "load",
+  "generated_at_utc": "2026-03-11T06:24:51.660411+00:00",
+  "notes": [
+    "Shard completion only proves the selected sub-matrix is present.",
+    "Claim status stays provisional until the full required final-scope matrix is complete and published."
+  ],
+  "promoted_run_ids": [
+    "fig3-load-paper-grade-final-20260311shard-central_freq20_s42",
+    "fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42",
+    "fig3-load-paper-grade-final-20260311shard-tag_freq20_s42",
+    "fig3-load-paper-grade-final-20260311shard-flood_freq20_s42"
+  ],
+  "reused_canonical_runs": true,
+  "runner": "ns-3/experiments/runners/run_load_experiment.sh",
+  "scope": "final",
+  "selector": {
+    "frequency": [
+      "20"
+    ],
+    "schemes": [
+      "central",
+      "iroute",
+      "tag",
+      "flood"
+    ],
+    "seeds": [
+      "42"
+    ]
+  },
+  "shard_id": "frequency-20",
+  "stage_dir": "/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20",
+  "status": "complete"
+}

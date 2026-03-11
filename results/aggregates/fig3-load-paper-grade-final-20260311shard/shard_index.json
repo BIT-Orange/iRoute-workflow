@@ -1,0 +1,35 @@
+{
+  "batch_id": "fig3-load-paper-grade-final-20260311shard",
+  "generated_at_utc": "2026-03-11T06:24:51.660769+00:00",
+  "shards": [
+    {
+      "artifact_check": {
+        "ran": true,
+        "status": "passed"
+      },
+      "path": "results/aggregates/fig3-load-paper-grade-final-20260311shard/shards/frequency-20.json",
+      "promoted_run_ids": [
+        "fig3-load-paper-grade-final-20260311shard-central_freq20_s42",
+        "fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42",
+        "fig3-load-paper-grade-final-20260311shard-tag_freq20_s42",
+        "fig3-load-paper-grade-final-20260311shard-flood_freq20_s42"
+      ],
+      "selector": {
+        "frequency": [
+          "20"
+        ],
+        "schemes": [
+          "central",
+          "iroute",
+          "tag",
+          "flood"
+        ],
+        "seeds": [
+          "42"
+        ]
+      },
+      "shard_id": "frequency-20",
+      "status": "complete"
+    }
+  ]
+}

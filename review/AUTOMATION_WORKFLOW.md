@@ -26,7 +26,11 @@ bash scripts/workflow.sh dev-fast
 bash scripts/workflow.sh fig12-paper-grade --batch-id <batch-id>
 bash scripts/workflow.sh fig345-paper-grade <load|scaling|failure|all> --suffix <suffix>
 bash scripts/workflow.sh fig34-final-scope <load|scaling|all> --suffix <suffix>
+bash scripts/workflow.sh fig34-final-scope load --suffix <suffix> --frequencies "20" --resume-existing
+bash scripts/workflow.sh fig34-final-scope scaling --suffix <suffix> --domains-list "8" --schemes "iroute" --resume-existing
+bash scripts/workflow.sh fig34-final-scope load --suffix <suffix> --finalize-only
 bash scripts/workflow.sh publish-figure --figure-id <figure-id>
+bash scripts/workflow.sh release-dossier
 ```
 
 If you already have a compiled ns-3 smoke binary, also run:
@@ -40,8 +44,12 @@ The smoke run is a tiny plumbing validation only. It is not paper evidence.
 The `fig12-paper-grade` command is the canonical rerun/promotion path for the current paper-grade Fig. 1 and Fig. 2 evidence bundle.
 The `fig345-paper-grade` command is the canonical staging/promotion path for the current Fig. 3, Fig. 4, and Fig. 5 family bundles.
 The `fig34-final-scope` command is the canonical final-scope rerun and publication path for Fig. 3 and Fig. 4. It promotes runs into `results/runs/`, rebuilds canonical aggregate bundles, generates figure bundles under `results/figures/`, and synchronizes the published PDFs into `paper/figs/` only after byte-for-byte verification.
+For long-running final-scope batches, `fig34-final-scope` now supports shard selectors and resumable completion tracking. Use `--frequencies` for Fig. 3, `--domains-list` for Fig. 4, optional `--schemes` / `--seeds` for narrower shards, and `--finalize-only` to recompute completion without launching new runs.
+Once a full final-scope batch is complete, Fig. 3 / Fig. 4 still need a release-gated publication pass through `publish-figure`. That gate checks the final-scope aggregate report, the batch completion index, the canonical run set, and the byte-for-byte sync into `paper/figs/`.
 The `fig5-paper-grade` command is the canonical rerun, promotion, and publication path for the current Fig. 5 robustness bundle. It synchronizes published PDFs into `paper/figs/` only after every promoted failure run records an effective disruption and the figure files match byte-for-byte.
 The `publish-figure` command is the generic paper-facing sync path for any figure manifest that already has sufficient provenance. It refuses to upgrade `blocked` or `placeholder` manifests, and it refuses to upgrade `partial` manifests unless their aggregate bundle is already marked publishable.
+For Fig. 3 / Fig. 4 specifically, `publish-figure` is stricter: it refuses publication unless the final-scope batch is complete, and it only updates the machine-readable claim map when `--upgrade-claim-status` is passed explicitly.
+The `release-dossier` command writes a JSON + Markdown submission snapshot under `review/paper_audit/`. It summarizes current claim status, figure publication status, manual asset debt, paper-facing missing files, and the key evidence references for currently supported claims.
 Hand-maintained paper assets such as architecture diagrams do not use `publish-figure`; they stay tracked as explicit manual debt in `paper/assets/asset_status.json` until a real source or synchronized paper-facing file exists.
 
 ## Before Opening A PR
@@ -57,6 +65,7 @@ Notes:
 - `merge-gate` keeps merge-blocking CI fast enough for normal PR use.
 - if `ns-3/build/scratch/iroute-exp-baselines` is missing, `smoke-run` is skipped explicitly rather than pretending to pass.
 - `paper-release-gate` is not required before every PR; it is the release-tier check.
+- before an actual submission pass, generate `bash scripts/workflow.sh release-dossier` so the current release blockers and evidence set are visible in one place
 
 ## Paper-Grade Evidence
 
@@ -103,6 +112,7 @@ Current GitHub workflows are intentionally conservative:
 - `repo-hygiene.yml` is a fast merge-blocking hygiene gate
 - `experiment-checks.yml` is the merge-blocking experiment gate and runs `merge-gate`
 - `paper-preflight.yml` is a manual paper-release gate and is expected to stay red while provisional or blocked claims remain
+- the manual paper-release workflow should also upload the current release dossier so maintainers can inspect the exact blocker set from one artifact bundle
 
 Later CI can add heavier manual jobs for full paper-grade execution and artifact upload, but that is not the default PR path.
 

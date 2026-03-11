@@ -1,0 +1,89 @@
+{
+  "artifacts": [
+    {
+      "artifact_type": "summary.csv",
+      "canonical_path": "results/runs/fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42/summary.csv",
+      "required": true,
+      "sha256": "dde8c49d7377bd96c6459bd242be9822ae8fbe03806e4fa93f946df1b7ade262",
+      "size_bytes": 543,
+      "source_path": "/private/tmp/iroute-fig34-final-scope/fig4-scaling-paper-grade-final-20260311shard/domains-8-schemes-iroute/iroute_d8_s42/summary.csv"
+    },
+    {
+      "artifact_type": "query_log.csv",
+      "canonical_path": "results/runs/fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42/query_log.csv",
+      "required": true,
+      "sha256": "dbf6e5b6ec497ecdf1894a199a26e5ea3d77179d42d8e50e8a02f5430a7d50fb",
+      "size_bytes": 351519,
+      "source_path": "/private/tmp/iroute-fig34-final-scope/fig4-scaling-paper-grade-final-20260311shard/domains-8-schemes-iroute/iroute_d8_s42/query_log.csv"
+    },
+    {
+      "artifact_type": "latency_sanity.csv",
+      "canonical_path": "results/runs/fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42/latency_sanity.csv",
+      "required": true,
+      "sha256": "d7c4df6b4860961d96fc6e00312841bb2f3ebc1c46cce3305fe60cb6f2ed35f2",
+      "size_bytes": 390,
+      "source_path": "/private/tmp/iroute-fig34-final-scope/fig4-scaling-paper-grade-final-20260311shard/domains-8-schemes-iroute/iroute_d8_s42/latency_sanity.csv"
+    },
+    {
+      "artifact_type": "failure_sanity.csv",
+      "canonical_path": "results/runs/fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42/failure_sanity.csv",
+      "required": false,
+      "sha256": "6f281b432224ac92dae780ae2e1ecdd678c9296cdd7e911c04274674e5d84e29",
+      "size_bytes": 518,
+      "source_path": "/private/tmp/iroute-fig34-final-scope/fig4-scaling-paper-grade-final-20260311shard/domains-8-schemes-iroute/iroute_d8_s42/failure_sanity.csv"
+    },
+    {
+      "artifact_type": "source_manifest.json",
+      "canonical_path": "results/runs/fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42/source_manifest.json",
+      "required": false,
+      "sha256": "22a05362141dcbdf351278cfa60b4eb75e9dbdf3e3dae2b201b5eec3fb7aac4f",
+      "size_bytes": 753,
+      "source_path": "/private/tmp/iroute-fig34-final-scope/fig4-scaling-paper-grade-final-20260311shard/domains-8-schemes-iroute/iroute_d8_s42/manifest.json"
+    },
+    {
+      "artifact_type": "source_run_manifest.json",
+      "canonical_path": "results/runs/fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42/source_run_manifest.json",
+      "required": false,
+      "sha256": "1615d2d83fa233594764da431d6b37e2c15a8e1028006374b7932a9f47f90ea0",
+      "size_bytes": 2184,
+      "source_path": "/private/tmp/iroute-fig34-final-scope/fig4-scaling-paper-grade-final-20260311shard/domains-8-schemes-iroute/iroute_d8_s42/run_manifest.json"
+    }
+  ],
+  "cache_mode": "disabled",
+  "canonical_dir": "results/runs/fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42",
+  "compatibility": {
+    "legacy_results_path": "",
+    "legacy_status": "canonical_staging"
+  },
+  "cs_size": 0,
+  "git_commit": "5f57b20989e0914e49b834ea3302dcecdb8011e3",
+  "major_options": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "data_freshness_ms": 60000,
+    "domains": 8,
+    "frequency": 5,
+    "measure_start_sec": 0,
+    "paper_grade": 1,
+    "run_mode": "scaling_run",
+    "scheme": "iroute",
+    "seed": 42,
+    "sim_time": 120,
+    "topology": "rocketfuel",
+    "warmup_sec": 0
+  },
+  "notes": [],
+  "promoted_at_utc": "2026-03-11T06:17:55.413524+00:00",
+  "run_class": "paper_grade",
+  "run_id": "fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42",
+  "runner": "ns-3/experiments/runners/run_scaling_experiment.sh",
+  "schema_version": 1,
+  "seed_provenance": "native",
+  "source_dir": "/private/tmp/iroute-fig34-final-scope/fig4-scaling-paper-grade-final-20260311shard/domains-8-schemes-iroute/iroute_d8_s42",
+  "source_kind": "scaling_paper_grade_final_staging",
+  "source_manifests": {
+    "direct_manifest": "/private/tmp/iroute-fig34-final-scope/fig4-scaling-paper-grade-final-20260311shard/domains-8-schemes-iroute/iroute_d8_s42/manifest.json",
+    "runner_manifest": "/private/tmp/iroute-fig34-final-scope/fig4-scaling-paper-grade-final-20260311shard/domains-8-schemes-iroute/iroute_d8_s42/run_manifest.json"
+  },
+  "workflow": "scaling_paper_grade_final"
+}

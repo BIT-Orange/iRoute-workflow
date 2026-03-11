@@ -120,6 +120,7 @@ run_tool_help_checks() {
   "$PYTHON_BIN" "$REPO_ROOT/ns-3/experiments/manifests/write_run_manifest.py" --help >/dev/null
   "$PYTHON_BIN" "$REPO_ROOT/scripts/fig12_paper_grade.py" --help >/dev/null
   "$PYTHON_BIN" "$REPO_ROOT/scripts/fig345_paper_grade.py" --help >/dev/null
+  "$PYTHON_BIN" "$REPO_ROOT/scripts/paper_release_dossier.py" --help >/dev/null
   HOME="$NS3_DIR/.home" XDG_CACHE_HOME="/tmp/iroute-xdg-cache" \
   MPLBACKEND=Agg MPLCONFIGDIR="/tmp/iroute-mplcache-workflow" \
     "$PYTHON_BIN" "$REPO_ROOT/ns-3/experiments/plot/plot_paper_figures.py" --help >/dev/null
@@ -340,6 +341,11 @@ run_publish_figure() {
   "$PYTHON_BIN" "$REPO_ROOT/scripts/paper_grade_pipeline.py" publish-figure "$@"
 }
 
+run_release_dossier() {
+  log "generating paper release dossier"
+  "$PYTHON_BIN" "$REPO_ROOT/scripts/paper_release_dossier.py" "$@"
+}
+
 run_lint() {
   run_shell_syntax
   run_python_compile
@@ -363,8 +369,10 @@ Commands:
   fig12-paper-grade     Run the canonical paper-grade Fig.1/Fig.2 rerun, promotion, aggregation, and figure sync path.
   fig345-paper-grade    Run the canonical Fig.3/Fig.4/Fig.5 paper-grade staging and figure provenance path.
   fig34-final-scope     Run the final-scope Fig.3/Fig.4 rerun, promotion, and paper figure sync path.
+                        Supports sharding via --frequencies/--domains-list/--schemes and status recompute via --finalize-only.
   fig5-paper-grade      Run the current paper-grade Fig.5 rerun, promotion, and paper figure sync path.
   publish-figure        Publish a canonical figure manifest into paper/figs/ after provenance checks.
+  release-dossier       Generate JSON and Markdown paper release dossier snapshots under review/paper_audit/.
   smoke-run             Run a tiny ns-3 smoke validation if a compiled binary is available.
   paper-suite-preflight Check static paper-suite semantics and manifest defaults.
   ci-local              Compatibility alias for the strict local paper-release gate.
@@ -414,6 +422,9 @@ main() {
       ;;
     publish-figure)
       run_publish_figure "$@"
+      ;;
+    release-dossier)
+      run_release_dossier "$@"
       ;;
     smoke-run)
       run_smoke

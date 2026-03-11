@@ -1,0 +1,166 @@
+{
+  "batch_id": "fig4-scaling-paper-grade-final-20260311shard",
+  "completed_sweep_values": [],
+  "coverage": [
+    {
+      "complete": false,
+      "domains": "8",
+      "missing_run_ids": [
+        "fig4-scaling-paper-grade-final-20260311shard-central_d8_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-tag_d8_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-flood_d8_s42"
+      ],
+      "present_run_ids": [
+        "fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42"
+      ],
+      "required_run_ids": [
+        "fig4-scaling-paper-grade-final-20260311shard-central_d8_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-tag_d8_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-flood_d8_s42"
+      ]
+    },
+    {
+      "complete": false,
+      "domains": "16",
+      "missing_run_ids": [
+        "fig4-scaling-paper-grade-final-20260311shard-central_d16_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-iroute_d16_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-tag_d16_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-flood_d16_s42"
+      ],
+      "present_run_ids": [],
+      "required_run_ids": [
+        "fig4-scaling-paper-grade-final-20260311shard-central_d16_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-iroute_d16_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-tag_d16_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-flood_d16_s42"
+      ]
+    },
+    {
+      "complete": false,
+      "domains": "32",
+      "missing_run_ids": [
+        "fig4-scaling-paper-grade-final-20260311shard-central_d32_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-iroute_d32_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-tag_d32_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-flood_d32_s42"
+      ],
+      "present_run_ids": [],
+      "required_run_ids": [
+        "fig4-scaling-paper-grade-final-20260311shard-central_d32_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-iroute_d32_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-tag_d32_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-flood_d32_s42"
+      ]
+    },
+    {
+      "complete": false,
+      "domains": "64",
+      "missing_run_ids": [
+        "fig4-scaling-paper-grade-final-20260311shard-central_d64_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-iroute_d64_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-tag_d64_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-flood_d64_s42"
+      ],
+      "present_run_ids": [],
+      "required_run_ids": [
+        "fig4-scaling-paper-grade-final-20260311shard-central_d64_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-iroute_d64_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-tag_d64_s42",
+        "fig4-scaling-paper-grade-final-20260311shard-flood_d64_s42"
+      ]
+    }
+  ],
+  "family": "scaling",
+  "generated_at_utc": "2026-03-11T06:21:22.159299+00:00",
+  "missing_run_count": 15,
+  "missing_run_ids": [
+    "fig4-scaling-paper-grade-final-20260311shard-central_d8_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-tag_d8_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-flood_d8_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-central_d16_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-iroute_d16_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-tag_d16_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-flood_d16_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-central_d32_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-iroute_d32_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-tag_d32_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-flood_d32_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-central_d64_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-iroute_d64_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-tag_d64_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-flood_d64_s42"
+  ],
+  "missing_sweep_values": [
+    "8",
+    "16",
+    "32",
+    "64"
+  ],
+  "notes": [
+    "Final-scope paper-grade Fig. 4 batch matching the current paper-grade scaling sweep.",
+    "This bundle covers four domain points and uses native seeds only."
+  ],
+  "present_run_count": 1,
+  "present_run_ids": [
+    "fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42"
+  ],
+  "publish_blockers": [
+    "missing required domains coverage: 8 16 32 64",
+    "missing canonical runs: 15"
+  ],
+  "required_run_count": 16,
+  "required_run_ids": [
+    "fig4-scaling-paper-grade-final-20260311shard-central_d8_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-tag_d8_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-flood_d8_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-central_d16_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-iroute_d16_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-tag_d16_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-flood_d16_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-central_d32_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-iroute_d32_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-tag_d32_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-flood_d32_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-central_d64_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-iroute_d64_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-tag_d64_s42",
+    "fig4-scaling-paper-grade-final-20260311shard-flood_d64_s42"
+  ],
+  "required_sweep_values": [
+    "8",
+    "16",
+    "32",
+    "64"
+  ],
+  "scope": "final",
+  "shard_manifests": [
+    {
+      "artifact_check": {
+        "ran": true,
+        "status": "passed"
+      },
+      "path": "results/aggregates/fig4-scaling-paper-grade-final-20260311shard/shards/domains-8-schemes-iroute.json",
+      "promoted_run_ids": [
+        "fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42"
+      ],
+      "selector": {
+        "domains": [
+          "8"
+        ],
+        "schemes": [
+          "iroute"
+        ],
+        "seeds": [
+          "42"
+        ]
+      },
+      "shard_id": "domains-8-schemes-iroute",
+      "status": "complete"
+    }
+  ],
+  "status": "incomplete",
+  "sweep_field": "domains"
+}

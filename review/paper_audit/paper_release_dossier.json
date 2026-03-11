@@ -1,0 +1,808 @@
+{
+  "claim_summary": {
+    "claims_by_status": {
+      "provisional": [
+        {
+          "id": "CLM-EVAL-007",
+          "notes": [
+            "The minimal Fig. 3 batch is promoted into results/runs and results/aggregates with cache_mode=disabled and seed_provenance=native.",
+            "The paper-facing figure file paper/figs/fig3_hop_load.pdf is still missing, so the claim cannot be treated as publishable evidence yet.",
+            "A broader final-scope paper-grade load rerun is still required before this claim can become supported.",
+            "The canonical final-scope rerun/publish entrypoint is scripts/workflow.sh fig34-final-scope load --suffix <suffix>."
+          ],
+          "paper_anchor": "sec:eval_latency",
+          "statement": "A focused cache-disabled paper-grade load batch now reproduces the Fig. 3 hop-versus-load family under native seed provenance, but the claim remains provisional until the paper figure is synchronized and the full paper-grade load sweep is rerun at final scope.",
+          "title": "Hop count remains localized as offered load increases"
+        },
+        {
+          "id": "CLM-EVAL-008",
+          "notes": [
+            "The minimal Fig. 4 batch is promoted under paper_grade semantics, but it currently spans only the reduced 8/16-domain validation sweep.",
+            "The paper-facing figure file paper/figs/fig4_state_scaling.pdf is still missing, so the claim remains provisional rather than publishable.",
+            "A broader final-scope paper-grade scaling rerun is still required before this claim can become supported.",
+            "The canonical final-scope rerun/publish entrypoint is scripts/workflow.sh fig34-final-scope scaling --suffix <suffix>."
+          ],
+          "paper_anchor": "sec:eval_scalability",
+          "statement": "A focused cache-disabled paper-grade scaling batch now reproduces the Fig. 4 state-scaling family for a reduced domain sweep, but the claim remains provisional until the wider paper-grade domain sweep is rerun and synchronized into the paper tree.",
+          "title": "Routing state scales with bounded per-domain advertisements"
+        }
+      ],
+      "supported": [
+        {
+          "id": "CLM-EVAL-001",
+          "notes": [
+            "This is a workflow-semantics claim, not a publishable quantitative result.",
+            "A smoke run is acceptable here because the claim is about default mode wiring rather than paper-grade performance."
+          ],
+          "paper_anchor": "sec:eval_setup",
+          "statement": "Unless noted otherwise, the paper-grade routing workflow disables in-network caching and uses csSize=0 to isolate routing effects from cache hits.",
+          "title": "Paper-grade routing evaluation disables caching by default"
+        },
+        {
+          "id": "CLM-EVAL-002",
+          "notes": [
+            "This claim is about workflow separation, not the quantitative status of the current paper figures.",
+            "The canonical Fig. 1/Fig. 2 PDFs are now regenerated from cache-disabled paper-grade runs."
+          ],
+          "paper_anchor": "sec:eval_setup",
+          "statement": "The repository still contains a cache-enabled SANR workflow for cache-behavior studies, but that workflow is exploratory and is not the canonical source of the current cache-disabled paper figures.",
+          "title": "Legacy SANR workflow remains cache-enabled exploratory evidence"
+        },
+        {
+          "id": "CLM-EVAL-003",
+          "notes": [
+            "This is an interpretation guardrail for Fig. 1."
+          ],
+          "paper_anchor": "sec:eval_setup",
+          "statement": "The centralized directory curve is an oracle upper bound on intent-to-name resolution quality rather than a decentralized routing baseline.",
+          "title": "Centralized directory is plotted only as an oracle upper bound"
+        },
+        {
+          "id": "CLM-EVAL-004",
+          "notes": [
+            "This is a constraint on how latency and correctness plots should be read."
+          ],
+          "paper_anchor": "sec:eval_setup",
+          "statement": "When Exact-NDN is provisioned with stronger naming knowledge, it should be read as a syntactic reference point rather than a directly like-for-like latency or state comparator for intent-driven discovery.",
+          "title": "Exact-NDN is a syntactic reference rather than an apples-to-apples intent-discovery comparator"
+        },
+        {
+          "id": "CLM-EVAL-005",
+          "notes": [
+            "This focused paper-grade rerun uses native seed 42 only and promotes every plotted run into results/runs/.",
+            "The promoted Fig. 1 bundle contains three sweep points each for iRoute, Flood, and Tag-FIB plus a single centralized oracle reference point.",
+            "The claim is intentionally narrowed to the M-versus-overhead tradeoff that the promoted Fig. 1 bundle actually measures."
+          ],
+          "paper_anchor": "sec:eval_correctness",
+          "statement": "In the canonical cache-disabled paper-grade accuracy bundle, increasing the advertisement budget M improves iRoute's domain coverage at the cost of higher control overhead, while flooding remains a high-overhead reference and the centralized directory remains an oracle upper bound.",
+          "title": "Bounded advertisements trade correctness against control overhead"
+        },
+        {
+          "id": "CLM-EVAL-006",
+          "notes": [
+            "This focused paper-grade rerun uses the reference runs selected by the canonical Fig. 2 bundle.",
+            "The promoted Fig. 2 bundle uses iRoute(M=4), Flood(budget=8), Tag-FIB(tagK=32), and the centralized oracle reference under cache-disabled semantics.",
+            "The claim is intentionally scoped to the selective-probing versus flooding latency profile captured by the promoted routing-only CDF."
+          ],
+          "paper_anchor": "sec:eval_latency",
+          "statement": "In the canonical cache-disabled paper-grade latency bundle, selective probing avoids the high-overhead flood search profile while remaining distinct from the centralized oracle upper bound.",
+          "title": "Selective probing improves retrieval efficiency relative to high-overhead search"
+        },
+        {
+          "id": "CLM-EVAL-009",
+          "notes": [
+            "The published Fig. 5 bundle is results/aggregates/fig5-failure-paper-grade-final-20260311d with synchronized PDFs under paper/figs/.",
+            "The repaired failure chain now records recovery_metric=domain_hit explicitly and requires paper-grade failure runs to fail if the injected event is ineffective.",
+            "This support claim is scoped to the current paper-suite failure family: central, iRoute, and Flood across churn, link-fail, and domain-fail under native seed 42."
+          ],
+          "paper_anchor": "sec:eval_robustness",
+          "statement": "The canonical cache-disabled paper-grade Fig. 5 bundle now publishes domain-hit recovery under churn, link failure, and domain failure using native seed provenance, with every promoted run recording an effective injected disruption.",
+          "title": "Recovery under churn and failures is supported by the published Fig. 5 bundle"
+        }
+      ]
+    },
+    "counts": {
+      "provisional": 2,
+      "supported": 7
+    }
+  },
+  "figure_summary": {
+    "counts": {
+      "partial": 2,
+      "placeholder": 1,
+      "published": 5
+    },
+    "figures_by_status": {
+      "partial": [
+        {
+          "aggregate_inputs": [
+            "results/aggregates/fig3-load-paper-grade-20260311a/load_sweep.csv",
+            "results/aggregates/fig3-load-paper-grade-20260311a/load.csv",
+            "results/aggregates/fig3-load-paper-grade-20260311a/load_paper_grade_report.json"
+          ],
+          "figure_exists": true,
+          "figure_id": "fig3_hop_load.paper_grade",
+          "figure_path": "results/figures/fig3-load-paper-grade-20260311a/fig3_hop_load.pdf",
+          "manifest_path": "results/figures/fig3_hop_load.paper_grade.figure.json",
+          "notes": [
+            "batch_id=fig3-load-paper-grade-20260311a",
+            "cache_mode=disabled",
+            "run_class=paper_grade",
+            "Focused minimal paper-grade batch; full reruns still required before publishable paper evidence."
+          ],
+          "paper_ref": "figs/fig3_hop_load.pdf",
+          "paper_ref_exists": false,
+          "recorded_paper_figure_in_sync": false,
+          "recorded_paper_figure_path": "",
+          "run_ids": [
+            "fig3-load-paper-grade-20260311a-central_freq10_s42",
+            "fig3-load-paper-grade-20260311a-central_freq20_s42",
+            "fig3-load-paper-grade-20260311a-central_freq5_s42",
+            "fig3-load-paper-grade-20260311a-flood_freq10_s42",
+            "fig3-load-paper-grade-20260311a-flood_freq20_s42",
+            "fig3-load-paper-grade-20260311a-flood_freq5_s42",
+            "fig3-load-paper-grade-20260311a-iroute_freq10_s42",
+            "fig3-load-paper-grade-20260311a-iroute_freq20_s42",
+            "fig3-load-paper-grade-20260311a-iroute_freq5_s42",
+            "fig3-load-paper-grade-20260311a-tag_freq10_s42",
+            "fig3-load-paper-grade-20260311a-tag_freq20_s42",
+            "fig3-load-paper-grade-20260311a-tag_freq5_s42"
+          ],
+          "status": "partial",
+          "title": "fig3_hop_load canonical figure provenance"
+        },
+        {
+          "aggregate_inputs": [
+            "results/aggregates/fig4-scaling-paper-grade-20260311b/scaling.csv",
+            "results/aggregates/fig4-scaling-paper-grade-20260311b/scaling_paper_grade_report.json"
+          ],
+          "figure_exists": true,
+          "figure_id": "fig4_state_scaling.paper_grade",
+          "figure_path": "results/figures/fig4-scaling-paper-grade-20260311b/fig4_state_scaling.pdf",
+          "manifest_path": "results/figures/fig4_state_scaling.paper_grade.figure.json",
+          "notes": [
+            "batch_id=fig4-scaling-paper-grade-20260311b",
+            "cache_mode=disabled",
+            "run_class=paper_grade",
+            "Focused minimal paper-grade batch; full reruns still required before publishable paper evidence."
+          ],
+          "paper_ref": "figs/fig4_state_scaling.pdf",
+          "paper_ref_exists": false,
+          "recorded_paper_figure_in_sync": false,
+          "recorded_paper_figure_path": "",
+          "run_ids": [
+            "fig4-scaling-paper-grade-20260311b-central_d16_s42",
+            "fig4-scaling-paper-grade-20260311b-central_d8_s42",
+            "fig4-scaling-paper-grade-20260311b-flood_d16_s42",
+            "fig4-scaling-paper-grade-20260311b-flood_d8_s42",
+            "fig4-scaling-paper-grade-20260311b-iroute_d16_s42",
+            "fig4-scaling-paper-grade-20260311b-iroute_d8_s42",
+            "fig4-scaling-paper-grade-20260311b-tag_d16_s42",
+            "fig4-scaling-paper-grade-20260311b-tag_d8_s42"
+          ],
+          "status": "partial",
+          "title": "fig4_state_scaling canonical figure provenance"
+        }
+      ],
+      "placeholder": [
+        {
+          "aggregate_inputs": [
+            "results/aggregates/summary_rows.csv",
+            "results/aggregates/run_index.csv"
+          ],
+          "figure_exists": false,
+          "figure_id": "promoted-run-summary-placeholder",
+          "figure_path": "",
+          "manifest_path": "results/figures/promoted-run-summary-placeholder.figure.json",
+          "notes": [
+            "Placeholder manifest until canonical figures are regenerated from promoted aggregates.",
+            "This manifest demonstrates aggregate-to-run provenance without fabricating a figure binary."
+          ],
+          "paper_ref": "",
+          "paper_ref_exists": false,
+          "recorded_paper_figure_in_sync": false,
+          "recorded_paper_figure_path": "",
+          "run_ids": [
+            "legacy-sanr-baseline-exp4-scaling-iroute-d8-s42",
+            "smoke-iroute-star-s42-20260310a"
+          ],
+          "status": "placeholder",
+          "title": "Promoted Run Summary Placeholder"
+        }
+      ],
+      "published": [
+        {
+          "aggregate_inputs": [
+            "results/aggregates/fig12-paper-grade-20260310a/accuracy_sweep.csv",
+            "results/aggregates/fig12-paper-grade-20260310a/reference_runs.csv",
+            "results/aggregates/fig12-paper-grade-20260310a/fig12_paper_grade_report.json"
+          ],
+          "figure_exists": true,
+          "figure_id": "fig1_accuracy_overhead.paper_grade",
+          "figure_path": "results/figures/fig12-paper-grade-20260310a/fig1_accuracy_overhead.pdf",
+          "manifest_path": "results/figures/fig1_accuracy_overhead.paper_grade.figure.json",
+          "notes": [
+            "batch_id=fig12-paper-grade-20260310a",
+            "cache_mode=disabled",
+            "run_class=paper_grade",
+            "paper figure synchronized to paper/figs/fig1_accuracy_overhead.pdf"
+          ],
+          "paper_ref": "figs/fig1_accuracy_overhead.pdf",
+          "paper_ref_exists": true,
+          "publication": {
+            "aggregate_reports": [
+              {
+                "path": "results/aggregates/fig12-paper-grade-20260310a/fig12_paper_grade_report.json",
+                "status": ""
+              }
+            ],
+            "command": "publish-figure",
+            "paper_figure_path": "paper/figs/fig1_accuracy_overhead.pdf",
+            "published_at_utc": "2026-03-11T05:40:18.178844+00:00",
+            "source_manifest": "results/figures/fig1_accuracy_overhead.paper_grade.figure.json",
+            "source_status_before": "published"
+          },
+          "recorded_paper_figure_in_sync": true,
+          "recorded_paper_figure_path": "paper/figs/fig1_accuracy_overhead.pdf",
+          "run_ids": [
+            "fig12-paper-grade-20260310a-central_proc2_s42",
+            "fig12-paper-grade-20260310a-flood_budget2_s42",
+            "fig12-paper-grade-20260310a-flood_budget4_s42",
+            "fig12-paper-grade-20260310a-flood_budget8_s42",
+            "fig12-paper-grade-20260310a-iroute_M1_s42",
+            "fig12-paper-grade-20260310a-iroute_M4_s42",
+            "fig12-paper-grade-20260310a-iroute_M8_s42",
+            "fig12-paper-grade-20260310a-tag_tagK16_s42",
+            "fig12-paper-grade-20260310a-tag_tagK32_s42",
+            "fig12-paper-grade-20260310a-tag_tagK8_s42"
+          ],
+          "status": "published",
+          "title": "Fig. 1 paper-grade accuracy versus control overhead"
+        },
+        {
+          "aggregate_inputs": [
+            "results/aggregates/fig12-paper-grade-20260310a/reference_runs.csv",
+            "results/aggregates/fig12-paper-grade-20260310a/fig2_latency_summary.csv",
+            "results/aggregates/fig12-paper-grade-20260310a/fig12_paper_grade_report.json"
+          ],
+          "figure_exists": true,
+          "figure_id": "fig2_retrieval_cdf.paper_grade",
+          "figure_path": "results/figures/fig12-paper-grade-20260310a/fig2_retrieval_cdf.pdf",
+          "manifest_path": "results/figures/fig2_retrieval_cdf.paper_grade.figure.json",
+          "notes": [
+            "batch_id=fig12-paper-grade-20260310a",
+            "cache_mode=disabled",
+            "run_class=paper_grade",
+            "paper figure synchronized to paper/figs/fig2_retrieval_cdf.pdf"
+          ],
+          "paper_ref": "figs/fig2_retrieval_cdf.pdf",
+          "paper_ref_exists": true,
+          "recorded_paper_figure_in_sync": false,
+          "recorded_paper_figure_path": "",
+          "run_ids": [
+            "fig12-paper-grade-20260310a-central_proc2_s42",
+            "fig12-paper-grade-20260310a-flood_budget8_s42",
+            "fig12-paper-grade-20260310a-iroute_M4_s42",
+            "fig12-paper-grade-20260310a-tag_tagK32_s42"
+          ],
+          "status": "published",
+          "title": "Fig. 2 paper-grade retrieval latency CDF"
+        },
+        {
+          "aggregate_inputs": [
+            "results/aggregates/fig5-failure-paper-grade-final-20260311d/recovery_summary.csv",
+            "results/aggregates/fig5-failure-paper-grade-final-20260311d/failure_paper_grade_report.json"
+          ],
+          "figure_exists": true,
+          "figure_id": "fig5_recovery_churn.paper_grade",
+          "figure_path": "results/figures/fig5-failure-paper-grade-final-20260311d/fig5_recovery_churn.pdf",
+          "manifest_path": "results/figures/fig5_recovery_churn.paper_grade.figure.json",
+          "notes": [
+            "batch_id=fig5-failure-paper-grade-final-20260311d",
+            "cache_mode=disabled",
+            "run_class=paper_grade",
+            "scope=final",
+            "Current paper-suite Fig. 5 scope: central, iRoute, and Flood across churn, link-fail, and domain-fail under native seed 42.",
+            "This bundle is publishable only if every promoted run records effective disruption and the paper-facing PDFs are synchronized.",
+            "paper figure synchronized to paper/figs/fig5_recovery_churn.pdf"
+          ],
+          "paper_ref": "figs/fig5_recovery_churn.pdf",
+          "paper_ref_exists": true,
+          "recorded_paper_figure_in_sync": true,
+          "recorded_paper_figure_path": "paper/figs/fig5_recovery_churn.pdf",
+          "run_ids": [
+            "fig5-failure-paper-grade-final-20260311d-central-churn-s42",
+            "fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42",
+            "fig5-failure-paper-grade-final-20260311d-central-link-fail-s42",
+            "fig5-failure-paper-grade-final-20260311d-flood-churn-s42",
+            "fig5-failure-paper-grade-final-20260311d-flood-domain-fail-s42",
+            "fig5-failure-paper-grade-final-20260311d-flood-link-fail-s42",
+            "fig5-failure-paper-grade-final-20260311d-iroute-churn-s42",
+            "fig5-failure-paper-grade-final-20260311d-iroute-domain-fail-s42",
+            "fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42"
+          ],
+          "status": "published",
+          "title": "fig5_recovery_churn canonical figure provenance"
+        },
+        {
+          "aggregate_inputs": [
+            "results/aggregates/fig5-failure-paper-grade-final-20260311d/recovery_summary.csv",
+            "results/aggregates/fig5-failure-paper-grade-final-20260311d/failure_paper_grade_report.json"
+          ],
+          "figure_exists": true,
+          "figure_id": "fig5_recovery_domain-fail.paper_grade",
+          "figure_path": "results/figures/fig5-failure-paper-grade-final-20260311d/fig5_recovery_domain-fail.pdf",
+          "manifest_path": "results/figures/fig5_recovery_domain-fail.paper_grade.figure.json",
+          "notes": [
+            "batch_id=fig5-failure-paper-grade-final-20260311d",
+            "cache_mode=disabled",
+            "run_class=paper_grade",
+            "scope=final",
+            "Current paper-suite Fig. 5 scope: central, iRoute, and Flood across churn, link-fail, and domain-fail under native seed 42.",
+            "This bundle is publishable only if every promoted run records effective disruption and the paper-facing PDFs are synchronized.",
+            "paper figure synchronized to paper/figs/fig5_recovery_domain-fail.pdf"
+          ],
+          "paper_ref": "figs/fig5_recovery_domain-fail.pdf",
+          "paper_ref_exists": true,
+          "recorded_paper_figure_in_sync": true,
+          "recorded_paper_figure_path": "paper/figs/fig5_recovery_domain-fail.pdf",
+          "run_ids": [
+            "fig5-failure-paper-grade-final-20260311d-central-churn-s42",
+            "fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42",
+            "fig5-failure-paper-grade-final-20260311d-central-link-fail-s42",
+            "fig5-failure-paper-grade-final-20260311d-flood-churn-s42",
+            "fig5-failure-paper-grade-final-20260311d-flood-domain-fail-s42",
+            "fig5-failure-paper-grade-final-20260311d-flood-link-fail-s42",
+            "fig5-failure-paper-grade-final-20260311d-iroute-churn-s42",
+            "fig5-failure-paper-grade-final-20260311d-iroute-domain-fail-s42",
+            "fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42"
+          ],
+          "status": "published",
+          "title": "fig5_recovery_domain-fail canonical figure provenance"
+        },
+        {
+          "aggregate_inputs": [
+            "results/aggregates/fig5-failure-paper-grade-final-20260311d/recovery_summary.csv",
+            "results/aggregates/fig5-failure-paper-grade-final-20260311d/failure_paper_grade_report.json"
+          ],
+          "figure_exists": true,
+          "figure_id": "fig5_recovery_link-fail.paper_grade",
+          "figure_path": "results/figures/fig5-failure-paper-grade-final-20260311d/fig5_recovery_link-fail.pdf",
+          "manifest_path": "results/figures/fig5_recovery_link-fail.paper_grade.figure.json",
+          "notes": [
+            "batch_id=fig5-failure-paper-grade-final-20260311d",
+            "cache_mode=disabled",
+            "run_class=paper_grade",
+            "scope=final",
+            "Current paper-suite Fig. 5 scope: central, iRoute, and Flood across churn, link-fail, and domain-fail under native seed 42.",
+            "This bundle is publishable only if every promoted run records effective disruption and the paper-facing PDFs are synchronized.",
+            "paper figure synchronized to paper/figs/fig5_recovery_link-fail.pdf"
+          ],
+          "paper_ref": "figs/fig5_recovery_link-fail.pdf",
+          "paper_ref_exists": true,
+          "recorded_paper_figure_in_sync": true,
+          "recorded_paper_figure_path": "paper/figs/fig5_recovery_link-fail.pdf",
+          "run_ids": [
+            "fig5-failure-paper-grade-final-20260311d-central-churn-s42",
+            "fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42",
+            "fig5-failure-paper-grade-final-20260311d-central-link-fail-s42",
+            "fig5-failure-paper-grade-final-20260311d-flood-churn-s42",
+            "fig5-failure-paper-grade-final-20260311d-flood-domain-fail-s42",
+            "fig5-failure-paper-grade-final-20260311d-flood-link-fail-s42",
+            "fig5-failure-paper-grade-final-20260311d-iroute-churn-s42",
+            "fig5-failure-paper-grade-final-20260311d-iroute-domain-fail-s42",
+            "fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42"
+          ],
+          "status": "published",
+          "title": "fig5_recovery_link-fail canonical figure provenance"
+        }
+      ]
+    }
+  },
+  "gate_relation": {
+    "dossier": "informational companion; not a substitute for strict validation",
+    "paper_release_gate": "authoritative"
+  },
+  "generated_at_utc": "2026-03-11T06:55:38.093688+00:00",
+  "manual_asset_summary": {
+    "assets": [
+      {
+        "destination_path": "paper/figs/system-arch.pdf",
+        "management": "manual",
+        "notes": [
+          "Referenced by the canonical paper system overview section.",
+          "No tracked source or generator for this diagram exists in the repository.",
+          "Strict paper-release remains blocked until an author-supplied source or synchronized PDF is added."
+        ],
+        "paper_ref": "figs/system-arch.pdf",
+        "source": {
+          "exists": false,
+          "kind": "missing_repo_source",
+          "legacy_mentions": [
+            "paper.tex -> figs/system-arch.pdf",
+            "paper/archive/ndnsim-paper-legacy.tex -> figures/system-arch.png"
+          ],
+          "path": ""
+        },
+        "status": "blocked",
+        "title": "System architecture overview diagram"
+      },
+      {
+        "destination_path": "paper/figs/mermaid.png",
+        "management": "manual",
+        "notes": [
+          "Referenced by the canonical paper system overview section.",
+          "No tracked source or generator for this image exists in the repository.",
+          "Strict paper-release remains blocked until an author-supplied source or synchronized PNG is added."
+        ],
+        "paper_ref": "figs/mermaid.png",
+        "source": {
+          "exists": false,
+          "kind": "missing_repo_source",
+          "legacy_mentions": [
+            "paper.tex -> figs/mermaid.png",
+            "paper/archive/ndnsim-paper-legacy.tex -> figures/mermaid.png"
+          ],
+          "path": ""
+        },
+        "status": "blocked",
+        "title": "System workflow diagram"
+      }
+    ],
+    "assets_by_status": {
+      "blocked": [
+        {
+          "destination_path": "paper/figs/system-arch.pdf",
+          "management": "manual",
+          "notes": [
+            "Referenced by the canonical paper system overview section.",
+            "No tracked source or generator for this diagram exists in the repository.",
+            "Strict paper-release remains blocked until an author-supplied source or synchronized PDF is added."
+          ],
+          "paper_ref": "figs/system-arch.pdf",
+          "source": {
+            "exists": false,
+            "kind": "missing_repo_source",
+            "legacy_mentions": [
+              "paper.tex -> figs/system-arch.pdf",
+              "paper/archive/ndnsim-paper-legacy.tex -> figures/system-arch.png"
+            ],
+            "path": ""
+          },
+          "status": "blocked",
+          "title": "System architecture overview diagram"
+        },
+        {
+          "destination_path": "paper/figs/mermaid.png",
+          "management": "manual",
+          "notes": [
+            "Referenced by the canonical paper system overview section.",
+            "No tracked source or generator for this image exists in the repository.",
+            "Strict paper-release remains blocked until an author-supplied source or synchronized PNG is added."
+          ],
+          "paper_ref": "figs/mermaid.png",
+          "source": {
+            "exists": false,
+            "kind": "missing_repo_source",
+            "legacy_mentions": [
+              "paper.tex -> figs/mermaid.png",
+              "paper/archive/ndnsim-paper-legacy.tex -> figures/mermaid.png"
+            ],
+            "path": ""
+          },
+          "status": "blocked",
+          "title": "System workflow diagram"
+        }
+      ]
+    },
+    "counts": {
+      "blocked": 2
+    }
+  },
+  "paper": "paper/main.tex",
+  "paper_facing": {
+    "missing": [
+      {
+        "asset_management": "manual",
+        "asset_notes": [
+          "Referenced by the canonical paper system overview section.",
+          "No tracked source or generator for this diagram exists in the repository.",
+          "Strict paper-release remains blocked until an author-supplied source or synchronized PDF is added."
+        ],
+        "asset_status": "blocked",
+        "classification": "manual_asset",
+        "exists": false,
+        "paper_ref": "figs/system-arch.pdf",
+        "path": "paper/figs/system-arch.pdf"
+      },
+      {
+        "asset_management": "manual",
+        "asset_notes": [
+          "Referenced by the canonical paper system overview section.",
+          "No tracked source or generator for this image exists in the repository.",
+          "Strict paper-release remains blocked until an author-supplied source or synchronized PNG is added."
+        ],
+        "asset_status": "blocked",
+        "classification": "manual_asset",
+        "exists": false,
+        "paper_ref": "figs/mermaid.png",
+        "path": "paper/figs/mermaid.png"
+      },
+      {
+        "classification": "evaluation_figure",
+        "exists": false,
+        "figure_manifest": "results/figures/fig3_hop_load.paper_grade.figure.json",
+        "figure_status": "partial",
+        "paper_ref": "figs/fig3_hop_load.pdf",
+        "path": "paper/figs/fig3_hop_load.pdf"
+      },
+      {
+        "classification": "evaluation_figure",
+        "exists": false,
+        "figure_manifest": "results/figures/fig4_state_scaling.paper_grade.figure.json",
+        "figure_status": "partial",
+        "paper_ref": "figs/fig4_state_scaling.pdf",
+        "path": "paper/figs/fig4_state_scaling.pdf"
+      }
+    ],
+    "referenced": [
+      {
+        "asset_management": "manual",
+        "asset_notes": [
+          "Referenced by the canonical paper system overview section.",
+          "No tracked source or generator for this diagram exists in the repository.",
+          "Strict paper-release remains blocked until an author-supplied source or synchronized PDF is added."
+        ],
+        "asset_status": "blocked",
+        "classification": "manual_asset",
+        "exists": false,
+        "paper_ref": "figs/system-arch.pdf",
+        "path": "paper/figs/system-arch.pdf"
+      },
+      {
+        "asset_management": "manual",
+        "asset_notes": [
+          "Referenced by the canonical paper system overview section.",
+          "No tracked source or generator for this image exists in the repository.",
+          "Strict paper-release remains blocked until an author-supplied source or synchronized PNG is added."
+        ],
+        "asset_status": "blocked",
+        "classification": "manual_asset",
+        "exists": false,
+        "paper_ref": "figs/mermaid.png",
+        "path": "paper/figs/mermaid.png"
+      },
+      {
+        "classification": "evaluation_figure",
+        "exists": true,
+        "figure_manifest": "results/figures/fig1_accuracy_overhead.paper_grade.figure.json",
+        "figure_status": "published",
+        "paper_ref": "figs/fig1_accuracy_overhead.pdf",
+        "path": "paper/figs/fig1_accuracy_overhead.pdf"
+      },
+      {
+        "classification": "evaluation_figure",
+        "exists": true,
+        "figure_manifest": "results/figures/fig2_retrieval_cdf.paper_grade.figure.json",
+        "figure_status": "published",
+        "paper_ref": "figs/fig2_retrieval_cdf.pdf",
+        "path": "paper/figs/fig2_retrieval_cdf.pdf"
+      },
+      {
+        "classification": "evaluation_figure",
+        "exists": false,
+        "figure_manifest": "results/figures/fig3_hop_load.paper_grade.figure.json",
+        "figure_status": "partial",
+        "paper_ref": "figs/fig3_hop_load.pdf",
+        "path": "paper/figs/fig3_hop_load.pdf"
+      },
+      {
+        "classification": "evaluation_figure",
+        "exists": false,
+        "figure_manifest": "results/figures/fig4_state_scaling.paper_grade.figure.json",
+        "figure_status": "partial",
+        "paper_ref": "figs/fig4_state_scaling.pdf",
+        "path": "paper/figs/fig4_state_scaling.pdf"
+      },
+      {
+        "classification": "evaluation_figure",
+        "exists": true,
+        "figure_manifest": "results/figures/fig5_recovery_churn.paper_grade.figure.json",
+        "figure_status": "published",
+        "paper_ref": "figs/fig5_recovery_churn.pdf",
+        "path": "paper/figs/fig5_recovery_churn.pdf"
+      },
+      {
+        "classification": "evaluation_figure",
+        "exists": true,
+        "figure_manifest": "results/figures/fig5_recovery_link-fail.paper_grade.figure.json",
+        "figure_status": "published",
+        "paper_ref": "figs/fig5_recovery_link-fail.pdf",
+        "path": "paper/figs/fig5_recovery_link-fail.pdf"
+      },
+      {
+        "classification": "evaluation_figure",
+        "exists": true,
+        "figure_manifest": "results/figures/fig5_recovery_domain-fail.paper_grade.figure.json",
+        "figure_status": "published",
+        "paper_ref": "figs/fig5_recovery_domain-fail.pdf",
+        "path": "paper/figs/fig5_recovery_domain-fail.pdf"
+      }
+    ]
+  },
+  "release_readiness": {
+    "blockers": [
+      "2 provisional claim(s) remain",
+      "4 paper-facing asset(s) referenced by paper/main.tex are still missing",
+      "2 manual paper asset(s) remain blocked"
+    ],
+    "notes": [
+      "This dossier is informational only.",
+      "The strict paper-release-gate remains the authoritative submission gate."
+    ],
+    "paper_release_gate_ready": false
+  },
+  "schema_version": 1,
+  "supported_claim_evidence": [
+    {
+      "id": "CLM-EVAL-001",
+      "paper_anchor": "sec:eval_setup",
+      "related_aggregates": [
+        "results/aggregates/run_index.csv",
+        "results/aggregates/summary_rows.csv"
+      ],
+      "related_figure_manifests": [],
+      "related_figures": [],
+      "run_classes": [
+        "smoke"
+      ],
+      "run_ids": [
+        "smoke-iroute-star-s42-20260310a"
+      ],
+      "static_evidence": [
+        "ns-3/experiments/manifests/paper_suite.json",
+        "ns-3/experiments/runners/run_paper_suite.sh"
+      ],
+      "title": "Paper-grade routing evaluation disables caching by default"
+    },
+    {
+      "id": "CLM-EVAL-002",
+      "paper_anchor": "sec:eval_setup",
+      "related_aggregates": [],
+      "related_figure_manifests": [],
+      "related_figures": [],
+      "run_classes": [],
+      "run_ids": [],
+      "static_evidence": [
+        "ns-3/experiments/manifests/sanr_baseline.json",
+        "ns-3/experiments/runners/run_sanr_baseline.sh"
+      ],
+      "title": "Legacy SANR workflow remains cache-enabled exploratory evidence"
+    },
+    {
+      "id": "CLM-EVAL-003",
+      "paper_anchor": "sec:eval_setup",
+      "related_aggregates": [],
+      "related_figure_manifests": [],
+      "related_figures": [
+        "paper/figs/fig1_accuracy_overhead.pdf"
+      ],
+      "run_classes": [],
+      "run_ids": [],
+      "static_evidence": [],
+      "title": "Centralized directory is plotted only as an oracle upper bound"
+    },
+    {
+      "id": "CLM-EVAL-004",
+      "paper_anchor": "sec:eval_setup",
+      "related_aggregates": [],
+      "related_figure_manifests": [],
+      "related_figures": [
+        "paper/figs/fig1_accuracy_overhead.pdf",
+        "paper/figs/fig2_retrieval_cdf.pdf"
+      ],
+      "run_classes": [],
+      "run_ids": [],
+      "static_evidence": [],
+      "title": "Exact-NDN is a syntactic reference rather than an apples-to-apples intent-discovery comparator"
+    },
+    {
+      "id": "CLM-EVAL-005",
+      "paper_anchor": "sec:eval_correctness",
+      "related_aggregates": [
+        "results/aggregates/fig12-paper-grade-20260310a/accuracy_sweep.csv",
+        "results/aggregates/fig12-paper-grade-20260310a/comparison.csv",
+        "results/aggregates/fig12-paper-grade-20260310a/fig12_paper_grade_report.json"
+      ],
+      "related_figure_manifests": [],
+      "related_figures": [
+        "paper/figs/fig1_accuracy_overhead.pdf"
+      ],
+      "run_classes": [
+        "paper_grade"
+      ],
+      "run_ids": [
+        "fig12-paper-grade-20260310a-central_proc2_s42",
+        "fig12-paper-grade-20260310a-flood_budget2_s42",
+        "fig12-paper-grade-20260310a-flood_budget4_s42",
+        "fig12-paper-grade-20260310a-flood_budget8_s42",
+        "fig12-paper-grade-20260310a-iroute_M1_s42",
+        "fig12-paper-grade-20260310a-iroute_M4_s42",
+        "fig12-paper-grade-20260310a-iroute_M8_s42",
+        "fig12-paper-grade-20260310a-tag_tagK8_s42",
+        "fig12-paper-grade-20260310a-tag_tagK16_s42",
+        "fig12-paper-grade-20260310a-tag_tagK32_s42"
+      ],
+      "static_evidence": [
+        "ns-3/experiments/runners/run_accuracy_experiment.sh",
+        "results/figures/fig1_accuracy_overhead.paper_grade.figure.json"
+      ],
+      "title": "Bounded advertisements trade correctness against control overhead"
+    },
+    {
+      "id": "CLM-EVAL-006",
+      "paper_anchor": "sec:eval_latency",
+      "related_aggregates": [
+        "results/aggregates/fig12-paper-grade-20260310a/reference_runs.csv",
+        "results/aggregates/fig12-paper-grade-20260310a/fig2_latency_summary.csv",
+        "results/aggregates/fig12-paper-grade-20260310a/fig12_paper_grade_report.json"
+      ],
+      "related_figure_manifests": [],
+      "related_figures": [
+        "paper/figs/fig2_retrieval_cdf.pdf"
+      ],
+      "run_classes": [
+        "paper_grade"
+      ],
+      "run_ids": [
+        "fig12-paper-grade-20260310a-central_proc2_s42",
+        "fig12-paper-grade-20260310a-flood_budget8_s42",
+        "fig12-paper-grade-20260310a-iroute_M4_s42",
+        "fig12-paper-grade-20260310a-tag_tagK32_s42"
+      ],
+      "static_evidence": [
+        "ns-3/experiments/runners/run_accuracy_experiment.sh",
+        "results/figures/fig2_retrieval_cdf.paper_grade.figure.json"
+      ],
+      "title": "Selective probing improves retrieval efficiency relative to high-overhead search"
+    },
+    {
+      "id": "CLM-EVAL-009",
+      "paper_anchor": "sec:eval_robustness",
+      "related_aggregates": [
+        "results/aggregates/fig5-failure-paper-grade-final-20260311d/recovery_summary.csv",
+        "results/aggregates/fig5-failure-paper-grade-final-20260311d/failure_paper_grade_report.json"
+      ],
+      "related_figure_manifests": [
+        "results/figures/fig5_recovery_churn.paper_grade.figure.json",
+        "results/figures/fig5_recovery_link-fail.paper_grade.figure.json",
+        "results/figures/fig5_recovery_domain-fail.paper_grade.figure.json"
+      ],
+      "related_figures": [
+        "paper/figs/fig5_recovery_churn.pdf",
+        "paper/figs/fig5_recovery_link-fail.pdf",
+        "paper/figs/fig5_recovery_domain-fail.pdf"
+      ],
+      "run_classes": [
+        "paper_grade"
+      ],
+      "run_ids": [
+        "fig5-failure-paper-grade-final-20260311d-central-churn-s42",
+        "fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-central-link-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-flood-churn-s42",
+        "fig5-failure-paper-grade-final-20260311d-flood-domain-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-flood-link-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-iroute-churn-s42",
+        "fig5-failure-paper-grade-final-20260311d-iroute-domain-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42"
+      ],
+      "static_evidence": [
+        "ns-3/experiments/manifests/paper_suite.json",
+        "ns-3/experiments/runners/run_failure_experiment.sh",
+        "scripts/fig345_paper_grade.py"
+      ],
+      "title": "Recovery under churn and failures is supported by the published Fig. 5 bundle"
+    }
+  ]
+}

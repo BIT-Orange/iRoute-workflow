@@ -1,0 +1,199 @@
+{
+  "batch_id": "fig3-load-paper-grade-final-20260311shard",
+  "completed_sweep_values": [
+    "20"
+  ],
+  "coverage": [
+    {
+      "complete": false,
+      "frequency": "1",
+      "missing_run_ids": [
+        "fig3-load-paper-grade-final-20260311shard-central_freq1_s42",
+        "fig3-load-paper-grade-final-20260311shard-iroute_freq1_s42",
+        "fig3-load-paper-grade-final-20260311shard-tag_freq1_s42",
+        "fig3-load-paper-grade-final-20260311shard-flood_freq1_s42"
+      ],
+      "present_run_ids": [],
+      "required_run_ids": [
+        "fig3-load-paper-grade-final-20260311shard-central_freq1_s42",
+        "fig3-load-paper-grade-final-20260311shard-iroute_freq1_s42",
+        "fig3-load-paper-grade-final-20260311shard-tag_freq1_s42",
+        "fig3-load-paper-grade-final-20260311shard-flood_freq1_s42"
+      ]
+    },
+    {
+      "complete": false,
+      "frequency": "2",
+      "missing_run_ids": [
+        "fig3-load-paper-grade-final-20260311shard-central_freq2_s42",
+        "fig3-load-paper-grade-final-20260311shard-iroute_freq2_s42",
+        "fig3-load-paper-grade-final-20260311shard-tag_freq2_s42",
+        "fig3-load-paper-grade-final-20260311shard-flood_freq2_s42"
+      ],
+      "present_run_ids": [],
+      "required_run_ids": [
+        "fig3-load-paper-grade-final-20260311shard-central_freq2_s42",
+        "fig3-load-paper-grade-final-20260311shard-iroute_freq2_s42",
+        "fig3-load-paper-grade-final-20260311shard-tag_freq2_s42",
+        "fig3-load-paper-grade-final-20260311shard-flood_freq2_s42"
+      ]
+    },
+    {
+      "complete": false,
+      "frequency": "5",
+      "missing_run_ids": [
+        "fig3-load-paper-grade-final-20260311shard-central_freq5_s42",
+        "fig3-load-paper-grade-final-20260311shard-iroute_freq5_s42",
+        "fig3-load-paper-grade-final-20260311shard-tag_freq5_s42",
+        "fig3-load-paper-grade-final-20260311shard-flood_freq5_s42"
+      ],
+      "present_run_ids": [],
+      "required_run_ids": [
+        "fig3-load-paper-grade-final-20260311shard-central_freq5_s42",
+        "fig3-load-paper-grade-final-20260311shard-iroute_freq5_s42",
+        "fig3-load-paper-grade-final-20260311shard-tag_freq5_s42",
+        "fig3-load-paper-grade-final-20260311shard-flood_freq5_s42"
+      ]
+    },
+    {
+      "complete": false,
+      "frequency": "10",
+      "missing_run_ids": [
+        "fig3-load-paper-grade-final-20260311shard-central_freq10_s42",
+        "fig3-load-paper-grade-final-20260311shard-iroute_freq10_s42",
+        "fig3-load-paper-grade-final-20260311shard-tag_freq10_s42",
+        "fig3-load-paper-grade-final-20260311shard-flood_freq10_s42"
+      ],
+      "present_run_ids": [],
+      "required_run_ids": [
+        "fig3-load-paper-grade-final-20260311shard-central_freq10_s42",
+        "fig3-load-paper-grade-final-20260311shard-iroute_freq10_s42",
+        "fig3-load-paper-grade-final-20260311shard-tag_freq10_s42",
+        "fig3-load-paper-grade-final-20260311shard-flood_freq10_s42"
+      ]
+    },
+    {
+      "complete": true,
+      "frequency": "20",
+      "missing_run_ids": [],
+      "present_run_ids": [
+        "fig3-load-paper-grade-final-20260311shard-central_freq20_s42",
+        "fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42",
+        "fig3-load-paper-grade-final-20260311shard-tag_freq20_s42",
+        "fig3-load-paper-grade-final-20260311shard-flood_freq20_s42"
+      ],
+      "required_run_ids": [
+        "fig3-load-paper-grade-final-20260311shard-central_freq20_s42",
+        "fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42",
+        "fig3-load-paper-grade-final-20260311shard-tag_freq20_s42",
+        "fig3-load-paper-grade-final-20260311shard-flood_freq20_s42"
+      ]
+    }
+  ],
+  "family": "load",
+  "generated_at_utc": "2026-03-11T06:24:51.661001+00:00",
+  "missing_run_count": 16,
+  "missing_run_ids": [
+    "fig3-load-paper-grade-final-20260311shard-central_freq1_s42",
+    "fig3-load-paper-grade-final-20260311shard-iroute_freq1_s42",
+    "fig3-load-paper-grade-final-20260311shard-tag_freq1_s42",
+    "fig3-load-paper-grade-final-20260311shard-flood_freq1_s42",
+    "fig3-load-paper-grade-final-20260311shard-central_freq2_s42",
+    "fig3-load-paper-grade-final-20260311shard-iroute_freq2_s42",
+    "fig3-load-paper-grade-final-20260311shard-tag_freq2_s42",
+    "fig3-load-paper-grade-final-20260311shard-flood_freq2_s42",
+    "fig3-load-paper-grade-final-20260311shard-central_freq5_s42",
+    "fig3-load-paper-grade-final-20260311shard-iroute_freq5_s42",
+    "fig3-load-paper-grade-final-20260311shard-tag_freq5_s42",
+    "fig3-load-paper-grade-final-20260311shard-flood_freq5_s42",
+    "fig3-load-paper-grade-final-20260311shard-central_freq10_s42",
+    "fig3-load-paper-grade-final-20260311shard-iroute_freq10_s42",
+    "fig3-load-paper-grade-final-20260311shard-tag_freq10_s42",
+    "fig3-load-paper-grade-final-20260311shard-flood_freq10_s42"
+  ],
+  "missing_sweep_values": [
+    "1",
+    "2",
+    "5",
+    "10"
+  ],
+  "notes": [
+    "Final-scope paper-grade Fig. 3 batch matching the current paper-grade load sweep.",
+    "SIM_TIME_MAX=0 is used to avoid truncating low-frequency full-trace runs."
+  ],
+  "present_run_count": 4,
+  "present_run_ids": [
+    "fig3-load-paper-grade-final-20260311shard-central_freq20_s42",
+    "fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42",
+    "fig3-load-paper-grade-final-20260311shard-tag_freq20_s42",
+    "fig3-load-paper-grade-final-20260311shard-flood_freq20_s42"
+  ],
+  "publish_blockers": [
+    "missing required frequency coverage: 1 2 5 10",
+    "missing canonical runs: 16"
+  ],
+  "required_run_count": 20,
+  "required_run_ids": [
+    "fig3-load-paper-grade-final-20260311shard-central_freq1_s42",
+    "fig3-load-paper-grade-final-20260311shard-iroute_freq1_s42",
+    "fig3-load-paper-grade-final-20260311shard-tag_freq1_s42",
+    "fig3-load-paper-grade-final-20260311shard-flood_freq1_s42",
+    "fig3-load-paper-grade-final-20260311shard-central_freq2_s42",
+    "fig3-load-paper-grade-final-20260311shard-iroute_freq2_s42",
+    "fig3-load-paper-grade-final-20260311shard-tag_freq2_s42",
+    "fig3-load-paper-grade-final-20260311shard-flood_freq2_s42",
+    "fig3-load-paper-grade-final-20260311shard-central_freq5_s42",
+    "fig3-load-paper-grade-final-20260311shard-iroute_freq5_s42",
+    "fig3-load-paper-grade-final-20260311shard-tag_freq5_s42",
+    "fig3-load-paper-grade-final-20260311shard-flood_freq5_s42",
+    "fig3-load-paper-grade-final-20260311shard-central_freq10_s42",
+    "fig3-load-paper-grade-final-20260311shard-iroute_freq10_s42",
+    "fig3-load-paper-grade-final-20260311shard-tag_freq10_s42",
+    "fig3-load-paper-grade-final-20260311shard-flood_freq10_s42",
+    "fig3-load-paper-grade-final-20260311shard-central_freq20_s42",
+    "fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42",
+    "fig3-load-paper-grade-final-20260311shard-tag_freq20_s42",
+    "fig3-load-paper-grade-final-20260311shard-flood_freq20_s42"
+  ],
+  "required_sweep_values": [
+    "1",
+    "2",
+    "5",
+    "10",
+    "20"
+  ],
+  "scope": "final",
+  "shard_manifests": [
+    {
+      "artifact_check": {
+        "ran": true,
+        "status": "passed"
+      },
+      "path": "results/aggregates/fig3-load-paper-grade-final-20260311shard/shards/frequency-20.json",
+      "promoted_run_ids": [
+        "fig3-load-paper-grade-final-20260311shard-central_freq20_s42",
+        "fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42",
+        "fig3-load-paper-grade-final-20260311shard-tag_freq20_s42",
+        "fig3-load-paper-grade-final-20260311shard-flood_freq20_s42"
+      ],
+      "selector": {
+        "frequency": [
+          "20"
+        ],
+        "schemes": [
+          "central",
+          "iroute",
+          "tag",
+          "flood"
+        ],
+        "seeds": [
+          "42"
+        ]
+      },
+      "shard_id": "frequency-20",
+      "status": "complete"
+    }
+  ],
+  "status": "incomplete",
+  "sweep_field": "frequency"
+}

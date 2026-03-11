@@ -1,0 +1,90 @@
+{
+  "artifacts": [
+    {
+      "artifact_type": "summary.csv",
+      "canonical_path": "results/runs/fig3-load-paper-grade-final-20260311shard-tag_freq20_s42/summary.csv",
+      "required": true,
+      "sha256": "a29dca861c3824ae91bf7934a3af112e1ea1c522910a1de64ca458e6167cb15e",
+      "size_bytes": 544,
+      "source_path": "/private/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20/tag_freq20_s42/summary.csv"
+    },
+    {
+      "artifact_type": "query_log.csv",
+      "canonical_path": "results/runs/fig3-load-paper-grade-final-20260311shard-tag_freq20_s42/query_log.csv",
+      "required": true,
+      "sha256": "2e9a8f038213c97ea3fa6be04799ebace6045520e5a184388d98ea7863f978ae",
+      "size_bytes": 270257,
+      "source_path": "/private/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20/tag_freq20_s42/query_log.csv"
+    },
+    {
+      "artifact_type": "latency_sanity.csv",
+      "canonical_path": "results/runs/fig3-load-paper-grade-final-20260311shard-tag_freq20_s42/latency_sanity.csv",
+      "required": true,
+      "sha256": "cd90055ab09da8f248d0f36bb1c5475ea89cb2017f1b5bf6d39f255b9d163f3e",
+      "size_bytes": 378,
+      "source_path": "/private/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20/tag_freq20_s42/latency_sanity.csv"
+    },
+    {
+      "artifact_type": "failure_sanity.csv",
+      "canonical_path": "results/runs/fig3-load-paper-grade-final-20260311shard-tag_freq20_s42/failure_sanity.csv",
+      "required": false,
+      "sha256": "6f281b432224ac92dae780ae2e1ecdd678c9296cdd7e911c04274674e5d84e29",
+      "size_bytes": 518,
+      "source_path": "/private/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20/tag_freq20_s42/failure_sanity.csv"
+    },
+    {
+      "artifact_type": "source_manifest.json",
+      "canonical_path": "results/runs/fig3-load-paper-grade-final-20260311shard-tag_freq20_s42/source_manifest.json",
+      "required": false,
+      "sha256": "4037666460f89d6562474551c858fb52b07a80b0e53638249b94fb22c322ec32",
+      "size_bytes": 752,
+      "source_path": "/private/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20/tag_freq20_s42/manifest.json"
+    },
+    {
+      "artifact_type": "source_run_manifest.json",
+      "canonical_path": "results/runs/fig3-load-paper-grade-final-20260311shard-tag_freq20_s42/source_run_manifest.json",
+      "required": false,
+      "sha256": "3fa75a6855736ec14e057687554b23aa9b781fe73160696e1d02862b44b2bd35",
+      "size_bytes": 2610,
+      "source_path": "/private/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20/tag_freq20_s42/run_manifest.json"
+    }
+  ],
+  "cache_mode": "disabled",
+  "canonical_dir": "results/runs/fig3-load-paper-grade-final-20260311shard-tag_freq20_s42",
+  "compatibility": {
+    "legacy_results_path": "",
+    "legacy_status": "canonical_staging"
+  },
+  "cs_size": 0,
+  "git_commit": "5f57b20989e0914e49b834ea3302dcecdb8011e3",
+  "major_options": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "data_freshness_ms": 60000,
+    "domains": 8,
+    "frequency": 20,
+    "measure_start_sec": 0,
+    "paper_grade": 1,
+    "run_mode": "load_run",
+    "scheme": "tag",
+    "seed": 42,
+    "sim_time": 40,
+    "topology": "rocketfuel",
+    "topology_file": "/Users/jiyuan/Desktop/ndnSIM/ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt",
+    "warmup_sec": 0
+  },
+  "notes": [],
+  "promoted_at_utc": "2026-03-11T06:20:38.430057+00:00",
+  "run_class": "paper_grade",
+  "run_id": "fig3-load-paper-grade-final-20260311shard-tag_freq20_s42",
+  "runner": "ns-3/experiments/runners/run_load_experiment.sh",
+  "schema_version": 1,
+  "seed_provenance": "native",
+  "source_dir": "/private/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20/tag_freq20_s42",
+  "source_kind": "load_paper_grade_final_staging",
+  "source_manifests": {
+    "direct_manifest": "/private/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20/tag_freq20_s42/manifest.json",
+    "runner_manifest": "/private/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20/tag_freq20_s42/run_manifest.json"
+  },
+  "workflow": "load_paper_grade_final"
+}

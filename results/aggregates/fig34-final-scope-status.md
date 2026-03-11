@@ -51,3 +51,48 @@
 
 This report is intentionally conservative.
 It records that the final-scope pipeline now exists, but the repository does not yet contain completed final-scope promoted evidence for Fig. 3 or Fig. 4.
+
+## Sharded Execution
+
+The final-scope entrypoint now supports resumable shards:
+
+- Fig. 3 example:
+  - `bash scripts/workflow.sh fig34-final-scope load --suffix <suffix> --frequencies "20" --resume-existing`
+- Fig. 4 example:
+  - `bash scripts/workflow.sh fig34-final-scope scaling --suffix <suffix> --domains-list "8" --schemes "iroute" --resume-existing`
+- status-only recompute:
+  - `bash scripts/workflow.sh fig34-final-scope <load|scaling> --suffix <suffix> --finalize-only`
+
+Shard manifests live under `results/aggregates/<batch-id>/shards/`.
+Batch completion is tracked in `results/aggregates/<batch-id>/batch_status.json`.
+
+## Current Validation Batch
+
+Validation suffix used in this phase: `20260311shard`
+
+### Fig. 3 Validation
+
+- batch id:
+  - `fig3-load-paper-grade-final-20260311shard`
+- completed shard:
+  - `results/aggregates/fig3-load-paper-grade-final-20260311shard/shards/frequency-20.json`
+- batch status:
+  - `incomplete`
+- missing frequency coverage:
+  - `1 2 5 10`
+
+This shows a shard can be complete and artifact-clean while the overall final-scope load batch remains incomplete.
+
+### Fig. 4 Validation
+
+- batch id:
+  - `fig4-scaling-paper-grade-final-20260311shard`
+- completed shard:
+  - `results/aggregates/fig4-scaling-paper-grade-final-20260311shard/shards/domains-8-schemes-iroute.json`
+- batch status:
+  - `incomplete`
+- missing domain coverage:
+  - `8 16 32 64`
+
+This is also intentional.
+The completion checker still requires the full per-domain matrix across the canonical scheme set before final aggregation or publication is allowed.

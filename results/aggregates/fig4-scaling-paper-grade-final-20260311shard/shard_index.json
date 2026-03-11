@@ -1,0 +1,29 @@
+{
+  "batch_id": "fig4-scaling-paper-grade-final-20260311shard",
+  "generated_at_utc": "2026-03-11T06:21:22.158951+00:00",
+  "shards": [
+    {
+      "artifact_check": {
+        "ran": true,
+        "status": "passed"
+      },
+      "path": "results/aggregates/fig4-scaling-paper-grade-final-20260311shard/shards/domains-8-schemes-iroute.json",
+      "promoted_run_ids": [
+        "fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42"
+      ],
+      "selector": {
+        "domains": [
+          "8"
+        ],
+        "schemes": [
+          "iroute"
+        ],
+        "seeds": [
+          "42"
+        ]
+      },
+      "shard_id": "domains-8-schemes-iroute",
+      "status": "complete"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "artifacts": [
+    {
+      "artifact_type": "summary.csv",
+      "canonical_path": "results/runs/fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42/summary.csv",
+      "required": true,
+      "sha256": "23a7cf633e793c3d62d8fb8e3b92eca4fb2bd31a4603958e29f17e7e7eb6c576",
+      "size_bytes": 543,
+      "source_path": "/private/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20/iroute_freq20_s42/summary.csv"
+    },
+    {
+      "artifact_type": "query_log.csv",
+      "canonical_path": "results/runs/fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42/query_log.csv",
+      "required": true,
+      "sha256": "009dda6bc20bce6e8d7dd216a34c8ae8f3dfb6bebc47eeb205486bf377b0e7c4",
+      "size_bytes": 350183,
+      "source_path": "/private/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20/iroute_freq20_s42/query_log.csv"
+    },
+    {
+      "artifact_type": "latency_sanity.csv",
+      "canonical_path": "results/runs/fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42/latency_sanity.csv",
+      "required": true,
+      "sha256": "d7c4df6b4860961d96fc6e00312841bb2f3ebc1c46cce3305fe60cb6f2ed35f2",
+      "size_bytes": 390,
+      "source_path": "/private/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20/iroute_freq20_s42/latency_sanity.csv"
+    },
+    {
+      "artifact_type": "failure_sanity.csv",
+      "canonical_path": "results/runs/fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42/failure_sanity.csv",
+      "required": false,
+      "sha256": "6f281b432224ac92dae780ae2e1ecdd678c9296cdd7e911c04274674e5d84e29",
+      "size_bytes": 518,
+      "source_path": "/private/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20/iroute_freq20_s42/failure_sanity.csv"
+    },
+    {
+      "artifact_type": "source_manifest.json",
+      "canonical_path": "results/runs/fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42/source_manifest.json",
+      "required": false,
+      "sha256": "2ec38ceb001f61dddbaf1184b12ff92fe61113d334a0103cc05f9b3f885c4aba",
+      "size_bytes": 757,
+      "source_path": "/private/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20/iroute_freq20_s42/manifest.json"
+    },
+    {
+      "artifact_type": "source_run_manifest.json",
+      "canonical_path": "results/runs/fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42/source_run_manifest.json",
+      "required": false,
+      "sha256": "8b5c7aa9cee8ee44976781cc1b9f2bf3022646ca4ad0e9dbccc0317909615d4e",
+      "size_bytes": 2619,
+      "source_path": "/private/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20/iroute_freq20_s42/run_manifest.json"
+    }
+  ],
+  "cache_mode": "disabled",
+  "canonical_dir": "results/runs/fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42",
+  "compatibility": {
+    "legacy_results_path": "",
+    "legacy_status": "canonical_staging"
+  },
+  "cs_size": 0,
+  "git_commit": "5f57b20989e0914e49b834ea3302dcecdb8011e3",
+  "major_options": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "data_freshness_ms": 60000,
+    "domains": 8,
+    "frequency": 20,
+    "measure_start_sec": 0,
+    "paper_grade": 1,
+    "run_mode": "load_run",
+    "scheme": "iroute",
+    "seed": 42,
+    "sim_time": 40,
+    "topology": "rocketfuel",
+    "topology_file": "/Users/jiyuan/Desktop/ndnSIM/ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt",
+    "warmup_sec": 0
+  },
+  "notes": [],
+  "promoted_at_utc": "2026-03-11T06:20:38.377107+00:00",
+  "run_class": "paper_grade",
+  "run_id": "fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42",
+  "runner": "ns-3/experiments/runners/run_load_experiment.sh",
+  "schema_version": 1,
+  "seed_provenance": "native",
+  "source_dir": "/private/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20/iroute_freq20_s42",
+  "source_kind": "load_paper_grade_final_staging",
+  "source_manifests": {
+    "direct_manifest": "/private/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20/iroute_freq20_s42/manifest.json",
+    "runner_manifest": "/private/tmp/iroute-fig34-final-scope/fig3-load-paper-grade-final-20260311shard/frequency-20/iroute_freq20_s42/run_manifest.json"
+  },
+  "workflow": "load_paper_grade_final"
+}

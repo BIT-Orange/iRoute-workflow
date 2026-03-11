@@ -53,6 +53,7 @@ bash scripts/workflow.sh checks
 bash scripts/workflow.sh smoke-run
 bash scripts/workflow.sh paper-preflight
 bash scripts/workflow.sh publish-figure --figure-id <figure-id>
+bash scripts/workflow.sh release-dossier
 ```
 
 From `ns-3/`:
@@ -83,3 +84,11 @@ If the PR changes paper-grade evidence, claims, or figure provenance, also updat
 - the relevant run IDs, aggregate CSV references, and figure provenance files under `results/`
 
 Label guidance lives in `review/GOVERNANCE_LABELS.md`.
+
+For a pre-submission snapshot of current release readiness, generate:
+
+```bash
+bash scripts/workflow.sh release-dossier
+```
+
+This writes a JSON + Markdown dossier under `review/paper_audit/` summarizing claim status, figure publication state, manual paper asset debt, and the paper-facing files that are still missing.

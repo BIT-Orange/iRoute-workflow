@@ -25,6 +25,7 @@ AGGREGATES_DIR = RESULTS_DIR / "aggregates"
 FIGURES_DIR = Path(os.environ.get("IROUTE_RESULTS_FIGURES_ROOT", RESULTS_DIR / "figures"))
 PAPER_DIR = REPO_ROOT / "paper"
 PAPER_FIGS_DIR = PAPER_DIR / "figs"
+CLAIMS_MAP_PATH = REPO_ROOT / "review" / "claims" / "claims_map.json"
 WRITE_RUN_MANIFEST = REPO_ROOT / "ns-3" / "experiments" / "manifests" / "write_run_manifest.py"
 
 CORE_ARTIFACTS = {
@@ -39,6 +40,41 @@ QUERY_ARTIFACT = "query_log.csv"
 LATENCY_ARTIFACT = "latency_sanity.csv"
 
 RUN_CLASSES = {"smoke", "exploratory", "paper_grade"}
+
+FIG34_RELEASE_RULES = {
+    "fig3_hop_load.paper_grade": {
+        "claim_id": "CLM-EVAL-007",
+        "family": "load",
+        "batch_prefix": "fig3-load-paper-grade-final-",
+        "sweep_field": "frequency",
+        "required_sweep_values": ["1", "2", "5", "10", "20"],
+        "paper_figure": "paper/figs/fig3_hop_load.pdf",
+        "supported_statement": (
+            "In the canonical cache-disabled paper-grade final-scope load sweep, hop count "
+            "remains localized as offered load increases across the full 1/2/5/10/20 query-rate range."
+        ),
+        "supported_notes": [
+            "The claim is supported only by a final-scope paper-grade batch that covers the full 1/2/5/10/20 frequency sweep.",
+            "The paper-facing figure must be synchronized at paper/figs/fig3_hop_load.pdf.",
+        ],
+    },
+    "fig4_state_scaling.paper_grade": {
+        "claim_id": "CLM-EVAL-008",
+        "family": "scaling",
+        "batch_prefix": "fig4-scaling-paper-grade-final-",
+        "sweep_field": "domains",
+        "required_sweep_values": ["8", "16", "32", "64"],
+        "paper_figure": "paper/figs/fig4_state_scaling.pdf",
+        "supported_statement": (
+            "In the canonical cache-disabled paper-grade final-scope scaling sweep, routing state "
+            "scales with bounded per-domain advertisements across the full 8/16/32/64 domain range."
+        ),
+        "supported_notes": [
+            "The claim is supported only by a final-scope paper-grade batch that covers the full 8/16/32/64 domain sweep.",
+            "The paper-facing figure must be synchronized at paper/figs/fig4_state_scaling.pdf.",
+        ],
+    },
+}
 
 
 def now_utc() -> str:
@@ -615,7 +651,140 @@ def store_figure_manifest(payload: dict) -> None:
     write_json(FIGURES_DIR / "figure_index.json", build_figure_index())
 
 
-def validate_figure_publication_payload(payload: dict) -> tuple[Path, list[Path], list[Path], list[dict]]:
+def figure_release_rule(figure_id: str) -> dict | None:
+    return FIG34_RELEASE_RULES.get(str(figure_id).strip())
+
+
+def validate_fig34_release_gate(payload: dict, aggregate_reports: list[dict], run_paths: list[Path]) -> dict | None:
+    figure_id = str(payload.get("figure_id", "")).strip()
+    rule = figure_release_rule(figure_id)
+    if not rule:
+        return None
+
+    final_reports = []
+    for item in aggregate_reports:
+        agg_path = resolve_repo_path(str(item.get("path", "")))
+        try:
+            data = load_json(agg_path)
+        except Exception as ex:
+            fail(f"failed to read aggregate report {agg_path}: {ex}")
+        if str(data.get("family", "")).strip() != rule["family"]:
+            continue
+        if str(data.get("scope", "")).strip() != "final":
+            continue
+        batch_id = str(data.get("batch_id", "")).strip()
+        if not batch_id.startswith(rule["batch_prefix"]):
+            continue
+        final_reports.append(
+            {
+                "path": agg_path,
+                "data": data,
+            }
+        )
+
+    if not final_reports:
+        fail(
+            f"{figure_id} cannot be published from partial evidence; "
+            f"require a final-scope aggregate report under {rule['batch_prefix']}*"
+        )
+    if len(final_reports) > 1:
+        fail(f"{figure_id} references multiple final-scope aggregate reports; refuse ambiguous publication")
+
+    report = final_reports[0]
+    report_data = report["data"]
+    report_status = str(report_data.get("status", "")).strip()
+    if report_status not in {"complete_unpublished", "published"}:
+        fail(
+            f"{figure_id} final-scope aggregate report is not publishable yet: "
+            f"status={report_status or 'missing'} path={relpath_or_abs(report['path'])}"
+        )
+
+    batch_dir = report["path"].parent
+    batch_status_path = batch_dir / "batch_status.json"
+    if not batch_status_path.exists():
+        fail(f"{figure_id} final-scope publication requires batch status at {relpath_or_abs(batch_status_path)}")
+    batch_status = load_json(batch_status_path)
+    batch_state = str(batch_status.get("status", "")).strip()
+    if batch_state not in {"complete_unpublished", "published"}:
+        missing_values = " ".join(batch_status.get("missing_sweep_values", [])) or "(unknown)"
+        fail(
+            f"{figure_id} final-scope batch is incomplete: status={batch_state or 'missing'} "
+            f"missing_{rule['sweep_field']}={missing_values}"
+        )
+    if int(batch_status.get("missing_run_count", 0)) != 0:
+        fail(
+            f"{figure_id} final-scope batch still has missing canonical runs: "
+            f"{batch_status.get('missing_run_count', 0)}"
+        )
+
+    required = [str(item) for item in rule["required_sweep_values"]]
+    completed = [str(item) for item in batch_status.get("completed_sweep_values", [])]
+    missing = [str(item) for item in batch_status.get("missing_sweep_values", [])]
+    if completed != required or missing:
+        fail(
+            f"{figure_id} final-scope coverage mismatch: "
+            f"completed_{rule['sweep_field']}={' '.join(completed) or '(none)'} "
+            f"required={' '.join(required)}"
+        )
+
+    required_run_ids = sorted(str(item) for item in batch_status.get("required_run_ids", []))
+    payload_run_ids = sorted(str(item) for item in payload.get("run_ids", []))
+    if payload_run_ids != required_run_ids:
+        fail(
+            f"{figure_id} manifest run_ids do not match the complete final-scope batch; "
+            f"expected={len(required_run_ids)} actual={len(payload_run_ids)}"
+        )
+    actual_run_ids = sorted(run_dir.name for run_dir in run_paths)
+    if actual_run_ids != required_run_ids:
+        fail(
+            f"{figure_id} canonical run directory set does not match batch completion index; "
+            f"expected={len(required_run_ids)} actual={len(actual_run_ids)}"
+        )
+
+    return {
+        "rule": rule,
+        "aggregate_report_path": report["path"],
+        "aggregate_report_status": report_status,
+        "batch_status_path": batch_status_path,
+        "batch_status": batch_status,
+    }
+
+
+def sync_claim_status_for_published_figure(figure_id: str, payload: dict, gate_info: dict | None) -> None:
+    if not gate_info:
+        return
+    if not CLAIMS_MAP_PATH.exists():
+        fail(f"missing claims map: {CLAIMS_MAP_PATH}")
+    claims_payload = load_json(CLAIMS_MAP_PATH)
+    claim_id = gate_info["rule"]["claim_id"]
+    updated = False
+    for claim in claims_payload.get("claims", []):
+        if str(claim.get("id", "")).strip() != claim_id:
+            continue
+        claim["status"] = "supported"
+        claim["statement"] = gate_info["rule"]["supported_statement"]
+        claim["related_figures"] = [gate_info["rule"]["paper_figure"]]
+        claim["related_figure_manifests"] = [f"results/figures/{figure_id}.figure.json"]
+        claim["related_aggregates"] = list(payload.get("aggregate_inputs", []))
+        claim["related_runs"] = {
+            "run_ids": list(payload.get("run_ids", [])),
+            "run_classes": ["paper_grade"],
+        }
+        notes = list(gate_info["rule"]["supported_notes"])
+        notes.append(f"Published via {payload.get('publication', {}).get('command', 'publish-figure')}.")
+        notes.append(
+            f"Final-scope batch status: {relpath_or_abs(resolve_repo_path(gate_info['batch_status_path']))} "
+            f"status={gate_info['batch_status'].get('status', '')}"
+        )
+        claim["notes"] = notes
+        updated = True
+        break
+    if not updated:
+        fail(f"claim {claim_id} not found in {CLAIMS_MAP_PATH}")
+    write_json(CLAIMS_MAP_PATH, claims_payload)
+
+
+def validate_figure_publication_payload(payload: dict) -> tuple[Path, list[Path], list[Path], list[dict], dict | None]:
     status = str(payload.get("status", "")).strip()
     if status in {"blocked", "placeholder"}:
         fail(f"refusing to publish {payload.get('figure_id', '')}: status={status}")
@@ -656,15 +825,21 @@ def validate_figure_publication_payload(payload: dict) -> tuple[Path, list[Path]
             fail(f"canonical run is missing manifest.json: {run_dir}")
         run_paths.append(run_dir)
 
-    if status == "partial":
-        published_reports = [item for item in aggregate_reports if str(item.get("status", "")).strip() == "published"]
-        if not published_reports:
+    gate_info = validate_fig34_release_gate(payload, aggregate_reports, run_paths)
+
+    if status == "partial" and not gate_info:
+        publishable_reports = [
+            item
+            for item in aggregate_reports
+            if str(item.get("status", "")).strip() in {"published", "complete_unpublished"}
+        ]
+        if not publishable_reports:
             fail(
-                "partial figure manifest cannot be published without a published aggregate report; "
-                "rerun/publish the aggregate bundle first"
+                "partial figure manifest cannot be published without a publishable aggregate report; "
+                "rerun/finalize the aggregate bundle first"
             )
 
-    return figure_path, aggregate_paths, run_paths, aggregate_reports
+    return figure_path, aggregate_paths, run_paths, aggregate_reports, gate_info
 
 
 def publish_figure(args) -> int:
@@ -676,7 +851,7 @@ def publish_figure(args) -> int:
     if str(payload.get("figure_id", "")).strip() != args.figure_id:
         fail(f"figure manifest id mismatch in {manifest_path}")
 
-    figure_path, aggregate_paths, _run_paths, aggregate_reports = validate_figure_publication_payload(payload)
+    figure_path, aggregate_paths, _run_paths, aggregate_reports, gate_info = validate_figure_publication_payload(payload)
 
     suffix = figure_path.suffix.lower()
     if suffix not in {".pdf", ".png"}:
@@ -700,6 +875,11 @@ def publish_figure(args) -> int:
             f"{relpath_or_abs(figure_path)} -> {relpath_or_abs(paper_figure_path)} "
             f"(status {old_status} -> published)"
         )
+        if args.upgrade_claim_status and gate_info:
+            log(
+                f"dry-run claim upgrade ok: {gate_info['rule']['claim_id']} "
+                f"would move to supported after publication"
+            )
         return 0
 
     PAPER_FIGS_DIR.mkdir(parents=True, exist_ok=True)
@@ -728,6 +908,14 @@ def publish_figure(args) -> int:
         "aggregate_reports": aggregate_reports,
         "command": "publish-figure",
     }
+    if gate_info:
+        payload["publication"]["release_gate"] = {
+            "claim_id": gate_info["rule"]["claim_id"],
+            "aggregate_report_path": relpath_or_abs(gate_info["aggregate_report_path"]),
+            "aggregate_report_status": gate_info["aggregate_report_status"],
+            "batch_status_path": relpath_or_abs(gate_info["batch_status_path"]),
+            "batch_status": gate_info["batch_status"].get("status", ""),
+        }
 
     note_line = f"paper figure synchronized to {relpath_or_abs(paper_figure_path)}"
     notes = list(payload.get("notes", []))
@@ -736,6 +924,8 @@ def publish_figure(args) -> int:
     payload["notes"] = notes
 
     store_figure_manifest(payload)
+    if args.upgrade_claim_status:
+        sync_claim_status_for_published_figure(args.figure_id, payload, gate_info)
     log(f"published {args.figure_id} -> {paper_figure_path}")
     return 0
 
@@ -821,6 +1011,11 @@ def build_parser() -> argparse.ArgumentParser:
     publish.add_argument("--paper-name", help="Optional destination filename under paper/figs/ (defaults to the canonical figure basename)")
     publish.add_argument("--allow-unreferenced", action="store_true", help="Allow publication even if paper/main.tex does not reference the destination figure path")
     publish.add_argument("--dry-run", action="store_true", help="Validate publication inputs without copying files or mutating the manifest")
+    publish.add_argument(
+        "--upgrade-claim-status",
+        action="store_true",
+        help="For gated Fig.3/Fig.4 releases, update the machine-readable claim map after successful publication.",
+    )
     publish.set_defaults(func=publish_figure)
 
     return parser
