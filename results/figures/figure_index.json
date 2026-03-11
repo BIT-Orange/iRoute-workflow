@@ -1,7 +1,148 @@
 {
-  "count": 1,
-  "generated_at_utc": "2026-03-10T07:58:47.222987+00:00",
+  "count": 8,
+  "generated_at_utc": "2026-03-10T17:41:07.080543+00:00",
   "items": [
+    {
+      "aggregate_inputs": [
+        "results/aggregates/fig12-paper-grade-20260310a/accuracy_sweep.csv",
+        "results/aggregates/fig12-paper-grade-20260310a/reference_runs.csv",
+        "results/aggregates/fig12-paper-grade-20260310a/fig12_paper_grade_report.json"
+      ],
+      "figure_id": "fig1_accuracy_overhead.paper_grade",
+      "figure_path": "results/figures/fig12-paper-grade-20260310a/fig1_accuracy_overhead.pdf",
+      "run_ids": [
+        "fig12-paper-grade-20260310a-central_proc2_s42",
+        "fig12-paper-grade-20260310a-flood_budget2_s42",
+        "fig12-paper-grade-20260310a-flood_budget4_s42",
+        "fig12-paper-grade-20260310a-flood_budget8_s42",
+        "fig12-paper-grade-20260310a-iroute_M1_s42",
+        "fig12-paper-grade-20260310a-iroute_M4_s42",
+        "fig12-paper-grade-20260310a-iroute_M8_s42",
+        "fig12-paper-grade-20260310a-tag_tagK16_s42",
+        "fig12-paper-grade-20260310a-tag_tagK32_s42",
+        "fig12-paper-grade-20260310a-tag_tagK8_s42"
+      ],
+      "status": "published"
+    },
+    {
+      "aggregate_inputs": [
+        "results/aggregates/fig12-paper-grade-20260310a/reference_runs.csv",
+        "results/aggregates/fig12-paper-grade-20260310a/fig2_latency_summary.csv",
+        "results/aggregates/fig12-paper-grade-20260310a/fig12_paper_grade_report.json"
+      ],
+      "figure_id": "fig2_retrieval_cdf.paper_grade",
+      "figure_path": "results/figures/fig12-paper-grade-20260310a/fig2_retrieval_cdf.pdf",
+      "run_ids": [
+        "fig12-paper-grade-20260310a-central_proc2_s42",
+        "fig12-paper-grade-20260310a-flood_budget8_s42",
+        "fig12-paper-grade-20260310a-iroute_M4_s42",
+        "fig12-paper-grade-20260310a-tag_tagK32_s42"
+      ],
+      "status": "published"
+    },
+    {
+      "aggregate_inputs": [
+        "results/aggregates/fig3-load-paper-grade-20260311a/load_sweep.csv",
+        "results/aggregates/fig3-load-paper-grade-20260311a/load.csv",
+        "results/aggregates/fig3-load-paper-grade-20260311a/load_paper_grade_report.json"
+      ],
+      "figure_id": "fig3_hop_load.paper_grade",
+      "figure_path": "results/figures/fig3-load-paper-grade-20260311a/fig3_hop_load.pdf",
+      "run_ids": [
+        "fig3-load-paper-grade-20260311a-central_freq10_s42",
+        "fig3-load-paper-grade-20260311a-central_freq20_s42",
+        "fig3-load-paper-grade-20260311a-central_freq5_s42",
+        "fig3-load-paper-grade-20260311a-flood_freq10_s42",
+        "fig3-load-paper-grade-20260311a-flood_freq20_s42",
+        "fig3-load-paper-grade-20260311a-flood_freq5_s42",
+        "fig3-load-paper-grade-20260311a-iroute_freq10_s42",
+        "fig3-load-paper-grade-20260311a-iroute_freq20_s42",
+        "fig3-load-paper-grade-20260311a-iroute_freq5_s42",
+        "fig3-load-paper-grade-20260311a-tag_freq10_s42",
+        "fig3-load-paper-grade-20260311a-tag_freq20_s42",
+        "fig3-load-paper-grade-20260311a-tag_freq5_s42"
+      ],
+      "status": "partial"
+    },
+    {
+      "aggregate_inputs": [
+        "results/aggregates/fig4-scaling-paper-grade-20260311b/scaling.csv",
+        "results/aggregates/fig4-scaling-paper-grade-20260311b/scaling_paper_grade_report.json"
+      ],
+      "figure_id": "fig4_state_scaling.paper_grade",
+      "figure_path": "results/figures/fig4-scaling-paper-grade-20260311b/fig4_state_scaling.pdf",
+      "run_ids": [
+        "fig4-scaling-paper-grade-20260311b-central_d16_s42",
+        "fig4-scaling-paper-grade-20260311b-central_d8_s42",
+        "fig4-scaling-paper-grade-20260311b-flood_d16_s42",
+        "fig4-scaling-paper-grade-20260311b-flood_d8_s42",
+        "fig4-scaling-paper-grade-20260311b-iroute_d16_s42",
+        "fig4-scaling-paper-grade-20260311b-iroute_d8_s42",
+        "fig4-scaling-paper-grade-20260311b-tag_d16_s42",
+        "fig4-scaling-paper-grade-20260311b-tag_d8_s42"
+      ],
+      "status": "partial"
+    },
+    {
+      "aggregate_inputs": [
+        "results/aggregates/fig5-failure-paper-grade-20260311c/recovery_summary.csv",
+        "results/aggregates/fig5-failure-paper-grade-20260311c/failure_paper_grade_report.json"
+      ],
+      "figure_id": "fig5_recovery_churn.paper_grade",
+      "figure_path": "results/figures/fig5-failure-paper-grade-20260311c/fig5_recovery_churn.pdf",
+      "run_ids": [
+        "fig5-failure-paper-grade-20260311c-central-churn-s42",
+        "fig5-failure-paper-grade-20260311c-central-domain-fail-s42",
+        "fig5-failure-paper-grade-20260311c-central-link-fail-s42",
+        "fig5-failure-paper-grade-20260311c-flood-churn-s42",
+        "fig5-failure-paper-grade-20260311c-flood-domain-fail-s42",
+        "fig5-failure-paper-grade-20260311c-flood-link-fail-s42",
+        "fig5-failure-paper-grade-20260311c-iroute-churn-s42",
+        "fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42",
+        "fig5-failure-paper-grade-20260311c-iroute-link-fail-s42"
+      ],
+      "status": "partial"
+    },
+    {
+      "aggregate_inputs": [
+        "results/aggregates/fig5-failure-paper-grade-20260311c/recovery_summary.csv",
+        "results/aggregates/fig5-failure-paper-grade-20260311c/failure_paper_grade_report.json"
+      ],
+      "figure_id": "fig5_recovery_domain-fail.paper_grade",
+      "figure_path": "results/figures/fig5-failure-paper-grade-20260311c/fig5_recovery_domain-fail.pdf",
+      "run_ids": [
+        "fig5-failure-paper-grade-20260311c-central-churn-s42",
+        "fig5-failure-paper-grade-20260311c-central-domain-fail-s42",
+        "fig5-failure-paper-grade-20260311c-central-link-fail-s42",
+        "fig5-failure-paper-grade-20260311c-flood-churn-s42",
+        "fig5-failure-paper-grade-20260311c-flood-domain-fail-s42",
+        "fig5-failure-paper-grade-20260311c-flood-link-fail-s42",
+        "fig5-failure-paper-grade-20260311c-iroute-churn-s42",
+        "fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42",
+        "fig5-failure-paper-grade-20260311c-iroute-link-fail-s42"
+      ],
+      "status": "partial"
+    },
+    {
+      "aggregate_inputs": [
+        "results/aggregates/fig5-failure-paper-grade-20260311c/recovery_summary.csv",
+        "results/aggregates/fig5-failure-paper-grade-20260311c/failure_paper_grade_report.json"
+      ],
+      "figure_id": "fig5_recovery_link-fail.paper_grade",
+      "figure_path": "results/figures/fig5-failure-paper-grade-20260311c/fig5_recovery_link-fail.pdf",
+      "run_ids": [
+        "fig5-failure-paper-grade-20260311c-central-churn-s42",
+        "fig5-failure-paper-grade-20260311c-central-domain-fail-s42",
+        "fig5-failure-paper-grade-20260311c-central-link-fail-s42",
+        "fig5-failure-paper-grade-20260311c-flood-churn-s42",
+        "fig5-failure-paper-grade-20260311c-flood-domain-fail-s42",
+        "fig5-failure-paper-grade-20260311c-flood-link-fail-s42",
+        "fig5-failure-paper-grade-20260311c-iroute-churn-s42",
+        "fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42",
+        "fig5-failure-paper-grade-20260311c-iroute-link-fail-s42"
+      ],
+      "status": "partial"
+    },
     {
       "aggregate_inputs": [
         "results/aggregates/summary_rows.csv",

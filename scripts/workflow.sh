@@ -91,6 +91,9 @@ run_yaml_sanity() {
   while IFS= read -r file; do
     files+=("$file")
   done < <(find "$REPO_ROOT/.github/workflows" -type f \( -name '*.yml' -o -name '*.yaml' \) 2>/dev/null | sort)
+  while IFS= read -r file; do
+    files+=("$file")
+  done < <(find "$REPO_ROOT/.github/ISSUE_TEMPLATE" -type f \( -name '*.yml' -o -name '*.yaml' \) 2>/dev/null | sort)
   if [ "${#files[@]}" -eq 0 ]; then
     skip "no workflow YAML files found"
     return 0
@@ -112,6 +115,8 @@ run_tool_help_checks() {
   "$PYTHON_BIN" "$REPO_ROOT/ns-3/experiments/checks/check_results.py" --help >/dev/null
   "$PYTHON_BIN" "$REPO_ROOT/ns-3/experiments/checks/repeat_workload.py" --help >/dev/null
   "$PYTHON_BIN" "$REPO_ROOT/ns-3/experiments/manifests/write_run_manifest.py" --help >/dev/null
+  "$PYTHON_BIN" "$REPO_ROOT/scripts/fig12_paper_grade.py" --help >/dev/null
+  "$PYTHON_BIN" "$REPO_ROOT/scripts/fig345_paper_grade.py" --help >/dev/null
   HOME="$NS3_DIR/.home" XDG_CACHE_HOME="/tmp/iroute-xdg-cache" \
   MPLBACKEND=Agg MPLCONFIGDIR="/tmp/iroute-mplcache-workflow" \
     "$PYTHON_BIN" "$REPO_ROOT/ns-3/experiments/plot/plot_paper_figures.py" --help >/dev/null
@@ -284,13 +289,37 @@ run_checks() {
   run_static_manifest_checks
 }
 
-run_ci_local() {
+run_dev_fast() {
   run_lint
   run_checks
   run_paper_suite_preflight
+  run_claim_check --summary-only
+}
+
+run_merge_gate() {
+  run_dev_fast
+  run_claim_check --enforce-supported --summary-only
   run_smoke
   run_artifact_check
+}
+
+run_paper_release_gate() {
+  run_merge_gate
   run_paper_preflight
+}
+
+run_ci_local() {
+  run_paper_release_gate
+}
+
+run_fig12_paper_grade() {
+  log "running paper-grade Fig.1/Fig.2 pipeline"
+  "$PYTHON_BIN" "$REPO_ROOT/scripts/fig12_paper_grade.py" "$@"
+}
+
+run_fig345_paper_grade() {
+  log "running paper-grade Fig.3/Fig.4/Fig.5 pipeline"
+  "$PYTHON_BIN" "$REPO_ROOT/scripts/fig345_paper_grade.py" "$@"
 }
 
 run_lint() {
@@ -307,12 +336,17 @@ Usage: scripts/workflow.sh <command> [args]
 Commands:
   lint                  Run shell, Python, JSON, and YAML hygiene checks.
   checks                Run static experiment utility/help and manifest checks.
-  claim-check [args]    Run claim-evidence validation (pass --strict for merge/paper gate behavior).
+  dev-fast              Run the fast local developer gate.
+  merge-gate            Run the merge-blocking local gate.
+  paper-release-gate    Run the strict paper-release gate.
+  claim-check [args]    Run claim-evidence validation (--enforce-supported for merge tier, --strict for release tier).
   paper-preflight       Run paper figure preflight and optional LaTeX compile if available.
   artifact-check [dir]  Run artifact regression on a smoke or supplied run directory.
+  fig12-paper-grade     Run the canonical paper-grade Fig.1/Fig.2 rerun, promotion, aggregation, and figure sync path.
+  fig345-paper-grade    Run the canonical Fig.3/Fig.4/Fig.5 paper-grade staging and figure provenance path.
   smoke-run             Run a tiny ns-3 smoke validation if a compiled binary is available.
   paper-suite-preflight Check static paper-suite semantics and manifest defaults.
-  ci-local              Run the local CI bundle (lint, checks, smoke if available, artifact check, paper preflight).
+  ci-local              Compatibility alias for the strict local paper-release gate.
   help                  Show this message.
 EOF
 }
@@ -327,6 +361,15 @@ main() {
     checks)
       run_checks
       ;;
+    dev-fast)
+      run_dev_fast
+      ;;
+    merge-gate)
+      run_merge_gate
+      ;;
+    paper-release-gate)
+      run_paper_release_gate
+      ;;
     claim-check)
       run_claim_check "$@"
       ;;
@@ -335,6 +378,12 @@ main() {
       ;;
     artifact-check)
       run_artifact_check "${1:-}"
+      ;;
+    fig12-paper-grade)
+      run_fig12_paper_grade "$@"
+      ;;
+    fig345-paper-grade)
+      run_fig345_paper_grade "$@"
       ;;
     smoke-run)
       run_smoke

@@ -1,0 +1,33 @@
+{
+  "aggregate_inputs": [
+    "results/aggregates/fig12-paper-grade-20260310a/accuracy_sweep.csv",
+    "results/aggregates/fig12-paper-grade-20260310a/reference_runs.csv",
+    "results/aggregates/fig12-paper-grade-20260310a/fig12_paper_grade_report.json"
+  ],
+  "figure_exists": true,
+  "figure_id": "fig1_accuracy_overhead.paper_grade",
+  "figure_path": "results/figures/fig12-paper-grade-20260310a/fig1_accuracy_overhead.pdf",
+  "figure_sha256": "8026a11a60d07fbdb9643d60d7d5bf0d07b34a08ad6166823bbd7ba41087cfca",
+  "figure_size_bytes": 30265,
+  "generated_at_utc": "2026-03-10T12:50:45.489800+00:00",
+  "notes": [
+    "batch_id=fig12-paper-grade-20260310a",
+    "cache_mode=disabled",
+    "run_class=paper_grade",
+    "paper figure synchronized to paper/figs/fig1_accuracy_overhead.pdf"
+  ],
+  "run_ids": [
+    "fig12-paper-grade-20260310a-central_proc2_s42",
+    "fig12-paper-grade-20260310a-flood_budget2_s42",
+    "fig12-paper-grade-20260310a-flood_budget4_s42",
+    "fig12-paper-grade-20260310a-flood_budget8_s42",
+    "fig12-paper-grade-20260310a-iroute_M1_s42",
+    "fig12-paper-grade-20260310a-iroute_M4_s42",
+    "fig12-paper-grade-20260310a-iroute_M8_s42",
+    "fig12-paper-grade-20260310a-tag_tagK16_s42",
+    "fig12-paper-grade-20260310a-tag_tagK32_s42",
+    "fig12-paper-grade-20260310a-tag_tagK8_s42"
+  ],
+  "status": "published",
+  "title": "Fig. 1 paper-grade accuracy versus control overhead"
+}

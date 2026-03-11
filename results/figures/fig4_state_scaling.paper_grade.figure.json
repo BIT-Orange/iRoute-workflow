@@ -1,0 +1,30 @@
+{
+  "aggregate_inputs": [
+    "results/aggregates/fig4-scaling-paper-grade-20260311b/scaling.csv",
+    "results/aggregates/fig4-scaling-paper-grade-20260311b/scaling_paper_grade_report.json"
+  ],
+  "figure_exists": true,
+  "figure_id": "fig4_state_scaling.paper_grade",
+  "figure_path": "results/figures/fig4-scaling-paper-grade-20260311b/fig4_state_scaling.pdf",
+  "figure_sha256": "ef8a8e16ce743c104670fb2629945da60de16538aa2cea854f627485336ef468",
+  "figure_size_bytes": 27059,
+  "generated_at_utc": "2026-03-10T17:40:23.704314+00:00",
+  "notes": [
+    "batch_id=fig4-scaling-paper-grade-20260311b",
+    "cache_mode=disabled",
+    "run_class=paper_grade",
+    "Focused minimal paper-grade batch; full reruns still required before publishable paper evidence."
+  ],
+  "run_ids": [
+    "fig4-scaling-paper-grade-20260311b-central_d16_s42",
+    "fig4-scaling-paper-grade-20260311b-central_d8_s42",
+    "fig4-scaling-paper-grade-20260311b-flood_d16_s42",
+    "fig4-scaling-paper-grade-20260311b-flood_d8_s42",
+    "fig4-scaling-paper-grade-20260311b-iroute_d16_s42",
+    "fig4-scaling-paper-grade-20260311b-iroute_d8_s42",
+    "fig4-scaling-paper-grade-20260311b-tag_d16_s42",
+    "fig4-scaling-paper-grade-20260311b-tag_d8_s42"
+  ],
+  "status": "partial",
+  "title": "fig4_state_scaling canonical figure provenance"
+}

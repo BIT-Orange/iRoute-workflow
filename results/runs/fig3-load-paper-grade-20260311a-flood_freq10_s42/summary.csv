@@ -1,0 +1,2 @@
+scheme,totalQueries,measurableQueries,DomainAcc,Recall_at_1,Recall_at_k,DocHit_at_1_singleton,mean_relset_size,singleton_queries,meanSSR,P50_ms,P95_ms,mean_hops,ctrl_bytes_per_sec,ctrl_pkts_per_sec,avg_FIB_entries,avg_LSDB_entries,unique_hops_values,partition_detected,failure_effective,ssr_mean,ssr_p50,ssr_p95,cache_hit_exact_ratio,cache_hit_semantic_ratio,semantic_hit_ratio
+flood,399,342,0.4737,0.1579,0.5205,0.0000,24.9708,29,0.585692,48.4731,55.7605,5.10,30294.20,39.90,18,0,4,0,0,0.623016,0.658254,0.780430,0.000000,0.000000,0.000000

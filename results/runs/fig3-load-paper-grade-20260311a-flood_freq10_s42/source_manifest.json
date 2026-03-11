@@ -1,0 +1,35 @@
+{
+  "generated_at_utc": "2026-03-10T17:13:40Z",
+  "run_id": "flood_freq10_s42",
+  "run_mode": "direct_driver",
+  "cache_mode": "disabled",
+  "seed_provenance": "native",
+  "scheme": "flood",
+  "seed": 42,
+  "topology": "rocketfuel",
+  "domains": 8,
+  "sim_time": 40,
+  "frequency": 10,
+  "warmup_sec": 0,
+  "measure_start_sec": 0,
+  "cs_size": 0,
+  "data_freshness_ms": 60000,
+  "sanr": {
+    "sim_thresh": 0.8,
+    "msrr_top_pct": 0.2,
+    "cmlt_s": 4,
+    "slot_s": 5,
+    "ccn_k": 1,
+    "top_l": 32
+  },
+  "summary": {
+    "total_queries": 399,
+    "measurable_queries": 342,
+    "domain_acc": 0.473684,
+    "recall_at_1": 0.157895,
+    "p50_ms": 48.4731,
+    "p95_ms": 55.7605,
+    "cache_hit_exact_ratio": 0,
+    "cache_hit_semantic_ratio": 0
+  }
+}

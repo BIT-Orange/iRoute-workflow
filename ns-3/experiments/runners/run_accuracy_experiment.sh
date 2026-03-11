@@ -102,6 +102,7 @@ SCHEMES="${SCHEMES:-iroute flood tag central exact}"
 CS_SIZE="${CS_SIZE:-0}"
 RESUME="${RESUME:-0}"
 DATA_FRESHNESS_MS="${DATA_FRESHNESS_MS:-60000}"
+PAPER_GRADE="${PAPER_GRADE:-0}"
 
 TRACE="${TRACE:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/consumer_trace.csv")}"
 SHUFFLE_TRACE="${SHUFFLE_TRACE:-1}"
@@ -182,6 +183,7 @@ run_one() {
     --field "is_reference=$is_reference" \
     --field "cache_mode=\"$CACHE_MODE\"" \
     --field "cs_size=$CS_SIZE" \
+    --field "paper_grade=$PAPER_GRADE" \
     --field "run_mode=\"accuracy_run\"" \
     --field "seed_provenance=\"native\"" \
     --field "resume=$RESUME" \

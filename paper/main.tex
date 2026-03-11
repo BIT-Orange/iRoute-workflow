@@ -694,7 +694,7 @@ The discovery reply returns a canonical object name, and the consumer then fetch
 Unless noted otherwise, link parameters are fixed, and in-network caching is disabled to isolate routing effects from cache hits.
 The paper-grade routing workflow therefore uses \texttt{csSize}=0.
 % claim-id: eval-setup-cache-enabled-sanr-bundle
-Separately, the repository also contains a cache-enabled SANR workflow (\texttt{CS\_SIZE}=512) for cache-behavior studies; figures produced from that workflow are treated as cache-enabled SANR results rather than routing-only evidence.
+Separately, the repository also contains a cache-enabled SANR workflow (\texttt{CS\_SIZE}=512) for cache-behavior studies; that workflow remains exploratory evidence and is not the canonical source of the cache-disabled paper figures.
 
 We construct a domain-partitioned IoT corpus from smart-city sensor and infrastructure streams.
 Each object is assigned a stable canonical name of the form
@@ -745,11 +745,11 @@ The figure contrasts \sysname{} against the three baselines described earlier.
 
 % claim-id: eval-correctness-bounded-advertisements
 This experiment isolates how bounded advertisements shape correctness.
-Increasing $M$ expands centroid coverage and generally improves domain-level coverage, while increasing $K$ increases the likelihood that a relevant domain is probed at the cost of more discovery traffic.
+Increasing $M$ expands centroid coverage and generally improves domain-level coverage, at the cost of higher control overhead.
 Flooding provides a high-recall reference by design, while Tag-FIB is constrained by its fixed vocabulary and fails when queries require fine-grained constraints beyond tag resolution.
 The centralized-directory curve is interpreted only as an oracle upper bound.
 Exact-NDN provides a syntactic reference that is not designed to resolve intent queries.
-In the current repository, the archived figure bundle for Figs.~\ref{fig:accuracy_overhead} and~\ref{fig:retrieval_cdf} comes from the cache-enabled SANR workflow; until rerun under the cache-disabled paper-grade suite, these plots should be read as cache-enabled workflow evidence rather than pure routing-only evidence.
+In the current repository, Fig.~\ref{fig:accuracy_overhead} is regenerated from the cache-disabled paper-grade accuracy bundle; the separate cache-enabled SANR workflow is kept only as exploratory evidence.
 
 \subsection{Retrieval Latency and Path Efficiency}
 \label{sec:eval_latency}
@@ -767,8 +767,8 @@ Fig.~\ref{fig:retrieval_cdf} reports the retrieval time distribution across the 
 
 Latency reflects both the discovery path and the second-stage fetch.
 Selective probing reduces unnecessary network traversal compared to flooding, but it may incur additional retries when semantic confidence is low or when relevance is distributed across multiple domains.
-Because the archived repository bundle for Fig.~\ref{fig:retrieval_cdf} is cache-enabled, the plotted CDF reflects the joint effect of discovery and cache participation.
-It should therefore not be interpreted as a strict cache-disabled routing-only latency comparison, and Exact-NDN remains a syntactic reference rather than an apples-to-apples intent-discovery baseline when stronger naming knowledge is assumed.
+In the current repository, Fig.~\ref{fig:retrieval_cdf} is regenerated from the same cache-disabled paper-grade bundle, so the plotted CDF should be read as routing-only evidence rather than a cache-participation artifact.
+Exact-NDN remains a syntactic reference rather than an apples-to-apples intent-discovery baseline when stronger naming knowledge is assumed.
 To complement time-based measurements, we report path efficiency using hop count.
 Fig.~\ref{fig:hop_load} reports average hop count as offered query load increases, which stress-tests whether selective probing keeps traffic localized and whether queueing and retransmissions inflate effective path length under load.
 

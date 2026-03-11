@@ -29,7 +29,8 @@ These paths still exist temporarily and are not deleted in this phase:
 - `figures/`
 
 Runner scripts now prefer the top-level canonical paths.
-If the physical dataset move is not complete, they fall back to `ns-3/dataset/` with an explicit warning.
+The active smart-city working set is now physically present under `dataset/processed/sdm_smartcity_dataset/`.
+If a requested dataset file has not yet been promoted, runners still fall back to `ns-3/dataset/` with an explicit warning.
 If a caller explicitly targets `ns-3/results/` or `figures/`, that path is treated as legacy compatibility storage.
 
 ## Main Entrypoints
@@ -49,3 +50,25 @@ From `ns-3/`:
 ./experiments/run_sanr_baseline.sh
 ./experiments/run_paper_suite.sh
 ```
+
+## Contributor Flow
+
+Use the repository-native GitHub templates when opening work items:
+
+- experiment execution or rerun tasks: `experiment_task`
+- paper evidence or claim gaps: `paper_claim_gap`
+- workflow and repo-structure refactors: `workflow_refactor`
+
+Before opening a PR, run:
+
+```bash
+bash scripts/workflow.sh merge-gate
+```
+
+If the PR changes paper-grade evidence, claims, or figure provenance, also update:
+
+- `review/claims/claims_map.json`
+- `review/claims/CLAIM_STATUS.md`
+- the relevant run IDs, aggregate CSV references, and figure provenance files under `results/`
+
+Label guidance lives in `review/GOVERNANCE_LABELS.md`.

@@ -1,0 +1,92 @@
+{
+  "artifacts": [
+    {
+      "artifact_type": "summary.csv",
+      "canonical_path": "results/runs/fig12-paper-grade-20260310a-flood_budget2_s42/summary.csv",
+      "required": true,
+      "sha256": "21f745681f700a2cb202c4aba4beffd52454a618f6c0426a50070e74bfec14c1",
+      "size_bytes": 539,
+      "source_path": "/private/tmp/fig12-paper-grade-20260310a-stage/flood_budget2_s42/summary.csv"
+    },
+    {
+      "artifact_type": "query_log.csv",
+      "canonical_path": "results/runs/fig12-paper-grade-20260310a-flood_budget2_s42/query_log.csv",
+      "required": true,
+      "sha256": "26e8f9357b5af0a2cb1f6845cf689bd90525f59d942450c18df2efe7e8a3e464",
+      "size_bytes": 293176,
+      "source_path": "/private/tmp/fig12-paper-grade-20260310a-stage/flood_budget2_s42/query_log.csv"
+    },
+    {
+      "artifact_type": "latency_sanity.csv",
+      "canonical_path": "results/runs/fig12-paper-grade-20260310a-flood_budget2_s42/latency_sanity.csv",
+      "required": true,
+      "sha256": "9220c036f300a6d68c7894ceb58678c59a588a503211689702c02bc254e55dc1",
+      "size_bytes": 382,
+      "source_path": "/private/tmp/fig12-paper-grade-20260310a-stage/flood_budget2_s42/latency_sanity.csv"
+    },
+    {
+      "artifact_type": "failure_sanity.csv",
+      "canonical_path": "results/runs/fig12-paper-grade-20260310a-flood_budget2_s42/failure_sanity.csv",
+      "required": false,
+      "sha256": "66a8dd6d79427086f5fa66227f55bdb4e196d5c26a302ccf18ee4c01e983e734",
+      "size_bytes": 246,
+      "source_path": "/private/tmp/fig12-paper-grade-20260310a-stage/flood_budget2_s42/failure_sanity.csv"
+    },
+    {
+      "artifact_type": "source_manifest.json",
+      "canonical_path": "results/runs/fig12-paper-grade-20260310a-flood_budget2_s42/source_manifest.json",
+      "required": false,
+      "sha256": "c34f0b148bd33f8332af343eae8e07ab9993d6f7931d0334d9a5acb3291ae2e0",
+      "size_bytes": 759,
+      "source_path": "/private/tmp/fig12-paper-grade-20260310a-stage/flood_budget2_s42/manifest.json"
+    },
+    {
+      "artifact_type": "source_run_manifest.json",
+      "canonical_path": "results/runs/fig12-paper-grade-20260310a-flood_budget2_s42/source_run_manifest.json",
+      "required": false,
+      "sha256": "a42ac378b7a96db0042ef9bacc338c1a3207d38271bdd92126b97280d0f58a58",
+      "size_bytes": 2645,
+      "source_path": "/private/tmp/fig12-paper-grade-20260310a-stage/flood_budget2_s42/run_manifest.json"
+    }
+  ],
+  "cache_mode": "disabled",
+  "canonical_dir": "results/runs/fig12-paper-grade-20260310a-flood_budget2_s42",
+  "compatibility": {
+    "legacy_results_path": "",
+    "legacy_status": "canonical_staging"
+  },
+  "cs_size": 0,
+  "git_commit": "24e55cc2c16857dcf93ff8e9c51496af8d76af56",
+  "major_options": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "data_freshness_ms": 60000,
+    "domains": 8,
+    "frequency": 5,
+    "measure_start_sec": 20,
+    "paper_grade": 1,
+    "run_mode": "accuracy_run",
+    "scheme": "flood",
+    "seed": 42,
+    "sim_time": 130,
+    "sweep_param": "budget",
+    "sweep_value": "2",
+    "topology": "rocketfuel",
+    "topology_file": "/Users/jiyuan/Desktop/ndnSIM/ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt",
+    "warmup_sec": 20
+  },
+  "notes": [],
+  "promoted_at_utc": "2026-03-10T12:50:27.815080+00:00",
+  "run_class": "paper_grade",
+  "run_id": "fig12-paper-grade-20260310a-flood_budget2_s42",
+  "runner": "ns-3/experiments/runners/run_accuracy_experiment.sh",
+  "schema_version": 1,
+  "seed_provenance": "native",
+  "source_dir": "/private/tmp/fig12-paper-grade-20260310a-stage/flood_budget2_s42",
+  "source_kind": "fig12_accuracy_staging",
+  "source_manifests": {
+    "direct_manifest": "/private/tmp/fig12-paper-grade-20260310a-stage/flood_budget2_s42/manifest.json",
+    "runner_manifest": "/private/tmp/fig12-paper-grade-20260310a-stage/flood_budget2_s42/run_manifest.json"
+  },
+  "workflow": "fig12_paper_grade_accuracy"
+}

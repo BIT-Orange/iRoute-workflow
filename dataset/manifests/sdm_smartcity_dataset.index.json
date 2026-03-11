@@ -1,0 +1,113 @@
+{
+  "active_workflow_files": [
+    "consumer_trace.csv",
+    "domain_centroids.csv",
+    "domain_centroids_m4.csv",
+    "index_exact.csv",
+    "producer_content.csv",
+    "qrels.tsv",
+    "query_to_tag.csv",
+    "tag_index.csv"
+  ],
+  "canonical_root": "dataset/processed/sdm_smartcity_dataset",
+  "dataset_id": "sdm_smartcity_dataset",
+  "file_count": 13,
+  "files": [
+    {
+      "active_workflow": true,
+      "relative_path": "consumer_trace.csv",
+      "sha256": "23e244aa882a79ed96663c341e1bd6c4b298cb0f94fb4835232d30367a6267bd",
+      "size_bytes": 765525,
+      "source_legacy_path": "ns-3/dataset/sdm_smartcity_dataset/consumer_trace.csv"
+    },
+    {
+      "active_workflow": false,
+      "relative_path": "consumer_trace_diverse_unique.csv",
+      "sha256": "3902ff8bf07dfc095129931566df86c0ad2dd827bc04d83fea46a4cc5b133876",
+      "size_bytes": 488041,
+      "source_legacy_path": "ns-3/dataset/sdm_smartcity_dataset/consumer_trace_diverse_unique.csv"
+    },
+    {
+      "active_workflow": false,
+      "relative_path": "consumer_trace_test.csv",
+      "sha256": "9bf5c4f58b48accf8b1a462189e7ae7620c5200cd11aa648104065e7881c26ee",
+      "size_bytes": 161059,
+      "source_legacy_path": "ns-3/dataset/sdm_smartcity_dataset/consumer_trace_test.csv"
+    },
+    {
+      "active_workflow": false,
+      "relative_path": "consumer_trace_train.csv",
+      "sha256": "b17d2c7f8220fe34c49b0df65bb2e99bdbbdb4bf49f6d04615bdad76321c9af3",
+      "size_bytes": 604523,
+      "source_legacy_path": "ns-3/dataset/sdm_smartcity_dataset/consumer_trace_train.csv"
+    },
+    {
+      "active_workflow": true,
+      "relative_path": "domain_centroids.csv",
+      "sha256": "409a9fa10d7b6aef5da5300ce3f382fbe2df9c06091a39ec9f7a895235312317",
+      "size_bytes": 9985,
+      "source_legacy_path": "ns-3/dataset/sdm_smartcity_dataset/domain_centroids.csv"
+    },
+    {
+      "active_workflow": true,
+      "relative_path": "domain_centroids_m4.csv",
+      "sha256": "b3bda3a0d9250b7f4171475dab08a626951e867e26f158b5d845c6f36960b563",
+      "size_bytes": 39733,
+      "source_legacy_path": "ns-3/dataset/sdm_smartcity_dataset/domain_centroids_m4.csv"
+    },
+    {
+      "active_workflow": false,
+      "relative_path": "entities.csv",
+      "sha256": "f0a8d74e7d8b1abc3b0dd91184bd5a47dd9d9fd894f44c59f164f9173a963f98",
+      "size_bytes": 484786,
+      "source_legacy_path": "ns-3/dataset/sdm_smartcity_dataset/entities.csv"
+    },
+    {
+      "active_workflow": true,
+      "relative_path": "index_exact.csv",
+      "sha256": "a7cccf6bb9bd0988df3b114051656e51df11f2be02f497baa5fc1e48e2a37473",
+      "size_bytes": 52220,
+      "source_legacy_path": "ns-3/dataset/sdm_smartcity_dataset/index_exact.csv"
+    },
+    {
+      "active_workflow": true,
+      "relative_path": "producer_content.csv",
+      "sha256": "b3e1220be2dc676770511eb9748cd794c6aa753fdcfe4063f894087488563a2b",
+      "size_bytes": 3475215,
+      "source_legacy_path": "ns-3/dataset/sdm_smartcity_dataset/producer_content.csv"
+    },
+    {
+      "active_workflow": true,
+      "relative_path": "qrels.tsv",
+      "sha256": "9f127cf217d1c79168840b6a24740c085d742646a2995fc5c41906c77eebad75",
+      "size_bytes": 209883,
+      "source_legacy_path": "ns-3/dataset/sdm_smartcity_dataset/qrels.tsv"
+    },
+    {
+      "active_workflow": true,
+      "relative_path": "query_to_tag.csv",
+      "sha256": "61632ec33f138d22c7de754b47991e7906607e2525f6ad3e0fb30d20e3af096f",
+      "size_bytes": 4427,
+      "source_legacy_path": "ns-3/dataset/sdm_smartcity_dataset/query_to_tag.csv"
+    },
+    {
+      "active_workflow": false,
+      "relative_path": "report.md",
+      "sha256": "3f3a418218c04c1a19f765ecd9ee0db09543812d342509efa94e055e374e5c35",
+      "size_bytes": 2580,
+      "source_legacy_path": "ns-3/dataset/sdm_smartcity_dataset/report.md"
+    },
+    {
+      "active_workflow": true,
+      "relative_path": "tag_index.csv",
+      "sha256": "bcfa96d78d01e4dae03ac481dd821425985a982873fcb03690bb5c35f8783503",
+      "size_bytes": 3679,
+      "source_legacy_path": "ns-3/dataset/sdm_smartcity_dataset/tag_index.csv"
+    }
+  ],
+  "promoted_at_utc": "2026-03-11T02:28:07.391279+00:00",
+  "schema_version": 1,
+  "source_kind": "legacy_promoted_copy",
+  "source_legacy_root": "ns-3/dataset/sdm_smartcity_dataset",
+  "total_size_bytes": 6301656
+}

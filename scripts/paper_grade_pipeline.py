@@ -644,7 +644,7 @@ def build_parser() -> argparse.ArgumentParser:
     figure = sub.add_parser("figure-manifest", help="Write a figure provenance manifest under results/figures/")
     figure.add_argument("--figure-id", required=True)
     figure.add_argument("--title", required=True)
-    figure.add_argument("--status", choices=["placeholder", "partial", "published"], required=True)
+    figure.add_argument("--status", choices=["placeholder", "partial", "published", "blocked"], required=True)
     figure.add_argument("--aggregate", action="append", default=[], help="Aggregate CSV or JSON input")
     figure.add_argument("--run-id", action="append", default=[], help="Source run ID referenced by the figure")
     figure.add_argument("--figure-path", help="Optional actual figure path")

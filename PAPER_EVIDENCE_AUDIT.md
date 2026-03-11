@@ -10,13 +10,13 @@ Canonical paper source: `/Users/jiyuan/Desktop/ndnSIM/paper/main.tex`
 | --- | --- | --- |
 | `figs/system-arch.pdf` | missing | Referenced in the paper, not present under `paper/figs/`. |
 | `figs/mermaid.png` | missing | Referenced in the paper, not present under `paper/figs/`. |
-| `figs/fig1_accuracy_overhead.pdf` | present but provenance unclear | File exists locally, but the available `figure_index.md` records stale absolute source paths from another workspace. |
-| `figs/fig2_retrieval_cdf.pdf` | inconsistent with current workflow semantics | Present, but the archived figure bundle comes from the cache-enabled SANR baseline workflow rather than the cache-disabled paper-grade routing workflow described in methodology. |
-| `figs/fig3_hop_load.pdf` | missing | Figure file absent. Existing figure index explicitly says load data was skipped. |
-| `figs/fig4_state_scaling.pdf` | missing | Figure file absent. Existing figure index explicitly says scaling data was skipped. |
-| `figs/fig5_recovery_churn.pdf` | missing | Figure file absent. Existing figure index says no recovery runs were found. |
-| `figs/fig5_recovery_link-fail.pdf` | missing | Figure file absent. Existing figure index says no recovery runs were found. |
-| `figs/fig5_recovery_domain-fail.pdf` | missing | Figure file absent. Existing figure index says no recovery runs were found. |
+| `figs/fig1_accuracy_overhead.pdf` | present and traceable | Canonical published provenance exists at `results/figures/fig1_accuracy_overhead.paper_grade.figure.json`. |
+| `figs/fig2_retrieval_cdf.pdf` | present and traceable | Canonical published provenance exists at `results/figures/fig2_retrieval_cdf.paper_grade.figure.json`. |
+| `figs/fig3_hop_load.pdf` | missing from paper tree | A canonical partial paper-grade figure exists under `results/figures/fig3-load-paper-grade-20260311a/`, but it is not yet synchronized into `paper/figs/`. |
+| `figs/fig4_state_scaling.pdf` | missing from paper tree | A canonical partial paper-grade figure exists under `results/figures/fig4-scaling-paper-grade-20260311b/`, but it is not yet synchronized into `paper/figs/`. |
+| `figs/fig5_recovery_churn.pdf` | missing from paper tree | A canonical partial paper-grade figure exists under `results/figures/fig5-failure-paper-grade-20260311c/`, but the current churn bundle still has an ineffective iRoute disruption and is not publishable. |
+| `figs/fig5_recovery_link-fail.pdf` | missing from paper tree | A canonical partial paper-grade figure exists under `results/figures/fig5-failure-paper-grade-20260311c/`, but it is not yet synchronized into `paper/figs/`. |
+| `figs/fig5_recovery_domain-fail.pdf` | missing from paper tree | A canonical partial paper-grade figure exists under `results/figures/fig5-failure-paper-grade-20260311c/`, but it is not yet synchronized into `paper/figs/`. |
 
 ### Present In The Repository But Not Referenced By `paper/main.tex`
 
@@ -29,17 +29,18 @@ These files are useful review artifacts, but they are not the canonical figure s
 
 ## Provenance Findings
 
-- The only available figure index is `/Users/jiyuan/Desktop/ndnSIM/figures/figure_index.md`.
-- That index embeds absolute source paths from a different machine root (`/Users/jiyuan/OrbStack/...`), so provenance is not relocatable even when equivalent local result files exist.
-- The available bundle is clearly a SANR baseline bundle and includes cache-hit figures, which means it cannot be read as a pure cache-disabled routing-only evidence set.
+- Canonical published provenance now exists for Fig. 1 and Fig. 2 under `results/figures/*.paper_grade.figure.json`.
+- Canonical partial provenance now exists for Fig. 3, Fig. 4, and Fig. 5 under `results/figures/*.paper_grade.figure.json`.
+- The old root `figures/figure_index.md` remains a legacy artifact and should no longer be treated as the authoritative evidence index.
+- Fig. 3/4/5 remain non-publishable because the paper-facing `paper/figs/` files are still absent and the Fig. 5 minimal churn batch still contains an ineffective iRoute disruption.
 
 ## Consistency Risks
 
 ### Cache semantics
 
 - The paper methodology says caching is disabled by default to isolate routing effects.
-- The available figure bundle includes cache-enabled SANR outputs and explicit cache-hit figures.
-- Any latency/retrieval claim tied to the archived Fig. 1/2 bundle must therefore be labeled as cache-enabled workflow evidence unless regenerated under `CS_SIZE=0`.
+- Fig. 1 and Fig. 2 are now regenerated from the cache-disabled paper-grade workflow.
+- The legacy SANR bundle remains cache-enabled exploratory evidence and must not be conflated with the canonical paper-grade figure family.
 
 ### Centralized directory baseline
 
@@ -59,7 +60,7 @@ These files are useful review artifacts, but they are not the canonical figure s
 
 ## Deferred Evidence Work
 
-- regenerate the full paper figure set from the cache-disabled paper-grade workflow
-- repair provenance records so figure indices use current repository-relative paths
-- add missing architecture and robustness figures
-- re-run scaling and failure suites after the remaining monolith and regression work is complete
+- synchronize Fig. 3 and Fig. 4 into `paper/figs/` only after the final-scope paper-grade reruns complete
+- correct and rerun the Fig. 5 churn batch so the iRoute disruption is effective before treating the robustness claim as publishable
+- add missing architecture figures (`system-arch.pdf`, `mermaid.png`)
+- keep repository-relative provenance as the only accepted figure lineage path

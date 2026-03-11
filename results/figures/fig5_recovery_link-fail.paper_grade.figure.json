@@ -1,0 +1,31 @@
+{
+  "aggregate_inputs": [
+    "results/aggregates/fig5-failure-paper-grade-20260311c/recovery_summary.csv",
+    "results/aggregates/fig5-failure-paper-grade-20260311c/failure_paper_grade_report.json"
+  ],
+  "figure_exists": true,
+  "figure_id": "fig5_recovery_link-fail.paper_grade",
+  "figure_path": "results/figures/fig5-failure-paper-grade-20260311c/fig5_recovery_link-fail.pdf",
+  "figure_sha256": "ed9ce60b0c946713a27229cca202b9e5dfa1b3ad3cc4adad77caff8a6e7c779e",
+  "figure_size_bytes": 23382,
+  "generated_at_utc": "2026-03-10T17:41:07.036494+00:00",
+  "notes": [
+    "batch_id=fig5-failure-paper-grade-20260311c",
+    "cache_mode=disabled",
+    "run_class=paper_grade",
+    "Focused minimal paper-grade batch; full reruns still required before publishable paper evidence."
+  ],
+  "run_ids": [
+    "fig5-failure-paper-grade-20260311c-central-churn-s42",
+    "fig5-failure-paper-grade-20260311c-central-domain-fail-s42",
+    "fig5-failure-paper-grade-20260311c-central-link-fail-s42",
+    "fig5-failure-paper-grade-20260311c-flood-churn-s42",
+    "fig5-failure-paper-grade-20260311c-flood-domain-fail-s42",
+    "fig5-failure-paper-grade-20260311c-flood-link-fail-s42",
+    "fig5-failure-paper-grade-20260311c-iroute-churn-s42",
+    "fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42",
+    "fig5-failure-paper-grade-20260311c-iroute-link-fail-s42"
+  ],
+  "status": "partial",
+  "title": "fig5_recovery_link-fail canonical figure provenance"
+}

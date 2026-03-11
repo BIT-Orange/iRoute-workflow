@@ -1,0 +1,30 @@
+{
+  "aggregate_bundle_dir": "results/aggregates/fig4-scaling-paper-grade-20260311b",
+  "aggregate_inputs": [
+    "results/aggregates/fig4-scaling-paper-grade-20260311b/scaling.csv"
+  ],
+  "batch_id": "fig4-scaling-paper-grade-20260311b",
+  "family": "scaling",
+  "generated_at_utc": "2026-03-10T17:40:11.904611+00:00",
+  "notes": [
+    "Focused minimal paper-grade batch for pipeline validation.",
+    "Full paper-grade reruns are still required before the figure can be treated as published paper evidence."
+  ],
+  "policy": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "run_class": "paper_grade",
+    "seed_provenance": "native"
+  },
+  "run_ids": [
+    "fig4-scaling-paper-grade-20260311b-central_d16_s42",
+    "fig4-scaling-paper-grade-20260311b-central_d8_s42",
+    "fig4-scaling-paper-grade-20260311b-flood_d16_s42",
+    "fig4-scaling-paper-grade-20260311b-flood_d8_s42",
+    "fig4-scaling-paper-grade-20260311b-iroute_d16_s42",
+    "fig4-scaling-paper-grade-20260311b-iroute_d8_s42",
+    "fig4-scaling-paper-grade-20260311b-tag_d16_s42",
+    "fig4-scaling-paper-grade-20260311b-tag_d8_s42"
+  ],
+  "status": "partial"
+}

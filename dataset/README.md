@@ -10,8 +10,20 @@ Current migration policy:
 
 - runners resolve dataset files from `dataset/processed/` first
 - if a requested file is not yet present there, they fall back to `ns-3/dataset/` with an explicit warning
-- large working-set files are not duplicated blindly in this phase
+- only the active experiment-ready working set is physically promoted in this phase; large raw archives remain legacy-only for now
 
-The active smart-city working set therefore still physically lives under `ns-3/dataset/sdm_smartcity_dataset/`, but top-level `dataset/` is the canonical location that new docs and workflow code should reference.
+The active smart-city working set now physically lives under:
+
+- `dataset/processed/sdm_smartcity_dataset/`
+
+Its canonical file index is:
+
+- `dataset/manifests/sdm_smartcity_dataset.index.json`
+
+The legacy source subtree:
+
+- `ns-3/dataset/sdm_smartcity_dataset/`
+
+is retained temporarily for compatibility and provenance, but new workflow code should treat the top-level processed copy as canonical.
 
 The first helper already promoted into this canonical area is `dataset/manifests/calc_recovery.py`.

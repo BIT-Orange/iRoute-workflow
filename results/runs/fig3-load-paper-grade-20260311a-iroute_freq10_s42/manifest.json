@@ -1,0 +1,90 @@
+{
+  "artifacts": [
+    {
+      "artifact_type": "summary.csv",
+      "canonical_path": "results/runs/fig3-load-paper-grade-20260311a-iroute_freq10_s42/summary.csv",
+      "required": true,
+      "sha256": "33512f8ccd49663cccba82b07530ba1aa6171e97a65e6969becf2dd37bfc9649",
+      "size_bytes": 543,
+      "source_path": "/private/tmp/fig3-load-paper-grade-20260311a-stage/iroute_freq10_s42/summary.csv"
+    },
+    {
+      "artifact_type": "query_log.csv",
+      "canonical_path": "results/runs/fig3-load-paper-grade-20260311a-iroute_freq10_s42/query_log.csv",
+      "required": true,
+      "sha256": "9ff7019df8b79783614282c34d9546e173410ff5a19ddc1dd5dd36f278073db9",
+      "size_bytes": 279314,
+      "source_path": "/private/tmp/fig3-load-paper-grade-20260311a-stage/iroute_freq10_s42/query_log.csv"
+    },
+    {
+      "artifact_type": "latency_sanity.csv",
+      "canonical_path": "results/runs/fig3-load-paper-grade-20260311a-iroute_freq10_s42/latency_sanity.csv",
+      "required": true,
+      "sha256": "896d84cb7a991d8b8da99499603bc2476a19eef567d65ccd8f2493a3d590591e",
+      "size_bytes": 384,
+      "source_path": "/private/tmp/fig3-load-paper-grade-20260311a-stage/iroute_freq10_s42/latency_sanity.csv"
+    },
+    {
+      "artifact_type": "failure_sanity.csv",
+      "canonical_path": "results/runs/fig3-load-paper-grade-20260311a-iroute_freq10_s42/failure_sanity.csv",
+      "required": false,
+      "sha256": "66a8dd6d79427086f5fa66227f55bdb4e196d5c26a302ccf18ee4c01e983e734",
+      "size_bytes": 246,
+      "source_path": "/private/tmp/fig3-load-paper-grade-20260311a-stage/iroute_freq10_s42/failure_sanity.csv"
+    },
+    {
+      "artifact_type": "source_manifest.json",
+      "canonical_path": "results/runs/fig3-load-paper-grade-20260311a-iroute_freq10_s42/source_manifest.json",
+      "required": false,
+      "sha256": "d4f1a9962db667710733e38efc88fe41e66989f64d84ec53629caf5cc1b292e9",
+      "size_bytes": 756,
+      "source_path": "/private/tmp/fig3-load-paper-grade-20260311a-stage/iroute_freq10_s42/manifest.json"
+    },
+    {
+      "artifact_type": "source_run_manifest.json",
+      "canonical_path": "results/runs/fig3-load-paper-grade-20260311a-iroute_freq10_s42/source_run_manifest.json",
+      "required": false,
+      "sha256": "9e14941dad704eae584020edc8862e0f1f13dcbbe058d028c1e7e150d07c814d",
+      "size_bytes": 2537,
+      "source_path": "/private/tmp/fig3-load-paper-grade-20260311a-stage/iroute_freq10_s42/run_manifest.json"
+    }
+  ],
+  "cache_mode": "disabled",
+  "canonical_dir": "results/runs/fig3-load-paper-grade-20260311a-iroute_freq10_s42",
+  "compatibility": {
+    "legacy_results_path": "",
+    "legacy_status": "canonical_staging"
+  },
+  "cs_size": 0,
+  "git_commit": "24e55cc2c16857dcf93ff8e9c51496af8d76af56",
+  "major_options": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "data_freshness_ms": 60000,
+    "domains": 8,
+    "frequency": 10,
+    "measure_start_sec": 0,
+    "paper_grade": 1,
+    "run_mode": "load_run",
+    "scheme": "iroute",
+    "seed": 42,
+    "sim_time": 40,
+    "topology": "rocketfuel",
+    "topology_file": "/Users/jiyuan/Desktop/ndnSIM/ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt",
+    "warmup_sec": 0
+  },
+  "notes": [],
+  "promoted_at_utc": "2026-03-10T17:14:32.508372+00:00",
+  "run_class": "paper_grade",
+  "run_id": "fig3-load-paper-grade-20260311a-iroute_freq10_s42",
+  "runner": "ns-3/experiments/runners/run_load_experiment.sh",
+  "schema_version": 1,
+  "seed_provenance": "native",
+  "source_dir": "/private/tmp/fig3-load-paper-grade-20260311a-stage/iroute_freq10_s42",
+  "source_kind": "load_paper_grade_staging",
+  "source_manifests": {
+    "direct_manifest": "/private/tmp/fig3-load-paper-grade-20260311a-stage/iroute_freq10_s42/manifest.json",
+    "runner_manifest": "/private/tmp/fig3-load-paper-grade-20260311a-stage/iroute_freq10_s42/run_manifest.json"
+  },
+  "workflow": "load_paper_grade_minimal"
+}

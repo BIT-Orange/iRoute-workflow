@@ -1,0 +1,90 @@
+{
+  "artifacts": [
+    {
+      "artifact_type": "summary.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-iroute-churn-s42/summary.csv",
+      "required": true,
+      "sha256": "3b1f0ffb37563101377983f34e5d0df88ffdbe6236c6af57c12df1c91e6c2ecd",
+      "size_bytes": 538,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/iroute-churn-s42/summary.csv"
+    },
+    {
+      "artifact_type": "query_log.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-iroute-churn-s42/query_log.csv",
+      "required": true,
+      "sha256": "488e2312fa63154f46432bd43d6ba09fec184264b6506637ebce14e080f31592",
+      "size_bytes": 46872,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/iroute-churn-s42/query_log.csv"
+    },
+    {
+      "artifact_type": "latency_sanity.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-iroute-churn-s42/latency_sanity.csv",
+      "required": true,
+      "sha256": "815acf16beb228f3b1cc83fd80f32062d8340438bf11be53d44dda05db0fd880",
+      "size_bytes": 375,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/iroute-churn-s42/latency_sanity.csv"
+    },
+    {
+      "artifact_type": "failure_sanity.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-iroute-churn-s42/failure_sanity.csv",
+      "required": false,
+      "sha256": "fb9a113e971eaa0a26d3a6213651e13c1ed37472220c7419af96251238674386",
+      "size_bytes": 296,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/iroute-churn-s42/failure_sanity.csv"
+    },
+    {
+      "artifact_type": "source_manifest.json",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-iroute-churn-s42/source_manifest.json",
+      "required": false,
+      "sha256": "761710bfce15d6f23566a8bf9afc24dcaf725433df8bf38136f6cd3fa94ce15e",
+      "size_bytes": 752,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/iroute-churn-s42/manifest.json"
+    },
+    {
+      "artifact_type": "source_run_manifest.json",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-iroute-churn-s42/source_run_manifest.json",
+      "required": false,
+      "sha256": "0f303ea7c249ceab82b732eb6b6908314528e2588864221029ea9557afa5b24b",
+      "size_bytes": 2276,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/iroute-churn-s42/run_manifest.json"
+    }
+  ],
+  "cache_mode": "disabled",
+  "canonical_dir": "results/runs/fig5-failure-paper-grade-20260311c-iroute-churn-s42",
+  "compatibility": {
+    "legacy_results_path": "",
+    "legacy_status": "canonical_staging"
+  },
+  "cs_size": 0,
+  "git_commit": "24e55cc2c16857dcf93ff8e9c51496af8d76af56",
+  "major_options": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "data_freshness_ms": 60000,
+    "domains": 8,
+    "frequency": 2,
+    "measure_start_sec": 0,
+    "paper_grade": 1,
+    "run_mode": "failure_run",
+    "scheme": "iroute",
+    "seed": 42,
+    "sim_time": 32,
+    "topology": "redundant",
+    "topology_file": "/Users/jiyuan/Desktop/ndnSIM/ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt",
+    "warmup_sec": 0
+  },
+  "notes": [],
+  "promoted_at_utc": "2026-03-10T17:40:55.149143+00:00",
+  "run_class": "paper_grade",
+  "run_id": "fig5-failure-paper-grade-20260311c-iroute-churn-s42",
+  "runner": "ns-3/experiments/runners/run_failure_experiment.sh",
+  "schema_version": 1,
+  "seed_provenance": "native",
+  "source_dir": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/iroute-churn-s42",
+  "source_kind": "failure_paper_grade_staging",
+  "source_manifests": {
+    "direct_manifest": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/iroute-churn-s42/manifest.json",
+    "runner_manifest": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/iroute-churn-s42/run_manifest.json"
+  },
+  "workflow": "failure_paper_grade_minimal"
+}

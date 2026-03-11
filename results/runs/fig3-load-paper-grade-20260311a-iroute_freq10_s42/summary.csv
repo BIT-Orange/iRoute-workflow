@@ -1,0 +1,2 @@
+scheme,totalQueries,measurableQueries,DomainAcc,Recall_at_1,Recall_at_k,DocHit_at_1_singleton,mean_relset_size,singleton_queries,meanSSR,P50_ms,P95_ms,mean_hops,ctrl_bytes_per_sec,ctrl_pkts_per_sec,avg_FIB_entries,avg_LSDB_entries,unique_hops_values,partition_detected,failure_effective,ssr_mean,ssr_p50,ssr_p95,cache_hit_exact_ratio,cache_hit_semantic_ratio,semantic_hit_ratio
+iroute,399,342,0.8421,0.2807,0.9825,0.0000,24.9708,29,0.722403,47.2669,55.6480,5.10,30982.22,48.58,21,32,4,0,0,0.742325,0.751397,0.830131,0.000000,0.000000,0.000000

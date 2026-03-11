@@ -246,6 +246,8 @@ def validate_query_log(run_dir: Path, summary: dict):
     measurable = 0
     success = 0
     timeout = 0
+    measurable_success = 0
+    measurable_timeout = 0
     unique_schemes = set()
 
     for idx, row in enumerate(rows, start=1):
@@ -270,9 +272,16 @@ def validate_query_log(run_dir: Path, summary: dict):
             value = parse_int(row, key)
             if value not in {0, 1}:
                 all_pass &= fail(f"{path} row {idx} {key} must be binary, got {value}")
-        measurable += parse_int(row, "is_measurable")
-        success += parse_int(row, "is_success")
-        timeout += parse_int(row, "is_timeout")
+        is_measurable = parse_int(row, "is_measurable")
+        is_success = parse_int(row, "is_success")
+        is_timeout = parse_int(row, "is_timeout")
+
+        measurable += is_measurable
+        success += is_success
+        timeout += is_timeout
+        if is_measurable:
+            measurable_success += is_success
+            measurable_timeout += is_timeout
 
     if unique_schemes != {summary["scheme"]}:
         all_pass &= fail(f"{path} scheme set {sorted(unique_schemes)} != summary scheme {summary['scheme']}")
@@ -280,7 +289,14 @@ def validate_query_log(run_dir: Path, summary: dict):
         all_pass &= fail(f"{path} measurable row count {measurable} != summary measurableQueries {summary['measurable']}")
     if all_pass:
         ok(f"{path} query_log invariants passed")
-    return all_pass, {"rows": len(rows), "measurable": measurable, "success": success, "timeout": timeout}
+    return all_pass, {
+        "rows": len(rows),
+        "measurable": measurable,
+        "success": success,
+        "timeout": timeout,
+        "measurable_success": measurable_success,
+        "measurable_timeout": measurable_timeout,
+    }
 
 
 def validate_latency_sanity(run_dir: Path, summary: dict, query_stats: dict):
@@ -296,10 +312,10 @@ def validate_latency_sanity(run_dir: Path, summary: dict, query_stats: dict):
         all_pass &= fail(f"{path} total_queries does not match query_log rows")
     if parse_int(row, "measurement_queries") != query_stats["measurable"]:
         all_pass &= fail(f"{path} measurement_queries does not match query_log measurable rows")
-    if parse_int(row, "success_queries") != query_stats["success"]:
-        all_pass &= fail(f"{path} success_queries does not match query_log")
-    if parse_int(row, "timeout_queries") != query_stats["timeout"]:
-        all_pass &= fail(f"{path} timeout_queries does not match query_log")
+    if parse_int(row, "success_queries") != query_stats["measurable_success"]:
+        all_pass &= fail(f"{path} success_queries does not match measurable query_log success count")
+    if parse_int(row, "timeout_queries") != query_stats["measurable_timeout"]:
+        all_pass &= fail(f"{path} timeout_queries does not match measurable query_log timeout count")
     timeout_rate = parse_float(row, "timeout_rate")
     if not (0.0 <= timeout_rate <= 1.0):
         all_pass &= fail(f"{path} timeout_rate out of range: {timeout_rate}")

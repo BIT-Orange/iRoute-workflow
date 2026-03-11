@@ -1,0 +1,90 @@
+{
+  "artifacts": [
+    {
+      "artifact_type": "summary.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-flood-link-fail-s42/summary.csv",
+      "required": true,
+      "sha256": "99f8648b48ba743e7438a1a0a114c86bc644d972547b0a110d06df8e59efcdce",
+      "size_bytes": 538,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/flood-link-fail-s42/summary.csv"
+    },
+    {
+      "artifact_type": "query_log.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-flood-link-fail-s42/query_log.csv",
+      "required": true,
+      "sha256": "eadf9bd4e3c002afe75028d9e8ab0c9a5334e1f23987170bd65c535bd1c9ce6a",
+      "size_bytes": 41519,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/flood-link-fail-s42/query_log.csv"
+    },
+    {
+      "artifact_type": "latency_sanity.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-flood-link-fail-s42/latency_sanity.csv",
+      "required": true,
+      "sha256": "9c17f91c6dc5a80830599ee94d33823c76a8a12f4304aabc49eb2d47f961fa86",
+      "size_bytes": 380,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/flood-link-fail-s42/latency_sanity.csv"
+    },
+    {
+      "artifact_type": "failure_sanity.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-flood-link-fail-s42/failure_sanity.csv",
+      "required": false,
+      "sha256": "9a15f57f3ad510883877024c1cdaa52049bc8f51d7369402ed440923b7fedbfa",
+      "size_bytes": 278,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/flood-link-fail-s42/failure_sanity.csv"
+    },
+    {
+      "artifact_type": "source_manifest.json",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-flood-link-fail-s42/source_manifest.json",
+      "required": false,
+      "sha256": "9048b896286c27c48689301cad106933bc654252406528004cc839573a65ebd4",
+      "size_bytes": 754,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/flood-link-fail-s42/manifest.json"
+    },
+    {
+      "artifact_type": "source_run_manifest.json",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-flood-link-fail-s42/source_run_manifest.json",
+      "required": false,
+      "sha256": "15e3183f7653c22c7db5ba20ff47a2b08f6d7313df0999b48a205525b7f1f3b3",
+      "size_bytes": 2285,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/flood-link-fail-s42/run_manifest.json"
+    }
+  ],
+  "cache_mode": "disabled",
+  "canonical_dir": "results/runs/fig5-failure-paper-grade-20260311c-flood-link-fail-s42",
+  "compatibility": {
+    "legacy_results_path": "",
+    "legacy_status": "canonical_staging"
+  },
+  "cs_size": 0,
+  "git_commit": "24e55cc2c16857dcf93ff8e9c51496af8d76af56",
+  "major_options": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "data_freshness_ms": 60000,
+    "domains": 8,
+    "frequency": 2,
+    "measure_start_sec": 0,
+    "paper_grade": 1,
+    "run_mode": "failure_run",
+    "scheme": "flood",
+    "seed": 42,
+    "sim_time": 32,
+    "topology": "redundant",
+    "topology_file": "/Users/jiyuan/Desktop/ndnSIM/ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt",
+    "warmup_sec": 0
+  },
+  "notes": [],
+  "promoted_at_utc": "2026-03-10T17:40:55.194194+00:00",
+  "run_class": "paper_grade",
+  "run_id": "fig5-failure-paper-grade-20260311c-flood-link-fail-s42",
+  "runner": "ns-3/experiments/runners/run_failure_experiment.sh",
+  "schema_version": 1,
+  "seed_provenance": "native",
+  "source_dir": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/flood-link-fail-s42",
+  "source_kind": "failure_paper_grade_staging",
+  "source_manifests": {
+    "direct_manifest": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/flood-link-fail-s42/manifest.json",
+    "runner_manifest": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/flood-link-fail-s42/run_manifest.json"
+  },
+  "workflow": "failure_paper_grade_minimal"
+}

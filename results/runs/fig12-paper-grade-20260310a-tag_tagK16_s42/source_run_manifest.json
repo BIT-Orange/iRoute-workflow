@@ -1,0 +1,77 @@
+{
+  "fields": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "domains": 8,
+    "frequency": 5,
+    "is_reference": 0,
+    "paper_grade": 1,
+    "resume": 0,
+    "run_id": "tag_tagK16_s42",
+    "run_mode": "accuracy_run",
+    "scheme": "tag",
+    "seed": 42,
+    "seed_provenance": "native",
+    "sim_time": 130,
+    "sweep_param": "tagK",
+    "sweep_value": "16",
+    "topology": "rocketfuel",
+    "topology_file": "/Users/jiyuan/Desktop/ndnSIM/ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt",
+    "trace": "/Users/jiyuan/Desktop/ndnSIM/ns-3/dataset/sdm_smartcity_dataset/consumer_trace.csv"
+  },
+  "generated_at_utc": "2026-03-10T12:38:32.052944+00:00",
+  "git_commit": "24e55cc2c16857dcf93ff8e9c51496af8d76af56",
+  "inputs": [
+    {
+      "exists": true,
+      "path": "ns-3/dataset/sdm_smartcity_dataset/consumer_trace.csv",
+      "sha256": "23e244aa882a79ed96663c341e1bd6c4b298cb0f94fb4835232d30367a6267bd",
+      "size_bytes": 765525
+    },
+    {
+      "exists": true,
+      "path": "ns-3/dataset/sdm_smartcity_dataset/domain_centroids_m4.csv",
+      "sha256": "b3bda3a0d9250b7f4171475dab08a626951e867e26f158b5d845c6f36960b563",
+      "size_bytes": 39733
+    },
+    {
+      "exists": true,
+      "path": "ns-3/dataset/sdm_smartcity_dataset/producer_content.csv",
+      "sha256": "b3e1220be2dc676770511eb9748cd794c6aa753fdcfe4063f894087488563a2b",
+      "size_bytes": 3475215
+    },
+    {
+      "exists": true,
+      "path": "ns-3/dataset/sdm_smartcity_dataset/index_exact.csv",
+      "sha256": "a7cccf6bb9bd0988df3b114051656e51df11f2be02f497baa5fc1e48e2a37473",
+      "size_bytes": 52220
+    },
+    {
+      "exists": true,
+      "path": "ns-3/dataset/sdm_smartcity_dataset/qrels.tsv",
+      "sha256": "9f127cf217d1c79168840b6a24740c085d742646a2995fc5c41906c77eebad75",
+      "size_bytes": 209883
+    },
+    {
+      "exists": true,
+      "path": "ns-3/dataset/sdm_smartcity_dataset/tag_index.csv",
+      "sha256": "bcfa96d78d01e4dae03ac481dd821425985a982873fcb03690bb5c35f8783503",
+      "size_bytes": 3679
+    },
+    {
+      "exists": true,
+      "path": "ns-3/dataset/sdm_smartcity_dataset/query_to_tag.csv",
+      "sha256": "61632ec33f138d22c7de754b47991e7906607e2525f6ad3e0fb30d20e3af096f",
+      "size_bytes": 4427
+    },
+    {
+      "exists": true,
+      "path": "ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt",
+      "sha256": "2e69434a020c4255417db9140d20835cc6042e5dc3309dbf89ad4f2f32de906a",
+      "size_bytes": 92171
+    }
+  ],
+  "output_dir": "/private/tmp/fig12-paper-grade-20260310a-stage/tag_tagK16_s42",
+  "runner": "ns-3/experiments/runners/run_accuracy_experiment.sh",
+  "workflow": "accuracy_run"
+}

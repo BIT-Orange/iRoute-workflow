@@ -21,6 +21,15 @@ if [ -x "$NS3_DIR/.venv/bin/python" ]; then
   PYTHON_BIN="$NS3_DIR/.venv/bin/python"
 fi
 
+resolve_path() {
+  local path="$1"
+  if [[ "$path" = /* ]]; then
+    printf '%s\n' "$path"
+  else
+    printf '%s\n' "$NS3_DIR/$path"
+  fi
+}
+
 validate_cache_settings() {
   CACHE_MODE="${CACHE_MODE:-disabled}"
   if ! [[ "$CS_SIZE" =~ ^-?[0-9]+$ ]]; then
@@ -83,6 +92,7 @@ SANR_SLOT_SEC="${SANR_SLOT_SEC:-5.0}"
 SANR_CCN_K="${SANR_CCN_K:-1}"
 SANR_TOP_L="${SANR_TOP_L:-32}"
 DATA_FRESHNESS_MS="${DATA_FRESHNESS_MS:-60000}"
+PAPER_GRADE="${PAPER_GRADE:-0}"
 
 TRACE="${TRACE:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/consumer_trace.csv")}"
 SHUFFLE_TRACE="${SHUFFLE_TRACE:-1}"
@@ -275,6 +285,34 @@ h_rtt = hashlib.sha256(rtt_seq.encode()).hexdigest()[:16]
 
 print(f"{scenario},{scheme},{seed},{run_id},{topology},{policy},{failure_effective},{min_success:.6f},{t95},{baseline:.6f},{n_success},{timeout_rate:.6f},{h_success},{h_dom},{h_rtt},{run_dir}")
 PY
+
+  "$PYTHON_BIN" experiments/manifests/write_run_manifest.py \
+    --repo-root "$ROOT_DIR" \
+    --output "$run_dir/run_manifest.json" \
+    --workflow failure_run \
+    --runner ns-3/experiments/runners/run_failure_experiment.sh \
+    --output-dir "$(resolve_path "$run_dir")" \
+    --input "$(resolve_path "$TRACE")" \
+    --input "$(resolve_path "$CENTROIDS")" \
+    --input "$(resolve_path "$CONTENT")" \
+    --input "$(resolve_path "$QRELS")" \
+    --input "$(resolve_path "$TAG_INDEX")" \
+    --input "$(resolve_path "$QUERY_TO_TAG")" \
+    --input "$(resolve_path "$TOPO_FILE")" \
+    --field "run_id=\"$run_id\"" \
+    --field "scheme=\"$scheme\"" \
+    --field "scenario=\"$scenario\"" \
+    --field "seed=$seed" \
+    --field "cache_mode=\"$CACHE_MODE\"" \
+    --field "cs_size=$CS_SIZE" \
+    --field "run_mode=\"failure_run\"" \
+    --field "paper_grade=$PAPER_GRADE" \
+    --field "seed_provenance=\"native\"" \
+    --field "domains=$DOMAINS" \
+    --field "topology=\"$TOPO\"" \
+    --field "topology_file=\"$(resolve_path "$TOPO_FILE")\"" \
+    --field "failure_policy=\"$FAILURE_POLICY\"" \
+    --field "fail_time=$FAIL_TIME"
 }
 
 for seed in $SEEDS; do
@@ -331,6 +369,30 @@ if bad:
         print(f"[failure][WARN] {x}")
 print("[failure] scenario hash sanity passed")
 PY
+
+"$PYTHON_BIN" experiments/manifests/write_run_manifest.py \
+  --repo-root "$ROOT_DIR" \
+  --output "$RESULT_DIR/run_manifest.json" \
+  --workflow failure_experiment \
+  --runner ns-3/experiments/runners/run_failure_experiment.sh \
+  --output-dir "$(resolve_path "$RESULT_DIR")" \
+  --input "$(resolve_path "$TRACE")" \
+  --input "$(resolve_path "$CENTROIDS")" \
+  --input "$(resolve_path "$CONTENT")" \
+  --input "$(resolve_path "$QRELS")" \
+  --input "$(resolve_path "$TAG_INDEX")" \
+  --input "$(resolve_path "$QUERY_TO_TAG")" \
+  --input "$(resolve_path "$TOPO_FILE")" \
+  --field "cache_mode=\"$CACHE_MODE\"" \
+  --field "cs_size=$CS_SIZE" \
+  --field "run_mode=\"failure_aggregate\"" \
+  --field "paper_grade=$PAPER_GRADE" \
+  --field "seed_provenance=\"aggregate\"" \
+  --field "scenarios=\"churn link-fail domain-fail\"" \
+  --field "seeds=\"$SEEDS\"" \
+  --field "topology=\"$TOPO\"" \
+  --field "failure_policy=\"$FAILURE_POLICY\"" \
+  --field "fail_time=$FAIL_TIME"
 
 echo "[failure] done: $RESULT_DIR"
 echo "[failure] recovery: $RECOVERY_CSV"

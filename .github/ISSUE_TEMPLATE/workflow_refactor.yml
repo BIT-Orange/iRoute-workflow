@@ -1,0 +1,76 @@
+name: Workflow refactor
+description: Track a workflow, CI, manifest, path, or repository-structure refactor.
+title: "[workflow] "
+labels:
+  - workflow
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Refactor summary
+      description: Describe the workflow or repository problem and the intended improvement.
+      placeholder: Centralize figure provenance promotion so manual steps stop drifting.
+    validations:
+      required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Primary scope
+      options:
+        - automation / CI
+        - manifests / lineage
+        - dataset / results path migration
+        - experiment runner structure
+        - paper preflight / claim checks
+        - repository docs / governance
+        - other
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence_semantics
+    attributes:
+      label: Evidence impact
+      description: Distinguish pure cleanup from changes that alter evidence semantics.
+      options:
+        - none (code cleanup only)
+        - indirect (changes how evidence is tracked or validated)
+        - direct (changes canonical evidence generation or promotion)
+    validations:
+      required: true
+  - type: input
+    id: related_claims
+    attributes:
+      label: Related claim IDs
+      description: Comma-separated if the refactor affects claim validation or paper-release readiness.
+      placeholder: CLM-EVAL-007
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility and migration notes
+      description: Explain what must keep working and what remains legacy-compatible.
+      placeholder: Existing runners under ns-3/experiments/ must keep their old entrypoints as wrappers.
+    validations:
+      required: true
+  - type: checkboxes
+    id: expectations
+    attributes:
+      label: Expectations
+      options:
+        - label: This refactor should not require paper-grade reruns.
+        - label: This refactor requires updating docs or migration notes.
+        - label: This refactor must keep merge-gate fast.
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation plan
+      description: List the commands that prove the refactor is safe.
+      placeholder: |
+        bash scripts/workflow.sh lint
+        bash scripts/workflow.sh merge-gate
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Add risks, deferred work, or review hints.

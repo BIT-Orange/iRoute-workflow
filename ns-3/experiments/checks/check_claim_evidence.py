@@ -8,6 +8,7 @@ from pathlib import Path
 
 ALLOWED_STATUSES = {"supported", "provisional", "blocked"}
 MINIMUM_RUN_EVIDENCE = {"none", "non_smoke", "paper_grade"}
+ALLOWED_FIGURE_MANIFEST_STATUSES = {"placeholder", "partial", "published", "blocked"}
 
 
 def load_claims(path: Path) -> dict:
@@ -29,6 +30,18 @@ def load_run_manifests(repo_root: Path) -> dict[str, dict]:
 
 def check_anchor(paper_text: str, anchor: str) -> bool:
     return f"\\label{{{anchor}}}" in paper_text
+
+
+def load_json_file(path: Path) -> dict:
+    with path.open(encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def resolve_repo_path(repo_root: Path, rel_or_abs: str) -> Path:
+    candidate = Path(rel_or_abs)
+    if candidate.is_absolute():
+        return candidate
+    return (repo_root / candidate).resolve()
 
 
 def classify_claim(claim: dict, repo_root: Path, paper_text: str, run_manifests: dict[str, dict]) -> tuple[list[str], list[str], dict]:
@@ -54,6 +67,41 @@ def classify_claim(claim: dict, repo_root: Path, paper_text: str, run_manifests:
     for rel_path in claim.get("related_figures", []):
         if not (repo_root / rel_path).exists():
             hard_blockers.append(f"missing figure {rel_path}")
+
+    for rel_path in claim.get("related_figure_manifests", []):
+        manifest_path = (repo_root / rel_path).resolve()
+        if not manifest_path.exists():
+            hard_blockers.append(f"missing figure manifest {rel_path}")
+            continue
+        try:
+            manifest = load_json_file(manifest_path)
+        except Exception as ex:
+            hard_blockers.append(f"failed to read figure manifest {rel_path}: {ex}")
+            continue
+
+        figure_status = str(manifest.get("status", "")).strip()
+        if figure_status not in ALLOWED_FIGURE_MANIFEST_STATUSES:
+            hard_blockers.append(f"invalid figure manifest status {figure_status!r} in {rel_path}")
+            continue
+
+        figure_exists = bool(manifest.get("figure_exists", False))
+        figure_path = str(manifest.get("figure_path", "")).strip()
+        if figure_status == "published":
+            if not figure_path:
+                hard_blockers.append(f"published figure manifest missing figure_path: {rel_path}")
+                continue
+            resolved_figure_path = resolve_repo_path(repo_root, figure_path)
+            if not figure_exists or not resolved_figure_path.exists():
+                hard_blockers.append(f"published figure manifest points to missing figure: {rel_path}")
+        else:
+            evidence_gaps.append(f"figure manifest {rel_path} status={figure_status}")
+
+        for aggregate_path in manifest.get("aggregate_inputs", []):
+            resolved_aggregate_path = resolve_repo_path(repo_root, str(aggregate_path))
+            if not resolved_aggregate_path.exists():
+                hard_blockers.append(
+                    f"figure manifest {rel_path} references missing aggregate input {aggregate_path}"
+                )
 
     for rel_path in claim.get("related_aggregates", []):
         if not (repo_root / rel_path).exists():
@@ -126,6 +174,11 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Validate claim-to-evidence bindings for the canonical paper.")
     parser.add_argument("--claims-map", default="review/claims/claims_map.json", help="Machine-readable claim map JSON")
     parser.add_argument("--paper", default="paper/main.tex", help="Canonical paper TeX source")
+    parser.add_argument(
+        "--enforce-supported",
+        action="store_true",
+        help="Fail if any claim marked supported has broken evidence, while allowing provisional/blocked claims to remain.",
+    )
     parser.add_argument("--strict", action="store_true", help="Fail unless every mapped claim is supported and its evidence is present")
     parser.add_argument("--summary-only", action="store_true", help="Print a compact status summary without per-claim notes")
     args = parser.parse_args()
@@ -193,13 +246,14 @@ def main() -> int:
             + ", ".join(provisional_without_gap)
         )
 
-    if args.strict:
+    if args.enforce_supported or args.strict:
         if supported_errors:
             print(
                 "[claims][FAIL] supported claims with broken evidence: "
                 + ", ".join(supported_errors)
             )
             return 1
+    if args.strict:
         if counts["provisional"] or counts["blocked"]:
             print(
                 "[claims][FAIL] strict mode requires every mapped claim to be supported; "

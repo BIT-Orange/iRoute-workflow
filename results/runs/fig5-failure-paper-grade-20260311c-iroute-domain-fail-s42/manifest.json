@@ -1,0 +1,90 @@
+{
+  "artifacts": [
+    {
+      "artifact_type": "summary.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42/summary.csv",
+      "required": true,
+      "sha256": "49e35581aba1a1351d30e6d7b81734b5ee0b84cd8cea6b3ca284ddf776c310b5",
+      "size_bytes": 542,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/iroute-domain-fail-s42/summary.csv"
+    },
+    {
+      "artifact_type": "query_log.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42/query_log.csv",
+      "required": true,
+      "sha256": "f7d97f296fb59ef21d24d5123ed165f9ef0f8ae23f0bb22f1f2043068ef11bde",
+      "size_bytes": 39250,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/iroute-domain-fail-s42/query_log.csv"
+    },
+    {
+      "artifact_type": "latency_sanity.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42/latency_sanity.csv",
+      "required": true,
+      "sha256": "808cf7c34a4fd4a583d9b532b983b2a646ca9684f301935b6c4eb88adbfac2df",
+      "size_bytes": 386,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/iroute-domain-fail-s42/latency_sanity.csv"
+    },
+    {
+      "artifact_type": "failure_sanity.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42/failure_sanity.csv",
+      "required": false,
+      "sha256": "360fd65a83c1562fefa51201ab00f9668286adf3d09dcfbbb5f1eed401c1412b",
+      "size_bytes": 294,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/iroute-domain-fail-s42/failure_sanity.csv"
+    },
+    {
+      "artifact_type": "source_manifest.json",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42/source_manifest.json",
+      "required": false,
+      "sha256": "7b88393f9a51ca85ba44bdf2af693431027ecebcb0a2af26cd4b52b471721114",
+      "size_bytes": 758,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/iroute-domain-fail-s42/manifest.json"
+    },
+    {
+      "artifact_type": "source_run_manifest.json",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42/source_run_manifest.json",
+      "required": false,
+      "sha256": "ee65b434c2db9465928569a5a7b7c572d442fc55910f617cd20e1f6bf9fdd6f2",
+      "size_bytes": 2294,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/iroute-domain-fail-s42/run_manifest.json"
+    }
+  ],
+  "cache_mode": "disabled",
+  "canonical_dir": "results/runs/fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42",
+  "compatibility": {
+    "legacy_results_path": "",
+    "legacy_status": "canonical_staging"
+  },
+  "cs_size": 0,
+  "git_commit": "24e55cc2c16857dcf93ff8e9c51496af8d76af56",
+  "major_options": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "data_freshness_ms": 60000,
+    "domains": 8,
+    "frequency": 2,
+    "measure_start_sec": 0,
+    "paper_grade": 1,
+    "run_mode": "failure_run",
+    "scheme": "iroute",
+    "seed": 42,
+    "sim_time": 32,
+    "topology": "redundant",
+    "topology_file": "/Users/jiyuan/Desktop/ndnSIM/ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt",
+    "warmup_sec": 0
+  },
+  "notes": [],
+  "promoted_at_utc": "2026-03-10T17:40:55.104225+00:00",
+  "run_class": "paper_grade",
+  "run_id": "fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42",
+  "runner": "ns-3/experiments/runners/run_failure_experiment.sh",
+  "schema_version": 1,
+  "seed_provenance": "native",
+  "source_dir": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/iroute-domain-fail-s42",
+  "source_kind": "failure_paper_grade_staging",
+  "source_manifests": {
+    "direct_manifest": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/iroute-domain-fail-s42/manifest.json",
+    "runner_manifest": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/iroute-domain-fail-s42/run_manifest.json"
+  },
+  "workflow": "failure_paper_grade_minimal"
+}

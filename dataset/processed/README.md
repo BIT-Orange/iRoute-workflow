@@ -1,9 +1,13 @@
-# Processed Data Placeholder
+# Processed Datasets
 
 This is the canonical home for experiment-ready iRoute datasets.
 
-Target location for the current working set:
+Current physically promoted working set:
 
 - `dataset/processed/sdm_smartcity_dataset/`
 
-In this phase the runners already prefer this location, but they still fall back to `ns-3/dataset/sdm_smartcity_dataset/` until the files are physically promoted.
+The canonical file index for that working set is:
+
+- `dataset/manifests/sdm_smartcity_dataset.index.json`
+
+Legacy compatibility remains available through `ns-3/dataset/sdm_smartcity_dataset/`, but the active workflow should no longer require that fallback for the smart-city inputs.

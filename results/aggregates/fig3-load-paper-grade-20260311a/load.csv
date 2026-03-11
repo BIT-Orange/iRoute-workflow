@@ -1,0 +1,13 @@
+scheme,frequency,mean_hops
+central,5,0.0
+central,10,0.0
+central,20,0.0
+flood,5,5.0
+flood,10,5.1
+flood,20,5.14
+iroute,5,5.04
+iroute,10,5.1
+iroute,20,5.14
+tag,5,5.27
+tag,10,5.23
+tag,20,5.91

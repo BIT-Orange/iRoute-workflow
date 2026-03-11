@@ -37,18 +37,15 @@
     },
     {
       "id": "CLM-EVAL-002",
-      "title": "Archived Figs. 1 and 2 are cache-enabled SANR workflow evidence",
+      "title": "Legacy SANR workflow remains cache-enabled exploratory evidence",
       "paper_anchor": "sec:eval_setup",
       "paper_markers": [
         "claim-id: eval-setup-cache-enabled-sanr-bundle"
       ],
-      "statement": "The archived repository bundle for Figs. 1 and 2 comes from the cache-enabled SANR workflow and should not be conflated with cache-disabled routing-only paper evidence.",
+      "statement": "The repository still contains a cache-enabled SANR workflow for cache-behavior studies, but that workflow is exploratory and is not the canonical source of the current cache-disabled paper figures.",
       "claim_kind": "methodology",
       "status": "supported",
-      "related_figures": [
-        "paper/figs/fig1_accuracy_overhead.pdf",
-        "paper/figs/fig2_retrieval_cdf.pdf"
-      ],
+      "related_figures": [],
       "related_aggregates": [],
       "related_runs": {
         "run_ids": [],
@@ -60,8 +57,8 @@
       ],
       "minimum_run_evidence": "none",
       "notes": [
-        "This claim is about figure provenance and workflow semantics.",
-        "It remains supported even though the corresponding quantitative conclusions stay provisional until rerun under the paper-grade suite."
+        "This claim is about workflow separation, not the quantitative status of the current paper figures.",
+        "The canonical Fig. 1/Fig. 2 PDFs are now regenerated from cache-disabled paper-grade runs."
       ]
     },
     {
@@ -120,30 +117,43 @@
       "paper_markers": [
         "claim-id: eval-correctness-bounded-advertisements"
       ],
-      "statement": "Increasing the advertisement budget M generally improves domain coverage, while increasing K raises the chance that a relevant domain is probed at the cost of more discovery traffic.",
+      "statement": "In the canonical cache-disabled paper-grade accuracy bundle, increasing the advertisement budget M improves iRoute's domain coverage at the cost of higher control overhead, while flooding remains a high-overhead reference and the centralized directory remains an oracle upper bound.",
       "claim_kind": "quantitative",
-      "status": "provisional",
+      "status": "supported",
       "related_figures": [
         "paper/figs/fig1_accuracy_overhead.pdf"
       ],
       "related_aggregates": [
-        "results/aggregates/run_index.csv",
-        "results/aggregates/summary_rows.csv"
+        "results/aggregates/fig12-paper-grade-20260310a/accuracy_sweep.csv",
+        "results/aggregates/fig12-paper-grade-20260310a/comparison.csv",
+        "results/aggregates/fig12-paper-grade-20260310a/fig12_paper_grade_report.json"
       ],
       "related_runs": {
-        "run_ids": [],
+        "run_ids": [
+          "fig12-paper-grade-20260310a-central_proc2_s42",
+          "fig12-paper-grade-20260310a-flood_budget2_s42",
+          "fig12-paper-grade-20260310a-flood_budget4_s42",
+          "fig12-paper-grade-20260310a-flood_budget8_s42",
+          "fig12-paper-grade-20260310a-iroute_M1_s42",
+          "fig12-paper-grade-20260310a-iroute_M4_s42",
+          "fig12-paper-grade-20260310a-iroute_M8_s42",
+          "fig12-paper-grade-20260310a-tag_tagK8_s42",
+          "fig12-paper-grade-20260310a-tag_tagK16_s42",
+          "fig12-paper-grade-20260310a-tag_tagK32_s42"
+        ],
         "run_classes": [
           "paper_grade"
         ]
       },
       "static_evidence": [
-        "ns-3/experiments/manifests/paper_suite.json",
-        "ns-3/experiments/manifests/sanr_baseline.json"
+        "ns-3/experiments/runners/run_accuracy_experiment.sh",
+        "results/figures/fig1_accuracy_overhead.paper_grade.figure.json"
       ],
       "minimum_run_evidence": "paper_grade",
       "notes": [
-        "The current archived figure exists, but the paper itself already limits it to the cache-enabled SANR workflow.",
-        "No canonical paper-grade accuracy runs are promoted under results/runs yet."
+        "This focused paper-grade rerun uses native seed 42 only and promotes every plotted run into results/runs/.",
+        "The promoted Fig. 1 bundle contains three sweep points each for iRoute, Flood, and Tag-FIB plus a single centralized oracle reference point.",
+        "The claim is intentionally narrowed to the M-versus-overhead tradeoff that the promoted Fig. 1 bundle actually measures."
       ]
     },
     {
@@ -153,29 +163,37 @@
       "paper_markers": [
         "claim-id: eval-latency-selective-probing"
       ],
-      "statement": "Selective probing reduces unnecessary traversal compared to flooding, but current archived latency evidence remains cache-enabled and should not be read as a routing-only latency result.",
+      "statement": "In the canonical cache-disabled paper-grade latency bundle, selective probing avoids the high-overhead flood search profile while remaining distinct from the centralized oracle upper bound.",
       "claim_kind": "quantitative",
-      "status": "provisional",
+      "status": "supported",
       "related_figures": [
         "paper/figs/fig2_retrieval_cdf.pdf"
       ],
       "related_aggregates": [
-        "results/aggregates/run_index.csv",
-        "results/aggregates/summary_rows.csv"
+        "results/aggregates/fig12-paper-grade-20260310a/reference_runs.csv",
+        "results/aggregates/fig12-paper-grade-20260310a/fig2_latency_summary.csv",
+        "results/aggregates/fig12-paper-grade-20260310a/fig12_paper_grade_report.json"
       ],
       "related_runs": {
-        "run_ids": [],
+        "run_ids": [
+          "fig12-paper-grade-20260310a-central_proc2_s42",
+          "fig12-paper-grade-20260310a-flood_budget8_s42",
+          "fig12-paper-grade-20260310a-iroute_M4_s42",
+          "fig12-paper-grade-20260310a-tag_tagK32_s42"
+        ],
         "run_classes": [
           "paper_grade"
         ]
       },
       "static_evidence": [
-        "ns-3/experiments/manifests/paper_suite.json",
-        "ns-3/experiments/manifests/sanr_baseline.json"
+        "ns-3/experiments/runners/run_accuracy_experiment.sh",
+        "results/figures/fig2_retrieval_cdf.paper_grade.figure.json"
       ],
       "minimum_run_evidence": "paper_grade",
       "notes": [
-        "The figure file exists, but the repository does not yet contain promoted paper-grade latency runs or a regenerated routing-only latency plot."
+        "This focused paper-grade rerun uses the reference runs selected by the canonical Fig. 2 bundle.",
+        "The promoted Fig. 2 bundle uses iRoute(M=4), Flood(budget=8), Tag-FIB(tagK=32), and the centralized oracle reference under cache-disabled semantics.",
+        "The claim is intentionally scoped to the selective-probing versus flooding latency profile captured by the promoted routing-only CDF."
       ]
     },
     {
@@ -185,26 +203,49 @@
       "paper_markers": [
         "claim-id: eval-latency-selective-probing"
       ],
-      "statement": "Average hop count under offered load cannot currently be defended because the canonical Fig. 3 artifact is missing and no paper-grade load aggregate is promoted.",
+      "statement": "A focused cache-disabled paper-grade load batch now reproduces the Fig. 3 hop-versus-load family under native seed provenance, but the claim remains provisional until the paper figure is synchronized and the full paper-grade load sweep is rerun at final scope.",
       "claim_kind": "quantitative",
-      "status": "blocked",
+      "status": "provisional",
       "related_figures": [
         "paper/figs/fig3_hop_load.pdf"
       ],
-      "related_aggregates": [],
+      "related_figure_manifests": [
+        "results/figures/fig3_hop_load.paper_grade.figure.json"
+      ],
+      "related_aggregates": [
+        "results/aggregates/fig3-load-paper-grade-20260311a/load_sweep.csv",
+        "results/aggregates/fig3-load-paper-grade-20260311a/load.csv",
+        "results/aggregates/fig3-load-paper-grade-20260311a/load_paper_grade_report.json"
+      ],
       "related_runs": {
-        "run_ids": [],
+        "run_ids": [
+          "fig3-load-paper-grade-20260311a-central_freq10_s42",
+          "fig3-load-paper-grade-20260311a-central_freq20_s42",
+          "fig3-load-paper-grade-20260311a-central_freq5_s42",
+          "fig3-load-paper-grade-20260311a-flood_freq10_s42",
+          "fig3-load-paper-grade-20260311a-flood_freq20_s42",
+          "fig3-load-paper-grade-20260311a-flood_freq5_s42",
+          "fig3-load-paper-grade-20260311a-iroute_freq10_s42",
+          "fig3-load-paper-grade-20260311a-iroute_freq20_s42",
+          "fig3-load-paper-grade-20260311a-iroute_freq5_s42",
+          "fig3-load-paper-grade-20260311a-tag_freq10_s42",
+          "fig3-load-paper-grade-20260311a-tag_freq20_s42",
+          "fig3-load-paper-grade-20260311a-tag_freq5_s42"
+        ],
         "run_classes": [
           "paper_grade"
         ]
       },
       "static_evidence": [
-        "ns-3/experiments/manifests/paper_suite.json"
+        "ns-3/experiments/manifests/paper_suite.json",
+        "ns-3/experiments/runners/run_load_experiment.sh",
+        "scripts/fig345_paper_grade.py"
       ],
       "minimum_run_evidence": "paper_grade",
       "notes": [
-        "Missing figure file is a hard blocker.",
-        "A paper-grade load rerun and promoted aggregate are still required."
+        "The minimal Fig. 3 batch is promoted into results/runs and results/aggregates with cache_mode=disabled and seed_provenance=native.",
+        "The paper-facing figure file paper/figs/fig3_hop_load.pdf is still missing, so the claim cannot be treated as publishable evidence yet.",
+        "A broader final-scope paper-grade load rerun is still required before this claim can become supported."
       ]
     },
     {
@@ -214,31 +255,44 @@
       "paper_markers": [
         "claim-id: eval-scalability-bounded-state"
       ],
-      "statement": "The bounded-state scaling claim remains blocked because the canonical Fig. 4 file is missing and the only promoted scaling run is exploratory rather than paper-grade.",
+      "statement": "A focused cache-disabled paper-grade scaling batch now reproduces the Fig. 4 state-scaling family for a reduced domain sweep, but the claim remains provisional until the wider paper-grade domain sweep is rerun and synchronized into the paper tree.",
       "claim_kind": "quantitative",
-      "status": "blocked",
+      "status": "provisional",
       "related_figures": [
         "paper/figs/fig4_state_scaling.pdf"
       ],
+      "related_figure_manifests": [
+        "results/figures/fig4_state_scaling.paper_grade.figure.json"
+      ],
       "related_aggregates": [
-        "results/aggregates/run_index.csv",
-        "results/aggregates/summary_rows.csv"
+        "results/aggregates/fig4-scaling-paper-grade-20260311b/scaling.csv",
+        "results/aggregates/fig4-scaling-paper-grade-20260311b/scaling_paper_grade_report.json"
       ],
       "related_runs": {
         "run_ids": [
-          "legacy-sanr-baseline-exp4-scaling-iroute-d8-s42"
+          "fig4-scaling-paper-grade-20260311b-central_d16_s42",
+          "fig4-scaling-paper-grade-20260311b-central_d8_s42",
+          "fig4-scaling-paper-grade-20260311b-flood_d16_s42",
+          "fig4-scaling-paper-grade-20260311b-flood_d8_s42",
+          "fig4-scaling-paper-grade-20260311b-iroute_d16_s42",
+          "fig4-scaling-paper-grade-20260311b-iroute_d8_s42",
+          "fig4-scaling-paper-grade-20260311b-tag_d16_s42",
+          "fig4-scaling-paper-grade-20260311b-tag_d8_s42"
         ],
         "run_classes": [
           "paper_grade"
         ]
       },
       "static_evidence": [
-        "ns-3/experiments/manifests/paper_suite.json"
+        "ns-3/experiments/manifests/paper_suite.json",
+        "ns-3/experiments/runners/run_scaling_experiment.sh",
+        "scripts/fig345_paper_grade.py"
       ],
       "minimum_run_evidence": "paper_grade",
       "notes": [
-        "The promoted legacy scaling run helps trace historical evidence, but it remains exploratory and cache-enabled.",
-        "The figure file referenced by the paper is still missing."
+        "The minimal Fig. 4 batch is promoted under paper_grade semantics, but it currently spans only the reduced 8/16-domain validation sweep.",
+        "The paper-facing figure file paper/figs/fig4_state_scaling.pdf is still missing, so the claim remains provisional rather than publishable.",
+        "A broader final-scope paper-grade scaling rerun is still required before this claim can become supported."
       ]
     },
     {
@@ -248,7 +302,7 @@
       "paper_markers": [
         "claim-id: eval-robustness-recovery"
       ],
-      "statement": "The churn, link-failure, and domain-failure recovery claims remain blocked until the canonical Fig. 5 panels and paper-grade failure runs are regenerated and promoted.",
+      "statement": "A focused cache-disabled paper-grade failure batch now regenerates the Fig. 5 panel family under native seed provenance, but the robustness claim remains blocked because the paper-facing figures are unsynchronized and the minimal churn batch still contains an ineffective iRoute disruption.",
       "claim_kind": "quantitative",
       "status": "blocked",
       "related_figures": [
@@ -256,20 +310,41 @@
         "paper/figs/fig5_recovery_link-fail.pdf",
         "paper/figs/fig5_recovery_domain-fail.pdf"
       ],
-      "related_aggregates": [],
+      "related_figure_manifests": [
+        "results/figures/fig5_recovery_churn.paper_grade.figure.json",
+        "results/figures/fig5_recovery_link-fail.paper_grade.figure.json",
+        "results/figures/fig5_recovery_domain-fail.paper_grade.figure.json"
+      ],
+      "related_aggregates": [
+        "results/aggregates/fig5-failure-paper-grade-20260311c/recovery_summary.csv",
+        "results/aggregates/fig5-failure-paper-grade-20260311c/failure_paper_grade_report.json"
+      ],
       "related_runs": {
-        "run_ids": [],
+        "run_ids": [
+          "fig5-failure-paper-grade-20260311c-central-churn-s42",
+          "fig5-failure-paper-grade-20260311c-central-domain-fail-s42",
+          "fig5-failure-paper-grade-20260311c-central-link-fail-s42",
+          "fig5-failure-paper-grade-20260311c-flood-churn-s42",
+          "fig5-failure-paper-grade-20260311c-flood-domain-fail-s42",
+          "fig5-failure-paper-grade-20260311c-flood-link-fail-s42",
+          "fig5-failure-paper-grade-20260311c-iroute-churn-s42",
+          "fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42",
+          "fig5-failure-paper-grade-20260311c-iroute-link-fail-s42"
+        ],
         "run_classes": [
           "paper_grade"
         ]
       },
       "static_evidence": [
-        "ns-3/experiments/manifests/paper_suite.json"
+        "ns-3/experiments/manifests/paper_suite.json",
+        "ns-3/experiments/runners/run_failure_experiment.sh",
+        "scripts/fig345_paper_grade.py"
       ],
       "minimum_run_evidence": "paper_grade",
       "notes": [
-        "All three referenced figure panels are missing from paper/figs.",
-        "No canonical paper-grade failure runs are promoted under results/runs yet."
+        "All three paper-facing figure panels are still missing from paper/figs even though partial paper-grade figure provenance now exists under results/figures.",
+        "The minimal failure batch promoted canonical paper-grade runs, but iroute-churn-s42 recorded failure_effective=0 and therefore does not yet support the churn-recovery claim.",
+        "A corrected final-scope paper-grade failure rerun is still required before this claim can be upgraded."
       ]
     }
   ]

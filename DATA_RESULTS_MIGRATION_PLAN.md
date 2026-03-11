@@ -15,8 +15,8 @@ These paths become the canonical homes now:
 - `paper/figs/`
   - canonical figure include tree for `paper/main.tex`
 
-In this phase, canonicalization is logical first and physical second.
-The active smart-city working set is still stored on disk under `ns-3/dataset/sdm_smartcity_dataset/`, but runners should now resolve that data through a canonical top-level path policy with an explicit fallback.
+In this phase, canonicalization started as logical-first and physical-second.
+The active smart-city working set has since been physically promoted under `dataset/processed/sdm_smartcity_dataset/`, while non-active legacy-only dataset content remains in `ns-3/dataset/`.
 
 ## Legacy Paths Still Supported
 
@@ -103,6 +103,6 @@ Mitigations:
 
 Still deferred after this phase:
 
-- physically moving `ns-3/dataset/sdm_smartcity_dataset/` into `dataset/processed/sdm_smartcity_dataset/`
+- curating the remaining legacy-only dataset trees and raw archives out of `ns-3/dataset/`
 - re-curating historical `ns-3/results/` bundles into canonical `results/runs/`, `results/aggregates/`, and `results/figures/`
 - cleaning absolute-path residue from older figure indexes and legacy summary CSVs

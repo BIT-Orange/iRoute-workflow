@@ -1,18 +1,14 @@
-name: Paper Preflight
+name: Paper Release Preflight
 
 on:
-  pull_request:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
-  paper-preflight:
+  paper-release-preflight:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Run canonical paper preflight
-        run: bash scripts/workflow.sh paper-preflight
+      - name: Run strict paper-release gate
+        run: bash scripts/workflow.sh paper-release-gate

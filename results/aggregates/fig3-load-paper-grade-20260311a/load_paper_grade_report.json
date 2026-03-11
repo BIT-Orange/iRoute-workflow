@@ -1,0 +1,35 @@
+{
+  "aggregate_bundle_dir": "results/aggregates/fig3-load-paper-grade-20260311a",
+  "aggregate_inputs": [
+    "results/aggregates/fig3-load-paper-grade-20260311a/load_sweep.csv",
+    "results/aggregates/fig3-load-paper-grade-20260311a/load.csv"
+  ],
+  "batch_id": "fig3-load-paper-grade-20260311a",
+  "family": "load",
+  "generated_at_utc": "2026-03-10T17:14:32.847634+00:00",
+  "notes": [
+    "Focused minimal paper-grade batch for pipeline validation.",
+    "Full paper-grade reruns are still required before the figure can be treated as published paper evidence."
+  ],
+  "policy": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "run_class": "paper_grade",
+    "seed_provenance": "native"
+  },
+  "run_ids": [
+    "fig3-load-paper-grade-20260311a-central_freq10_s42",
+    "fig3-load-paper-grade-20260311a-central_freq20_s42",
+    "fig3-load-paper-grade-20260311a-central_freq5_s42",
+    "fig3-load-paper-grade-20260311a-flood_freq10_s42",
+    "fig3-load-paper-grade-20260311a-flood_freq20_s42",
+    "fig3-load-paper-grade-20260311a-flood_freq5_s42",
+    "fig3-load-paper-grade-20260311a-iroute_freq10_s42",
+    "fig3-load-paper-grade-20260311a-iroute_freq20_s42",
+    "fig3-load-paper-grade-20260311a-iroute_freq5_s42",
+    "fig3-load-paper-grade-20260311a-tag_freq10_s42",
+    "fig3-load-paper-grade-20260311a-tag_freq20_s42",
+    "fig3-load-paper-grade-20260311a-tag_freq5_s42"
+  ],
+  "status": "partial"
+}

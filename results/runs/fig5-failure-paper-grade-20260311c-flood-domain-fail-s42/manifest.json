@@ -1,0 +1,90 @@
+{
+  "artifacts": [
+    {
+      "artifact_type": "summary.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-flood-domain-fail-s42/summary.csv",
+      "required": true,
+      "sha256": "f310802b0add0980ef01c85019f6bbf0b346accafeca21ff71f936672ed129ab",
+      "size_bytes": 538,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/flood-domain-fail-s42/summary.csv"
+    },
+    {
+      "artifact_type": "query_log.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-flood-domain-fail-s42/query_log.csv",
+      "required": true,
+      "sha256": "b907a3b273efbc310a175741b1ac90a05b500a5801fa38817cf95bccb18e9085",
+      "size_bytes": 34996,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/flood-domain-fail-s42/query_log.csv"
+    },
+    {
+      "artifact_type": "latency_sanity.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-flood-domain-fail-s42/latency_sanity.csv",
+      "required": true,
+      "sha256": "bf9b7b2c042bf07a5d834413e304d5137cc9385e0ee50946d2051c6999609e0a",
+      "size_bytes": 380,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/flood-domain-fail-s42/latency_sanity.csv"
+    },
+    {
+      "artifact_type": "failure_sanity.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-flood-domain-fail-s42/failure_sanity.csv",
+      "required": false,
+      "sha256": "900d3deafdf78c0b862453bf1062ad9373f7a2beedcb9ea9c02aaf4b29c9841a",
+      "size_bytes": 294,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/flood-domain-fail-s42/failure_sanity.csv"
+    },
+    {
+      "artifact_type": "source_manifest.json",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-flood-domain-fail-s42/source_manifest.json",
+      "required": false,
+      "sha256": "e6cd90c95ff7856cbec436e26abb3b0d01b1f9668c582ef64dbdcb94a34e4080",
+      "size_bytes": 756,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/flood-domain-fail-s42/manifest.json"
+    },
+    {
+      "artifact_type": "source_run_manifest.json",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-flood-domain-fail-s42/source_run_manifest.json",
+      "required": false,
+      "sha256": "195ec9684b4f369b34ad4a3d63f9f4b08ecc4793299ef8920c286d33e6561182",
+      "size_bytes": 2291,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/flood-domain-fail-s42/run_manifest.json"
+    }
+  ],
+  "cache_mode": "disabled",
+  "canonical_dir": "results/runs/fig5-failure-paper-grade-20260311c-flood-domain-fail-s42",
+  "compatibility": {
+    "legacy_results_path": "",
+    "legacy_status": "canonical_staging"
+  },
+  "cs_size": 0,
+  "git_commit": "24e55cc2c16857dcf93ff8e9c51496af8d76af56",
+  "major_options": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "data_freshness_ms": 60000,
+    "domains": 8,
+    "frequency": 2,
+    "measure_start_sec": 0,
+    "paper_grade": 1,
+    "run_mode": "failure_run",
+    "scheme": "flood",
+    "seed": 42,
+    "sim_time": 32,
+    "topology": "redundant",
+    "topology_file": "/Users/jiyuan/Desktop/ndnSIM/ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt",
+    "warmup_sec": 0
+  },
+  "notes": [],
+  "promoted_at_utc": "2026-03-10T17:40:55.239253+00:00",
+  "run_class": "paper_grade",
+  "run_id": "fig5-failure-paper-grade-20260311c-flood-domain-fail-s42",
+  "runner": "ns-3/experiments/runners/run_failure_experiment.sh",
+  "schema_version": 1,
+  "seed_provenance": "native",
+  "source_dir": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/flood-domain-fail-s42",
+  "source_kind": "failure_paper_grade_staging",
+  "source_manifests": {
+    "direct_manifest": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/flood-domain-fail-s42/manifest.json",
+    "runner_manifest": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/flood-domain-fail-s42/run_manifest.json"
+  },
+  "workflow": "failure_paper_grade_minimal"
+}

@@ -1,0 +1,5 @@
+scheme,n_runs,oracle_flag,p50_ms,p95_ms,timeout_rate,n_success,unique_rtt_values,cache_mode,run_class,seed_provenance,paper_grade
+central,1,1,9.608100,13.933000,0.000000,425.000000,390.000000,disabled,paper_grade,native,true
+flood,1,0,50.633100,57.265500,0.014118,419.000000,322.000000,disabled,paper_grade,native,true
+iroute,1,0,47.960100,56.503400,0.000000,425.000000,272.000000,disabled,paper_grade,native,true
+tag,1,0,48.654400,53.635800,0.000000,425.000000,408.000000,disabled,paper_grade,native,true

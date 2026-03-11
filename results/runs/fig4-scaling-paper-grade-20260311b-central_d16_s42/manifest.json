@@ -1,0 +1,89 @@
+{
+  "artifacts": [
+    {
+      "artifact_type": "summary.csv",
+      "canonical_path": "results/runs/fig4-scaling-paper-grade-20260311b-central_d16_s42/summary.csv",
+      "required": true,
+      "sha256": "c16eaa4326ed58ffb42e5af89f1152f180590e7f49fe094e6c93d4ab210ed6ff",
+      "size_bytes": 537,
+      "source_path": "/private/tmp/fig4-scaling-paper-grade-20260311b-stage/central_d16_s42/summary.csv"
+    },
+    {
+      "artifact_type": "query_log.csv",
+      "canonical_path": "results/runs/fig4-scaling-paper-grade-20260311b-central_d16_s42/query_log.csv",
+      "required": true,
+      "sha256": "08ee69689973c9884e4f5cdf5ab9801a9c99b71a2a45736f71e4383bdb231292",
+      "size_bytes": 17486,
+      "source_path": "/private/tmp/fig4-scaling-paper-grade-20260311b-stage/central_d16_s42/query_log.csv"
+    },
+    {
+      "artifact_type": "latency_sanity.csv",
+      "canonical_path": "results/runs/fig4-scaling-paper-grade-20260311b-central_d16_s42/latency_sanity.csv",
+      "required": true,
+      "sha256": "a07846ced156ee570398803f07682491988f09520f12956835472502eac7867c",
+      "size_bytes": 366,
+      "source_path": "/private/tmp/fig4-scaling-paper-grade-20260311b-stage/central_d16_s42/latency_sanity.csv"
+    },
+    {
+      "artifact_type": "failure_sanity.csv",
+      "canonical_path": "results/runs/fig4-scaling-paper-grade-20260311b-central_d16_s42/failure_sanity.csv",
+      "required": false,
+      "sha256": "66a8dd6d79427086f5fa66227f55bdb4e196d5c26a302ccf18ee4c01e983e734",
+      "size_bytes": 246,
+      "source_path": "/private/tmp/fig4-scaling-paper-grade-20260311b-stage/central_d16_s42/failure_sanity.csv"
+    },
+    {
+      "artifact_type": "source_manifest.json",
+      "canonical_path": "results/runs/fig4-scaling-paper-grade-20260311b-central_d16_s42/source_manifest.json",
+      "required": false,
+      "sha256": "2784fef3e951c0bf4d60ef8e63106b32c572862b6fb993b3897e6e8079a4d41f",
+      "size_bytes": 739,
+      "source_path": "/private/tmp/fig4-scaling-paper-grade-20260311b-stage/central_d16_s42/manifest.json"
+    },
+    {
+      "artifact_type": "source_run_manifest.json",
+      "canonical_path": "results/runs/fig4-scaling-paper-grade-20260311b-central_d16_s42/source_run_manifest.json",
+      "required": false,
+      "sha256": "2030a858a6b8f4faa928a9395b38c0487425fd859fa9f22371e1b2eebdce733f",
+      "size_bytes": 2106,
+      "source_path": "/private/tmp/fig4-scaling-paper-grade-20260311b-stage/central_d16_s42/run_manifest.json"
+    }
+  ],
+  "cache_mode": "disabled",
+  "canonical_dir": "results/runs/fig4-scaling-paper-grade-20260311b-central_d16_s42",
+  "compatibility": {
+    "legacy_results_path": "",
+    "legacy_status": "canonical_staging"
+  },
+  "cs_size": 0,
+  "git_commit": "24e55cc2c16857dcf93ff8e9c51496af8d76af56",
+  "major_options": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "data_freshness_ms": 60000,
+    "domains": 16,
+    "frequency": 2,
+    "measure_start_sec": 0,
+    "paper_grade": 1,
+    "run_mode": "scaling_run",
+    "scheme": "central",
+    "seed": 42,
+    "sim_time": 16,
+    "topology": "rocketfuel",
+    "warmup_sec": 0
+  },
+  "notes": [],
+  "promoted_at_utc": "2026-03-10T17:40:11.620795+00:00",
+  "run_class": "paper_grade",
+  "run_id": "fig4-scaling-paper-grade-20260311b-central_d16_s42",
+  "runner": "ns-3/experiments/runners/run_scaling_experiment.sh",
+  "schema_version": 1,
+  "seed_provenance": "native",
+  "source_dir": "/private/tmp/fig4-scaling-paper-grade-20260311b-stage/central_d16_s42",
+  "source_kind": "scaling_paper_grade_staging",
+  "source_manifests": {
+    "direct_manifest": "/private/tmp/fig4-scaling-paper-grade-20260311b-stage/central_d16_s42/manifest.json",
+    "runner_manifest": "/private/tmp/fig4-scaling-paper-grade-20260311b-stage/central_d16_s42/run_manifest.json"
+  },
+  "workflow": "scaling_paper_grade_minimal"
+}

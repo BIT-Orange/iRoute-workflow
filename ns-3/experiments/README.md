@@ -77,7 +77,7 @@ The following legacy paths still exist and delegate to the canonical scripts:
 
 - Scripts auto-set `HOME` to `ns-3/.home` to avoid host `~/.ndn` permission issues.
 - If present, `ns-3/.venv/bin` is added to `PATH` automatically.
-- Canonical dataset root is `../dataset/`, with runners preferring `../dataset/processed/` and falling back to `ns-3/dataset/` if the physical migration is incomplete.
+- Canonical dataset root is `../dataset/`; the active smart-city working set now lives under `../dataset/processed/sdm_smartcity_dataset/`, while fallback to `ns-3/dataset/` remains only for not-yet-promoted legacy-only inputs.
 - Canonical results root is `../results/`; active runner defaults now emit there.
 - Root `../figures/` is a legacy compatibility mirror. Canonical generated figure bundles belong under `../results/figures/`.
 - Reproducibility metadata now lands in `run_manifest.json` files under repaired workflow output directories.

@@ -20,6 +20,15 @@ if [ -x "$NS3_DIR/.venv/bin/python" ]; then
   PYTHON_BIN="$NS3_DIR/.venv/bin/python"
 fi
 
+resolve_path() {
+  local path="$1"
+  if [[ "$path" = /* ]]; then
+    printf '%s\n' "$path"
+  else
+    printf '%s\n' "$NS3_DIR/$path"
+  fi
+}
+
 validate_cache_settings() {
   CACHE_MODE="${CACHE_MODE:-disabled}"
   if ! [[ "$CS_SIZE" =~ ^-?[0-9]+$ ]]; then
@@ -75,6 +84,7 @@ SANR_SLOT_SEC="${SANR_SLOT_SEC:-5.0}"
 SANR_CCN_K="${SANR_CCN_K:-1}"
 SANR_TOP_L="${SANR_TOP_L:-32}"
 DATA_FRESHNESS_MS="${DATA_FRESHNESS_MS:-60000}"
+PAPER_GRADE="${PAPER_GRADE:-0}"
 
 TRACE="${TRACE:-$(iroute_resolve_dataset_file "sdm_smartcity_dataset/consumer_trace.csv")}"
 SHUFFLE_TRACE="${SHUFFLE_TRACE:-1}"
@@ -158,6 +168,35 @@ for scheme in $SCHEMES; do
           > "$run_dir/console.log" 2>&1
       fi
 
+      "$PYTHON_BIN" experiments/manifests/write_run_manifest.py \
+        --repo-root "$ROOT_DIR" \
+        --output "$run_dir/run_manifest.json" \
+        --workflow load_run \
+        --runner ns-3/experiments/runners/run_load_experiment.sh \
+        --output-dir "$(resolve_path "$run_dir")" \
+        --input "$(resolve_path "$TRACE")" \
+        --input "$(resolve_path "$CENTROIDS")" \
+        --input "$(resolve_path "$CONTENT")" \
+        --input "$(resolve_path "$QRELS")" \
+        --input "$(resolve_path "$TAG_INDEX")" \
+        --input "$(resolve_path "$QUERY_TO_TAG")" \
+        --input "$(resolve_path "$INDEX")" \
+        --input "$(resolve_path "$TOPO_FILE")" \
+        --field "run_id=\"$run_id\"" \
+        --field "scheme=\"$scheme\"" \
+        --field "seed=$seed" \
+        --field "frequency=$freq" \
+        --field "sim_time=$sim_time" \
+        --field "cache_mode=\"$CACHE_MODE\"" \
+        --field "cs_size=$CS_SIZE" \
+        --field "run_mode=\"load_run\"" \
+        --field "paper_grade=$PAPER_GRADE" \
+        --field "seed_provenance=\"native\"" \
+        --field "domains=$DOMAINS" \
+        --field "topology=\"$TOPO\"" \
+        --field "topology_file=\"$(resolve_path "$TOPO_FILE")\"" \
+        --field "trace=\"$(resolve_path "$TRACE")\""
+
       "$PYTHON_BIN" - "$run_dir/summary.csv" "$run_id" "$scheme" "$seed" "$freq" "$sim_time" "$run_dir" "$TOPO" <<'PY' \
         >> "$SWEEP_CSV"
 import csv
@@ -225,6 +264,29 @@ if df.empty:
 agg = df.groupby(['scheme', 'frequency'], as_index=False)['mean_hops'].mean()
 agg.to_csv(out_csv, index=False)
 PY
+
+"$PYTHON_BIN" experiments/manifests/write_run_manifest.py \
+  --repo-root "$ROOT_DIR" \
+  --output "$RESULT_DIR/run_manifest.json" \
+  --workflow load_experiment \
+  --runner ns-3/experiments/runners/run_load_experiment.sh \
+  --output-dir "$(resolve_path "$RESULT_DIR")" \
+  --input "$(resolve_path "$TRACE")" \
+  --input "$(resolve_path "$CENTROIDS")" \
+  --input "$(resolve_path "$CONTENT")" \
+  --input "$(resolve_path "$QRELS")" \
+  --input "$(resolve_path "$TAG_INDEX")" \
+  --input "$(resolve_path "$QUERY_TO_TAG")" \
+  --input "$(resolve_path "$INDEX")" \
+  --input "$(resolve_path "$TOPO_FILE")" \
+  --field "cache_mode=\"$CACHE_MODE\"" \
+  --field "cs_size=$CS_SIZE" \
+  --field "run_mode=\"load_aggregate\"" \
+  --field "paper_grade=$PAPER_GRADE" \
+  --field "seed_provenance=\"aggregate\"" \
+  --field "frequencies=\"$FREQS\"" \
+  --field "seeds=\"$SEEDS\"" \
+  --field "topology=\"$TOPO\""
 
 echo "[load] done: $SWEEP_CSV"
 echo "[load] summary: $LOAD_CSV"

@@ -1,0 +1,89 @@
+{
+  "artifacts": [
+    {
+      "artifact_type": "summary.csv",
+      "canonical_path": "results/runs/fig4-scaling-paper-grade-20260311b-iroute_d8_s42/summary.csv",
+      "required": true,
+      "sha256": "8b90a3b2cae58c7487ffcd4a6e1931840f89518788d992d2f463bd3b4addcb3e",
+      "size_bytes": 538,
+      "source_path": "/private/tmp/fig4-scaling-paper-grade-20260311b-stage/iroute_d8_s42/summary.csv"
+    },
+    {
+      "artifact_type": "query_log.csv",
+      "canonical_path": "results/runs/fig4-scaling-paper-grade-20260311b-iroute_d8_s42/query_log.csv",
+      "required": true,
+      "sha256": "eb3f1446fa6e1d2ba070846b01966b4651b3bb13da7d0bcb019856a17d6d37c8",
+      "size_bytes": 21979,
+      "source_path": "/private/tmp/fig4-scaling-paper-grade-20260311b-stage/iroute_d8_s42/query_log.csv"
+    },
+    {
+      "artifact_type": "latency_sanity.csv",
+      "canonical_path": "results/runs/fig4-scaling-paper-grade-20260311b-iroute_d8_s42/latency_sanity.csv",
+      "required": true,
+      "sha256": "02da051ac5dccd80d075c3e4184852b01643401db79e94c5eeea70378264ed4a",
+      "size_bytes": 375,
+      "source_path": "/private/tmp/fig4-scaling-paper-grade-20260311b-stage/iroute_d8_s42/latency_sanity.csv"
+    },
+    {
+      "artifact_type": "failure_sanity.csv",
+      "canonical_path": "results/runs/fig4-scaling-paper-grade-20260311b-iroute_d8_s42/failure_sanity.csv",
+      "required": false,
+      "sha256": "66a8dd6d79427086f5fa66227f55bdb4e196d5c26a302ccf18ee4c01e983e734",
+      "size_bytes": 246,
+      "source_path": "/private/tmp/fig4-scaling-paper-grade-20260311b-stage/iroute_d8_s42/failure_sanity.csv"
+    },
+    {
+      "artifact_type": "source_manifest.json",
+      "canonical_path": "results/runs/fig4-scaling-paper-grade-20260311b-iroute_d8_s42/source_manifest.json",
+      "required": false,
+      "sha256": "61ed3635b541cc7490b1d96e669622b21e087603f53f751bfe55f149a658628d",
+      "size_bytes": 750,
+      "source_path": "/private/tmp/fig4-scaling-paper-grade-20260311b-stage/iroute_d8_s42/manifest.json"
+    },
+    {
+      "artifact_type": "source_run_manifest.json",
+      "canonical_path": "results/runs/fig4-scaling-paper-grade-20260311b-iroute_d8_s42/source_run_manifest.json",
+      "required": false,
+      "sha256": "1d1cb0ca749afa1b3fa20f65b88b38ac82ee9cdb479418a4f9b9173235282a1d",
+      "size_bytes": 2100,
+      "source_path": "/private/tmp/fig4-scaling-paper-grade-20260311b-stage/iroute_d8_s42/run_manifest.json"
+    }
+  ],
+  "cache_mode": "disabled",
+  "canonical_dir": "results/runs/fig4-scaling-paper-grade-20260311b-iroute_d8_s42",
+  "compatibility": {
+    "legacy_results_path": "",
+    "legacy_status": "canonical_staging"
+  },
+  "cs_size": 0,
+  "git_commit": "24e55cc2c16857dcf93ff8e9c51496af8d76af56",
+  "major_options": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "data_freshness_ms": 60000,
+    "domains": 8,
+    "frequency": 2,
+    "measure_start_sec": 0,
+    "paper_grade": 1,
+    "run_mode": "scaling_run",
+    "scheme": "iroute",
+    "seed": 42,
+    "sim_time": 16,
+    "topology": "rocketfuel",
+    "warmup_sec": 0
+  },
+  "notes": [],
+  "promoted_at_utc": "2026-03-10T17:40:11.666703+00:00",
+  "run_class": "paper_grade",
+  "run_id": "fig4-scaling-paper-grade-20260311b-iroute_d8_s42",
+  "runner": "ns-3/experiments/runners/run_scaling_experiment.sh",
+  "schema_version": 1,
+  "seed_provenance": "native",
+  "source_dir": "/private/tmp/fig4-scaling-paper-grade-20260311b-stage/iroute_d8_s42",
+  "source_kind": "scaling_paper_grade_staging",
+  "source_manifests": {
+    "direct_manifest": "/private/tmp/fig4-scaling-paper-grade-20260311b-stage/iroute_d8_s42/manifest.json",
+    "runner_manifest": "/private/tmp/fig4-scaling-paper-grade-20260311b-stage/iroute_d8_s42/run_manifest.json"
+  },
+  "workflow": "scaling_paper_grade_minimal"
+}

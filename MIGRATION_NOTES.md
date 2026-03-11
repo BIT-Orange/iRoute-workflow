@@ -54,7 +54,9 @@ The original top-level experiment paths remain as wrappers so existing commands 
 ## Dataset And Results Lineage
 
 - Top-level `dataset/` is now the canonical dataset root, with runners resolving `dataset/processed/` first
-- Until the physical move is completed, dataset resolution falls back to `ns-3/dataset/sdm_smartcity_dataset/` with an explicit warning
+- The active `sdm_smartcity_dataset` working set is now physically promoted under `dataset/processed/sdm_smartcity_dataset/`
+- `dataset/manifests/sdm_smartcity_dataset.index.json` records the canonical file list, hashes, and legacy source origin
+- Dataset resolution still falls back to `ns-3/dataset/` with an explicit warning for not-yet-promoted legacy-only files
 - Top-level `results/` is now the canonical results root for new runner output defaults
 - Historical bundles under `ns-3/results/` remain readable legacy storage and promotion sources
 - Root `figures/` remains a legacy mirror; canonical generated figure bundles belong under `results/figures/`
@@ -70,7 +72,7 @@ The original top-level experiment paths remain as wrappers so existing commands 
 ## Deferred Refactor Debt
 
 - Split `ns-3/scratch/iroute-exp-baselines.cc` into shared libraries and thinner experiment binaries
-- Physically move curated dataset artifacts into `dataset/processed/`
+- Decide how to curate the remaining legacy-only dataset content (`dataset_clean/`, raw CityPulse archives, and auxiliary preprocess outputs) into `dataset/raw/` or `dataset/processed/`
 - Continue curating historical raw outputs from `ns-3/results/` into canonical `results/`
 - Reconstruct or regenerate the missing paper figures
 - Add CI once the canonical runner and evidence manifests are stable

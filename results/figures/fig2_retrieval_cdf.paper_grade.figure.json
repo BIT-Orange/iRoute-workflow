@@ -1,0 +1,27 @@
+{
+  "aggregate_inputs": [
+    "results/aggregates/fig12-paper-grade-20260310a/reference_runs.csv",
+    "results/aggregates/fig12-paper-grade-20260310a/fig2_latency_summary.csv",
+    "results/aggregates/fig12-paper-grade-20260310a/fig12_paper_grade_report.json"
+  ],
+  "figure_exists": true,
+  "figure_id": "fig2_retrieval_cdf.paper_grade",
+  "figure_path": "results/figures/fig12-paper-grade-20260310a/fig2_retrieval_cdf.pdf",
+  "figure_sha256": "32dd598fcdf8c3cf6f83218cc757a25179f5fcdde0ce8b2b8049e16bdbe3bbb8",
+  "figure_size_bytes": 31090,
+  "generated_at_utc": "2026-03-10T12:50:45.541029+00:00",
+  "notes": [
+    "batch_id=fig12-paper-grade-20260310a",
+    "cache_mode=disabled",
+    "run_class=paper_grade",
+    "paper figure synchronized to paper/figs/fig2_retrieval_cdf.pdf"
+  ],
+  "run_ids": [
+    "fig12-paper-grade-20260310a-central_proc2_s42",
+    "fig12-paper-grade-20260310a-flood_budget8_s42",
+    "fig12-paper-grade-20260310a-iroute_M4_s42",
+    "fig12-paper-grade-20260310a-tag_tagK32_s42"
+  ],
+  "status": "published",
+  "title": "Fig. 2 paper-grade retrieval latency CDF"
+}

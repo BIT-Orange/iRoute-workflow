@@ -1,0 +1,31 @@
+{
+  "aggregate_bundle_dir": "results/aggregates/fig5-failure-paper-grade-20260311c",
+  "aggregate_inputs": [
+    "results/aggregates/fig5-failure-paper-grade-20260311c/recovery_summary.csv"
+  ],
+  "batch_id": "fig5-failure-paper-grade-20260311c",
+  "family": "failure",
+  "generated_at_utc": "2026-03-10T17:40:55.289341+00:00",
+  "notes": [
+    "Focused minimal paper-grade batch for pipeline validation.",
+    "Full paper-grade reruns are still required before the figure can be treated as published paper evidence."
+  ],
+  "policy": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "run_class": "paper_grade",
+    "seed_provenance": "native"
+  },
+  "run_ids": [
+    "fig5-failure-paper-grade-20260311c-central-churn-s42",
+    "fig5-failure-paper-grade-20260311c-central-domain-fail-s42",
+    "fig5-failure-paper-grade-20260311c-central-link-fail-s42",
+    "fig5-failure-paper-grade-20260311c-flood-churn-s42",
+    "fig5-failure-paper-grade-20260311c-flood-domain-fail-s42",
+    "fig5-failure-paper-grade-20260311c-flood-link-fail-s42",
+    "fig5-failure-paper-grade-20260311c-iroute-churn-s42",
+    "fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42",
+    "fig5-failure-paper-grade-20260311c-iroute-link-fail-s42"
+  ],
+  "status": "partial"
+}

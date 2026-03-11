@@ -1,0 +1,90 @@
+{
+  "artifacts": [
+    {
+      "artifact_type": "summary.csv",
+      "canonical_path": "results/runs/fig3-load-paper-grade-20260311a-tag_freq10_s42/summary.csv",
+      "required": true,
+      "sha256": "d5ab3acd431bd03ecb6e1ffac10b8761ae9f8ac6b9939f687cedfad2a62aab48",
+      "size_bytes": 544,
+      "source_path": "/private/tmp/fig3-load-paper-grade-20260311a-stage/tag_freq10_s42/summary.csv"
+    },
+    {
+      "artifact_type": "query_log.csv",
+      "canonical_path": "results/runs/fig3-load-paper-grade-20260311a-tag_freq10_s42/query_log.csv",
+      "required": true,
+      "sha256": "0db7b33d0f575a4729a72d44cab068e4c6c5d77454b19c7dff93ad1f49f811ed",
+      "size_bytes": 233601,
+      "source_path": "/private/tmp/fig3-load-paper-grade-20260311a-stage/tag_freq10_s42/query_log.csv"
+    },
+    {
+      "artifact_type": "latency_sanity.csv",
+      "canonical_path": "results/runs/fig3-load-paper-grade-20260311a-tag_freq10_s42/latency_sanity.csv",
+      "required": true,
+      "sha256": "519f711963b858ae1cfc907da6aae5f2bbffb76ac0ece30b9f2d894dbf84bd7e",
+      "size_bytes": 378,
+      "source_path": "/private/tmp/fig3-load-paper-grade-20260311a-stage/tag_freq10_s42/latency_sanity.csv"
+    },
+    {
+      "artifact_type": "failure_sanity.csv",
+      "canonical_path": "results/runs/fig3-load-paper-grade-20260311a-tag_freq10_s42/failure_sanity.csv",
+      "required": false,
+      "sha256": "66a8dd6d79427086f5fa66227f55bdb4e196d5c26a302ccf18ee4c01e983e734",
+      "size_bytes": 246,
+      "source_path": "/private/tmp/fig3-load-paper-grade-20260311a-stage/tag_freq10_s42/failure_sanity.csv"
+    },
+    {
+      "artifact_type": "source_manifest.json",
+      "canonical_path": "results/runs/fig3-load-paper-grade-20260311a-tag_freq10_s42/source_manifest.json",
+      "required": false,
+      "sha256": "93ea28011ea55ad7f83eb44ab9f327d5129644d76cdb599aff06142491238723",
+      "size_bytes": 752,
+      "source_path": "/private/tmp/fig3-load-paper-grade-20260311a-stage/tag_freq10_s42/manifest.json"
+    },
+    {
+      "artifact_type": "source_run_manifest.json",
+      "canonical_path": "results/runs/fig3-load-paper-grade-20260311a-tag_freq10_s42/source_run_manifest.json",
+      "required": false,
+      "sha256": "b2d36e022a85a387ce38be8bfacddfe989cb2f9bb4ac76df4aed589482c03443",
+      "size_bytes": 2528,
+      "source_path": "/private/tmp/fig3-load-paper-grade-20260311a-stage/tag_freq10_s42/run_manifest.json"
+    }
+  ],
+  "cache_mode": "disabled",
+  "canonical_dir": "results/runs/fig3-load-paper-grade-20260311a-tag_freq10_s42",
+  "compatibility": {
+    "legacy_results_path": "",
+    "legacy_status": "canonical_staging"
+  },
+  "cs_size": 0,
+  "git_commit": "24e55cc2c16857dcf93ff8e9c51496af8d76af56",
+  "major_options": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "data_freshness_ms": 60000,
+    "domains": 8,
+    "frequency": 10,
+    "measure_start_sec": 0,
+    "paper_grade": 1,
+    "run_mode": "load_run",
+    "scheme": "tag",
+    "seed": 42,
+    "sim_time": 40,
+    "topology": "rocketfuel",
+    "topology_file": "/Users/jiyuan/Desktop/ndnSIM/ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt",
+    "warmup_sec": 0
+  },
+  "notes": [],
+  "promoted_at_utc": "2026-03-10T17:14:32.649412+00:00",
+  "run_class": "paper_grade",
+  "run_id": "fig3-load-paper-grade-20260311a-tag_freq10_s42",
+  "runner": "ns-3/experiments/runners/run_load_experiment.sh",
+  "schema_version": 1,
+  "seed_provenance": "native",
+  "source_dir": "/private/tmp/fig3-load-paper-grade-20260311a-stage/tag_freq10_s42",
+  "source_kind": "load_paper_grade_staging",
+  "source_manifests": {
+    "direct_manifest": "/private/tmp/fig3-load-paper-grade-20260311a-stage/tag_freq10_s42/manifest.json",
+    "runner_manifest": "/private/tmp/fig3-load-paper-grade-20260311a-stage/tag_freq10_s42/run_manifest.json"
+  },
+  "workflow": "load_paper_grade_minimal"
+}

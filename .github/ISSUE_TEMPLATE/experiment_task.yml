@@ -1,0 +1,85 @@
+name: Experiment task
+description: Track an experiment run, rerun, promotion, aggregation, or regression task.
+title: "[experiment] "
+labels:
+  - experiment
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Task summary
+      description: State the experiment task and the expected outcome.
+      placeholder: Promote a cache-disabled paper-grade scaling rerun into results/runs and rebuild the aggregate.
+    validations:
+      required: true
+  - type: dropdown
+    id: family
+    attributes:
+      label: Experiment family
+      options:
+        - accuracy
+        - load
+        - scaling
+        - failure
+        - SANR baseline
+        - promotion / aggregation
+        - smoke / plumbing
+        - other
+    validations:
+      required: true
+  - type: dropdown
+    id: run_class
+    attributes:
+      label: Intended run class
+      description: Use the strongest class this task is supposed to produce.
+      options:
+        - smoke
+        - exploratory
+        - paper_grade
+    validations:
+      required: true
+  - type: textarea
+    id: evidence_targets
+    attributes:
+      label: Expected canonical evidence
+      description: List the intended run IDs, aggregate CSVs, and figure provenance files. Use N/A only for pure plumbing tasks.
+      placeholder: |
+        run ids:
+        - results/runs/<run-id>/
+
+        aggregate csvs:
+        - results/aggregates/<batch-id>/summary_rows.csv
+
+        figure provenance:
+        - results/figures/<figure>.paper_grade.figure.json
+    validations:
+      required: true
+  - type: input
+    id: claim_ids
+    attributes:
+      label: Related claim IDs
+      description: Comma-separated claim IDs if this task affects paper claims.
+      placeholder: CLM-EVAL-007, CLM-EVAL-008
+  - type: checkboxes
+    id: impact
+    attributes:
+      label: Impact
+      options:
+        - label: This task changes canonical evidence or claim status.
+        - label: This task requires fresh reruns rather than only code edits.
+        - label: This task should leave existing paper-grade evidence untouched.
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation plan
+      description: List the commands or checks that will be used before closing the task.
+      placeholder: |
+        bash scripts/workflow.sh merge-gate
+        python3 ns-3/experiments/checks/check_artifact_regression.py --run-dir ...
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes and constraints
+      description: Record dataset, cache-mode, seed, or provenance constraints.

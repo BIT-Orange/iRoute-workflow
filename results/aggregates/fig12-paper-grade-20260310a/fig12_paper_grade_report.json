@@ -1,0 +1,35 @@
+{
+  "aggregate_bundle_dir": "results/aggregates/fig12-paper-grade-20260310a",
+  "batch_id": "fig12-paper-grade-20260310a",
+  "files": {
+    "accuracy_sweep": "results/aggregates/fig12-paper-grade-20260310a/accuracy_sweep.csv",
+    "comparison": "results/aggregates/fig12-paper-grade-20260310a/comparison.csv",
+    "fig2_latency_summary": "results/aggregates/fig12-paper-grade-20260310a/fig2_latency_summary.csv",
+    "reference_runs": "results/aggregates/fig12-paper-grade-20260310a/reference_runs.csv"
+  },
+  "generated_at_utc": "2026-03-10T12:50:28.137716+00:00",
+  "policy": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "run_class": "paper_grade",
+    "seed_provenance": "native"
+  },
+  "reference_run_ids": [
+    "fig12-paper-grade-20260310a-central_proc2_s42",
+    "fig12-paper-grade-20260310a-flood_budget8_s42",
+    "fig12-paper-grade-20260310a-iroute_M4_s42",
+    "fig12-paper-grade-20260310a-tag_tagK32_s42"
+  ],
+  "run_ids": [
+    "fig12-paper-grade-20260310a-central_proc2_s42",
+    "fig12-paper-grade-20260310a-flood_budget2_s42",
+    "fig12-paper-grade-20260310a-flood_budget4_s42",
+    "fig12-paper-grade-20260310a-flood_budget8_s42",
+    "fig12-paper-grade-20260310a-iroute_M1_s42",
+    "fig12-paper-grade-20260310a-iroute_M4_s42",
+    "fig12-paper-grade-20260310a-iroute_M8_s42",
+    "fig12-paper-grade-20260310a-tag_tagK16_s42",
+    "fig12-paper-grade-20260310a-tag_tagK32_s42",
+    "fig12-paper-grade-20260310a-tag_tagK8_s42"
+  ]
+}

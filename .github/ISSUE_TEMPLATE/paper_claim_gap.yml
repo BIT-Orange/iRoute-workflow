@@ -1,0 +1,80 @@
+name: Paper claim gap
+description: Track a gap between a paper claim and the current canonical evidence.
+title: "[claim-gap] "
+labels:
+  - paper
+  - evidence
+body:
+  - type: input
+    id: claim_id
+    attributes:
+      label: Claim ID
+      description: Use the ID from review/claims/claims_map.json.
+      placeholder: CLM-EVAL-009
+    validations:
+      required: true
+  - type: dropdown
+    id: current_status
+    attributes:
+      label: Current claim status
+      options:
+        - provisional
+        - blocked
+    validations:
+      required: true
+  - type: input
+    id: paper_anchor
+    attributes:
+      label: Paper section or anchor
+      description: Section title, label, or claim-id comment location in paper/main.tex.
+      placeholder: Figure 5 discussion / claim-id CLM-EVAL-009
+    validations:
+      required: true
+  - type: textarea
+    id: missing_evidence
+    attributes:
+      label: Missing or insufficient evidence
+      description: Be explicit about which figures, aggregates, or reruns are missing or defective.
+      placeholder: |
+        Missing:
+        - paper/figs/fig5_recovery_churn.pdf
+        - results/aggregates/<batch-id>/recovery_summary.csv with a valid churn effect
+    validations:
+      required: true
+  - type: textarea
+    id: required_artifacts
+    attributes:
+      label: Required canonical artifacts to close the gap
+      description: List the exact run IDs, aggregate CSVs, and figure provenance files required to move this claim forward.
+      placeholder: |
+        run ids:
+        - results/runs/<run-id>/
+
+        aggregates:
+        - results/aggregates/<batch-id>/...
+
+        figures:
+        - results/figures/<figure>.paper_grade.figure.json
+    validations:
+      required: true
+  - type: checkboxes
+    id: claim_effect
+    attributes:
+      label: Claim effect
+      options:
+        - label: This issue blocks paper-release-gate.
+        - label: This issue requires new paper-grade reruns.
+        - label: This issue may be solved by synchronization or provenance work only.
+  - type: textarea
+    id: closure
+    attributes:
+      label: Closure criteria
+      description: State what must be true before the claim can be relabeled.
+      placeholder: Claim may move to supported only after strict claim-check passes with canonical paper figure synchronization.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Add limitations, fairness constraints, or wording caveats if relevant.

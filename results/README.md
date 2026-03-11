@@ -6,6 +6,8 @@
 - `aggregates/`: repository-level merged indexes and summary views built from `runs/`
 - `figures/`: canonical generated figure bundles and figure provenance
 
+Figure-specific aggregate bundles may also appear under `aggregates/<batch-id>/` when a paper-grade workflow promotes a curated figure input set such as the canonical Fig. 1/Fig. 2 rerun or the current provisional Fig. 3/Fig. 4/Fig. 5 family bundles.
+
 Runner policy in this phase:
 
 - active runner defaults now resolve into top-level `results/`

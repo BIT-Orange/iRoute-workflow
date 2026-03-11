@@ -1,0 +1,90 @@
+{
+  "artifacts": [
+    {
+      "artifact_type": "summary.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-central-churn-s42/summary.csv",
+      "required": true,
+      "sha256": "692325828d5d9529d6ce953091952a138907a175355f9ad3125c36b0d40ae595",
+      "size_bytes": 537,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/central-churn-s42/summary.csv"
+    },
+    {
+      "artifact_type": "query_log.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-central-churn-s42/query_log.csv",
+      "required": true,
+      "sha256": "0f21cc8a57233fc345915a22267bb1834010b455e4bf246c9beaceb3b1bf2f77",
+      "size_bytes": 37947,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/central-churn-s42/query_log.csv"
+    },
+    {
+      "artifact_type": "latency_sanity.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-central-churn-s42/latency_sanity.csv",
+      "required": true,
+      "sha256": "94abea07f9157aaa1b9661300181b96c1ebb9cceae99d29ec8549884bfdf56e2",
+      "size_bytes": 368,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/central-churn-s42/latency_sanity.csv"
+    },
+    {
+      "artifact_type": "failure_sanity.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-central-churn-s42/failure_sanity.csv",
+      "required": false,
+      "sha256": "bf6287b6404320175a110a8a9317823dc6ee19198f4955a9486156ebc4d3f2be",
+      "size_bytes": 297,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/central-churn-s42/failure_sanity.csv"
+    },
+    {
+      "artifact_type": "source_manifest.json",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-central-churn-s42/source_manifest.json",
+      "required": false,
+      "sha256": "486410559b3cd0a9838a088a245e6e8ce8267e711712277cdf7804f061527bcb",
+      "size_bytes": 739,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/central-churn-s42/manifest.json"
+    },
+    {
+      "artifact_type": "source_run_manifest.json",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-20260311c-central-churn-s42/source_run_manifest.json",
+      "required": false,
+      "sha256": "e1ac8aadaa43428ddae260bb142287717cdac5cbd8b0ce7ffe4a7ab009631039",
+      "size_bytes": 2279,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/central-churn-s42/run_manifest.json"
+    }
+  ],
+  "cache_mode": "disabled",
+  "canonical_dir": "results/runs/fig5-failure-paper-grade-20260311c-central-churn-s42",
+  "compatibility": {
+    "legacy_results_path": "",
+    "legacy_status": "canonical_staging"
+  },
+  "cs_size": 0,
+  "git_commit": "24e55cc2c16857dcf93ff8e9c51496af8d76af56",
+  "major_options": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "data_freshness_ms": 60000,
+    "domains": 8,
+    "frequency": 2,
+    "measure_start_sec": 0,
+    "paper_grade": 1,
+    "run_mode": "failure_run",
+    "scheme": "central",
+    "seed": 42,
+    "sim_time": 32,
+    "topology": "redundant",
+    "topology_file": "/Users/jiyuan/Desktop/ndnSIM/ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt",
+    "warmup_sec": 0
+  },
+  "notes": [],
+  "promoted_at_utc": "2026-03-10T17:40:55.014063+00:00",
+  "run_class": "paper_grade",
+  "run_id": "fig5-failure-paper-grade-20260311c-central-churn-s42",
+  "runner": "ns-3/experiments/runners/run_failure_experiment.sh",
+  "schema_version": 1,
+  "seed_provenance": "native",
+  "source_dir": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/central-churn-s42",
+  "source_kind": "failure_paper_grade_staging",
+  "source_manifests": {
+    "direct_manifest": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/central-churn-s42/manifest.json",
+    "runner_manifest": "/private/tmp/fig5-failure-paper-grade-20260311c-stage/central-churn-s42/run_manifest.json"
+  },
+  "workflow": "failure_paper_grade_minimal"
+}
