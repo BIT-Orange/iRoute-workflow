@@ -1,0 +1,90 @@
+{
+  "artifacts": [
+    {
+      "artifact_type": "summary.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42/summary.csv",
+      "required": true,
+      "sha256": "709cd2655d1cb6bf71772e58ec8c7656bd6821d4eefc282be130e4694ac00512",
+      "size_bytes": 537,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/central-domain-fail-s42/summary.csv"
+    },
+    {
+      "artifact_type": "query_log.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42/query_log.csv",
+      "required": true,
+      "sha256": "12f48adbdaa82adc6b0359d4f5401d8600f01f0fb61704edb483bc4ad43d17f0",
+      "size_bytes": 37902,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/central-domain-fail-s42/query_log.csv"
+    },
+    {
+      "artifact_type": "latency_sanity.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42/latency_sanity.csv",
+      "required": true,
+      "sha256": "df5e86689de0b891961144fefbb3720878d2d4c766d0eca1b11f19ece022765a",
+      "size_bytes": 367,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/central-domain-fail-s42/latency_sanity.csv"
+    },
+    {
+      "artifact_type": "failure_sanity.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42/failure_sanity.csv",
+      "required": false,
+      "sha256": "233d454797a461b4c7f31190d7bf92ab7decddc2ee08ed96a3727b0052d426f6",
+      "size_bytes": 594,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/central-domain-fail-s42/failure_sanity.csv"
+    },
+    {
+      "artifact_type": "source_manifest.json",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42/source_manifest.json",
+      "required": false,
+      "sha256": "a68d9957947366e0f40d88ef3ff9dce10a8acf67956b8f6d37101b39ff08ba75",
+      "size_bytes": 746,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/central-domain-fail-s42/manifest.json"
+    },
+    {
+      "artifact_type": "source_run_manifest.json",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42/source_run_manifest.json",
+      "required": false,
+      "sha256": "2ccff6625e7c99b8807405c4f8b78746a10bc497163b68fe8c083d4cc79255fc",
+      "size_bytes": 2333,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/central-domain-fail-s42/run_manifest.json"
+    }
+  ],
+  "cache_mode": "disabled",
+  "canonical_dir": "results/runs/fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42",
+  "compatibility": {
+    "legacy_results_path": "",
+    "legacy_status": "canonical_staging"
+  },
+  "cs_size": 0,
+  "git_commit": "c9fe70330c976461054cc2b19d036d65a1387ea4",
+  "major_options": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "data_freshness_ms": 60000,
+    "domains": 8,
+    "frequency": 2,
+    "measure_start_sec": 0,
+    "paper_grade": 1,
+    "run_mode": "failure_run",
+    "scheme": "central",
+    "seed": 42,
+    "sim_time": 32,
+    "topology": "redundant",
+    "topology_file": "/Users/jiyuan/Desktop/ndnSIM/ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt",
+    "warmup_sec": 0
+  },
+  "notes": [],
+  "promoted_at_utc": "2026-03-11T05:20:31.091904+00:00",
+  "run_class": "paper_grade",
+  "run_id": "fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42",
+  "runner": "ns-3/experiments/runners/run_failure_experiment.sh",
+  "schema_version": 1,
+  "seed_provenance": "native",
+  "source_dir": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/central-domain-fail-s42",
+  "source_kind": "failure_paper_grade_final_staging",
+  "source_manifests": {
+    "direct_manifest": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/central-domain-fail-s42/manifest.json",
+    "runner_manifest": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/central-domain-fail-s42/run_manifest.json"
+  },
+  "workflow": "failure_paper_grade_final"
+}

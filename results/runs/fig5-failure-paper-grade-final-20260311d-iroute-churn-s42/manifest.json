@@ -1,0 +1,90 @@
+{
+  "artifacts": [
+    {
+      "artifact_type": "summary.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-final-20260311d-iroute-churn-s42/summary.csv",
+      "required": true,
+      "sha256": "8530c0ceba25cb69ea2340d2b421e940562b0d19277cb76e5a44a1f96c6b626a",
+      "size_bytes": 538,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/iroute-churn-s42/summary.csv"
+    },
+    {
+      "artifact_type": "query_log.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-final-20260311d-iroute-churn-s42/query_log.csv",
+      "required": true,
+      "sha256": "488e2312fa63154f46432bd43d6ba09fec184264b6506637ebce14e080f31592",
+      "size_bytes": 46872,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/iroute-churn-s42/query_log.csv"
+    },
+    {
+      "artifact_type": "latency_sanity.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-final-20260311d-iroute-churn-s42/latency_sanity.csv",
+      "required": true,
+      "sha256": "815acf16beb228f3b1cc83fd80f32062d8340438bf11be53d44dda05db0fd880",
+      "size_bytes": 375,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/iroute-churn-s42/latency_sanity.csv"
+    },
+    {
+      "artifact_type": "failure_sanity.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-final-20260311d-iroute-churn-s42/failure_sanity.csv",
+      "required": false,
+      "sha256": "9610ff018652f5603b46d2cd06e89ab49b417246ccdd4ad48d25bb03f71bde9c",
+      "size_bytes": 623,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/iroute-churn-s42/failure_sanity.csv"
+    },
+    {
+      "artifact_type": "source_manifest.json",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-final-20260311d-iroute-churn-s42/source_manifest.json",
+      "required": false,
+      "sha256": "878f839d2cbee5c4ad18ef9a7555b4e02c5f3e13b59c629a8f9e547bdf34d001",
+      "size_bytes": 752,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/iroute-churn-s42/manifest.json"
+    },
+    {
+      "artifact_type": "source_run_manifest.json",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-final-20260311d-iroute-churn-s42/source_run_manifest.json",
+      "required": false,
+      "sha256": "bfb5a0479bc3735998858c3f6340e1ced5aef2d0f4fcf58fec624ca56ff06e81",
+      "size_bytes": 2312,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/iroute-churn-s42/run_manifest.json"
+    }
+  ],
+  "cache_mode": "disabled",
+  "canonical_dir": "results/runs/fig5-failure-paper-grade-final-20260311d-iroute-churn-s42",
+  "compatibility": {
+    "legacy_results_path": "",
+    "legacy_status": "canonical_staging"
+  },
+  "cs_size": 0,
+  "git_commit": "c9fe70330c976461054cc2b19d036d65a1387ea4",
+  "major_options": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "data_freshness_ms": 60000,
+    "domains": 8,
+    "frequency": 2,
+    "measure_start_sec": 0,
+    "paper_grade": 1,
+    "run_mode": "failure_run",
+    "scheme": "iroute",
+    "seed": 42,
+    "sim_time": 32,
+    "topology": "redundant",
+    "topology_file": "/Users/jiyuan/Desktop/ndnSIM/ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt",
+    "warmup_sec": 0
+  },
+  "notes": [],
+  "promoted_at_utc": "2026-03-11T05:20:31.290927+00:00",
+  "run_class": "paper_grade",
+  "run_id": "fig5-failure-paper-grade-final-20260311d-iroute-churn-s42",
+  "runner": "ns-3/experiments/runners/run_failure_experiment.sh",
+  "schema_version": 1,
+  "seed_provenance": "native",
+  "source_dir": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/iroute-churn-s42",
+  "source_kind": "failure_paper_grade_final_staging",
+  "source_manifests": {
+    "direct_manifest": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/iroute-churn-s42/manifest.json",
+    "runner_manifest": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/iroute-churn-s42/run_manifest.json"
+  },
+  "workflow": "failure_paper_grade_final"
+}

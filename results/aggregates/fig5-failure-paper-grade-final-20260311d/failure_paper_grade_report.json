@@ -1,0 +1,32 @@
+{
+  "aggregate_bundle_dir": "results/aggregates/fig5-failure-paper-grade-final-20260311d",
+  "aggregate_inputs": [
+    "results/aggregates/fig5-failure-paper-grade-final-20260311d/recovery_summary.csv"
+  ],
+  "batch_id": "fig5-failure-paper-grade-final-20260311d",
+  "family": "failure",
+  "generated_at_utc": "2026-03-11T05:20:31.443192+00:00",
+  "notes": [
+    "Current paper-suite Fig. 5 scope: central, iRoute, and Flood across churn, link-fail, and domain-fail under native seed 42.",
+    "This bundle is publishable only if every promoted run records effective disruption and the paper-facing PDFs are synchronized."
+  ],
+  "policy": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "run_class": "paper_grade",
+    "seed_provenance": "native"
+  },
+  "run_ids": [
+    "fig5-failure-paper-grade-final-20260311d-central-churn-s42",
+    "fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42",
+    "fig5-failure-paper-grade-final-20260311d-central-link-fail-s42",
+    "fig5-failure-paper-grade-final-20260311d-flood-churn-s42",
+    "fig5-failure-paper-grade-final-20260311d-flood-domain-fail-s42",
+    "fig5-failure-paper-grade-final-20260311d-flood-link-fail-s42",
+    "fig5-failure-paper-grade-final-20260311d-iroute-churn-s42",
+    "fig5-failure-paper-grade-final-20260311d-iroute-domain-fail-s42",
+    "fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42"
+  ],
+  "scope": "final",
+  "status": "published"
+}

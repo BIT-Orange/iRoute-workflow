@@ -2,9 +2,12 @@
 
 Current mapped claims: `9`
 
-- `supported`: `6`
+Claim status only covers mapped experimental claims.
+The strict paper-release gate can still fail on non-claim paper asset debt tracked in `paper/assets/asset_status.json`.
+
+- `supported`: `7`
 - `provisional`: `2`
-- `blocked`: `1`
+- `blocked`: `0`
 
 ## Supported
 
@@ -16,20 +19,21 @@ Current mapped claims: `9`
   - supported by the promoted cache-disabled batch `fig12-paper-grade-20260310a`
 - `CLM-EVAL-006`: retrieval efficiency and latency/path interpretation
   - supported by the promoted cache-disabled Fig. 2 reference bundle `fig12-paper-grade-20260310a`
-
-## Blocked
-
 - `CLM-EVAL-009`: churn/link/domain failure recovery
-  - still blocked because `paper/figs/fig5_recovery_*.pdf` is unsynchronized and the promoted `iroute-churn-s42` batch recorded `failure_effective=0`
+  - supported by the published cache-disabled bundle `fig5-failure-paper-grade-final-20260311d`
+  - paper-facing files are synchronized at `paper/figs/fig5_recovery_{churn,link-fail,domain-fail}.pdf`
+  - every promoted paper-grade run in the bundle records `failure_effective=1` with explicit `effective_reasons`
 
 ## Provisional
 
 - `CLM-EVAL-007`: hop count versus offered load
   - now backed by the promoted minimal paper-grade batch `fig3-load-paper-grade-20260311a`
   - still provisional because `paper/figs/fig3_hop_load.pdf` is not synchronized and the current bundle is a focused minimal rerun
+  - the canonical final-scope rerun/publish entrypoint now exists at `bash scripts/workflow.sh fig34-final-scope load --suffix <suffix>`, but the full batch has not yet been completed and promoted
 - `CLM-EVAL-008`: bounded routing-state scaling
   - now backed by the promoted minimal paper-grade batch `fig4-scaling-paper-grade-20260311b`
   - still provisional because `paper/figs/fig4_state_scaling.pdf` is not synchronized and the current bundle only covers the reduced 8/16-domain validation sweep
+  - the canonical final-scope rerun/publish entrypoint now exists at `bash scripts/workflow.sh fig34-final-scope scaling --suffix <suffix>`, but the wider final batch has not yet been completed and promoted
 
 ## CI / Preflight Usage
 

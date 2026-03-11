@@ -23,6 +23,8 @@ RESULTS_DIR = Path(os.environ.get("IROUTE_RESULTS_ROOT", REPO_ROOT / "results"))
 RUNS_DIR = RESULTS_DIR / "runs"
 AGGREGATES_DIR = RESULTS_DIR / "aggregates"
 FIGURES_DIR = Path(os.environ.get("IROUTE_RESULTS_FIGURES_ROOT", RESULTS_DIR / "figures"))
+PAPER_DIR = REPO_ROOT / "paper"
+PAPER_FIGS_DIR = PAPER_DIR / "figs"
 WRITE_RUN_MANIFEST = REPO_ROOT / "ns-3" / "experiments" / "manifests" / "write_run_manifest.py"
 
 CORE_ARTIFACTS = {
@@ -78,6 +80,13 @@ def relpath_or_abs(path: Path, root: Path = REPO_ROOT) -> str:
         return str(resolved)
     except Exception:
         return str(path.resolve())
+
+
+def resolve_repo_path(rel_or_abs: str) -> Path:
+    candidate = Path(rel_or_abs)
+    if candidate.is_absolute():
+        return candidate.resolve()
+    return (REPO_ROOT / candidate).resolve()
 
 
 def sha256_file(path: Path) -> str:
@@ -587,6 +596,8 @@ def build_figure_index() -> dict:
                 "figure_id": data.get("figure_id", manifest_path.stem),
                 "status": data.get("status", ""),
                 "figure_path": data.get("figure_path", ""),
+                "paper_figure_path": data.get("paper_figure_path", ""),
+                "paper_figure_in_sync": bool(data.get("paper_figure_in_sync", False)),
                 "aggregate_inputs": data.get("aggregate_inputs", []),
                 "run_ids": data.get("run_ids", []),
             }
@@ -598,9 +609,140 @@ def build_figure_index() -> dict:
     }
 
 
-def write_figure_manifest(args) -> int:
+def store_figure_manifest(payload: dict) -> None:
     FIGURES_DIR.mkdir(parents=True, exist_ok=True)
+    write_json(FIGURES_DIR / f"{payload['figure_id']}.figure.json", payload)
+    write_json(FIGURES_DIR / "figure_index.json", build_figure_index())
+
+
+def validate_figure_publication_payload(payload: dict) -> tuple[Path, list[Path], list[Path], list[dict]]:
+    status = str(payload.get("status", "")).strip()
+    if status in {"blocked", "placeholder"}:
+        fail(f"refusing to publish {payload.get('figure_id', '')}: status={status}")
+
+    figure_path_str = str(payload.get("figure_path", "")).strip()
+    if not figure_path_str:
+        fail("figure manifest is missing figure_path")
+    figure_path = resolve_repo_path(figure_path_str)
+    if not figure_path.exists() or not figure_path.is_file():
+        fail(f"canonical figure missing: {figure_path}")
+
+    aggregate_paths: list[Path] = []
+    aggregate_reports: list[dict] = []
+    for item in payload.get("aggregate_inputs", []):
+        agg_path = resolve_repo_path(str(item))
+        if not agg_path.exists():
+            fail(f"figure manifest references missing aggregate input: {item}")
+        aggregate_paths.append(agg_path)
+        if agg_path.suffix.lower() == ".json":
+            try:
+                data = load_json(agg_path)
+            except Exception as ex:
+                fail(f"failed to read aggregate report {agg_path}: {ex}")
+            aggregate_reports.append(
+                {
+                    "path": relpath_or_abs(agg_path),
+                    "status": data.get("status", ""),
+                }
+            )
+
+    run_paths: list[Path] = []
+    for run_id in payload.get("run_ids", []):
+        run_dir = RUNS_DIR / str(run_id)
+        if not run_dir.exists():
+            fail(f"figure manifest references missing canonical run: {run_id}")
+        manifest_path = run_dir / "manifest.json"
+        if not manifest_path.exists():
+            fail(f"canonical run is missing manifest.json: {run_dir}")
+        run_paths.append(run_dir)
+
+    if status == "partial":
+        published_reports = [item for item in aggregate_reports if str(item.get("status", "")).strip() == "published"]
+        if not published_reports:
+            fail(
+                "partial figure manifest cannot be published without a published aggregate report; "
+                "rerun/publish the aggregate bundle first"
+            )
+
+    return figure_path, aggregate_paths, run_paths, aggregate_reports
+
+
+def publish_figure(args) -> int:
+    manifest_path = FIGURES_DIR / f"{args.figure_id}.figure.json"
+    if not manifest_path.exists():
+        fail(f"missing figure manifest: {manifest_path}")
+
+    payload = load_json(manifest_path)
+    if str(payload.get("figure_id", "")).strip() != args.figure_id:
+        fail(f"figure manifest id mismatch in {manifest_path}")
+
+    figure_path, aggregate_paths, _run_paths, aggregate_reports = validate_figure_publication_payload(payload)
+
+    suffix = figure_path.suffix.lower()
+    if suffix not in {".pdf", ".png"}:
+        fail(f"unsupported figure extension for publication: {figure_path.name}")
+
+    paper_name = args.paper_name.strip() if args.paper_name else figure_path.name
+    if not paper_name:
+        fail("paper-facing figure name resolved to empty string")
+    paper_figure_path = (PAPER_FIGS_DIR / paper_name).resolve()
+
+    if not args.allow_unreferenced:
+        marker = f"figs/{paper_name}"
+        paper_text = (PAPER_DIR / "main.tex").read_text(encoding="utf-8")
+        if marker not in paper_text:
+            fail(f"paper/main.tex does not reference {marker}; use --allow-unreferenced to override")
+
+    old_status = str(payload.get("status", "")).strip()
+    if args.dry_run:
+        log(
+            "publish dry-run ok: "
+            f"{relpath_or_abs(figure_path)} -> {relpath_or_abs(paper_figure_path)} "
+            f"(status {old_status} -> published)"
+        )
+        return 0
+
+    PAPER_FIGS_DIR.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(figure_path, paper_figure_path)
+    figure_sha = sha256_file(figure_path)
+    paper_sha = sha256_file(paper_figure_path)
+    if figure_sha != paper_sha:
+        fail(f"paper-facing figure sync mismatch: {paper_figure_path}")
+
+    payload["status"] = "published"
+    payload["figure_exists"] = True
+    payload["figure_path"] = relpath_or_abs(figure_path)
+    payload["figure_sha256"] = figure_sha
+    payload["figure_size_bytes"] = figure_path.stat().st_size
+    payload["paper_figure_path"] = relpath_or_abs(paper_figure_path)
+    payload["paper_figure_exists"] = True
+    payload["paper_figure_sha256"] = paper_sha
+    payload["paper_figure_size_bytes"] = paper_figure_path.stat().st_size
+    payload["paper_figure_in_sync"] = True
+    payload["generated_at_utc"] = now_utc()
+    payload["publication"] = {
+        "published_at_utc": now_utc(),
+        "source_status_before": old_status,
+        "source_manifest": relpath_or_abs(manifest_path),
+        "paper_figure_path": relpath_or_abs(paper_figure_path),
+        "aggregate_reports": aggregate_reports,
+        "command": "publish-figure",
+    }
+
+    note_line = f"paper figure synchronized to {relpath_or_abs(paper_figure_path)}"
+    notes = list(payload.get("notes", []))
+    if note_line not in notes:
+        notes.append(note_line)
+    payload["notes"] = notes
+
+    store_figure_manifest(payload)
+    log(f"published {args.figure_id} -> {paper_figure_path}")
+    return 0
+
+
+def write_figure_manifest(args) -> int:
     figure_path = Path(args.figure_path).resolve() if args.figure_path else None
+    paper_figure_path = Path(args.paper_figure_path).resolve() if args.paper_figure_path else None
     payload = {
         "figure_id": args.figure_id,
         "title": args.title,
@@ -611,12 +753,34 @@ def write_figure_manifest(args) -> int:
         "run_ids": sorted(set(args.run_id)),
         "notes": args.note,
         "generated_at_utc": now_utc(),
+        "paper_figure_path": relpath_or_abs(paper_figure_path) if paper_figure_path else "",
+        "paper_figure_exists": bool(paper_figure_path and paper_figure_path.exists()),
+        "paper_figure_in_sync": False,
     }
     if figure_path and figure_path.exists() and figure_path.is_file():
         payload["figure_sha256"] = sha256_file(figure_path)
         payload["figure_size_bytes"] = figure_path.stat().st_size
-    write_json(FIGURES_DIR / f"{args.figure_id}.figure.json", payload)
-    write_json(FIGURES_DIR / "figure_index.json", build_figure_index())
+    if paper_figure_path and paper_figure_path.exists() and paper_figure_path.is_file():
+        payload["paper_figure_sha256"] = sha256_file(paper_figure_path)
+        payload["paper_figure_size_bytes"] = paper_figure_path.stat().st_size
+    if payload["figure_exists"] and payload["paper_figure_exists"]:
+        payload["paper_figure_in_sync"] = payload.get("figure_sha256", "") == payload.get("paper_figure_sha256", "")
+    if args.status == "published":
+        if not payload["figure_exists"]:
+            fail("published figure manifest requires an existing canonical figure")
+        if not payload["paper_figure_exists"]:
+            fail("published figure manifest requires an existing paper-facing figure")
+        if not payload["paper_figure_in_sync"]:
+            fail("published figure manifest requires canonical and paper-facing figures to match")
+        payload["publication"] = {
+            "published_at_utc": now_utc(),
+            "source_status_before": "published",
+            "source_manifest": relpath_or_abs(FIGURES_DIR / f"{args.figure_id}.figure.json"),
+            "paper_figure_path": payload.get("paper_figure_path", ""),
+            "aggregate_reports": [],
+            "command": "figure-manifest",
+        }
+    store_figure_manifest(payload)
     log(f"wrote figure manifest for {args.figure_id}")
     return 0
 
@@ -648,8 +812,16 @@ def build_parser() -> argparse.ArgumentParser:
     figure.add_argument("--aggregate", action="append", default=[], help="Aggregate CSV or JSON input")
     figure.add_argument("--run-id", action="append", default=[], help="Source run ID referenced by the figure")
     figure.add_argument("--figure-path", help="Optional actual figure path")
+    figure.add_argument("--paper-figure-path", help="Optional synchronized paper-facing figure path")
     figure.add_argument("--note", action="append", default=[])
     figure.set_defaults(func=write_figure_manifest)
+
+    publish = sub.add_parser("publish-figure", help="Synchronize a canonical figure into paper/figs/ and mark it published")
+    publish.add_argument("--figure-id", required=True, help="Figure ID, e.g. fig1_accuracy_overhead.paper_grade")
+    publish.add_argument("--paper-name", help="Optional destination filename under paper/figs/ (defaults to the canonical figure basename)")
+    publish.add_argument("--allow-unreferenced", action="store_true", help="Allow publication even if paper/main.tex does not reference the destination figure path")
+    publish.add_argument("--dry-run", action="store_true", help="Validate publication inputs without copying files or mutating the manifest")
+    publish.set_defaults(func=publish_figure)
 
     return parser
 

@@ -805,7 +805,7 @@ In the final version, we decompose control traffic into steady-state refresh, bu
 % claim-id: eval-robustness-recovery
 IoT deployments face frequent churn and network failures.
 We evaluate robustness under three disruption models: churn that changes producer availability, link failures in the backbone, and domain failures that render an entire domain unreachable.
-Fig.~\ref{fig:recovery} plots success rate over time for these scenarios and reports $t_{95}$ recovery time.
+Fig.~\ref{fig:recovery} plots domain-hit rate over time for these scenarios and reports $t_{95}$ recovery time relative to the pre-event domain-hit baseline.
 
 \begin{figure}[t]
     \centering
@@ -824,13 +824,13 @@ Fig.~\ref{fig:recovery} plots success rate over time for these scenarios and rep
         \includegraphics[width=\linewidth]{figs/fig5_recovery_domain-fail.pdf}
         \caption{Domain failure}
     \end{subfigure}
-    \caption{Success rate over time under churn and failures.}
+    \caption{Domain-hit rate over time under churn and failures.}
     \label{fig:recovery}
 \end{figure}
 
 This section highlights how quickly semantic routing returns to a stable operating point after disruption.
 Churn tests whether domains can refresh advertisements without inducing sustained control-plane overload.
-Link failures test whether discovery can reroute and maintain acceptable success rates when shortest paths disappear.
+Link failures test whether discovery can reroute and maintain acceptable domain-level resolution when shortest paths disappear.
 Domain failures test whether the system can avoid repeatedly probing unreachable domains and whether fallback strategies degrade gracefully.
 
 \subsection{Discussion and Lessons}

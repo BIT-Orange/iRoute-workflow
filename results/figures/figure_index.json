@@ -1,6 +1,6 @@
 {
   "count": 8,
-  "generated_at_utc": "2026-03-10T17:41:07.080543+00:00",
+  "generated_at_utc": "2026-03-11T05:40:18.179857+00:00",
   "items": [
     {
       "aggregate_inputs": [
@@ -10,6 +10,8 @@
       ],
       "figure_id": "fig1_accuracy_overhead.paper_grade",
       "figure_path": "results/figures/fig12-paper-grade-20260310a/fig1_accuracy_overhead.pdf",
+      "paper_figure_in_sync": true,
+      "paper_figure_path": "paper/figs/fig1_accuracy_overhead.pdf",
       "run_ids": [
         "fig12-paper-grade-20260310a-central_proc2_s42",
         "fig12-paper-grade-20260310a-flood_budget2_s42",
@@ -32,6 +34,8 @@
       ],
       "figure_id": "fig2_retrieval_cdf.paper_grade",
       "figure_path": "results/figures/fig12-paper-grade-20260310a/fig2_retrieval_cdf.pdf",
+      "paper_figure_in_sync": false,
+      "paper_figure_path": "",
       "run_ids": [
         "fig12-paper-grade-20260310a-central_proc2_s42",
         "fig12-paper-grade-20260310a-flood_budget8_s42",
@@ -48,6 +52,8 @@
       ],
       "figure_id": "fig3_hop_load.paper_grade",
       "figure_path": "results/figures/fig3-load-paper-grade-20260311a/fig3_hop_load.pdf",
+      "paper_figure_in_sync": false,
+      "paper_figure_path": "",
       "run_ids": [
         "fig3-load-paper-grade-20260311a-central_freq10_s42",
         "fig3-load-paper-grade-20260311a-central_freq20_s42",
@@ -71,6 +77,8 @@
       ],
       "figure_id": "fig4_state_scaling.paper_grade",
       "figure_path": "results/figures/fig4-scaling-paper-grade-20260311b/fig4_state_scaling.pdf",
+      "paper_figure_in_sync": false,
+      "paper_figure_path": "",
       "run_ids": [
         "fig4-scaling-paper-grade-20260311b-central_d16_s42",
         "fig4-scaling-paper-grade-20260311b-central_d8_s42",
@@ -85,63 +93,69 @@
     },
     {
       "aggregate_inputs": [
-        "results/aggregates/fig5-failure-paper-grade-20260311c/recovery_summary.csv",
-        "results/aggregates/fig5-failure-paper-grade-20260311c/failure_paper_grade_report.json"
+        "results/aggregates/fig5-failure-paper-grade-final-20260311d/recovery_summary.csv",
+        "results/aggregates/fig5-failure-paper-grade-final-20260311d/failure_paper_grade_report.json"
       ],
       "figure_id": "fig5_recovery_churn.paper_grade",
-      "figure_path": "results/figures/fig5-failure-paper-grade-20260311c/fig5_recovery_churn.pdf",
+      "figure_path": "results/figures/fig5-failure-paper-grade-final-20260311d/fig5_recovery_churn.pdf",
+      "paper_figure_in_sync": true,
+      "paper_figure_path": "paper/figs/fig5_recovery_churn.pdf",
       "run_ids": [
-        "fig5-failure-paper-grade-20260311c-central-churn-s42",
-        "fig5-failure-paper-grade-20260311c-central-domain-fail-s42",
-        "fig5-failure-paper-grade-20260311c-central-link-fail-s42",
-        "fig5-failure-paper-grade-20260311c-flood-churn-s42",
-        "fig5-failure-paper-grade-20260311c-flood-domain-fail-s42",
-        "fig5-failure-paper-grade-20260311c-flood-link-fail-s42",
-        "fig5-failure-paper-grade-20260311c-iroute-churn-s42",
-        "fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42",
-        "fig5-failure-paper-grade-20260311c-iroute-link-fail-s42"
+        "fig5-failure-paper-grade-final-20260311d-central-churn-s42",
+        "fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-central-link-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-flood-churn-s42",
+        "fig5-failure-paper-grade-final-20260311d-flood-domain-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-flood-link-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-iroute-churn-s42",
+        "fig5-failure-paper-grade-final-20260311d-iroute-domain-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42"
       ],
-      "status": "partial"
+      "status": "published"
     },
     {
       "aggregate_inputs": [
-        "results/aggregates/fig5-failure-paper-grade-20260311c/recovery_summary.csv",
-        "results/aggregates/fig5-failure-paper-grade-20260311c/failure_paper_grade_report.json"
+        "results/aggregates/fig5-failure-paper-grade-final-20260311d/recovery_summary.csv",
+        "results/aggregates/fig5-failure-paper-grade-final-20260311d/failure_paper_grade_report.json"
       ],
       "figure_id": "fig5_recovery_domain-fail.paper_grade",
-      "figure_path": "results/figures/fig5-failure-paper-grade-20260311c/fig5_recovery_domain-fail.pdf",
+      "figure_path": "results/figures/fig5-failure-paper-grade-final-20260311d/fig5_recovery_domain-fail.pdf",
+      "paper_figure_in_sync": true,
+      "paper_figure_path": "paper/figs/fig5_recovery_domain-fail.pdf",
       "run_ids": [
-        "fig5-failure-paper-grade-20260311c-central-churn-s42",
-        "fig5-failure-paper-grade-20260311c-central-domain-fail-s42",
-        "fig5-failure-paper-grade-20260311c-central-link-fail-s42",
-        "fig5-failure-paper-grade-20260311c-flood-churn-s42",
-        "fig5-failure-paper-grade-20260311c-flood-domain-fail-s42",
-        "fig5-failure-paper-grade-20260311c-flood-link-fail-s42",
-        "fig5-failure-paper-grade-20260311c-iroute-churn-s42",
-        "fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42",
-        "fig5-failure-paper-grade-20260311c-iroute-link-fail-s42"
+        "fig5-failure-paper-grade-final-20260311d-central-churn-s42",
+        "fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-central-link-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-flood-churn-s42",
+        "fig5-failure-paper-grade-final-20260311d-flood-domain-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-flood-link-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-iroute-churn-s42",
+        "fig5-failure-paper-grade-final-20260311d-iroute-domain-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42"
       ],
-      "status": "partial"
+      "status": "published"
     },
     {
       "aggregate_inputs": [
-        "results/aggregates/fig5-failure-paper-grade-20260311c/recovery_summary.csv",
-        "results/aggregates/fig5-failure-paper-grade-20260311c/failure_paper_grade_report.json"
+        "results/aggregates/fig5-failure-paper-grade-final-20260311d/recovery_summary.csv",
+        "results/aggregates/fig5-failure-paper-grade-final-20260311d/failure_paper_grade_report.json"
       ],
       "figure_id": "fig5_recovery_link-fail.paper_grade",
-      "figure_path": "results/figures/fig5-failure-paper-grade-20260311c/fig5_recovery_link-fail.pdf",
+      "figure_path": "results/figures/fig5-failure-paper-grade-final-20260311d/fig5_recovery_link-fail.pdf",
+      "paper_figure_in_sync": true,
+      "paper_figure_path": "paper/figs/fig5_recovery_link-fail.pdf",
       "run_ids": [
-        "fig5-failure-paper-grade-20260311c-central-churn-s42",
-        "fig5-failure-paper-grade-20260311c-central-domain-fail-s42",
-        "fig5-failure-paper-grade-20260311c-central-link-fail-s42",
-        "fig5-failure-paper-grade-20260311c-flood-churn-s42",
-        "fig5-failure-paper-grade-20260311c-flood-domain-fail-s42",
-        "fig5-failure-paper-grade-20260311c-flood-link-fail-s42",
-        "fig5-failure-paper-grade-20260311c-iroute-churn-s42",
-        "fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42",
-        "fig5-failure-paper-grade-20260311c-iroute-link-fail-s42"
+        "fig5-failure-paper-grade-final-20260311d-central-churn-s42",
+        "fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-central-link-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-flood-churn-s42",
+        "fig5-failure-paper-grade-final-20260311d-flood-domain-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-flood-link-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-iroute-churn-s42",
+        "fig5-failure-paper-grade-final-20260311d-iroute-domain-fail-s42",
+        "fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42"
       ],
-      "status": "partial"
+      "status": "published"
     },
     {
       "aggregate_inputs": [
@@ -150,6 +164,8 @@
       ],
       "figure_id": "promoted-run-summary-placeholder",
       "figure_path": "",
+      "paper_figure_in_sync": false,
+      "paper_figure_path": "",
       "run_ids": [
         "legacy-sanr-baseline-exp4-scaling-iroute-d8-s42",
         "smoke-iroute-star-s42-20260310a"

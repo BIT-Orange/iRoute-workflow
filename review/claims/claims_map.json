@@ -245,7 +245,8 @@
       "notes": [
         "The minimal Fig. 3 batch is promoted into results/runs and results/aggregates with cache_mode=disabled and seed_provenance=native.",
         "The paper-facing figure file paper/figs/fig3_hop_load.pdf is still missing, so the claim cannot be treated as publishable evidence yet.",
-        "A broader final-scope paper-grade load rerun is still required before this claim can become supported."
+        "A broader final-scope paper-grade load rerun is still required before this claim can become supported.",
+        "The canonical final-scope rerun/publish entrypoint is scripts/workflow.sh fig34-final-scope load --suffix <suffix>."
       ]
     },
     {
@@ -292,19 +293,20 @@
       "notes": [
         "The minimal Fig. 4 batch is promoted under paper_grade semantics, but it currently spans only the reduced 8/16-domain validation sweep.",
         "The paper-facing figure file paper/figs/fig4_state_scaling.pdf is still missing, so the claim remains provisional rather than publishable.",
-        "A broader final-scope paper-grade scaling rerun is still required before this claim can become supported."
+        "A broader final-scope paper-grade scaling rerun is still required before this claim can become supported.",
+        "The canonical final-scope rerun/publish entrypoint is scripts/workflow.sh fig34-final-scope scaling --suffix <suffix>."
       ]
     },
     {
       "id": "CLM-EVAL-009",
-      "title": "Recovery under churn and failures is currently unverified in the canonical paper tree",
+      "title": "Recovery under churn and failures is supported by the published Fig. 5 bundle",
       "paper_anchor": "sec:eval_robustness",
       "paper_markers": [
         "claim-id: eval-robustness-recovery"
       ],
-      "statement": "A focused cache-disabled paper-grade failure batch now regenerates the Fig. 5 panel family under native seed provenance, but the robustness claim remains blocked because the paper-facing figures are unsynchronized and the minimal churn batch still contains an ineffective iRoute disruption.",
+      "statement": "The canonical cache-disabled paper-grade Fig. 5 bundle now publishes domain-hit recovery under churn, link failure, and domain failure using native seed provenance, with every promoted run recording an effective injected disruption.",
       "claim_kind": "quantitative",
-      "status": "blocked",
+      "status": "supported",
       "related_figures": [
         "paper/figs/fig5_recovery_churn.pdf",
         "paper/figs/fig5_recovery_link-fail.pdf",
@@ -316,20 +318,20 @@
         "results/figures/fig5_recovery_domain-fail.paper_grade.figure.json"
       ],
       "related_aggregates": [
-        "results/aggregates/fig5-failure-paper-grade-20260311c/recovery_summary.csv",
-        "results/aggregates/fig5-failure-paper-grade-20260311c/failure_paper_grade_report.json"
+        "results/aggregates/fig5-failure-paper-grade-final-20260311d/recovery_summary.csv",
+        "results/aggregates/fig5-failure-paper-grade-final-20260311d/failure_paper_grade_report.json"
       ],
       "related_runs": {
         "run_ids": [
-          "fig5-failure-paper-grade-20260311c-central-churn-s42",
-          "fig5-failure-paper-grade-20260311c-central-domain-fail-s42",
-          "fig5-failure-paper-grade-20260311c-central-link-fail-s42",
-          "fig5-failure-paper-grade-20260311c-flood-churn-s42",
-          "fig5-failure-paper-grade-20260311c-flood-domain-fail-s42",
-          "fig5-failure-paper-grade-20260311c-flood-link-fail-s42",
-          "fig5-failure-paper-grade-20260311c-iroute-churn-s42",
-          "fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42",
-          "fig5-failure-paper-grade-20260311c-iroute-link-fail-s42"
+          "fig5-failure-paper-grade-final-20260311d-central-churn-s42",
+          "fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42",
+          "fig5-failure-paper-grade-final-20260311d-central-link-fail-s42",
+          "fig5-failure-paper-grade-final-20260311d-flood-churn-s42",
+          "fig5-failure-paper-grade-final-20260311d-flood-domain-fail-s42",
+          "fig5-failure-paper-grade-final-20260311d-flood-link-fail-s42",
+          "fig5-failure-paper-grade-final-20260311d-iroute-churn-s42",
+          "fig5-failure-paper-grade-final-20260311d-iroute-domain-fail-s42",
+          "fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42"
         ],
         "run_classes": [
           "paper_grade"
@@ -342,9 +344,9 @@
       ],
       "minimum_run_evidence": "paper_grade",
       "notes": [
-        "All three paper-facing figure panels are still missing from paper/figs even though partial paper-grade figure provenance now exists under results/figures.",
-        "The minimal failure batch promoted canonical paper-grade runs, but iroute-churn-s42 recorded failure_effective=0 and therefore does not yet support the churn-recovery claim.",
-        "A corrected final-scope paper-grade failure rerun is still required before this claim can be upgraded."
+        "The published Fig. 5 bundle is results/aggregates/fig5-failure-paper-grade-final-20260311d with synchronized PDFs under paper/figs/.",
+        "The repaired failure chain now records recovery_metric=domain_hit explicitly and requires paper-grade failure runs to fail if the injected event is ineffective.",
+        "This support claim is scoped to the current paper-suite failure family: central, iRoute, and Flood across churn, link-fail, and domain-fail under native seed 42."
       ]
     }
   ]

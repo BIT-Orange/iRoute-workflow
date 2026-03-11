@@ -9,13 +9,31 @@
   "figure_path": "results/figures/fig12-paper-grade-20260310a/fig1_accuracy_overhead.pdf",
   "figure_sha256": "8026a11a60d07fbdb9643d60d7d5bf0d07b34a08ad6166823bbd7ba41087cfca",
   "figure_size_bytes": 30265,
-  "generated_at_utc": "2026-03-10T12:50:45.489800+00:00",
+  "generated_at_utc": "2026-03-11T05:40:18.178755+00:00",
   "notes": [
     "batch_id=fig12-paper-grade-20260310a",
     "cache_mode=disabled",
     "run_class=paper_grade",
     "paper figure synchronized to paper/figs/fig1_accuracy_overhead.pdf"
   ],
+  "paper_figure_exists": true,
+  "paper_figure_in_sync": true,
+  "paper_figure_path": "paper/figs/fig1_accuracy_overhead.pdf",
+  "paper_figure_sha256": "8026a11a60d07fbdb9643d60d7d5bf0d07b34a08ad6166823bbd7ba41087cfca",
+  "paper_figure_size_bytes": 30265,
+  "publication": {
+    "aggregate_reports": [
+      {
+        "path": "results/aggregates/fig12-paper-grade-20260310a/fig12_paper_grade_report.json",
+        "status": ""
+      }
+    ],
+    "command": "publish-figure",
+    "paper_figure_path": "paper/figs/fig1_accuracy_overhead.pdf",
+    "published_at_utc": "2026-03-11T05:40:18.178844+00:00",
+    "source_manifest": "results/figures/fig1_accuracy_overhead.paper_grade.figure.json",
+    "source_status_before": "published"
+  },
   "run_ids": [
     "fig12-paper-grade-20260310a-central_proc2_s42",
     "fig12-paper-grade-20260310a-flood_budget2_s42",

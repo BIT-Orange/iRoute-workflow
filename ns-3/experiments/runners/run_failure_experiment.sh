@@ -108,7 +108,7 @@ QUERY_TO_TAG="${QUERY_TO_TAG:-$(iroute_resolve_dataset_file "sdm_smartcity_datas
 validate_cache_settings
 mkdir -p "$RESULT_DIR"
 RECOVERY_CSV="$RESULT_DIR/recovery_summary.csv"
-echo "scenario,scheme,seed,run_id,topology,failure_policy,failure_effective,min_success,t95,baseline,n_success,timeout_rate,hash_success,hash_domain_hit,hash_rtt,result_dir" > "$RECOVERY_CSV"
+echo "scenario,scheme,seed,run_id,topology,failure_policy,recovery_metric,failure_effective,effective_reasons,min_success,t95,baseline,n_success,timeout_rate,pre_success,post_success,pre_domain_hit,post_domain_hit,pre_exact_hit,post_exact_hit,pre_timeout_rate,post_timeout_rate,pre_retrans_avg,post_retrans_avg,pre_rtt_ms,post_rtt_ms,hash_success,hash_domain_hit,hash_rtt,result_dir" > "$RECOVERY_CSV"
 
 has_scheme() {
   local target="$1"
@@ -165,11 +165,12 @@ $recovery_arg $extra" \
     return 2
   fi
 
-  "$PYTHON_BIN" - "$fsanity" "$scenario" "$FAILURE_POLICY" <<'PY'
+  "$PYTHON_BIN" - "$fsanity" "$scenario" "$FAILURE_POLICY" "$PAPER_GRADE" <<'PY'
 import csv, sys
 path = sys.argv[1]
 scenario = sys.argv[2]
 policy = sys.argv[3]
+paper_grade = str(sys.argv[4]).strip() == "1"
 rows = list(csv.DictReader(open(path, newline='')))
 if not rows:
     raise SystemExit(f"[failure][ERROR] empty failure_sanity: {path}")
@@ -189,11 +190,20 @@ if scenario in {"link-fail", "domain-fail", "churn"}:
         after_connected = int(float(r.get("after_connected", -1) or -1))
         if after_connected != 1:
             raise SystemExit(f"[failure][ERROR] auto-noncut expected after_connected=1, got {after_connected}, row={r}")
+    metric = ""
+    notes = (r.get("notes") or "").strip()
+    for token in notes.split(";"):
+        token = token.strip()
+        if token.startswith("metric="):
+            metric = token.split("=", 1)[1].strip()
+            break
+    if paper_grade and metric != "domain_hit":
+        raise SystemExit(f"[failure][ERROR] paper-grade failure run must record metric=domain_hit, got {metric!r}, row={r}")
 if sch and sch != scenario:
     raise SystemExit(f"[failure][ERROR] scenario mismatch: expected={scenario}, got={sch}")
 PY
 
-  "$PYTHON_BIN" - "$qlog" "$lsanity" "$run_dir/summary.csv" "$scenario" "$scheme" "$seed" "$run_id" "$FAIL_TIME" "$run_dir" "$TOPO" "$FAILURE_POLICY" "$BIN_QUERIES" <<'PY' \
+  "$PYTHON_BIN" - "$qlog" "$lsanity" "$fsanity" "$run_dir/summary.csv" "$scenario" "$scheme" "$seed" "$run_id" "$FAIL_TIME" "$run_dir" "$TOPO" "$FAILURE_POLICY" "$BIN_QUERIES" "$PAPER_GRADE" <<'PY' \
     >> "$RECOVERY_CSV"
 import csv
 import hashlib
@@ -202,25 +212,27 @@ import sys
 
 qlog = sys.argv[1]
 latency = sys.argv[2]
-summary_csv = sys.argv[3]
-scenario = sys.argv[4]
-scheme = sys.argv[5]
-seed = sys.argv[6]
-run_id = sys.argv[7]
-fail_time = float(sys.argv[8])
-run_dir = sys.argv[9]
-topology = sys.argv[10]
-policy = sys.argv[11]
-bin_queries = int(float(sys.argv[12]))
+failure_sanity_csv = sys.argv[3]
+summary_csv = sys.argv[4]
+scenario = sys.argv[5]
+scheme = sys.argv[6]
+seed = sys.argv[7]
+run_id = sys.argv[8]
+fail_time = float(sys.argv[9])
+run_dir = sys.argv[10]
+topology = sys.argv[11]
+policy = sys.argv[12]
+bin_queries = int(float(sys.argv[13]))
+paper_grade = str(sys.argv[14]).strip() == "1"
 
 try:
     df = pd.read_csv(qlog)
 except Exception:
-    print(f"{scenario},{scheme},{seed},{run_id},{topology},{policy},0,0.0,-1,0.0,0,1.0,na,na,na,{run_dir}")
+    print(f"{scenario},{scheme},{seed},{run_id},{topology},{policy},domain_hit,0,,0.0,-1,0.0,0,1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,na,na,na,{run_dir}")
     raise SystemExit(0)
 
 if df.empty:
-    print(f"{scenario},{scheme},{seed},{run_id},{topology},{policy},0,0.0,-1,0.0,0,1.0,na,na,na,{run_dir}")
+    print(f"{scenario},{scheme},{seed},{run_id},{topology},{policy},domain_hit,0,,0.0,-1,0.0,0,1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,na,na,na,{run_dir}")
     raise SystemExit(0)
 
 if "is_measurable" in df.columns:
@@ -234,12 +246,18 @@ if "t_send_disc" in meas.columns:
     meas["_sec"] = pd.to_numeric(meas["t_send_disc"], errors="coerce").fillna(0.0) / 1000.0
 else:
     meas["_sec"] = 0.0
-if "is_success" in meas.columns:
-    meas["_hit"] = pd.to_numeric(meas["is_success"], errors="coerce").fillna(0.0)
-elif "domain_hit" in meas.columns:
+if "domain_hit" in meas.columns:
     meas["_hit"] = pd.to_numeric(meas["domain_hit"], errors="coerce").fillna(0.0)
+elif "is_success" in meas.columns:
+    meas["_hit"] = pd.to_numeric(meas["is_success"], errors="coerce").fillna(0.0)
 else:
     meas["_hit"] = 0.0
+meas["_success"] = pd.to_numeric(meas.get("is_success", pd.Series(dtype=float)), errors="coerce").fillna(0.0)
+meas["_domain_hit"] = pd.to_numeric(meas.get("domain_hit", pd.Series(dtype=float)), errors="coerce").fillna(0.0)
+meas["_exact_hit"] = pd.to_numeric(meas.get("hit_exact", pd.Series(dtype=float)), errors="coerce").fillna(0.0)
+meas["_timeout"] = pd.to_numeric(meas.get("is_timeout", pd.Series(dtype=float)), errors="coerce").fillna(0.0)
+meas["_retrans"] = pd.to_numeric(meas.get("retransmissions", pd.Series(dtype=float)), errors="coerce").fillna(0.0)
+meas["_rtt"] = pd.to_numeric(meas.get("rtt_total_ms", pd.Series(dtype=float)), errors="coerce").fillna(0.0)
 meas = meas.sort_values("_sec").reset_index(drop=True)
 if bin_queries <= 0:
     bin_queries = 25
@@ -267,23 +285,50 @@ except Exception:
 n_success = int(float(lat.get("success_queries", 0) or 0))
 timeout_rate = float(lat.get("timeout_rate", 0.0) or 0.0)
 failure_effective = 0
+effective_reasons = ""
 try:
     srows = list(csv.DictReader(open(summary_csv, newline="")))
     if srows:
         failure_effective = int(float(srows[-1].get("failure_effective", 0) or 0))
 except Exception:
     failure_effective = 0
+fsan = {}
+try:
+    frows = list(csv.DictReader(open(failure_sanity_csv, newline="")))
+    if frows:
+        fsan = frows[-1]
+except Exception:
+    fsan = {}
+effective_reasons = str(fsan.get("effective_reasons", "") or "").strip()
 if failure_effective == 0:
-    print(f"[failure][WARN] ineffective failure for {run_id}: failure_effective=0", file=sys.stderr)
+    message = f"[failure][ERROR] ineffective failure for {run_id}: failure_effective=0"
+    if effective_reasons:
+        message += f" reasons={effective_reasons}"
+    if paper_grade:
+        raise SystemExit(message)
+    print(message, file=sys.stderr)
 
-success_seq = ",".join(str(int(x)) for x in pd.to_numeric(meas.get("_hit", pd.Series(dtype=float)), errors="coerce").fillna(0).astype(int).tolist())
+success_seq = ",".join(str(int(x)) for x in pd.to_numeric(meas.get("_success", pd.Series(dtype=float)), errors="coerce").fillna(0).astype(int).tolist())
 domain_seq = ",".join(str(int(x)) for x in pd.to_numeric(meas.get("domain_hit", pd.Series(dtype=float)), errors="coerce").fillna(0).astype(int).tolist())
 rtt_seq = ",".join(f"{x:.3f}" for x in pd.to_numeric(meas.get("rtt_total_ms", pd.Series(dtype=float)), errors="coerce").fillna(0.0).tolist())
 h_success = hashlib.sha256(success_seq.encode()).hexdigest()[:16]
 h_dom = hashlib.sha256(domain_seq.encode()).hexdigest()[:16]
 h_rtt = hashlib.sha256(rtt_seq.encode()).hexdigest()[:16]
 
-print(f"{scenario},{scheme},{seed},{run_id},{topology},{policy},{failure_effective},{min_success:.6f},{t95},{baseline:.6f},{n_success},{timeout_rate:.6f},{h_success},{h_dom},{h_rtt},{run_dir}")
+def pick(name, default="-1.0"):
+    value = fsan.get(name, default)
+    if value in ("", None):
+        return default
+    return str(value)
+
+print(
+    f"{scenario},{scheme},{seed},{run_id},{topology},{policy},domain_hit,{failure_effective},"
+    f"{effective_reasons},{min_success:.6f},{t95},{baseline:.6f},{n_success},{timeout_rate:.6f},"
+    f"{pick('pre_success')},{pick('post_success')},{pick('pre_domain_hit')},{pick('post_domain_hit')},"
+    f"{pick('pre_exact_hit')},{pick('post_exact_hit')},{pick('pre_timeout_rate')},{pick('post_timeout_rate')},"
+    f"{pick('pre_retrans_avg')},{pick('post_retrans_avg')},{pick('pre_rtt_ms')},{pick('post_rtt_ms')},"
+    f"{h_success},{h_dom},{h_rtt},{run_dir}"
+)
 PY
 
   "$PYTHON_BIN" experiments/manifests/write_run_manifest.py \
@@ -367,6 +412,12 @@ for (scheme, seed), g in df.groupby(["scheme", "seed"]):
 if bad:
     for x in bad:
         print(f"[failure][WARN] {x}")
+if "recovery_metric" in df.columns:
+    metrics = sorted(set(df["recovery_metric"].astype(str).tolist()))
+    if metrics != ["domain_hit"]:
+        raise SystemExit(f"[failure][ERROR] expected recovery_metric=domain_hit, got {metrics}")
+if "failure_effective" in df.columns and (df["failure_effective"].astype(float) <= 0).any():
+    print("[failure][WARN] recovery_summary contains ineffective rows", file=sys.stderr)
 print("[failure] scenario hash sanity passed")
 PY
 

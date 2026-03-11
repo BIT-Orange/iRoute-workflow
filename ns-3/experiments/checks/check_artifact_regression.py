@@ -74,10 +74,21 @@ FAILURE_COLUMNS = {
     "affected_apps",
     "pre_hit",
     "post_hit",
+    "pre_success",
+    "post_success",
+    "pre_domain_hit",
+    "post_domain_hit",
+    "pre_exact_hit",
+    "post_exact_hit",
+    "pre_timeout_rate",
+    "post_timeout_rate",
+    "pre_retrans_avg",
+    "post_retrans_avg",
     "pre_rtt_ms",
     "post_rtt_ms",
     "pre_count",
     "post_count",
+    "effective_reasons",
     "notes",
 }
 
@@ -110,6 +121,12 @@ def parse_float(row: dict, key: str):
 
 def parse_int(row: dict, key: str):
     return int(float(row.get(key, "0") or 0))
+
+
+def parse_bool(value) -> bool:
+    if isinstance(value, bool):
+        return value
+    return str(value).strip().lower() in {"1", "true", "yes", "on"}
 
 
 def require_columns(path: Path, rows, required: set[str]) -> bool:
@@ -150,6 +167,7 @@ def validate_metadata(run_dir: Path) -> tuple[bool, dict]:
             "git_commit": data.get("git_commit", ""),
             "runner": data.get("runner", ""),
             "workflow": data.get("workflow", ""),
+            "paper_grade": parse_bool(fields.get("paper_grade", data.get("paper_grade", False))),
         }
         if not str(metadata["git_commit"]).strip():
             all_pass &= fail(f"{manifest_path} missing git_commit")
@@ -168,6 +186,7 @@ def validate_metadata(run_dir: Path) -> tuple[bool, dict]:
             "git_commit": "",
             "runner": "",
             "workflow": "direct_driver",
+            "paper_grade": parse_bool(data.get("paper_grade", False)),
         }
         ok(f"{direct_manifest_path} direct manifest present")
     else:
@@ -332,26 +351,40 @@ def validate_failure_sanity(run_dir: Path):
     path = run_dir / "failure_sanity.csv"
     if not path.exists():
         print(f"[artifact][INFO] {path} not present; skipping failure_sanity checks")
-        return True
+        return True, {}
     rows = load_csv(path)
     all_pass = require_columns(path, rows, FAILURE_COLUMNS)
     row = rows[-1]
     for key in ["scheduled", "applied", "affected_apps", "pre_count", "post_count"]:
         if parse_float(row, key) < 0:
             all_pass &= fail(f"{path} negative {key}")
-    for key in ["pre_hit", "post_hit"]:
+    for key in [
+        "pre_hit",
+        "post_hit",
+        "pre_success",
+        "post_success",
+        "pre_domain_hit",
+        "post_domain_hit",
+        "pre_exact_hit",
+        "post_exact_hit",
+        "pre_timeout_rate",
+        "post_timeout_rate",
+    ]:
         value = parse_float(row, key)
         if value != -1.0 and not (0.0 <= value <= 1.0):
             all_pass &= fail(f"{path} {key} out of range: {value}")
-    for key in ["pre_rtt_ms", "post_rtt_ms"]:
+    for key in ["pre_retrans_avg", "post_retrans_avg", "pre_rtt_ms", "post_rtt_ms"]:
         value = parse_float(row, key)
         if value < 0 and value != -1.0:
             all_pass &= fail(f"{path} invalid {key}: {value}")
     if not str(row.get("scenario", "")).strip():
         all_pass &= fail(f"{path} missing scenario")
+    notes = str(row.get("notes", "")).strip()
+    if notes and "metric=domain_hit" not in notes:
+        all_pass &= fail(f"{path} missing metric=domain_hit note")
     if all_pass:
         ok(f"{path} failure_sanity invariants passed")
-    return all_pass
+    return all_pass, row
 
 
 def validate_run_dir(run_dir: Path) -> bool:
@@ -365,7 +398,8 @@ def validate_run_dir(run_dir: Path) -> bool:
         all_pass &= query_ok
         if query_ok:
             all_pass &= validate_latency_sanity(run_dir, summary, query_stats)
-    all_pass &= validate_failure_sanity(run_dir)
+    failure_ok, failure_row = validate_failure_sanity(run_dir)
+    all_pass &= failure_ok
 
     if summary_ok and metadata.get("cache_mode") == "disabled":
         manifest_path = run_dir / "manifest.json"
@@ -379,6 +413,13 @@ def validate_run_dir(run_dir: Path) -> bool:
             direct = load_json(manifest_path)
             if int(direct.get("cs_size", 0)) <= 0:
                 all_pass &= fail(f"{manifest_path} cache_mode=enabled but cs_size <= 0")
+
+    if summary_ok and metadata.get("paper_grade") and failure_row:
+        failure_effective = parse_int(load_csv(run_dir / "summary.csv")[-1], "failure_effective")
+        if failure_effective <= 0:
+            all_pass &= fail(f"{run_dir} paper-grade failure run recorded failure_effective=0")
+        if not str(failure_row.get("effective_reasons", "")).strip():
+            all_pass &= fail(f"{run_dir} paper-grade failure run missing effective_reasons")
 
     if all_pass:
         ok(f"{run_dir} artifact regression checks passed")

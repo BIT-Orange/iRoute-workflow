@@ -16,6 +16,16 @@ Canonical subpaths used by the active workflow:
 - aggregate CSVs and indexes: `results/aggregates/`
 - generated figure bundles and figure provenance: `results/figures/`
 - paper include figures: `paper/figs/`
+- non-evaluation paper asset status: `paper/assets/`
+
+Paper-facing figures should be synchronized from `results/figures/` into `paper/figs/` through the repository-native publication step:
+
+```bash
+bash scripts/workflow.sh publish-figure --figure-id fig5_recovery_churn.paper_grade
+```
+
+Hand-maintained paper assets such as architecture diagrams are not generated through the experiment pipeline.
+Their current status is tracked explicitly in `paper/assets/asset_status.json`, and `paper-preflight` treats missing manual assets as release-blocking debt.
 
 Path resolution is centralized in `scripts/iroute-paths.sh`.
 Shell runners source that helper to resolve canonical roots and explicit legacy fallbacks.
@@ -42,6 +52,7 @@ bash scripts/workflow.sh lint
 bash scripts/workflow.sh checks
 bash scripts/workflow.sh smoke-run
 bash scripts/workflow.sh paper-preflight
+bash scripts/workflow.sh publish-figure --figure-id <figure-id>
 ```
 
 From `ns-3/`:

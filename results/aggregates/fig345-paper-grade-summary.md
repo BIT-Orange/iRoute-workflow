@@ -27,15 +27,15 @@ This note summarizes the current canonical paper-grade pipeline outputs for the 
 
 ## Fig. 5: Recovery Under Churn And Failures
 
-- aggregate bundle: `results/aggregates/fig5-failure-paper-grade-20260311c/`
-- figure bundle: `results/figures/fig5-failure-paper-grade-20260311c/`
+- aggregate bundle: `results/aggregates/fig5-failure-paper-grade-final-20260311d/`
+- figure bundle: `results/figures/fig5-failure-paper-grade-final-20260311d/`
 - figure manifests:
   - `results/figures/fig5_recovery_churn.paper_grade.figure.json`
   - `results/figures/fig5_recovery_link-fail.paper_grade.figure.json`
   - `results/figures/fig5_recovery_domain-fail.paper_grade.figure.json`
 - promoted runs: `9`
-- status: `partial` figures, `blocked` claim family
-- limitations:
-  - the paper-facing `paper/figs/fig5_recovery_*.pdf` files are still missing
-  - `results/aggregates/fig5-failure-paper-grade-20260311c/recovery_summary.csv` records `failure_effective=0` for `iroute-churn-s42`
-  - the minimal validation bundle is not sufficient to support the robustness claim as publishable evidence
+- status: `published`
+- notes:
+  - the repaired bundle is synchronized into `paper/figs/fig5_recovery_{churn,link-fail,domain-fail}.pdf`
+  - `recovery_summary.csv` now records `recovery_metric=domain_hit` explicitly and every promoted run has `failure_effective=1`
+  - the older exploratory repair batch `fig5-failure-paper-grade-20260311c` is now superseded by this published canonical bundle

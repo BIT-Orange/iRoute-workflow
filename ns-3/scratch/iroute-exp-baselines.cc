@@ -1608,6 +1608,7 @@ void ApplyIRouteChurn(double ratio) {
     std::shuffle(routers.begin(), routers.end(), rng);
     Ptr<Node> ingressNode = Names::Find<Node>("ingress");
     auto ingressRm = ingressNode ? iroute::RouteManagerRegistry::getOrCreate(ingressNode->GetId(), g_vectorDim) : nullptr;
+    std::vector<std::string> affectedDomains;
     for (uint32_t i = 0; i < toChurn; ++i) {
         auto app = routers[i].first;
         const std::string& domainPrefix = routers[i].second;
@@ -1641,8 +1642,19 @@ void ApplyIRouteChurn(double ratio) {
             }
         }
         g_failureSanity.affectedApps++;
+        if (!domainPrefix.empty()) {
+            affectedDomains.push_back(domainPrefix);
+        }
     }
     g_failureSanity.applied = g_failureSanity.affectedApps > 0 ? 1 : 0;
+    if (!affectedDomains.empty()) {
+        std::sort(affectedDomains.begin(), affectedDomains.end());
+        affectedDomains.erase(std::unique(affectedDomains.begin(), affectedDomains.end()), affectedDomains.end());
+        if (!g_failureSanity.notes.empty()) {
+            g_failureSanity.notes += ";";
+        }
+        g_failureSanity.notes += "affected_domains=" + irouteexp::JoinStr(affectedDomains, '|');
+    }
 }
 
 void ApplyFloodChurn(double ratio) {
@@ -1673,6 +1685,7 @@ void ApplyFloodChurn(double ratio) {
 
     std::vector<Ptr<PointToPointNetDevice>> impairedDevices;
     std::set<uint32_t> impairedNodeIds;
+    std::vector<std::string> affectedDomains;
     for (uint32_t i = 0; i < toStop; ++i) {
         Ptr<Node> node = responders[i]->GetNode();
         if (!node || impairedNodeIds.count(node->GetId()) > 0) {
@@ -1691,6 +1704,11 @@ void ApplyFloodChurn(double ratio) {
             impairedDevices.push_back(p2p);
         }
         g_failureSanity.affectedApps++;
+        std::string nodeName = EnsureNodeName(node);
+        int domainId = ParseDomainId(nodeName);
+        if (domainId >= 0) {
+            affectedDomains.push_back("/domain" + std::to_string(domainId));
+        }
     }
     if (g_churnRecoverySec > 0.0 && !impairedDevices.empty()) {
         Simulator::Schedule(Seconds(g_churnRecoverySec), [impairedDevices]() {
@@ -1706,6 +1724,14 @@ void ApplyFloodChurn(double ratio) {
         });
     }
     g_failureSanity.applied = g_failureSanity.affectedApps > 0 ? 1 : 0;
+    if (!affectedDomains.empty()) {
+        std::sort(affectedDomains.begin(), affectedDomains.end());
+        affectedDomains.erase(std::unique(affectedDomains.begin(), affectedDomains.end()), affectedDomains.end());
+        if (!g_failureSanity.notes.empty()) {
+            g_failureSanity.notes += ";";
+        }
+        g_failureSanity.notes += "affected_domains=" + irouteexp::JoinStr(affectedDomains, '|');
+    }
 }
 
 void ApplyCentralChurn(double ratio) {
@@ -1733,11 +1759,18 @@ void ApplyCentralChurn(double ratio) {
     uint32_t eventTick = static_cast<uint32_t>(std::llround(Simulator::Now().GetMilliSeconds()));
     std::mt19937 rng(g_seed + 7001u + eventTick);
     std::shuffle(producers.begin(), producers.end(), rng);
+    std::vector<std::string> affectedDomains;
 
     for (uint32_t i = 0; i < toStop; ++i) {
         auto app = producers[i];
         if (!app) {
             continue;
+        }
+        Ptr<Node> node = app->GetNode();
+        std::string nodeName = node ? EnsureNodeName(node) : "";
+        int domainId = ParseDomainId(nodeName);
+        if (domainId >= 0) {
+            affectedDomains.push_back("/domain" + std::to_string(domainId));
         }
         app->SetActive(false);
         g_failureSanity.affectedApps++;
@@ -1750,6 +1783,14 @@ void ApplyCentralChurn(double ratio) {
         }
     }
     g_failureSanity.applied = g_failureSanity.affectedApps > 0 ? 1 : 0;
+    if (!affectedDomains.empty()) {
+        std::sort(affectedDomains.begin(), affectedDomains.end());
+        affectedDomains.erase(std::unique(affectedDomains.begin(), affectedDomains.end()), affectedDomains.end());
+        if (!g_failureSanity.notes.empty()) {
+            g_failureSanity.notes += ";";
+        }
+        g_failureSanity.notes += "affected_domains=" + irouteexp::JoinStr(affectedDomains, '|');
+    }
 }
 
 void ProcessFailureArgs(const TopologyLayout* topo = nullptr,

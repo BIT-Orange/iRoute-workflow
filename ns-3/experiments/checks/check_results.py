@@ -194,6 +194,12 @@ def main() -> int:
             all_pass &= fail("recovery_summary.csv is empty")
         else:
             all_pass &= ok("recovery_summary present")
+            if "recovery_metric" in rec.columns:
+                metrics = sorted(set(rec["recovery_metric"].astype(str).tolist()))
+                if metrics == ["domain_hit"]:
+                    all_pass &= ok("fig5 recovery_metric check passed")
+                else:
+                    all_pass &= fail(f"fig5 recovery_metric expected ['domain_hit'], got {metrics}")
             t95_raw = rec.get("t95", pd.Series([], dtype=object))
             t95_num = pd.to_numeric(t95_raw, errors="coerce")
             has_valid_t95 = (t95_num >= 0).any()
@@ -231,11 +237,10 @@ def main() -> int:
             if {"scheme", "seed", "scenario", "hash_domain_hit", "hash_rtt"}.issubset(rec.columns):
                 if "failure_effective" in rec.columns:
                     fe = pd.to_numeric(rec["failure_effective"], errors="coerce").fillna(0).astype(int)
-                    if (fe > 0).any():
-                        if (fe <= 0).any():
-                            all_pass &= ok("failure_effective check: some runs ineffective (warn), but at least one effective run exists")
-                        else:
-                            all_pass &= ok("failure_effective hard check passed")
+                    if (fe > 0).all():
+                        all_pass &= ok("failure_effective hard check passed")
+                    elif (fe > 0).any():
+                        all_pass &= fail("failure_effective hard check failed: some paper-grade rows are ineffective")
                     else:
                         all_pass &= fail("failure_effective hard check failed: no effective failure rows")
                 for (scheme, seed), g in rec.groupby(["scheme", "seed"]):

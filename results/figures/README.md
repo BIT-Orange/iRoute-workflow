@@ -7,6 +7,7 @@ Canonical policy:
 - new generated figure bundles should land here
 - root `figures/` is only a legacy compatibility mirror for older workflows
 - `paper/figs/` remains the canonical include tree for `paper/main.tex`
+- non-evaluation paper assets are tracked separately in `paper/assets/asset_status.json`
 
 Conventions:
 
@@ -19,8 +20,32 @@ Conventions:
   - `blocked`: the workflow knows the figure family, but generation or evidence is still blocked
   - `placeholder`: reserved for non-plot placeholder manifests
 
+Publication rule:
+
+- figures are generated under `results/figures/`
+- figures become paper-facing only through `publish-figure`
+- publication synchronizes the canonical figure into `paper/figs/`
+- `published` requires:
+  - an existing canonical figure file
+  - existing aggregate inputs
+  - existing canonical run IDs
+  - byte-for-byte sync between `results/figures/` and `paper/figs/`
+  - a manifest that is not `blocked` or `placeholder`
+
 Write a placeholder or provenance manifest with:
 
 ```bash
 python3 scripts/paper_grade_pipeline.py figure-manifest --figure-id <id> --title <title> --status placeholder --aggregate results/aggregates/summary_rows.csv --run-id <run-id>
+```
+
+Publish a figure into `paper/figs/` with:
+
+```bash
+python3 scripts/paper_grade_pipeline.py publish-figure --figure-id fig5_recovery_churn.paper_grade
+```
+
+Dry-run validation without copying files:
+
+```bash
+python3 scripts/paper_grade_pipeline.py publish-figure --figure-id fig3_hop_load.paper_grade --dry-run
 ```

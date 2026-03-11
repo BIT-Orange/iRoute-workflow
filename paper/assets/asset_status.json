@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "paper": "paper/main.tex",
+  "assets": [
+    {
+      "paper_ref": "figs/system-arch.pdf",
+      "title": "System architecture overview diagram",
+      "category": "paper_static_asset",
+      "status": "blocked",
+      "management": "manual",
+      "destination_path": "paper/figs/system-arch.pdf",
+      "source": {
+        "kind": "missing_repo_source",
+        "path": "",
+        "exists": false,
+        "legacy_mentions": [
+          "paper.tex -> figs/system-arch.pdf",
+          "paper/archive/ndnsim-paper-legacy.tex -> figures/system-arch.png"
+        ]
+      },
+      "notes": [
+        "Referenced by the canonical paper system overview section.",
+        "No tracked source or generator for this diagram exists in the repository.",
+        "Strict paper-release remains blocked until an author-supplied source or synchronized PDF is added."
+      ]
+    },
+    {
+      "paper_ref": "figs/mermaid.png",
+      "title": "System workflow diagram",
+      "category": "paper_static_asset",
+      "status": "blocked",
+      "management": "manual",
+      "destination_path": "paper/figs/mermaid.png",
+      "source": {
+        "kind": "missing_repo_source",
+        "path": "",
+        "exists": false,
+        "legacy_mentions": [
+          "paper.tex -> figs/mermaid.png",
+          "paper/archive/ndnsim-paper-legacy.tex -> figures/mermaid.png"
+        ]
+      },
+      "notes": [
+        "Referenced by the canonical paper system overview section.",
+        "No tracked source or generator for this image exists in the repository.",
+        "Strict paper-release remains blocked until an author-supplied source or synchronized PNG is added."
+      ]
+    }
+  ]
+}

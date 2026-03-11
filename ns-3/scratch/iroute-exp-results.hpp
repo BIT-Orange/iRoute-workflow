@@ -160,8 +160,19 @@ struct FailureSanityRecord {
     int affectedApps = 0;
     double preHit = -1.0;
     double postHit = -1.0;
+    double preSuccess = -1.0;
+    double postSuccess = -1.0;
+    double preDomainHit = -1.0;
+    double postDomainHit = -1.0;
+    double preExactHit = -1.0;
+    double postExactHit = -1.0;
+    double preTimeoutRate = -1.0;
+    double postTimeoutRate = -1.0;
+    double preRetransAvg = -1.0;
+    double postRetransAvg = -1.0;
     uint32_t preCount = 0;
     uint32_t postCount = 0;
+    std::string effectiveReasons = "";
     std::string notes = "";
 };
 
@@ -661,14 +672,24 @@ WriteFailureSanity(const std::vector<QueryLog>& logs,
     std::string path = dir + "/failure_sanity.csv";
     std::ofstream f(path);
     f << "scenario,target,event_time,scheduled,applied,before_connected,after_connected,"
-         "affected_apps,pre_hit,post_hit,pre_rtt_ms,post_rtt_ms,pre_count,post_count,notes\n";
+         "affected_apps,pre_hit,post_hit,pre_success,post_success,pre_domain_hit,post_domain_hit,"
+         "pre_exact_hit,post_exact_hit,pre_timeout_rate,post_timeout_rate,pre_retrans_avg,"
+         "post_retrans_avg,pre_rtt_ms,post_rtt_ms,pre_count,post_count,effective_reasons,notes\n";
 
     double windowSec = 20.0;
     if (failRecoverySec > 0.0) {
         windowSec = std::max(windowSec, failRecoverySec + 10.0);
     }
-    double preSum = 0.0;
-    double postSum = 0.0;
+    double preSuccessSum = 0.0;
+    double postSuccessSum = 0.0;
+    double preDomainSum = 0.0;
+    double postDomainSum = 0.0;
+    double preExactSum = 0.0;
+    double postExactSum = 0.0;
+    double preTimeoutSum = 0.0;
+    double postTimeoutSum = 0.0;
+    double preRetransSum = 0.0;
+    double postRetransSum = 0.0;
     double preRttSum = 0.0;
     double postRttSum = 0.0;
     uint32_t preRttCnt = 0;
@@ -677,10 +698,16 @@ WriteFailureSanity(const std::vector<QueryLog>& logs,
     uint32_t postCnt = 0;
     if (failureSanity->eventTime > 0.0) {
         for (const auto& q : logs) {
+            if (q.is_measurable <= 0) {
+                continue;
+            }
             double tSec = q.t_send_disc / 1000.0;
-            double quality = static_cast<double>(q.is_success);
             if (tSec >= failureSanity->eventTime - windowSec && tSec < failureSanity->eventTime) {
-                preSum += quality;
+                preSuccessSum += static_cast<double>(q.is_success);
+                preDomainSum += static_cast<double>(q.domain_hit);
+                preExactSum += static_cast<double>(q.hit_exact);
+                preTimeoutSum += static_cast<double>(q.is_timeout);
+                preRetransSum += static_cast<double>(q.retransmissions);
                 if (q.rtt_total_ms > 0.0) {
                     preRttSum += q.rtt_total_ms;
                     ++preRttCnt;
@@ -688,7 +715,11 @@ WriteFailureSanity(const std::vector<QueryLog>& logs,
                 preCnt++;
             }
             else if (tSec >= failureSanity->eventTime && tSec < failureSanity->eventTime + windowSec) {
-                postSum += quality;
+                postSuccessSum += static_cast<double>(q.is_success);
+                postDomainSum += static_cast<double>(q.domain_hit);
+                postExactSum += static_cast<double>(q.hit_exact);
+                postTimeoutSum += static_cast<double>(q.is_timeout);
+                postRetransSum += static_cast<double>(q.retransmissions);
                 if (q.rtt_total_ms > 0.0) {
                     postRttSum += q.rtt_total_ms;
                     ++postRttCnt;
@@ -699,17 +730,53 @@ WriteFailureSanity(const std::vector<QueryLog>& logs,
     }
     failureSanity->preCount = preCnt;
     failureSanity->postCount = postCnt;
-    failureSanity->preHit = preCnt > 0 ? preSum / preCnt : -1.0;
-    failureSanity->postHit = postCnt > 0 ? postSum / postCnt : -1.0;
+    failureSanity->preSuccess = preCnt > 0 ? preSuccessSum / preCnt : -1.0;
+    failureSanity->postSuccess = postCnt > 0 ? postSuccessSum / postCnt : -1.0;
+    failureSanity->preDomainHit = preCnt > 0 ? preDomainSum / preCnt : -1.0;
+    failureSanity->postDomainHit = postCnt > 0 ? postDomainSum / postCnt : -1.0;
+    failureSanity->preExactHit = preCnt > 0 ? preExactSum / preCnt : -1.0;
+    failureSanity->postExactHit = postCnt > 0 ? postExactSum / postCnt : -1.0;
+    failureSanity->preTimeoutRate = preCnt > 0 ? preTimeoutSum / preCnt : -1.0;
+    failureSanity->postTimeoutRate = postCnt > 0 ? postTimeoutSum / postCnt : -1.0;
+    failureSanity->preRetransAvg = preCnt > 0 ? preRetransSum / preCnt : -1.0;
+    failureSanity->postRetransAvg = postCnt > 0 ? postRetransSum / postCnt : -1.0;
+    // Fig. 5 recovery curves use domain-hit, so pre_hit/post_hit track the same primary metric.
+    failureSanity->preHit = failureSanity->preDomainHit;
+    failureSanity->postHit = failureSanity->postDomainHit;
     double preRtt = preRttCnt > 0 ? preRttSum / preRttCnt : -1.0;
     double postRtt = postRttCnt > 0 ? postRttSum / postRttCnt : -1.0;
+    failureSanity->effectiveReasons.clear();
     if (preCnt > 0 && postCnt > 0) {
-        bool successChanged = std::fabs(failureSanity->preHit - failureSanity->postHit) > 1e-9;
+        std::vector<std::string> reasons;
+        double successDrop = failureSanity->preSuccess - failureSanity->postSuccess;
+        double domainDrop = failureSanity->preDomainHit - failureSanity->postDomainHit;
+        double exactDrop = failureSanity->preExactHit - failureSanity->postExactHit;
+        double timeoutIncrease = failureSanity->postTimeoutRate - failureSanity->preTimeoutRate;
+        double retransIncrease = failureSanity->postRetransAvg - failureSanity->preRetransAvg;
         bool latencyChanged = false;
         if (preRtt > 0.0 && postRtt > 0.0) {
             latencyChanged = std::fabs(postRtt - preRtt) / preRtt > 0.05;
         }
-        *failureEffective = (successChanged || latencyChanged) ? 1 : 0;
+        if (domainDrop > 0.05) {
+            reasons.push_back("domain_hit_drop");
+        }
+        if (successDrop > 0.05) {
+            reasons.push_back("success_drop");
+        }
+        if (exactDrop > 0.05) {
+            reasons.push_back("exact_hit_drop");
+        }
+        if (timeoutIncrease > 0.02) {
+            reasons.push_back("timeout_increase");
+        }
+        if (retransIncrease > 0.25) {
+            reasons.push_back("retrans_increase");
+        }
+        if (latencyChanged) {
+            reasons.push_back("rtt_shift");
+        }
+        *failureEffective = reasons.empty() ? 0 : 1;
+        failureSanity->effectiveReasons = JoinStr(reasons);
     }
     else {
         *failureEffective = 0;
@@ -719,10 +786,15 @@ WriteFailureSanity(const std::vector<QueryLog>& logs,
       << std::setprecision(3) << failureSanity->eventTime << "," << failureSanity->scheduled << ","
       << failureSanity->applied << "," << failureSanity->beforeConnected << "," << failureSanity->afterConnected
       << "," << failureSanity->affectedApps << "," << std::setprecision(6) << failureSanity->preHit << ","
-      << failureSanity->postHit << "," << preRtt << "," << postRtt << "," << failureSanity->preCount << ","
-      << failureSanity->postCount << ","
-      << CsvEscape(failureSanity->notes.empty() ? "metric=is_success"
-                                               : failureSanity->notes + ";metric=is_success")
+      << failureSanity->postHit << "," << failureSanity->preSuccess << "," << failureSanity->postSuccess << ","
+      << failureSanity->preDomainHit << "," << failureSanity->postDomainHit << ","
+      << failureSanity->preExactHit << "," << failureSanity->postExactHit << ","
+      << failureSanity->preTimeoutRate << "," << failureSanity->postTimeoutRate << ","
+      << failureSanity->preRetransAvg << "," << failureSanity->postRetransAvg << "," << preRtt << ","
+      << postRtt << "," << failureSanity->preCount << "," << failureSanity->postCount << ","
+      << CsvEscape(failureSanity->effectiveReasons) << ","
+      << CsvEscape(failureSanity->notes.empty() ? "metric=domain_hit"
+                                               : failureSanity->notes + ";metric=domain_hit")
       << "\n";
     NS_LOG_UNCOND("Wrote " << path);
 }

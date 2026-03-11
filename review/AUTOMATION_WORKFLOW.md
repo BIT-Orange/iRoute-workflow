@@ -15,6 +15,7 @@ Operational meaning:
 - `dev-fast`: local quick check; shows current claim status without blocking on existing paper debt
 - `merge-gate`: the PR-tier gate; already-`supported` claims must remain valid, but `provisional` and `blocked` claims may remain as known debt
 - `paper-release-gate`: strict release gate; every mapped claim must be `supported` and all paper figures must be present
+- strict paper release also requires non-evaluation paper assets tracked in `paper/assets/asset_status.json` to exist in `paper/figs/`
 
 ## Daily Flow
 
@@ -24,6 +25,8 @@ Use the repo-root entrypoint:
 bash scripts/workflow.sh dev-fast
 bash scripts/workflow.sh fig12-paper-grade --batch-id <batch-id>
 bash scripts/workflow.sh fig345-paper-grade <load|scaling|failure|all> --suffix <suffix>
+bash scripts/workflow.sh fig34-final-scope <load|scaling|all> --suffix <suffix>
+bash scripts/workflow.sh publish-figure --figure-id <figure-id>
 ```
 
 If you already have a compiled ns-3 smoke binary, also run:
@@ -35,7 +38,11 @@ bash scripts/workflow.sh artifact-check
 
 The smoke run is a tiny plumbing validation only. It is not paper evidence.
 The `fig12-paper-grade` command is the canonical rerun/promotion path for the current paper-grade Fig. 1 and Fig. 2 evidence bundle.
-The `fig345-paper-grade` command is the canonical staging/promotion path for the current Fig. 3, Fig. 4, and Fig. 5 family bundles. Those outputs remain provisional until they are synchronized into `paper/figs/` and the final-scope reruns complete.
+The `fig345-paper-grade` command is the canonical staging/promotion path for the current Fig. 3, Fig. 4, and Fig. 5 family bundles.
+The `fig34-final-scope` command is the canonical final-scope rerun and publication path for Fig. 3 and Fig. 4. It promotes runs into `results/runs/`, rebuilds canonical aggregate bundles, generates figure bundles under `results/figures/`, and synchronizes the published PDFs into `paper/figs/` only after byte-for-byte verification.
+The `fig5-paper-grade` command is the canonical rerun, promotion, and publication path for the current Fig. 5 robustness bundle. It synchronizes published PDFs into `paper/figs/` only after every promoted failure run records an effective disruption and the figure files match byte-for-byte.
+The `publish-figure` command is the generic paper-facing sync path for any figure manifest that already has sufficient provenance. It refuses to upgrade `blocked` or `placeholder` manifests, and it refuses to upgrade `partial` manifests unless their aggregate bundle is already marked publishable.
+Hand-maintained paper assets such as architecture diagrams do not use `publish-figure`; they stay tracked as explicit manual debt in `paper/assets/asset_status.json` until a real source or synchronized paper-facing file exists.
 
 ## Before Opening A PR
 
@@ -60,6 +67,7 @@ Paper-grade evidence means all of the following:
 - scaling runs do not use cloned seeds
 - artifact regression passes on the produced outputs
 - the figure set referenced by `paper/main.tex` exists and is traceable to the current workflow
+- non-evaluation assets referenced by `paper/main.tex` either exist in `paper/figs/` or are explicitly listed as blocked manual debt in `paper/assets/asset_status.json`
 
 The cache-enabled SANR baseline workflow is useful for cache studies, but it is not paper-grade routing-only evidence.
 
@@ -85,6 +93,7 @@ Path policy:
 - outputs regenerated from the paper-grade workflow with cache disabled
 - manifests with complete lineage and native seed provenance
 - figures present in `paper/figs/` and passing `paper-preflight`
+- figures synchronized through the generic `publish-figure` step, with `paper_figure_in_sync=true`
 - claims that are consistent with the regenerated evidence set
 
 ## CI Expectations
@@ -102,6 +111,7 @@ Later CI can add heavier manual jobs for full paper-grade execution and artifact
 - red `repo-hygiene.yml`: repository syntax or manifest hygiene is broken
 - red `experiment-checks.yml`: merge-tier workflow integrity is broken, or a previously `supported` claim lost its evidence
 - red `paper-preflight.yml`: expected when paper-release debt remains; treat it as release-readiness feedback, not as a routine merge blocker
+- a red paper-release gate can come from missing evaluation figures, provisional claims, or missing hand-maintained paper assets
 
 ## Provisional Versus Blocked Claims
 

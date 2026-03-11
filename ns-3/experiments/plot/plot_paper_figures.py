@@ -846,7 +846,15 @@ def _contains_domain(series: pd.Series, did: int):
     return series.apply(_hit)
 
 
-def _affected_mask(qdf: pd.DataFrame, scenario: str, target: str):
+def _extract_note_value(notes: str, key: str) -> str:
+    for token in str(notes or "").split(";"):
+        token = token.strip()
+        if token.startswith(f"{key}="):
+            return token.split("=", 1)[1].strip()
+    return ""
+
+
+def _affected_mask(qdf: pd.DataFrame, scenario: str, target: str, notes: str = ""):
     if qdf is None or qdf.empty:
         return pd.Series([], dtype=bool)
     sc = str(scenario).strip().lower()
@@ -871,7 +879,20 @@ def _affected_mask(qdf: pd.DataFrame, scenario: str, target: str):
         for did in dom_ids:
             mask = mask | _contains_domain(qdf["gt_domain"], did)
         return mask
-    # churn has no explicit domain target in current logs; fallback to global set
+    if sc == "churn":
+        note_value = _extract_note_value(notes, "affected_domains")
+        if note_value:
+            dom_ids = []
+            for token in note_value.split("|"):
+                did = _parse_domain_id(token)
+                if did is not None:
+                    dom_ids.append(did)
+            if dom_ids:
+                mask = pd.Series(np.zeros(len(qdf), dtype=bool), index=qdf.index)
+                for did in dom_ids:
+                    mask = mask | _contains_domain(qdf["gt_domain"], did)
+                return mask
+    # fallback to global set when the event does not expose explicit affected domains
     return pd.Series(np.ones(len(qdf), dtype=bool), index=qdf.index)
 
 
@@ -901,7 +922,12 @@ def _curve_min_t95(curve: pd.DataFrame, fail_time: float, hold_bins: int = 3):
     return min_success, t95, baseline
 
 
-def _recovery_curve(qdf: pd.DataFrame, mask: pd.Series | None = None, metric: str = "success"):
+def _recovery_curve(
+    qdf: pd.DataFrame,
+    mask: pd.Series | None = None,
+    metric: str = "success",
+    recovery_bin_queries: int = RECOVERY_BIN_QUERIES,
+):
     if qdf.empty or "t_send_disc" not in qdf.columns:
         return pd.DataFrame()
     use = _measurement_subset(qdf)
@@ -923,8 +949,8 @@ def _recovery_curve(qdf: pd.DataFrame, mask: pd.Series | None = None, metric: st
     else:
         h = pd.Series(np.zeros(len(use), dtype=float))
     tmp = pd.DataFrame({"sec": t, "hit": h}).sort_values("sec").reset_index(drop=True)
-    if len(tmp) >= RECOVERY_BIN_QUERIES:
-        tmp["bin"] = (tmp.index // RECOVERY_BIN_QUERIES).astype(int)
+    if recovery_bin_queries > 0 and len(tmp) >= recovery_bin_queries:
+        tmp["bin"] = (tmp.index // recovery_bin_queries).astype(int)
         out = tmp.groupby("bin", as_index=False).agg(sec=("sec", "median"), hit=("hit", "mean"), n=("hit", "size"))
         out["smooth"] = out["hit"].rolling(window=3, min_periods=1).mean()
         return out
@@ -933,7 +959,13 @@ def _recovery_curve(qdf: pd.DataFrame, mask: pd.Series | None = None, metric: st
     return sec
 
 
-def plot_failure_recovery(fail_dir: str, output_dir: str, fig_index: dict, fail_time: int):
+def plot_failure_recovery(
+    fail_dir: str,
+    output_dir: str,
+    fig_index: dict,
+    fail_time: int,
+    recovery_bin_queries: int = RECOVERY_BIN_QUERIES,
+):
     rec_csv = os.path.join(fail_dir, "recovery_summary.csv")
     rec_df = pd.read_csv(rec_csv) if os.path.exists(rec_csv) else pd.DataFrame()
     scenarios = ["churn", "link-fail", "domain-fail"]
@@ -962,26 +994,35 @@ def plot_failure_recovery(fail_dir: str, output_dir: str, fig_index: dict, fail_
             if not os.path.exists(qlog):
                 continue
             qdf = pd.read_csv(qlog)
-            global_curve = _recovery_curve(qdf, metric=metric_name)
-            if global_curve.empty:
-                continue
             target = ""
+            notes = ""
             fsanity = os.path.join(rd, "failure_sanity.csv")
             if os.path.exists(fsanity):
                 try:
                     fr = pd.read_csv(fsanity)
                     if not fr.empty:
                         target = str(fr.iloc[-1].get("target", "")).strip()
+                        notes = str(fr.iloc[-1].get("notes", "")).strip()
                 except Exception:
                     target = ""
-            mask = _affected_mask(qdf, sc, target)
-            affected_curve = _recovery_curve(qdf, mask=mask, metric=metric_name)
+                    notes = ""
+            global_curve = _recovery_curve(qdf, metric=metric_name, recovery_bin_queries=recovery_bin_queries)
+            if global_curve.empty:
+                continue
+            mask = _affected_mask(qdf, sc, target, notes)
+            affected_curve = _recovery_curve(
+                qdf,
+                mask=mask,
+                metric=metric_name,
+                recovery_bin_queries=recovery_bin_queries,
+            )
             n_affected = int(mask.sum()) if len(mask) == len(qdf) else 0
             curves.setdefault(scheme, []).append({
                 "run": rd,
                 "global": global_curve,
                 "affected": affected_curve,
                 "target": target,
+                "notes": notes,
                 "n_affected": n_affected,
             })
         if not curves:
@@ -1060,6 +1101,7 @@ def plot_failure_recovery(fail_dir: str, output_dir: str, fig_index: dict, fail_
             used[s] = {
                 "runs": [r["run"] for r in runs],
                 "targets": sorted(set([r["target"] for r in runs if r.get("target")])),
+                "notes": sorted(set([r["notes"] for r in runs if r.get("notes")])),
                 "n_runs_global": int(used_global),
                 "n_runs_affected": int(used_aff),
                 "n_affected_total": int(sum(r.get("n_affected", 0) for r in runs)),
@@ -1072,8 +1114,8 @@ def plot_failure_recovery(fail_dir: str, output_dir: str, fig_index: dict, fail_
                 "failure_hash": failure_hash,
             }
 
-        if sc == "churn" and ("iroute" not in used or "tag" not in used):
-            warn("fig5_churn missing iRoute or INF-NDN")
+        if sc == "churn" and ("iroute" not in used or "flood" not in used):
+            warn("fig5_churn missing iRoute or Flood")
 
         ax.axvline(fail_time, color="red", linestyle=":", linewidth=1.6, label=f"event t={fail_time}s")
         ax.text(fail_time + 0.5, 0.04, f"t={fail_time}s", color="red", fontsize=8)
@@ -1131,6 +1173,7 @@ def main():
     parser.add_argument("--load-csv", default="")
     parser.add_argument("--scaling-csv", default="")
     parser.add_argument("--fail-time", type=int, default=50)
+    parser.add_argument("--recovery-bin-queries", type=int, default=RECOVERY_BIN_QUERIES)
     parser.add_argument("--cdf-xscale", choices=["linear", "log"], default="linear")
     args = parser.parse_args()
 
@@ -1156,7 +1199,13 @@ def main():
     base_dir = os.path.dirname(os.path.abspath(args.acc_dir))
     plot_hop_load(base_dir, args.load_csv, args.output, fig_index)
     plot_scaling(base_dir, args.scaling_csv, args.output, fig_index)
-    plot_failure_recovery(os.path.abspath(args.fail_dir), args.output, fig_index, args.fail_time)
+    plot_failure_recovery(
+        os.path.abspath(args.fail_dir),
+        args.output,
+        fig_index,
+        args.fail_time,
+        args.recovery_bin_queries,
+    )
     write_figure_index(args.output, fig_index)
 
 

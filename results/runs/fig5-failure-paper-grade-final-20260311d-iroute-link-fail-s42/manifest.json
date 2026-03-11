@@ -1,0 +1,90 @@
+{
+  "artifacts": [
+    {
+      "artifact_type": "summary.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42/summary.csv",
+      "required": true,
+      "sha256": "10f6e57456be3e681c97b516af3de5dde020d98701c6524e4cc2e5330508459d",
+      "size_bytes": 538,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/iroute-link-fail-s42/summary.csv"
+    },
+    {
+      "artifact_type": "query_log.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42/query_log.csv",
+      "required": true,
+      "sha256": "0ac264b5a2466f9caa8a4763480323adafef645ce876a910a5d3fdba00977010",
+      "size_bytes": 47259,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/iroute-link-fail-s42/query_log.csv"
+    },
+    {
+      "artifact_type": "latency_sanity.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42/latency_sanity.csv",
+      "required": true,
+      "sha256": "8bd0fee898d96924f14447c27f9f69a1e9582c6c62d530992923804243f71566",
+      "size_bytes": 377,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/iroute-link-fail-s42/latency_sanity.csv"
+    },
+    {
+      "artifact_type": "failure_sanity.csv",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42/failure_sanity.csv",
+      "required": false,
+      "sha256": "4a9515c7240f95ae5a6b0b0ce821e64d7d0638dab04364841693503fbe7b57dc",
+      "size_bytes": 610,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/iroute-link-fail-s42/failure_sanity.csv"
+    },
+    {
+      "artifact_type": "source_manifest.json",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42/source_manifest.json",
+      "required": false,
+      "sha256": "57c55efffe9af915c164ab526d6aa3737f440eae9e09d77101fde066ff44427a",
+      "size_bytes": 756,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/iroute-link-fail-s42/manifest.json"
+    },
+    {
+      "artifact_type": "source_run_manifest.json",
+      "canonical_path": "results/runs/fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42/source_run_manifest.json",
+      "required": false,
+      "sha256": "1137d1d1b7239a7e48502f74c01cc48bdae9ad8d646e0b4feb58d211f356c7f3",
+      "size_bytes": 2324,
+      "source_path": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/iroute-link-fail-s42/run_manifest.json"
+    }
+  ],
+  "cache_mode": "disabled",
+  "canonical_dir": "results/runs/fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42",
+  "compatibility": {
+    "legacy_results_path": "",
+    "legacy_status": "canonical_staging"
+  },
+  "cs_size": 0,
+  "git_commit": "c9fe70330c976461054cc2b19d036d65a1387ea4",
+  "major_options": {
+    "cache_mode": "disabled",
+    "cs_size": 0,
+    "data_freshness_ms": 60000,
+    "domains": 8,
+    "frequency": 2,
+    "measure_start_sec": 0,
+    "paper_grade": 1,
+    "run_mode": "failure_run",
+    "scheme": "iroute",
+    "seed": 42,
+    "sim_time": 32,
+    "topology": "redundant",
+    "topology_file": "/Users/jiyuan/Desktop/ndnSIM/ns-3/src/ndnSIM/examples/topologies/as1239-r0.txt",
+    "warmup_sec": 0
+  },
+  "notes": [],
+  "promoted_at_utc": "2026-03-11T05:20:31.190137+00:00",
+  "run_class": "paper_grade",
+  "run_id": "fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42",
+  "runner": "ns-3/experiments/runners/run_failure_experiment.sh",
+  "schema_version": 1,
+  "seed_provenance": "native",
+  "source_dir": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/iroute-link-fail-s42",
+  "source_kind": "failure_paper_grade_final_staging",
+  "source_manifests": {
+    "direct_manifest": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/iroute-link-fail-s42/manifest.json",
+    "runner_manifest": "/private/tmp/fig5-failure-paper-grade-final-20260311d-stage/iroute-link-fail-s42/run_manifest.json"
+  },
+  "workflow": "failure_paper_grade_final"
+}

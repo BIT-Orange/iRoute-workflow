@@ -1,31 +1,39 @@
 {
   "aggregate_inputs": [
-    "results/aggregates/fig5-failure-paper-grade-20260311c/recovery_summary.csv",
-    "results/aggregates/fig5-failure-paper-grade-20260311c/failure_paper_grade_report.json"
+    "results/aggregates/fig5-failure-paper-grade-final-20260311d/recovery_summary.csv",
+    "results/aggregates/fig5-failure-paper-grade-final-20260311d/failure_paper_grade_report.json"
   ],
   "figure_exists": true,
   "figure_id": "fig5_recovery_domain-fail.paper_grade",
-  "figure_path": "results/figures/fig5-failure-paper-grade-20260311c/fig5_recovery_domain-fail.pdf",
-  "figure_sha256": "85abb50d55bf8596ba3f80866d46dcf1a6867b9f1b51b13fa7113bf6993ff703",
-  "figure_size_bytes": 22931,
-  "generated_at_utc": "2026-03-10T17:41:07.079889+00:00",
+  "figure_path": "results/figures/fig5-failure-paper-grade-final-20260311d/fig5_recovery_domain-fail.pdf",
+  "figure_sha256": "7fb50c98df338b6286078a040e664f83f8fbbca2e578081ebb5cfbdcbc1a5094",
+  "figure_size_bytes": 23117,
+  "generated_at_utc": "2026-03-11T05:20:43.721585+00:00",
   "notes": [
-    "batch_id=fig5-failure-paper-grade-20260311c",
+    "batch_id=fig5-failure-paper-grade-final-20260311d",
     "cache_mode=disabled",
     "run_class=paper_grade",
-    "Focused minimal paper-grade batch; full reruns still required before publishable paper evidence."
+    "scope=final",
+    "Current paper-suite Fig. 5 scope: central, iRoute, and Flood across churn, link-fail, and domain-fail under native seed 42.",
+    "This bundle is publishable only if every promoted run records effective disruption and the paper-facing PDFs are synchronized.",
+    "paper figure synchronized to paper/figs/fig5_recovery_domain-fail.pdf"
   ],
+  "paper_figure_exists": true,
+  "paper_figure_in_sync": true,
+  "paper_figure_path": "paper/figs/fig5_recovery_domain-fail.pdf",
+  "paper_figure_sha256": "7fb50c98df338b6286078a040e664f83f8fbbca2e578081ebb5cfbdcbc1a5094",
+  "paper_figure_size_bytes": 23117,
   "run_ids": [
-    "fig5-failure-paper-grade-20260311c-central-churn-s42",
-    "fig5-failure-paper-grade-20260311c-central-domain-fail-s42",
-    "fig5-failure-paper-grade-20260311c-central-link-fail-s42",
-    "fig5-failure-paper-grade-20260311c-flood-churn-s42",
-    "fig5-failure-paper-grade-20260311c-flood-domain-fail-s42",
-    "fig5-failure-paper-grade-20260311c-flood-link-fail-s42",
-    "fig5-failure-paper-grade-20260311c-iroute-churn-s42",
-    "fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42",
-    "fig5-failure-paper-grade-20260311c-iroute-link-fail-s42"
+    "fig5-failure-paper-grade-final-20260311d-central-churn-s42",
+    "fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42",
+    "fig5-failure-paper-grade-final-20260311d-central-link-fail-s42",
+    "fig5-failure-paper-grade-final-20260311d-flood-churn-s42",
+    "fig5-failure-paper-grade-final-20260311d-flood-domain-fail-s42",
+    "fig5-failure-paper-grade-final-20260311d-flood-link-fail-s42",
+    "fig5-failure-paper-grade-final-20260311d-iroute-churn-s42",
+    "fig5-failure-paper-grade-final-20260311d-iroute-domain-fail-s42",
+    "fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42"
   ],
-  "status": "partial",
+  "status": "published",
   "title": "fig5_recovery_domain-fail canonical figure provenance"
 }

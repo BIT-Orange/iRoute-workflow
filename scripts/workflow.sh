@@ -76,6 +76,9 @@ run_json_sanity() {
   if [ -f "$REPO_ROOT/review/claims/claims_map.json" ]; then
     files+=("$REPO_ROOT/review/claims/claims_map.json")
   fi
+  while IFS= read -r file; do
+    files+=("$file")
+  done < <(find "$REPO_ROOT/paper/assets" -type f -name '*.json' 2>/dev/null | sort)
   if [ "${#files[@]}" -eq 0 ]; then
     skip "no JSON manifests found"
     return 0
@@ -322,6 +325,21 @@ run_fig345_paper_grade() {
   "$PYTHON_BIN" "$REPO_ROOT/scripts/fig345_paper_grade.py" "$@"
 }
 
+run_fig34_final_scope() {
+  log "running final-scope paper-grade Fig.3/Fig.4 pipeline"
+  "$PYTHON_BIN" "$REPO_ROOT/scripts/fig345_paper_grade.py" --scope final --publish-paper "$@"
+}
+
+run_fig5_paper_grade() {
+  log "running paper-grade Fig.5 repair/publish pipeline"
+  "$PYTHON_BIN" "$REPO_ROOT/scripts/fig345_paper_grade.py" --scope final --publish-paper failure "$@"
+}
+
+run_publish_figure() {
+  log "publishing canonical figure into paper/figs"
+  "$PYTHON_BIN" "$REPO_ROOT/scripts/paper_grade_pipeline.py" publish-figure "$@"
+}
+
 run_lint() {
   run_shell_syntax
   run_python_compile
@@ -344,6 +362,9 @@ Commands:
   artifact-check [dir]  Run artifact regression on a smoke or supplied run directory.
   fig12-paper-grade     Run the canonical paper-grade Fig.1/Fig.2 rerun, promotion, aggregation, and figure sync path.
   fig345-paper-grade    Run the canonical Fig.3/Fig.4/Fig.5 paper-grade staging and figure provenance path.
+  fig34-final-scope     Run the final-scope Fig.3/Fig.4 rerun, promotion, and paper figure sync path.
+  fig5-paper-grade      Run the current paper-grade Fig.5 rerun, promotion, and paper figure sync path.
+  publish-figure        Publish a canonical figure manifest into paper/figs/ after provenance checks.
   smoke-run             Run a tiny ns-3 smoke validation if a compiled binary is available.
   paper-suite-preflight Check static paper-suite semantics and manifest defaults.
   ci-local              Compatibility alias for the strict local paper-release gate.
@@ -384,6 +405,15 @@ main() {
       ;;
     fig345-paper-grade)
       run_fig345_paper_grade "$@"
+      ;;
+    fig34-final-scope)
+      run_fig34_final_scope "$@"
+      ;;
+    fig5-paper-grade)
+      run_fig5_paper_grade "$@"
+      ;;
+    publish-figure)
+      run_publish_figure "$@"
       ;;
     smoke-run)
       run_smoke
