@@ -26,6 +26,11 @@ bash scripts/workflow.sh publish-figure --figure-id fig5_recovery_churn.paper_gr
 
 Hand-maintained paper assets such as architecture diagrams are not generated through the experiment pipeline.
 Their current status is tracked explicitly in `paper/assets/asset_status.json`, and `paper-preflight` treats missing manual assets as release-blocking debt.
+Their source-managed slots live under `paper/assets/src/`, and the repository-native sync helper is:
+
+```bash
+bash scripts/workflow.sh paper-assets-sync
+```
 
 Path resolution is centralized in `scripts/iroute-paths.sh`.
 Shell runners source that helper to resolve canonical roots and explicit legacy fallbacks.
@@ -53,7 +58,9 @@ bash scripts/workflow.sh checks
 bash scripts/workflow.sh smoke-run
 bash scripts/workflow.sh paper-preflight
 bash scripts/workflow.sh publish-figure --figure-id <figure-id>
+bash scripts/workflow.sh paper-assets-sync
 bash scripts/workflow.sh release-dossier
+bash scripts/workflow.sh submission-bundle
 ```
 
 From `ns-3/`:
@@ -92,3 +99,12 @@ bash scripts/workflow.sh release-dossier
 ```
 
 This writes a JSON + Markdown dossier under `review/paper_audit/` summarizing claim status, figure publication state, manual paper asset debt, and the paper-facing files that are still missing.
+
+For a frozen paper/evidence handoff bundle, run:
+
+```bash
+bash scripts/workflow.sh submission-bundle
+```
+
+This writes a directory under `review/paper_audit/submission_bundles/`.
+It marks the bundle `release_ready` only when the strict `paper-release-gate` passes; otherwise it still writes an `audit_only` bundle for review.

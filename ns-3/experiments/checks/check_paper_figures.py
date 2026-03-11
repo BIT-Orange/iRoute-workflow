@@ -44,18 +44,33 @@ def is_evaluation_figure(repo_root: Path, figure_ref: str) -> bool:
 
 def describe_asset_status(manifest_path: Path | None, figure_ref: str, asset_entry: dict) -> None:
     source = asset_entry.get("source", {}) if isinstance(asset_entry.get("source", {}), dict) else {}
+    output = asset_entry.get("output", {}) if isinstance(asset_entry.get("output", {}), dict) else {}
     source_kind = str(source.get("kind", "")).strip() or "unknown"
     source_exists = bool(source.get("exists", False))
     source_path = str(source.get("path", "")).strip()
+    status_reason = str(asset_entry.get("status_reason", "")).strip() or "unknown"
+    output_exists = bool(output.get("exists", False))
+    output_in_sync = bool(output.get("in_sync", False))
+    output_path = str(output.get("path", "")).strip()
     print(
         f"[paper-preflight][INFO] paper asset status "
         f"{manifest_path or '<missing asset manifest>'} ref={figure_ref} "
         f"status={asset_entry.get('status', 'unknown')} "
         f"management={asset_entry.get('management', 'unknown')} "
-        f"source_kind={source_kind} source_exists={source_exists}"
+        f"status_reason={status_reason} "
+        f"source_kind={source_kind} source_exists={source_exists} "
+        f"output_exists={output_exists} output_in_sync={output_in_sync}"
     )
+    manifest_ref = str(asset_entry.get("asset_manifest", "")).strip()
+    if manifest_ref:
+        print(f"[paper-preflight][INFO] paper asset manifest {manifest_ref}")
     if source_path:
         print(f"[paper-preflight][INFO] paper asset source {source_path}")
+    selected_file = str(source.get("selected_file", "")).strip()
+    if selected_file:
+        print(f"[paper-preflight][INFO] paper asset selected source {selected_file}")
+    if output_path:
+        print(f"[paper-preflight][INFO] paper asset output {output_path}")
     for legacy in source.get("legacy_mentions", []):
         print(f"[paper-preflight][INFO] legacy mention {legacy}")
     for note in asset_entry.get("notes", []):
@@ -101,7 +116,17 @@ def main() -> int:
         asset_entry = asset_entries.get(ref)
         if figure_path.exists():
             if asset_entry and str(asset_entry.get("status", "")).strip() == "blocked":
-                print(f"[paper-preflight][FAIL] paper asset exists but manifest remains blocked {ref} -> {figure_path}")
+                reason = str(asset_entry.get("status_reason", "")).strip()
+                if reason == "output_present_out_of_sync":
+                    print(f"[paper-preflight][FAIL] paper asset output exists but is out of sync with its managed source {ref} -> {figure_path}")
+                elif reason == "output_present_source_missing":
+                    print(f"[paper-preflight][FAIL] paper asset output exists but the managed source is missing {ref} -> {figure_path}")
+                elif reason == "source_and_output_in_sync":
+                    print(f"[paper-preflight][FAIL] paper asset output exists and appears synchronized, but asset_status.json is stale {ref} -> {figure_path}")
+                elif reason == "source_present_output_unverified":
+                    print(f"[paper-preflight][FAIL] paper asset output exists but export provenance is not reproducibly verified {ref} -> {figure_path}")
+                else:
+                    print(f"[paper-preflight][FAIL] paper asset exists but manifest remains blocked {ref} -> {figure_path}")
                 describe_asset_status(asset_manifest, ref, asset_entry)
                 inconsistent_assets.append(ref)
                 missing.append(ref)
@@ -110,7 +135,15 @@ def main() -> int:
         else:
             manifest_path = candidate_manifest_path(repo_root, ref)
             if asset_entry:
-                print(f"[paper-preflight][FAIL] missing paper asset {ref} -> {figure_path}")
+                reason = str(asset_entry.get("status_reason", "")).strip()
+                if reason == "source_missing":
+                    print(f"[paper-preflight][FAIL] missing paper asset because the managed source is still missing {ref} -> {figure_path}")
+                elif reason == "source_present_output_missing":
+                    print(f"[paper-preflight][FAIL] missing paper-facing asset output even though a managed source exists {ref} -> {figure_path}")
+                elif reason == "source_present_output_unverified":
+                    print(f"[paper-preflight][FAIL] managed source exists but no reproducible export/output is available {ref} -> {figure_path}")
+                else:
+                    print(f"[paper-preflight][FAIL] missing paper asset {ref} -> {figure_path}")
                 describe_asset_status(asset_manifest, ref, asset_entry)
                 missing_assets.append(ref)
             elif is_evaluation_figure(repo_root, ref):

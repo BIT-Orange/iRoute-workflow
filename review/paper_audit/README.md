@@ -13,9 +13,11 @@ Release dossier outputs:
 
 - `paper_release_dossier.json`: machine-readable release snapshot
 - `paper_release_dossier.md`: human-readable release snapshot
+- `submission_bundles/`: frozen paper/evidence bundle directories marked `release_ready` or `audit_only`
 
 Regenerate them with:
 
 ```bash
 bash scripts/workflow.sh release-dossier
+bash scripts/workflow.sh submission-bundle
 ```

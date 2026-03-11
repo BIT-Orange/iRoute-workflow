@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "asset_id": "system-arch",
+  "paper_ref": "figs/system-arch.pdf",
+  "title": "System architecture overview diagram",
+  "category": "paper_static_asset",
+  "management": "manual",
+  "destination_path": "paper/figs/system-arch.pdf",
+  "source_candidates": [
+    {
+      "path": "paper/assets/src/system-arch/system-arch.pdf",
+      "kind": "pdf",
+      "export_ready": true
+    },
+    {
+      "path": "paper/assets/src/system-arch/system-arch.svg",
+      "kind": "svg",
+      "export_ready": false
+    },
+    {
+      "path": "paper/assets/src/system-arch/system-arch.drawio",
+      "kind": "drawio",
+      "export_ready": false
+    },
+    {
+      "path": "paper/assets/src/system-arch/system-arch.png",
+      "kind": "png",
+      "export_ready": false
+    }
+  ],
+  "sync": {
+    "mode": "copy_export_ready_source",
+    "destination_format": "pdf",
+    "supported_source_kinds": [
+      "pdf"
+    ]
+  },
+  "legacy_mentions": [
+    "paper.tex -> figs/system-arch.pdf",
+    "paper/archive/ndnsim-paper-legacy.tex -> figures/system-arch.png"
+  ],
+  "notes": [
+    "Referenced by the canonical paper system overview section.",
+    "Add a maintained source file under this directory and rerun the manual-asset sync helper.",
+    "Until a real source and synchronized paper-facing PDF both exist, this asset must remain blocked."
+  ]
+}

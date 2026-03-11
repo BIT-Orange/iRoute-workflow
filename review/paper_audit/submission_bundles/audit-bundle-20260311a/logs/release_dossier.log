@@ -1,0 +1,4 @@
+$ /Users/jiyuan/Desktop/ndnSIM/ns-3/.venv/bin/python /Users/jiyuan/Desktop/ndnSIM/scripts/paper_release_dossier.py
+[release-dossier][OK] wrote review/paper_audit/paper_release_dossier.json
+[release-dossier][OK] wrote review/paper_audit/paper_release_dossier.md
+[release-dossier][OK] claims supported=7 provisional=2 blocked=0 missing_refs=4

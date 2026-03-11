@@ -1,0 +1,353 @@
+{
+  "schema_version": 1,
+  "paper": "paper/main.tex",
+  "claims": [
+    {
+      "id": "CLM-EVAL-001",
+      "title": "Paper-grade routing evaluation disables caching by default",
+      "paper_anchor": "sec:eval_setup",
+      "paper_markers": [
+        "claim-id: eval-setup-cache-disabled-paper-grade"
+      ],
+      "statement": "Unless noted otherwise, the paper-grade routing workflow disables in-network caching and uses csSize=0 to isolate routing effects from cache hits.",
+      "claim_kind": "methodology",
+      "status": "supported",
+      "related_figures": [],
+      "related_aggregates": [
+        "results/aggregates/run_index.csv",
+        "results/aggregates/summary_rows.csv"
+      ],
+      "related_runs": {
+        "run_ids": [
+          "smoke-iroute-star-s42-20260310a"
+        ],
+        "run_classes": [
+          "smoke"
+        ]
+      },
+      "static_evidence": [
+        "ns-3/experiments/manifests/paper_suite.json",
+        "ns-3/experiments/runners/run_paper_suite.sh"
+      ],
+      "minimum_run_evidence": "none",
+      "notes": [
+        "This is a workflow-semantics claim, not a publishable quantitative result.",
+        "A smoke run is acceptable here because the claim is about default mode wiring rather than paper-grade performance."
+      ]
+    },
+    {
+      "id": "CLM-EVAL-002",
+      "title": "Legacy SANR workflow remains cache-enabled exploratory evidence",
+      "paper_anchor": "sec:eval_setup",
+      "paper_markers": [
+        "claim-id: eval-setup-cache-enabled-sanr-bundle"
+      ],
+      "statement": "The repository still contains a cache-enabled SANR workflow for cache-behavior studies, but that workflow is exploratory and is not the canonical source of the current cache-disabled paper figures.",
+      "claim_kind": "methodology",
+      "status": "supported",
+      "related_figures": [],
+      "related_aggregates": [],
+      "related_runs": {
+        "run_ids": [],
+        "run_classes": []
+      },
+      "static_evidence": [
+        "ns-3/experiments/manifests/sanr_baseline.json",
+        "ns-3/experiments/runners/run_sanr_baseline.sh"
+      ],
+      "minimum_run_evidence": "none",
+      "notes": [
+        "This claim is about workflow separation, not the quantitative status of the current paper figures.",
+        "The canonical Fig. 1/Fig. 2 PDFs are now regenerated from cache-disabled paper-grade runs."
+      ]
+    },
+    {
+      "id": "CLM-EVAL-003",
+      "title": "Centralized directory is plotted only as an oracle upper bound",
+      "paper_anchor": "sec:eval_setup",
+      "paper_markers": [
+        "claim-id: eval-positioning-centralized-oracle"
+      ],
+      "statement": "The centralized directory curve is an oracle upper bound on intent-to-name resolution quality rather than a decentralized routing baseline.",
+      "claim_kind": "positioning",
+      "status": "supported",
+      "related_figures": [
+        "paper/figs/fig1_accuracy_overhead.pdf"
+      ],
+      "related_aggregates": [],
+      "related_runs": {
+        "run_ids": [],
+        "run_classes": []
+      },
+      "static_evidence": [],
+      "minimum_run_evidence": "none",
+      "notes": [
+        "This is an interpretation guardrail for Fig. 1."
+      ]
+    },
+    {
+      "id": "CLM-EVAL-004",
+      "title": "Exact-NDN is a syntactic reference rather than an apples-to-apples intent-discovery comparator",
+      "paper_anchor": "sec:eval_setup",
+      "paper_markers": [
+        "claim-id: eval-positioning-exact-ndn-reference"
+      ],
+      "statement": "When Exact-NDN is provisioned with stronger naming knowledge, it should be read as a syntactic reference point rather than a directly like-for-like latency or state comparator for intent-driven discovery.",
+      "claim_kind": "positioning",
+      "status": "supported",
+      "related_figures": [
+        "paper/figs/fig1_accuracy_overhead.pdf",
+        "paper/figs/fig2_retrieval_cdf.pdf"
+      ],
+      "related_aggregates": [],
+      "related_runs": {
+        "run_ids": [],
+        "run_classes": []
+      },
+      "static_evidence": [],
+      "minimum_run_evidence": "none",
+      "notes": [
+        "This is a constraint on how latency and correctness plots should be read."
+      ]
+    },
+    {
+      "id": "CLM-EVAL-005",
+      "title": "Bounded advertisements trade correctness against control overhead",
+      "paper_anchor": "sec:eval_correctness",
+      "paper_markers": [
+        "claim-id: eval-correctness-bounded-advertisements"
+      ],
+      "statement": "In the canonical cache-disabled paper-grade accuracy bundle, increasing the advertisement budget M improves iRoute's domain coverage at the cost of higher control overhead, while flooding remains a high-overhead reference and the centralized directory remains an oracle upper bound.",
+      "claim_kind": "quantitative",
+      "status": "supported",
+      "related_figures": [
+        "paper/figs/fig1_accuracy_overhead.pdf"
+      ],
+      "related_aggregates": [
+        "results/aggregates/fig12-paper-grade-20260310a/accuracy_sweep.csv",
+        "results/aggregates/fig12-paper-grade-20260310a/comparison.csv",
+        "results/aggregates/fig12-paper-grade-20260310a/fig12_paper_grade_report.json"
+      ],
+      "related_runs": {
+        "run_ids": [
+          "fig12-paper-grade-20260310a-central_proc2_s42",
+          "fig12-paper-grade-20260310a-flood_budget2_s42",
+          "fig12-paper-grade-20260310a-flood_budget4_s42",
+          "fig12-paper-grade-20260310a-flood_budget8_s42",
+          "fig12-paper-grade-20260310a-iroute_M1_s42",
+          "fig12-paper-grade-20260310a-iroute_M4_s42",
+          "fig12-paper-grade-20260310a-iroute_M8_s42",
+          "fig12-paper-grade-20260310a-tag_tagK8_s42",
+          "fig12-paper-grade-20260310a-tag_tagK16_s42",
+          "fig12-paper-grade-20260310a-tag_tagK32_s42"
+        ],
+        "run_classes": [
+          "paper_grade"
+        ]
+      },
+      "static_evidence": [
+        "ns-3/experiments/runners/run_accuracy_experiment.sh",
+        "results/figures/fig1_accuracy_overhead.paper_grade.figure.json"
+      ],
+      "minimum_run_evidence": "paper_grade",
+      "notes": [
+        "This focused paper-grade rerun uses native seed 42 only and promotes every plotted run into results/runs/.",
+        "The promoted Fig. 1 bundle contains three sweep points each for iRoute, Flood, and Tag-FIB plus a single centralized oracle reference point.",
+        "The claim is intentionally narrowed to the M-versus-overhead tradeoff that the promoted Fig. 1 bundle actually measures."
+      ]
+    },
+    {
+      "id": "CLM-EVAL-006",
+      "title": "Selective probing improves retrieval efficiency relative to high-overhead search",
+      "paper_anchor": "sec:eval_latency",
+      "paper_markers": [
+        "claim-id: eval-latency-selective-probing"
+      ],
+      "statement": "In the canonical cache-disabled paper-grade latency bundle, selective probing avoids the high-overhead flood search profile while remaining distinct from the centralized oracle upper bound.",
+      "claim_kind": "quantitative",
+      "status": "supported",
+      "related_figures": [
+        "paper/figs/fig2_retrieval_cdf.pdf"
+      ],
+      "related_aggregates": [
+        "results/aggregates/fig12-paper-grade-20260310a/reference_runs.csv",
+        "results/aggregates/fig12-paper-grade-20260310a/fig2_latency_summary.csv",
+        "results/aggregates/fig12-paper-grade-20260310a/fig12_paper_grade_report.json"
+      ],
+      "related_runs": {
+        "run_ids": [
+          "fig12-paper-grade-20260310a-central_proc2_s42",
+          "fig12-paper-grade-20260310a-flood_budget8_s42",
+          "fig12-paper-grade-20260310a-iroute_M4_s42",
+          "fig12-paper-grade-20260310a-tag_tagK32_s42"
+        ],
+        "run_classes": [
+          "paper_grade"
+        ]
+      },
+      "static_evidence": [
+        "ns-3/experiments/runners/run_accuracy_experiment.sh",
+        "results/figures/fig2_retrieval_cdf.paper_grade.figure.json"
+      ],
+      "minimum_run_evidence": "paper_grade",
+      "notes": [
+        "This focused paper-grade rerun uses the reference runs selected by the canonical Fig. 2 bundle.",
+        "The promoted Fig. 2 bundle uses iRoute(M=4), Flood(budget=8), Tag-FIB(tagK=32), and the centralized oracle reference under cache-disabled semantics.",
+        "The claim is intentionally scoped to the selective-probing versus flooding latency profile captured by the promoted routing-only CDF."
+      ]
+    },
+    {
+      "id": "CLM-EVAL-007",
+      "title": "Hop count remains localized as offered load increases",
+      "paper_anchor": "sec:eval_latency",
+      "paper_markers": [
+        "claim-id: eval-latency-selective-probing"
+      ],
+      "statement": "A focused cache-disabled paper-grade load batch now reproduces the Fig. 3 hop-versus-load family under native seed provenance, but the claim remains provisional until the paper figure is synchronized and the full paper-grade load sweep is rerun at final scope.",
+      "claim_kind": "quantitative",
+      "status": "provisional",
+      "related_figures": [
+        "paper/figs/fig3_hop_load.pdf"
+      ],
+      "related_figure_manifests": [
+        "results/figures/fig3_hop_load.paper_grade.figure.json"
+      ],
+      "related_aggregates": [
+        "results/aggregates/fig3-load-paper-grade-20260311a/load_sweep.csv",
+        "results/aggregates/fig3-load-paper-grade-20260311a/load.csv",
+        "results/aggregates/fig3-load-paper-grade-20260311a/load_paper_grade_report.json"
+      ],
+      "related_runs": {
+        "run_ids": [
+          "fig3-load-paper-grade-20260311a-central_freq10_s42",
+          "fig3-load-paper-grade-20260311a-central_freq20_s42",
+          "fig3-load-paper-grade-20260311a-central_freq5_s42",
+          "fig3-load-paper-grade-20260311a-flood_freq10_s42",
+          "fig3-load-paper-grade-20260311a-flood_freq20_s42",
+          "fig3-load-paper-grade-20260311a-flood_freq5_s42",
+          "fig3-load-paper-grade-20260311a-iroute_freq10_s42",
+          "fig3-load-paper-grade-20260311a-iroute_freq20_s42",
+          "fig3-load-paper-grade-20260311a-iroute_freq5_s42",
+          "fig3-load-paper-grade-20260311a-tag_freq10_s42",
+          "fig3-load-paper-grade-20260311a-tag_freq20_s42",
+          "fig3-load-paper-grade-20260311a-tag_freq5_s42"
+        ],
+        "run_classes": [
+          "paper_grade"
+        ]
+      },
+      "static_evidence": [
+        "ns-3/experiments/manifests/paper_suite.json",
+        "ns-3/experiments/runners/run_load_experiment.sh",
+        "scripts/fig345_paper_grade.py"
+      ],
+      "minimum_run_evidence": "paper_grade",
+      "notes": [
+        "The minimal Fig. 3 batch is promoted into results/runs and results/aggregates with cache_mode=disabled and seed_provenance=native.",
+        "The paper-facing figure file paper/figs/fig3_hop_load.pdf is still missing, so the claim cannot be treated as publishable evidence yet.",
+        "A broader final-scope paper-grade load rerun is still required before this claim can become supported.",
+        "The canonical final-scope rerun/publish entrypoint is scripts/workflow.sh fig34-final-scope load --suffix <suffix>."
+      ]
+    },
+    {
+      "id": "CLM-EVAL-008",
+      "title": "Routing state scales with bounded per-domain advertisements",
+      "paper_anchor": "sec:eval_scalability",
+      "paper_markers": [
+        "claim-id: eval-scalability-bounded-state"
+      ],
+      "statement": "A focused cache-disabled paper-grade scaling batch now reproduces the Fig. 4 state-scaling family for a reduced domain sweep, but the claim remains provisional until the wider paper-grade domain sweep is rerun and synchronized into the paper tree.",
+      "claim_kind": "quantitative",
+      "status": "provisional",
+      "related_figures": [
+        "paper/figs/fig4_state_scaling.pdf"
+      ],
+      "related_figure_manifests": [
+        "results/figures/fig4_state_scaling.paper_grade.figure.json"
+      ],
+      "related_aggregates": [
+        "results/aggregates/fig4-scaling-paper-grade-20260311b/scaling.csv",
+        "results/aggregates/fig4-scaling-paper-grade-20260311b/scaling_paper_grade_report.json"
+      ],
+      "related_runs": {
+        "run_ids": [
+          "fig4-scaling-paper-grade-20260311b-central_d16_s42",
+          "fig4-scaling-paper-grade-20260311b-central_d8_s42",
+          "fig4-scaling-paper-grade-20260311b-flood_d16_s42",
+          "fig4-scaling-paper-grade-20260311b-flood_d8_s42",
+          "fig4-scaling-paper-grade-20260311b-iroute_d16_s42",
+          "fig4-scaling-paper-grade-20260311b-iroute_d8_s42",
+          "fig4-scaling-paper-grade-20260311b-tag_d16_s42",
+          "fig4-scaling-paper-grade-20260311b-tag_d8_s42"
+        ],
+        "run_classes": [
+          "paper_grade"
+        ]
+      },
+      "static_evidence": [
+        "ns-3/experiments/manifests/paper_suite.json",
+        "ns-3/experiments/runners/run_scaling_experiment.sh",
+        "scripts/fig345_paper_grade.py"
+      ],
+      "minimum_run_evidence": "paper_grade",
+      "notes": [
+        "The minimal Fig. 4 batch is promoted under paper_grade semantics, but it currently spans only the reduced 8/16-domain validation sweep.",
+        "The paper-facing figure file paper/figs/fig4_state_scaling.pdf is still missing, so the claim remains provisional rather than publishable.",
+        "A broader final-scope paper-grade scaling rerun is still required before this claim can become supported.",
+        "The canonical final-scope rerun/publish entrypoint is scripts/workflow.sh fig34-final-scope scaling --suffix <suffix>."
+      ]
+    },
+    {
+      "id": "CLM-EVAL-009",
+      "title": "Recovery under churn and failures is supported by the published Fig. 5 bundle",
+      "paper_anchor": "sec:eval_robustness",
+      "paper_markers": [
+        "claim-id: eval-robustness-recovery"
+      ],
+      "statement": "The canonical cache-disabled paper-grade Fig. 5 bundle now publishes domain-hit recovery under churn, link failure, and domain failure using native seed provenance, with every promoted run recording an effective injected disruption.",
+      "claim_kind": "quantitative",
+      "status": "supported",
+      "related_figures": [
+        "paper/figs/fig5_recovery_churn.pdf",
+        "paper/figs/fig5_recovery_link-fail.pdf",
+        "paper/figs/fig5_recovery_domain-fail.pdf"
+      ],
+      "related_figure_manifests": [
+        "results/figures/fig5_recovery_churn.paper_grade.figure.json",
+        "results/figures/fig5_recovery_link-fail.paper_grade.figure.json",
+        "results/figures/fig5_recovery_domain-fail.paper_grade.figure.json"
+      ],
+      "related_aggregates": [
+        "results/aggregates/fig5-failure-paper-grade-final-20260311d/recovery_summary.csv",
+        "results/aggregates/fig5-failure-paper-grade-final-20260311d/failure_paper_grade_report.json"
+      ],
+      "related_runs": {
+        "run_ids": [
+          "fig5-failure-paper-grade-final-20260311d-central-churn-s42",
+          "fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42",
+          "fig5-failure-paper-grade-final-20260311d-central-link-fail-s42",
+          "fig5-failure-paper-grade-final-20260311d-flood-churn-s42",
+          "fig5-failure-paper-grade-final-20260311d-flood-domain-fail-s42",
+          "fig5-failure-paper-grade-final-20260311d-flood-link-fail-s42",
+          "fig5-failure-paper-grade-final-20260311d-iroute-churn-s42",
+          "fig5-failure-paper-grade-final-20260311d-iroute-domain-fail-s42",
+          "fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42"
+        ],
+        "run_classes": [
+          "paper_grade"
+        ]
+      },
+      "static_evidence": [
+        "ns-3/experiments/manifests/paper_suite.json",
+        "ns-3/experiments/runners/run_failure_experiment.sh",
+        "scripts/fig345_paper_grade.py"
+      ],
+      "minimum_run_evidence": "paper_grade",
+      "notes": [
+        "The published Fig. 5 bundle is results/aggregates/fig5-failure-paper-grade-final-20260311d with synchronized PDFs under paper/figs/.",
+        "The repaired failure chain now records recovery_metric=domain_hit explicitly and requires paper-grade failure runs to fail if the injected event is ineffective.",
+        "This support claim is scoped to the current paper-suite failure family: central, iRoute, and Flood across churn, link-fail, and domain-fail under native seed 42."
+      ]
+    }
+  ]
+}

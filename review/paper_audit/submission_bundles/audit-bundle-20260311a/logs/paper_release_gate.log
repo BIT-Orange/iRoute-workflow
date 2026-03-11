@@ -1,0 +1,163 @@
+$ bash /Users/jiyuan/Desktop/ndnSIM/scripts/workflow.sh paper-release-gate
+[workflow] checking shell syntax (28 files)
+[workflow] checking python bytecode (17 files)
+[workflow] checking JSON manifests (6 files)
+[workflow] checking workflow YAML (6 files)
+[workflow] running utility help checks
+[workflow] checking static workflow manifests
+[workflow] checking paper-suite static semantics
+[workflow] checking static workflow manifests
+[workflow] running claim-evidence validation
+[claims][SUPPORTED] CLM-EVAL-001 Paper-grade routing evaluation disables caching by default
+[claims][SUPPORTED] CLM-EVAL-002 Legacy SANR workflow remains cache-enabled exploratory evidence
+[claims][SUPPORTED] CLM-EVAL-003 Centralized directory is plotted only as an oracle upper bound
+[claims][SUPPORTED] CLM-EVAL-004 Exact-NDN is a syntactic reference rather than an apples-to-apples intent-discovery comparator
+[claims][SUPPORTED] CLM-EVAL-005 Bounded advertisements trade correctness against control overhead
+[claims][SUPPORTED] CLM-EVAL-006 Selective probing improves retrieval efficiency relative to high-overhead search
+[claims][PROVISIONAL] CLM-EVAL-007 Hop count remains localized as offered load increases :: missing figure paper/figs/fig3_hop_load.pdf; figure manifest results/figures/fig3_hop_load.paper_grade.figure.json status=partial
+[claims][PROVISIONAL] CLM-EVAL-008 Routing state scales with bounded per-domain advertisements :: missing figure paper/figs/fig4_state_scaling.pdf; figure manifest results/figures/fig4_state_scaling.paper_grade.figure.json status=partial
+[claims][SUPPORTED] CLM-EVAL-009 Recovery under churn and failures is supported by the published Fig. 5 bundle
+[claims][SUMMARY] supported=7 provisional=2 blocked=0
+[workflow] running claim-evidence validation
+[claims][SUPPORTED] CLM-EVAL-001 Paper-grade routing evaluation disables caching by default
+[claims][SUPPORTED] CLM-EVAL-002 Legacy SANR workflow remains cache-enabled exploratory evidence
+[claims][SUPPORTED] CLM-EVAL-003 Centralized directory is plotted only as an oracle upper bound
+[claims][SUPPORTED] CLM-EVAL-004 Exact-NDN is a syntactic reference rather than an apples-to-apples intent-discovery comparator
+[claims][SUPPORTED] CLM-EVAL-005 Bounded advertisements trade correctness against control overhead
+[claims][SUPPORTED] CLM-EVAL-006 Selective probing improves retrieval efficiency relative to high-overhead search
+[claims][PROVISIONAL] CLM-EVAL-007 Hop count remains localized as offered load increases :: missing figure paper/figs/fig3_hop_load.pdf; figure manifest results/figures/fig3_hop_load.paper_grade.figure.json status=partial
+[claims][PROVISIONAL] CLM-EVAL-008 Routing state scales with bounded per-domain advertisements :: missing figure paper/figs/fig4_state_scaling.pdf; figure manifest results/figures/fig4_state_scaling.paper_grade.figure.json status=partial
+[claims][SUPPORTED] CLM-EVAL-009 Recovery under churn and failures is supported by the published Fig. 5 bundle
+[claims][SUMMARY] supported=7 provisional=2 blocked=0
+[workflow] running ns-3 smoke validation into /tmp/iroute-automation-smoke/20260311_164500
+Waf: Entering directory `/Users/jiyuan/Desktop/ndnSIM/ns-3/build'
+SetQueryTrace size=500 at 0
+IRouteDiscoveryConsumer started on node 0 freq=1
+[manifest] wrote /tmp/iroute-automation-smoke/20260311_164500/run_manifest.json
+[workflow] smoke output ready: /tmp/iroute-automation-smoke/20260311_164500
+[workflow] running artifact regression on /tmp/iroute-automation-smoke/20260311_164500
+[artifact][OK] /tmp/iroute-automation-smoke/20260311_164500/run_manifest.json lineage fields present
+[artifact][OK] /tmp/iroute-automation-smoke/20260311_164500 metadata fields present (cache_mode/run_mode/seed_provenance)
+[artifact][OK] /tmp/iroute-automation-smoke/20260311_164500/summary.csv required columns present
+[artifact][OK] /tmp/iroute-automation-smoke/20260311_164500/summary.csv summary invariants passed
+[artifact][OK] /tmp/iroute-automation-smoke/20260311_164500/query_log.csv required columns present
+[artifact][OK] /tmp/iroute-automation-smoke/20260311_164500/query_log.csv query_log invariants passed
+[artifact][OK] /tmp/iroute-automation-smoke/20260311_164500/latency_sanity.csv required columns present
+[artifact][OK] /tmp/iroute-automation-smoke/20260311_164500/latency_sanity.csv latency_sanity invariants passed
+[artifact][OK] /tmp/iroute-automation-smoke/20260311_164500/failure_sanity.csv required columns present
+[artifact][OK] /tmp/iroute-automation-smoke/20260311_164500/failure_sanity.csv failure_sanity invariants passed
+[artifact][OK] /tmp/iroute-automation-smoke/20260311_164500 artifact regression checks passed
+[workflow] running paper figure preflight
+[paper-preflight][FAIL] missing paper asset because the managed source is still missing figs/system-arch.pdf -> /Users/jiyuan/Desktop/ndnSIM/paper/figs/system-arch.pdf
+[paper-preflight][INFO] paper asset status /Users/jiyuan/Desktop/ndnSIM/paper/assets/asset_status.json ref=figs/system-arch.pdf status=blocked management=manual status_reason=source_missing source_kind=source_managed_slot source_exists=False output_exists=False output_in_sync=False
+[paper-preflight][INFO] paper asset manifest paper/assets/src/system-arch/asset.json
+[paper-preflight][INFO] paper asset source paper/assets/src/system-arch
+[paper-preflight][INFO] paper asset output paper/figs/system-arch.pdf
+[paper-preflight][INFO] legacy mention paper.tex -> figs/system-arch.pdf
+[paper-preflight][INFO] legacy mention paper/archive/ndnsim-paper-legacy.tex -> figures/system-arch.png
+[paper-preflight][INFO] note Referenced by the canonical paper system overview section.
+[paper-preflight][INFO] note Add a maintained source file under this directory and rerun the manual-asset sync helper.
+[paper-preflight][INFO] note Until a real source and synchronized paper-facing PDF both exist, this asset must remain blocked.
+[paper-preflight][INFO] note No accepted source candidate exists under the source-managed asset directory yet.
+[paper-preflight][FAIL] missing paper asset because the managed source is still missing figs/mermaid.png -> /Users/jiyuan/Desktop/ndnSIM/paper/figs/mermaid.png
+[paper-preflight][INFO] paper asset status /Users/jiyuan/Desktop/ndnSIM/paper/assets/asset_status.json ref=figs/mermaid.png status=blocked management=manual status_reason=source_missing source_kind=source_managed_slot source_exists=False output_exists=False output_in_sync=False
+[paper-preflight][INFO] paper asset manifest paper/assets/src/mermaid/asset.json
+[paper-preflight][INFO] paper asset source paper/assets/src/mermaid
+[paper-preflight][INFO] paper asset output paper/figs/mermaid.png
+[paper-preflight][INFO] legacy mention paper.tex -> figs/mermaid.png
+[paper-preflight][INFO] legacy mention paper/archive/ndnsim-paper-legacy.tex -> figures/mermaid.png
+[paper-preflight][INFO] note Referenced by the canonical paper system overview section.
+[paper-preflight][INFO] note Add a maintained source file under this directory and rerun the manual-asset sync helper.
+[paper-preflight][INFO] note Until a real source and synchronized paper-facing PNG both exist, this asset must remain blocked.
+[paper-preflight][INFO] note No accepted source candidate exists under the source-managed asset directory yet.
+[paper-preflight][OK] figs/fig1_accuracy_overhead.pdf
+[paper-preflight][OK] figs/fig2_retrieval_cdf.pdf
+[paper-preflight][FAIL] missing evaluation figure figs/fig3_hop_load.pdf -> /Users/jiyuan/Desktop/ndnSIM/paper/figs/fig3_hop_load.pdf
+[paper-preflight][INFO] figure provenance /Users/jiyuan/Desktop/ndnSIM/results/figures/fig3_hop_load.paper_grade.figure.json status=partial
+[paper-preflight][FAIL] missing evaluation figure figs/fig4_state_scaling.pdf -> /Users/jiyuan/Desktop/ndnSIM/paper/figs/fig4_state_scaling.pdf
+[paper-preflight][INFO] figure provenance /Users/jiyuan/Desktop/ndnSIM/results/figures/fig4_state_scaling.paper_grade.figure.json status=partial
+[paper-preflight][OK] figs/fig5_recovery_churn.pdf
+[paper-preflight][OK] figs/fig5_recovery_link-fail.pdf
+[paper-preflight][OK] figs/fig5_recovery_domain-fail.pdf
+[paper-preflight][FAIL] missing paper assets: 2
+[paper-preflight][FAIL] missing evaluation figures: 2
+[paper-preflight][FAIL] 4 missing referenced asset(s)
+[workflow] running claim-evidence validation
+[claims][SUPPORTED] CLM-EVAL-001 Paper-grade routing evaluation disables caching by default
+  run_classes=['smoke']
+  matching_run_ids=['smoke-iroute-star-s42-20260310a']
+  note: This is a workflow-semantics claim, not a publishable quantitative result.
+  note: A smoke run is acceptable here because the claim is about default mode wiring rather than paper-grade performance.
+[claims][SUPPORTED] CLM-EVAL-002 Legacy SANR workflow remains cache-enabled exploratory evidence
+  note: This claim is about workflow separation, not the quantitative status of the current paper figures.
+  note: The canonical Fig. 1/Fig. 2 PDFs are now regenerated from cache-disabled paper-grade runs.
+[claims][SUPPORTED] CLM-EVAL-003 Centralized directory is plotted only as an oracle upper bound
+  note: This is an interpretation guardrail for Fig. 1.
+[claims][SUPPORTED] CLM-EVAL-004 Exact-NDN is a syntactic reference rather than an apples-to-apples intent-discovery comparator
+  note: This is a constraint on how latency and correctness plots should be read.
+[claims][SUPPORTED] CLM-EVAL-005 Bounded advertisements trade correctness against control overhead
+  run_classes=['paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade']
+  matching_run_ids=['fig12-paper-grade-20260310a-central_proc2_s42', 'fig12-paper-grade-20260310a-flood_budget2_s42', 'fig12-paper-grade-20260310a-flood_budget4_s42', 'fig12-paper-grade-20260310a-flood_budget8_s42', 'fig12-paper-grade-20260310a-iroute_M1_s42', 'fig12-paper-grade-20260310a-iroute_M4_s42', 'fig12-paper-grade-20260310a-iroute_M8_s42', 'fig12-paper-grade-20260310a-tag_tagK16_s42', 'fig12-paper-grade-20260310a-tag_tagK32_s42', 'fig12-paper-grade-20260310a-tag_tagK8_s42', 'fig3-load-paper-grade-20260311a-central_freq10_s42', 'fig3-load-paper-grade-20260311a-central_freq20_s42', 'fig3-load-paper-grade-20260311a-central_freq5_s42', 'fig3-load-paper-grade-20260311a-flood_freq10_s42', 'fig3-load-paper-grade-20260311a-flood_freq20_s42', 'fig3-load-paper-grade-20260311a-flood_freq5_s42', 'fig3-load-paper-grade-20260311a-iroute_freq10_s42', 'fig3-load-paper-grade-20260311a-iroute_freq20_s42', 'fig3-load-paper-grade-20260311a-iroute_freq5_s42', 'fig3-load-paper-grade-20260311a-tag_freq10_s42', 'fig3-load-paper-grade-20260311a-tag_freq20_s42', 'fig3-load-paper-grade-20260311a-tag_freq5_s42', 'fig3-load-paper-grade-final-20260311shard-central_freq20_s42', 'fig3-load-paper-grade-final-20260311shard-flood_freq20_s42', 'fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42', 'fig3-load-paper-grade-final-20260311shard-tag_freq20_s42', 'fig4-scaling-paper-grade-20260311b-central_d16_s42', 'fig4-scaling-paper-grade-20260311b-central_d8_s42', 'fig4-scaling-paper-grade-20260311b-flood_d16_s42', 'fig4-scaling-paper-grade-20260311b-flood_d8_s42', 'fig4-scaling-paper-grade-20260311b-iroute_d16_s42', 'fig4-scaling-paper-grade-20260311b-iroute_d8_s42', 'fig4-scaling-paper-grade-20260311b-tag_d16_s42', 'fig4-scaling-paper-grade-20260311b-tag_d8_s42', 'fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42', 'fig5-failure-paper-grade-20260311c-central-churn-s42', 'fig5-failure-paper-grade-20260311c-central-domain-fail-s42', 'fig5-failure-paper-grade-20260311c-central-link-fail-s42', 'fig5-failure-paper-grade-20260311c-flood-churn-s42', 'fig5-failure-paper-grade-20260311c-flood-domain-fail-s42', 'fig5-failure-paper-grade-20260311c-flood-link-fail-s42', 'fig5-failure-paper-grade-20260311c-iroute-churn-s42', 'fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42', 'fig5-failure-paper-grade-20260311c-iroute-link-fail-s42', 'fig5-failure-paper-grade-final-20260311d-central-churn-s42', 'fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42', 'fig5-failure-paper-grade-final-20260311d-central-link-fail-s42', 'fig5-failure-paper-grade-final-20260311d-flood-churn-s42', 'fig5-failure-paper-grade-final-20260311d-flood-domain-fail-s42', 'fig5-failure-paper-grade-final-20260311d-flood-link-fail-s42', 'fig5-failure-paper-grade-final-20260311d-iroute-churn-s42', 'fig5-failure-paper-grade-final-20260311d-iroute-domain-fail-s42', 'fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42']
+  note: This focused paper-grade rerun uses native seed 42 only and promotes every plotted run into results/runs/.
+  note: The promoted Fig. 1 bundle contains three sweep points each for iRoute, Flood, and Tag-FIB plus a single centralized oracle reference point.
+  note: The claim is intentionally narrowed to the M-versus-overhead tradeoff that the promoted Fig. 1 bundle actually measures.
+[claims][SUPPORTED] CLM-EVAL-006 Selective probing improves retrieval efficiency relative to high-overhead search
+  run_classes=['paper_grade', 'paper_grade', 'paper_grade', 'paper_grade']
+  matching_run_ids=['fig12-paper-grade-20260310a-central_proc2_s42', 'fig12-paper-grade-20260310a-flood_budget2_s42', 'fig12-paper-grade-20260310a-flood_budget4_s42', 'fig12-paper-grade-20260310a-flood_budget8_s42', 'fig12-paper-grade-20260310a-iroute_M1_s42', 'fig12-paper-grade-20260310a-iroute_M4_s42', 'fig12-paper-grade-20260310a-iroute_M8_s42', 'fig12-paper-grade-20260310a-tag_tagK16_s42', 'fig12-paper-grade-20260310a-tag_tagK32_s42', 'fig12-paper-grade-20260310a-tag_tagK8_s42', 'fig3-load-paper-grade-20260311a-central_freq10_s42', 'fig3-load-paper-grade-20260311a-central_freq20_s42', 'fig3-load-paper-grade-20260311a-central_freq5_s42', 'fig3-load-paper-grade-20260311a-flood_freq10_s42', 'fig3-load-paper-grade-20260311a-flood_freq20_s42', 'fig3-load-paper-grade-20260311a-flood_freq5_s42', 'fig3-load-paper-grade-20260311a-iroute_freq10_s42', 'fig3-load-paper-grade-20260311a-iroute_freq20_s42', 'fig3-load-paper-grade-20260311a-iroute_freq5_s42', 'fig3-load-paper-grade-20260311a-tag_freq10_s42', 'fig3-load-paper-grade-20260311a-tag_freq20_s42', 'fig3-load-paper-grade-20260311a-tag_freq5_s42', 'fig3-load-paper-grade-final-20260311shard-central_freq20_s42', 'fig3-load-paper-grade-final-20260311shard-flood_freq20_s42', 'fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42', 'fig3-load-paper-grade-final-20260311shard-tag_freq20_s42', 'fig4-scaling-paper-grade-20260311b-central_d16_s42', 'fig4-scaling-paper-grade-20260311b-central_d8_s42', 'fig4-scaling-paper-grade-20260311b-flood_d16_s42', 'fig4-scaling-paper-grade-20260311b-flood_d8_s42', 'fig4-scaling-paper-grade-20260311b-iroute_d16_s42', 'fig4-scaling-paper-grade-20260311b-iroute_d8_s42', 'fig4-scaling-paper-grade-20260311b-tag_d16_s42', 'fig4-scaling-paper-grade-20260311b-tag_d8_s42', 'fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42', 'fig5-failure-paper-grade-20260311c-central-churn-s42', 'fig5-failure-paper-grade-20260311c-central-domain-fail-s42', 'fig5-failure-paper-grade-20260311c-central-link-fail-s42', 'fig5-failure-paper-grade-20260311c-flood-churn-s42', 'fig5-failure-paper-grade-20260311c-flood-domain-fail-s42', 'fig5-failure-paper-grade-20260311c-flood-link-fail-s42', 'fig5-failure-paper-grade-20260311c-iroute-churn-s42', 'fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42', 'fig5-failure-paper-grade-20260311c-iroute-link-fail-s42', 'fig5-failure-paper-grade-final-20260311d-central-churn-s42', 'fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42', 'fig5-failure-paper-grade-final-20260311d-central-link-fail-s42', 'fig5-failure-paper-grade-final-20260311d-flood-churn-s42', 'fig5-failure-paper-grade-final-20260311d-flood-domain-fail-s42', 'fig5-failure-paper-grade-final-20260311d-flood-link-fail-s42', 'fig5-failure-paper-grade-final-20260311d-iroute-churn-s42', 'fig5-failure-paper-grade-final-20260311d-iroute-domain-fail-s42', 'fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42']
+  note: This focused paper-grade rerun uses the reference runs selected by the canonical Fig. 2 bundle.
+  note: The promoted Fig. 2 bundle uses iRoute(M=4), Flood(budget=8), Tag-FIB(tagK=32), and the centralized oracle reference under cache-disabled semantics.
+  note: The claim is intentionally scoped to the selective-probing versus flooding latency profile captured by the promoted routing-only CDF.
+[claims][PROVISIONAL] CLM-EVAL-007 Hop count remains localized as offered load increases :: missing figure paper/figs/fig3_hop_load.pdf; figure manifest results/figures/fig3_hop_load.paper_grade.figure.json status=partial
+  run_classes=['paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade']
+  matching_run_ids=['fig12-paper-grade-20260310a-central_proc2_s42', 'fig12-paper-grade-20260310a-flood_budget2_s42', 'fig12-paper-grade-20260310a-flood_budget4_s42', 'fig12-paper-grade-20260310a-flood_budget8_s42', 'fig12-paper-grade-20260310a-iroute_M1_s42', 'fig12-paper-grade-20260310a-iroute_M4_s42', 'fig12-paper-grade-20260310a-iroute_M8_s42', 'fig12-paper-grade-20260310a-tag_tagK16_s42', 'fig12-paper-grade-20260310a-tag_tagK32_s42', 'fig12-paper-grade-20260310a-tag_tagK8_s42', 'fig3-load-paper-grade-20260311a-central_freq10_s42', 'fig3-load-paper-grade-20260311a-central_freq20_s42', 'fig3-load-paper-grade-20260311a-central_freq5_s42', 'fig3-load-paper-grade-20260311a-flood_freq10_s42', 'fig3-load-paper-grade-20260311a-flood_freq20_s42', 'fig3-load-paper-grade-20260311a-flood_freq5_s42', 'fig3-load-paper-grade-20260311a-iroute_freq10_s42', 'fig3-load-paper-grade-20260311a-iroute_freq20_s42', 'fig3-load-paper-grade-20260311a-iroute_freq5_s42', 'fig3-load-paper-grade-20260311a-tag_freq10_s42', 'fig3-load-paper-grade-20260311a-tag_freq20_s42', 'fig3-load-paper-grade-20260311a-tag_freq5_s42', 'fig3-load-paper-grade-final-20260311shard-central_freq20_s42', 'fig3-load-paper-grade-final-20260311shard-flood_freq20_s42', 'fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42', 'fig3-load-paper-grade-final-20260311shard-tag_freq20_s42', 'fig4-scaling-paper-grade-20260311b-central_d16_s42', 'fig4-scaling-paper-grade-20260311b-central_d8_s42', 'fig4-scaling-paper-grade-20260311b-flood_d16_s42', 'fig4-scaling-paper-grade-20260311b-flood_d8_s42', 'fig4-scaling-paper-grade-20260311b-iroute_d16_s42', 'fig4-scaling-paper-grade-20260311b-iroute_d8_s42', 'fig4-scaling-paper-grade-20260311b-tag_d16_s42', 'fig4-scaling-paper-grade-20260311b-tag_d8_s42', 'fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42', 'fig5-failure-paper-grade-20260311c-central-churn-s42', 'fig5-failure-paper-grade-20260311c-central-domain-fail-s42', 'fig5-failure-paper-grade-20260311c-central-link-fail-s42', 'fig5-failure-paper-grade-20260311c-flood-churn-s42', 'fig5-failure-paper-grade-20260311c-flood-domain-fail-s42', 'fig5-failure-paper-grade-20260311c-flood-link-fail-s42', 'fig5-failure-paper-grade-20260311c-iroute-churn-s42', 'fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42', 'fig5-failure-paper-grade-20260311c-iroute-link-fail-s42', 'fig5-failure-paper-grade-final-20260311d-central-churn-s42', 'fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42', 'fig5-failure-paper-grade-final-20260311d-central-link-fail-s42', 'fig5-failure-paper-grade-final-20260311d-flood-churn-s42', 'fig5-failure-paper-grade-final-20260311d-flood-domain-fail-s42', 'fig5-failure-paper-grade-final-20260311d-flood-link-fail-s42', 'fig5-failure-paper-grade-final-20260311d-iroute-churn-s42', 'fig5-failure-paper-grade-final-20260311d-iroute-domain-fail-s42', 'fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42']
+  note: The minimal Fig. 3 batch is promoted into results/runs and results/aggregates with cache_mode=disabled and seed_provenance=native.
+  note: The paper-facing figure file paper/figs/fig3_hop_load.pdf is still missing, so the claim cannot be treated as publishable evidence yet.
+  note: A broader final-scope paper-grade load rerun is still required before this claim can become supported.
+  note: The canonical final-scope rerun/publish entrypoint is scripts/workflow.sh fig34-final-scope load --suffix <suffix>.
+[claims][PROVISIONAL] CLM-EVAL-008 Routing state scales with bounded per-domain advertisements :: missing figure paper/figs/fig4_state_scaling.pdf; figure manifest results/figures/fig4_state_scaling.paper_grade.figure.json status=partial
+  run_classes=['paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade']
+  matching_run_ids=['fig12-paper-grade-20260310a-central_proc2_s42', 'fig12-paper-grade-20260310a-flood_budget2_s42', 'fig12-paper-grade-20260310a-flood_budget4_s42', 'fig12-paper-grade-20260310a-flood_budget8_s42', 'fig12-paper-grade-20260310a-iroute_M1_s42', 'fig12-paper-grade-20260310a-iroute_M4_s42', 'fig12-paper-grade-20260310a-iroute_M8_s42', 'fig12-paper-grade-20260310a-tag_tagK16_s42', 'fig12-paper-grade-20260310a-tag_tagK32_s42', 'fig12-paper-grade-20260310a-tag_tagK8_s42', 'fig3-load-paper-grade-20260311a-central_freq10_s42', 'fig3-load-paper-grade-20260311a-central_freq20_s42', 'fig3-load-paper-grade-20260311a-central_freq5_s42', 'fig3-load-paper-grade-20260311a-flood_freq10_s42', 'fig3-load-paper-grade-20260311a-flood_freq20_s42', 'fig3-load-paper-grade-20260311a-flood_freq5_s42', 'fig3-load-paper-grade-20260311a-iroute_freq10_s42', 'fig3-load-paper-grade-20260311a-iroute_freq20_s42', 'fig3-load-paper-grade-20260311a-iroute_freq5_s42', 'fig3-load-paper-grade-20260311a-tag_freq10_s42', 'fig3-load-paper-grade-20260311a-tag_freq20_s42', 'fig3-load-paper-grade-20260311a-tag_freq5_s42', 'fig3-load-paper-grade-final-20260311shard-central_freq20_s42', 'fig3-load-paper-grade-final-20260311shard-flood_freq20_s42', 'fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42', 'fig3-load-paper-grade-final-20260311shard-tag_freq20_s42', 'fig4-scaling-paper-grade-20260311b-central_d16_s42', 'fig4-scaling-paper-grade-20260311b-central_d8_s42', 'fig4-scaling-paper-grade-20260311b-flood_d16_s42', 'fig4-scaling-paper-grade-20260311b-flood_d8_s42', 'fig4-scaling-paper-grade-20260311b-iroute_d16_s42', 'fig4-scaling-paper-grade-20260311b-iroute_d8_s42', 'fig4-scaling-paper-grade-20260311b-tag_d16_s42', 'fig4-scaling-paper-grade-20260311b-tag_d8_s42', 'fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42', 'fig5-failure-paper-grade-20260311c-central-churn-s42', 'fig5-failure-paper-grade-20260311c-central-domain-fail-s42', 'fig5-failure-paper-grade-20260311c-central-link-fail-s42', 'fig5-failure-paper-grade-20260311c-flood-churn-s42', 'fig5-failure-paper-grade-20260311c-flood-domain-fail-s42', 'fig5-failure-paper-grade-20260311c-flood-link-fail-s42', 'fig5-failure-paper-grade-20260311c-iroute-churn-s42', 'fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42', 'fig5-failure-paper-grade-20260311c-iroute-link-fail-s42', 'fig5-failure-paper-grade-final-20260311d-central-churn-s42', 'fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42', 'fig5-failure-paper-grade-final-20260311d-central-link-fail-s42', 'fig5-failure-paper-grade-final-20260311d-flood-churn-s42', 'fig5-failure-paper-grade-final-20260311d-flood-domain-fail-s42', 'fig5-failure-paper-grade-final-20260311d-flood-link-fail-s42', 'fig5-failure-paper-grade-final-20260311d-iroute-churn-s42', 'fig5-failure-paper-grade-final-20260311d-iroute-domain-fail-s42', 'fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42']
+  note: The minimal Fig. 4 batch is promoted under paper_grade semantics, but it currently spans only the reduced 8/16-domain validation sweep.
+  note: The paper-facing figure file paper/figs/fig4_state_scaling.pdf is still missing, so the claim remains provisional rather than publishable.
+  note: A broader final-scope paper-grade scaling rerun is still required before this claim can become supported.
+  note: The canonical final-scope rerun/publish entrypoint is scripts/workflow.sh fig34-final-scope scaling --suffix <suffix>.
+[claims][SUPPORTED] CLM-EVAL-009 Recovery under churn and failures is supported by the published Fig. 5 bundle
+  run_classes=['paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade', 'paper_grade']
+  matching_run_ids=['fig12-paper-grade-20260310a-central_proc2_s42', 'fig12-paper-grade-20260310a-flood_budget2_s42', 'fig12-paper-grade-20260310a-flood_budget4_s42', 'fig12-paper-grade-20260310a-flood_budget8_s42', 'fig12-paper-grade-20260310a-iroute_M1_s42', 'fig12-paper-grade-20260310a-iroute_M4_s42', 'fig12-paper-grade-20260310a-iroute_M8_s42', 'fig12-paper-grade-20260310a-tag_tagK16_s42', 'fig12-paper-grade-20260310a-tag_tagK32_s42', 'fig12-paper-grade-20260310a-tag_tagK8_s42', 'fig3-load-paper-grade-20260311a-central_freq10_s42', 'fig3-load-paper-grade-20260311a-central_freq20_s42', 'fig3-load-paper-grade-20260311a-central_freq5_s42', 'fig3-load-paper-grade-20260311a-flood_freq10_s42', 'fig3-load-paper-grade-20260311a-flood_freq20_s42', 'fig3-load-paper-grade-20260311a-flood_freq5_s42', 'fig3-load-paper-grade-20260311a-iroute_freq10_s42', 'fig3-load-paper-grade-20260311a-iroute_freq20_s42', 'fig3-load-paper-grade-20260311a-iroute_freq5_s42', 'fig3-load-paper-grade-20260311a-tag_freq10_s42', 'fig3-load-paper-grade-20260311a-tag_freq20_s42', 'fig3-load-paper-grade-20260311a-tag_freq5_s42', 'fig3-load-paper-grade-final-20260311shard-central_freq20_s42', 'fig3-load-paper-grade-final-20260311shard-flood_freq20_s42', 'fig3-load-paper-grade-final-20260311shard-iroute_freq20_s42', 'fig3-load-paper-grade-final-20260311shard-tag_freq20_s42', 'fig4-scaling-paper-grade-20260311b-central_d16_s42', 'fig4-scaling-paper-grade-20260311b-central_d8_s42', 'fig4-scaling-paper-grade-20260311b-flood_d16_s42', 'fig4-scaling-paper-grade-20260311b-flood_d8_s42', 'fig4-scaling-paper-grade-20260311b-iroute_d16_s42', 'fig4-scaling-paper-grade-20260311b-iroute_d8_s42', 'fig4-scaling-paper-grade-20260311b-tag_d16_s42', 'fig4-scaling-paper-grade-20260311b-tag_d8_s42', 'fig4-scaling-paper-grade-final-20260311shard-iroute_d8_s42', 'fig5-failure-paper-grade-20260311c-central-churn-s42', 'fig5-failure-paper-grade-20260311c-central-domain-fail-s42', 'fig5-failure-paper-grade-20260311c-central-link-fail-s42', 'fig5-failure-paper-grade-20260311c-flood-churn-s42', 'fig5-failure-paper-grade-20260311c-flood-domain-fail-s42', 'fig5-failure-paper-grade-20260311c-flood-link-fail-s42', 'fig5-failure-paper-grade-20260311c-iroute-churn-s42', 'fig5-failure-paper-grade-20260311c-iroute-domain-fail-s42', 'fig5-failure-paper-grade-20260311c-iroute-link-fail-s42', 'fig5-failure-paper-grade-final-20260311d-central-churn-s42', 'fig5-failure-paper-grade-final-20260311d-central-domain-fail-s42', 'fig5-failure-paper-grade-final-20260311d-central-link-fail-s42', 'fig5-failure-paper-grade-final-20260311d-flood-churn-s42', 'fig5-failure-paper-grade-final-20260311d-flood-domain-fail-s42', 'fig5-failure-paper-grade-final-20260311d-flood-link-fail-s42', 'fig5-failure-paper-grade-final-20260311d-iroute-churn-s42', 'fig5-failure-paper-grade-final-20260311d-iroute-domain-fail-s42', 'fig5-failure-paper-grade-final-20260311d-iroute-link-fail-s42']
+  note: The published Fig. 5 bundle is results/aggregates/fig5-failure-paper-grade-final-20260311d with synchronized PDFs under paper/figs/.
+  note: The repaired failure chain now records recovery_metric=domain_hit explicitly and requires paper-grade failure runs to fail if the injected event is ineffective.
+  note: This support claim is scoped to the current paper-suite failure family: central, iRoute, and Flood across churn, link-fail, and domain-fail under native seed 42.
+[claims][SUMMARY] supported=7 provisional=2 blocked=0
+[claims][FAIL] strict mode requires every mapped claim to be supported; found provisional=2 blocked=0
+[workflow][SKIP] paper preflight failed before LaTeX compile
+/Users/jiyuan/Desktop/ndnSIM/ns-3/bindings/python/wscript:333: SyntaxWarning: "\d" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\d"? A raw string is also an option.
+  m = re.match( "^castxml version (\d\.\d)(-)?(\w+)?", castxml_version_line)
+=== iroute-exp-baselines ===
+  scheme=iroute domains=8 K=5 tau=0.3 M=4 topo=star simTime=3s
+  warmupSec=0 measureStartSec=0 failurePolicy=manual
+Loaded 8 domains centroids, 8 domains content, 500 queries
+
+=== Running scheme: iRoute ===
+Wrote /tmp/iroute-automation-smoke/20260311_164500/failure_sanity.csv
+Wrote /tmp/iroute-automation-smoke/20260311_164500/query_log.csv (2 rows)
+Wrote /tmp/iroute-automation-smoke/20260311_164500/summary.csv
+Wrote /tmp/iroute-automation-smoke/20260311_164500/latency_sanity.csv
+Wrote /tmp/iroute-automation-smoke/20260311_164500/manifest.json
+
+=== Summary ===
+  Scheme: iroute
+  Queries: 2 (measurable: 2)
+  DomainAcc: 1.0000
+  Recall@1:  0.0000
+  Recall@K(domain): 1.0000
+  DocHit@1(singleton): 0.0000 on 0 queries
+  Mean relevant set size: 8.5000
+  meanSSR:   0.7712
+  P50 RTT:   8.0158 ms
+  P95 RTT:   8.0158 ms
+  MeanHops:  1.0000
+  UniqueHops:1
+  Ctrl B/s:  2123.6667
+  FIB size:  21
+  LSDB size: 32
+  partition_detected: 0 failure_effective: 0

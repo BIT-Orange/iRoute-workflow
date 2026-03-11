@@ -120,7 +120,9 @@ run_tool_help_checks() {
   "$PYTHON_BIN" "$REPO_ROOT/ns-3/experiments/manifests/write_run_manifest.py" --help >/dev/null
   "$PYTHON_BIN" "$REPO_ROOT/scripts/fig12_paper_grade.py" --help >/dev/null
   "$PYTHON_BIN" "$REPO_ROOT/scripts/fig345_paper_grade.py" --help >/dev/null
+  "$PYTHON_BIN" "$REPO_ROOT/scripts/manual_paper_assets.py" --help >/dev/null
   "$PYTHON_BIN" "$REPO_ROOT/scripts/paper_release_dossier.py" --help >/dev/null
+  "$PYTHON_BIN" "$REPO_ROOT/scripts/paper_submission_bundle.py" --help >/dev/null
   HOME="$NS3_DIR/.home" XDG_CACHE_HOME="/tmp/iroute-xdg-cache" \
   MPLBACKEND=Agg MPLCONFIGDIR="/tmp/iroute-mplcache-workflow" \
     "$PYTHON_BIN" "$REPO_ROOT/ns-3/experiments/plot/plot_paper_figures.py" --help >/dev/null
@@ -341,9 +343,19 @@ run_publish_figure() {
   "$PYTHON_BIN" "$REPO_ROOT/scripts/paper_grade_pipeline.py" publish-figure "$@"
 }
 
+run_paper_assets_sync() {
+  log "refreshing source-managed manual paper assets"
+  "$PYTHON_BIN" "$REPO_ROOT/scripts/manual_paper_assets.py" sync "$@"
+}
+
 run_release_dossier() {
   log "generating paper release dossier"
   "$PYTHON_BIN" "$REPO_ROOT/scripts/paper_release_dossier.py" "$@"
+}
+
+run_submission_bundle() {
+  log "generating paper submission bundle"
+  "$PYTHON_BIN" "$REPO_ROOT/scripts/paper_submission_bundle.py" "$@"
 }
 
 run_lint() {
@@ -372,7 +384,9 @@ Commands:
                         Supports sharding via --frequencies/--domains-list/--schemes and status recompute via --finalize-only.
   fig5-paper-grade      Run the current paper-grade Fig.5 rerun, promotion, and paper figure sync path.
   publish-figure        Publish a canonical figure manifest into paper/figs/ after provenance checks.
+  paper-assets-sync     Refresh or synchronize source-managed manual paper assets into paper/figs/.
   release-dossier       Generate JSON and Markdown paper release dossier snapshots under review/paper_audit/.
+  submission-bundle     Freeze the current paper tree and evidence snapshots into a release_ready or audit_only bundle.
   smoke-run             Run a tiny ns-3 smoke validation if a compiled binary is available.
   paper-suite-preflight Check static paper-suite semantics and manifest defaults.
   ci-local              Compatibility alias for the strict local paper-release gate.
@@ -423,8 +437,14 @@ main() {
     publish-figure)
       run_publish_figure "$@"
       ;;
+    paper-assets-sync)
+      run_paper_assets_sync "$@"
+      ;;
     release-dossier)
       run_release_dossier "$@"
+      ;;
+    submission-bundle)
+      run_submission_bundle "$@"
       ;;
     smoke-run)
       run_smoke

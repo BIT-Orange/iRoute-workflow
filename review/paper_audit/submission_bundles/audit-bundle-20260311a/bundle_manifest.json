@@ -1,0 +1,96 @@
+{
+  "bundle_id": "audit-bundle-20260311a",
+  "bundle_root": "review/paper_audit/submission_bundles/audit-bundle-20260311a",
+  "bundle_status": "audit_only",
+  "claim_counts": {
+    "provisional": 2,
+    "supported": 7
+  },
+  "figure_counts": {
+    "partial": 2,
+    "placeholder": 1,
+    "published": 5
+  },
+  "generated_at_utc": "2026-03-11T08:45:01.549533+00:00",
+  "included_paths": [
+    "paper/",
+    "paper/assets/asset_status.json",
+    "review/claims/CLAIM_STATUS.md",
+    "review/claims/claims_map.json",
+    "review/paper_audit/paper_release_dossier.json",
+    "review/paper_audit/paper_release_dossier.md",
+    "results/figures/figure_index.json",
+    "results/figures/*.figure.json"
+  ],
+  "latex_compile": {
+    "log_path": "logs/latex_compile.log",
+    "output_dir": "compiled",
+    "status": "skipped_unavailable",
+    "tool": ""
+  },
+  "manual_asset_counts": {
+    "blocked": 2
+  },
+  "missing_paper_refs": [
+    {
+      "asset_management": "manual",
+      "asset_notes": [
+        "Referenced by the canonical paper system overview section.",
+        "Add a maintained source file under this directory and rerun the manual-asset sync helper.",
+        "Until a real source and synchronized paper-facing PDF both exist, this asset must remain blocked.",
+        "No accepted source candidate exists under the source-managed asset directory yet."
+      ],
+      "asset_status": "blocked",
+      "classification": "manual_asset",
+      "exists": false,
+      "paper_ref": "figs/system-arch.pdf",
+      "path": "paper/figs/system-arch.pdf",
+      "status_reason": "source_missing"
+    },
+    {
+      "asset_management": "manual",
+      "asset_notes": [
+        "Referenced by the canonical paper system overview section.",
+        "Add a maintained source file under this directory and rerun the manual-asset sync helper.",
+        "Until a real source and synchronized paper-facing PNG both exist, this asset must remain blocked.",
+        "No accepted source candidate exists under the source-managed asset directory yet."
+      ],
+      "asset_status": "blocked",
+      "classification": "manual_asset",
+      "exists": false,
+      "paper_ref": "figs/mermaid.png",
+      "path": "paper/figs/mermaid.png",
+      "status_reason": "source_missing"
+    },
+    {
+      "classification": "evaluation_figure",
+      "exists": false,
+      "figure_manifest": "results/figures/fig3_hop_load.paper_grade.figure.json",
+      "figure_status": "partial",
+      "paper_ref": "figs/fig3_hop_load.pdf",
+      "path": "paper/figs/fig3_hop_load.pdf"
+    },
+    {
+      "classification": "evaluation_figure",
+      "exists": false,
+      "figure_manifest": "results/figures/fig4_state_scaling.paper_grade.figure.json",
+      "figure_status": "partial",
+      "paper_ref": "figs/fig4_state_scaling.pdf",
+      "path": "paper/figs/fig4_state_scaling.pdf"
+    }
+  ],
+  "notes": [
+    "release_ready is allowed only when the strict paper-release-gate passed.",
+    "audit_only bundles are still useful review artifacts and should not be treated as submission-ready packages."
+  ],
+  "paper_release_gate": {
+    "exit_code": 1,
+    "log_path": "logs/paper_release_gate.log",
+    "passed": false
+  },
+  "release_dossier": {
+    "json_path": "review/paper_audit/paper_release_dossier.json",
+    "markdown_path": "review/paper_audit/paper_release_dossier.md"
+  },
+  "repo_root": "/Users/jiyuan/Desktop/ndnSIM"
+}

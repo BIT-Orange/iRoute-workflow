@@ -84,6 +84,7 @@ def scan_paper_refs(repo_root: Path, paper_path: Path, asset_entries: dict[str, 
         if ref in asset_entries:
             asset = asset_entries[ref]
             item["asset_status"] = asset.get("status", "")
+            item["status_reason"] = asset.get("status_reason", "")
             item["asset_management"] = asset.get("management", "")
             item["asset_notes"] = asset.get("notes", [])
         manifest_path = candidate_manifest_path(repo_root, ref)
@@ -155,9 +156,12 @@ def load_manual_assets(repo_root: Path, asset_manifest_path: Path) -> tuple[list
             "paper_ref": asset.get("paper_ref", ""),
             "title": asset.get("title", ""),
             "status": status,
+            "status_reason": asset.get("status_reason", ""),
             "management": asset.get("management", ""),
+            "asset_manifest": asset.get("asset_manifest", ""),
             "destination_path": asset.get("destination_path", ""),
             "source": asset.get("source", {}),
+            "output": asset.get("output", {}),
             "notes": asset.get("notes", []),
         }
         assets.append(item)
@@ -305,7 +309,9 @@ def build_markdown(dossier: dict[str, Any]) -> str:
     if assets:
         for asset in assets:
             lines.append(
-                f"- `{asset['paper_ref']}` [{asset['status']}] management=`{asset['management']}` source_kind=`{asset['source'].get('kind', '')}`"
+                f"- `{asset['paper_ref']}` [{asset['status']}] reason=`{asset.get('status_reason', '')}` "
+                f"management=`{asset['management']}` source_kind=`{asset['source'].get('kind', '')}` "
+                f"output_exists=`{asset.get('output', {}).get('exists', False)}`"
             )
     else:
         lines.append("- none")
@@ -319,6 +325,8 @@ def build_markdown(dossier: dict[str, Any]) -> str:
                 extra.append(f"figure_status={item['figure_status']}")
             if item.get("asset_status"):
                 extra.append(f"asset_status={item['asset_status']}")
+            if item.get("status_reason"):
+                extra.append(f"status_reason={item['status_reason']}")
             suffix = f" ({', '.join(extra)})" if extra else ""
             lines.append(f"- `{item['paper_ref']}` [{item['classification']}] -> `{item['path']}`{suffix}")
     else:

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "asset_id": "mermaid",
+  "paper_ref": "figs/mermaid.png",
+  "title": "System workflow diagram",
+  "category": "paper_static_asset",
+  "management": "manual",
+  "destination_path": "paper/figs/mermaid.png",
+  "source_candidates": [
+    {
+      "path": "paper/assets/src/mermaid/mermaid.png",
+      "kind": "png",
+      "export_ready": true
+    },
+    {
+      "path": "paper/assets/src/mermaid/mermaid.svg",
+      "kind": "svg",
+      "export_ready": false
+    },
+    {
+      "path": "paper/assets/src/mermaid/mermaid.mmd",
+      "kind": "mmd",
+      "export_ready": false
+    },
+    {
+      "path": "paper/assets/src/mermaid/mermaid.drawio",
+      "kind": "drawio",
+      "export_ready": false
+    }
+  ],
+  "sync": {
+    "mode": "copy_export_ready_source",
+    "destination_format": "png",
+    "supported_source_kinds": [
+      "png"
+    ]
+  },
+  "legacy_mentions": [
+    "paper.tex -> figs/mermaid.png",
+    "paper/archive/ndnsim-paper-legacy.tex -> figures/mermaid.png"
+  ],
+  "notes": [
+    "Referenced by the canonical paper system overview section.",
+    "Add a maintained source file under this directory and rerun the manual-asset sync helper.",
+    "Until a real source and synchronized paper-facing PNG both exist, this asset must remain blocked."
+  ]
+}

@@ -30,7 +30,9 @@ bash scripts/workflow.sh fig34-final-scope load --suffix <suffix> --frequencies 
 bash scripts/workflow.sh fig34-final-scope scaling --suffix <suffix> --domains-list "8" --schemes "iroute" --resume-existing
 bash scripts/workflow.sh fig34-final-scope load --suffix <suffix> --finalize-only
 bash scripts/workflow.sh publish-figure --figure-id <figure-id>
+bash scripts/workflow.sh paper-assets-sync
 bash scripts/workflow.sh release-dossier
+bash scripts/workflow.sh submission-bundle
 ```
 
 If you already have a compiled ns-3 smoke binary, also run:
@@ -49,7 +51,9 @@ Once a full final-scope batch is complete, Fig. 3 / Fig. 4 still need a release-
 The `fig5-paper-grade` command is the canonical rerun, promotion, and publication path for the current Fig. 5 robustness bundle. It synchronizes published PDFs into `paper/figs/` only after every promoted failure run records an effective disruption and the figure files match byte-for-byte.
 The `publish-figure` command is the generic paper-facing sync path for any figure manifest that already has sufficient provenance. It refuses to upgrade `blocked` or `placeholder` manifests, and it refuses to upgrade `partial` manifests unless their aggregate bundle is already marked publishable.
 For Fig. 3 / Fig. 4 specifically, `publish-figure` is stricter: it refuses publication unless the final-scope batch is complete, and it only updates the machine-readable claim map when `--upgrade-claim-status` is passed explicitly.
+The `paper-assets-sync` command is the source-managed sync path for hand-maintained paper assets under `paper/assets/src/`. It can directly copy export-ready managed files into `paper/figs/` and always refreshes `paper/assets/asset_status.json`.
 The `release-dossier` command writes a JSON + Markdown submission snapshot under `review/paper_audit/`. It summarizes current claim status, figure publication status, manual asset debt, paper-facing missing files, and the key evidence references for currently supported claims.
+The `submission-bundle` command freezes the current paper tree plus evidence snapshots under `review/paper_audit/submission_bundles/`. It always runs the strict `paper-release-gate`; only passing snapshots are marked `release_ready`, and all others remain `audit_only`.
 Hand-maintained paper assets such as architecture diagrams do not use `publish-figure`; they stay tracked as explicit manual debt in `paper/assets/asset_status.json` until a real source or synchronized paper-facing file exists.
 
 ## Before Opening A PR
@@ -66,6 +70,7 @@ Notes:
 - if `ns-3/build/scratch/iroute-exp-baselines` is missing, `smoke-run` is skipped explicitly rather than pretending to pass.
 - `paper-release-gate` is not required before every PR; it is the release-tier check.
 - before an actual submission pass, generate `bash scripts/workflow.sh release-dossier` so the current release blockers and evidence set are visible in one place
+- before handing the paper off for submission or external review, also generate `bash scripts/workflow.sh submission-bundle` to freeze the current paper/evidence snapshot in one directory
 
 ## Paper-Grade Evidence
 

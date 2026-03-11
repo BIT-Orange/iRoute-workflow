@@ -1,0 +1,35 @@
+{
+  "aggregate_inputs": [
+    "results/aggregates/fig3-load-paper-grade-20260311a/load_sweep.csv",
+    "results/aggregates/fig3-load-paper-grade-20260311a/load.csv",
+    "results/aggregates/fig3-load-paper-grade-20260311a/load_paper_grade_report.json"
+  ],
+  "figure_exists": true,
+  "figure_id": "fig3_hop_load.paper_grade",
+  "figure_path": "results/figures/fig3-load-paper-grade-20260311a/fig3_hop_load.pdf",
+  "figure_sha256": "62d665875317405549e20a3d15e75f14d0fc532c507884999ff3ca57fa1505b5",
+  "figure_size_bytes": 28118,
+  "generated_at_utc": "2026-03-10T17:14:45.209780+00:00",
+  "notes": [
+    "batch_id=fig3-load-paper-grade-20260311a",
+    "cache_mode=disabled",
+    "run_class=paper_grade",
+    "Focused minimal paper-grade batch; full reruns still required before publishable paper evidence."
+  ],
+  "run_ids": [
+    "fig3-load-paper-grade-20260311a-central_freq10_s42",
+    "fig3-load-paper-grade-20260311a-central_freq20_s42",
+    "fig3-load-paper-grade-20260311a-central_freq5_s42",
+    "fig3-load-paper-grade-20260311a-flood_freq10_s42",
+    "fig3-load-paper-grade-20260311a-flood_freq20_s42",
+    "fig3-load-paper-grade-20260311a-flood_freq5_s42",
+    "fig3-load-paper-grade-20260311a-iroute_freq10_s42",
+    "fig3-load-paper-grade-20260311a-iroute_freq20_s42",
+    "fig3-load-paper-grade-20260311a-iroute_freq5_s42",
+    "fig3-load-paper-grade-20260311a-tag_freq10_s42",
+    "fig3-load-paper-grade-20260311a-tag_freq20_s42",
+    "fig3-load-paper-grade-20260311a-tag_freq5_s42"
+  ],
+  "status": "partial",
+  "title": "fig3_hop_load canonical figure provenance"
+}
